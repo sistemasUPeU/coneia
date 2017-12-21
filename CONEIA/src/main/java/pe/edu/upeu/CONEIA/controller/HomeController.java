@@ -14,13 +14,39 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@Scope("request")
 @RequestMapping("/")
-public class PersonaController {
+public class HomeController {
+	
+	
+	@RequestMapping("/")
+	public String main(HttpServletRequest request, HttpServletResponse response,@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout) {
+	
+		
+		return "main";
+	}
+	
+	@RequestMapping("inscripcion")
+	public ModelAndView SignIn(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+	
+		model.setViewName("inscripcion");
+		
+		
+		
+		return model;
+	}
+	
+	
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher;

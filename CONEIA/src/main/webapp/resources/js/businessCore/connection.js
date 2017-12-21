@@ -14,7 +14,7 @@ function connect(type, url, data, _callback) {
 	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 	var csrfToken = $("meta[name='_csrf']").attr("content");
 	$.ajax({
-		url : gth_context_path + "/" + url,
+		url : "/" + url,
 		type : type,
 		contentType : 'application/json',
 		data : data,

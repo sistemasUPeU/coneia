@@ -26,8 +26,8 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages = "pe.edu.upeu.gth")
-@PropertySource(value = { "classpath:application.properties" })
+@ComponentScan(basePackages = "pe.edu.upeu.CONEIA")
+//@PropertySource(value = { "classpath:application.properties" })
 
 public class AppConfig extends WebMvcConfigurerAdapter {
 
@@ -45,7 +45,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public InternalResourceViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/jsp/");
+		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
 
 		return viewResolver;
@@ -56,31 +56,31 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
-	@Bean
-    public DataSource getDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3307/dbconeia");
-        dataSource.setUsername("root");
-        dataSource.setPassword("");         
-        return dataSource;
-    }
+//	@Bean
+//    public DataSource getDataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+//        dataSource.setUrl("jdbc:mysql://localhost:3307/dbconeia");
+//        dataSource.setUsername("root");
+//        dataSource.setPassword("");         
+//        return dataSource;
+//    }
 	
-	private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
-        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
-        return properties;        
-    }
-     
-    @Bean
-    @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s) {
-       HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(s);
-       return txManager;
-    }
+//	private Properties hibernateProperties() {
+//        Properties properties = new Properties();
+//        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+//        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+//        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+//        return properties;        
+//    }
+//     
+//    @Bean
+//    @Autowired
+//    public HibernateTransactionManager transactionManager(SessionFactory s) {
+//       HibernateTransactionManager txManager = new HibernateTransactionManager();
+//       txManager.setSessionFactory(s);
+//       return txManager;
+//    }
 	
 	
 	
