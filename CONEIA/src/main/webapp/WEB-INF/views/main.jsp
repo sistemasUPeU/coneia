@@ -15,23 +15,10 @@
 <!-- Global Styles-->
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
-<link href="<c:url value='/resources/css/style.min.css'></c:url>"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<c:url value='/resources/css/perfect-scrollbar.css'></c:url>"
-	rel="stylesheet" type="text/css" />
-<!-- Javascript-->
-<script src="<c:url value='/resources/js/jquery-1.11.2.min.js'></c:url>"
-	type="text/javascript"></script>
-<script src="<c:url value='/resources/js/materialize.min.js'></c:url>"
-	type="text/javascript"></script>
-<script
-	src="<c:url value='/resources/js/perfect-scrollbar.min.js'></c:url>"
-	type="text/javascript"></script>
-<script src="<c:url value='/resources/js/plugins.min.js'></c:url>"
-	type="text/javascript"></script>
-<script src="<c:url value='/resources/js/businessCore/connection.js'></c:url>"
-	type="text/javascript"></script>
+	<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
+
+
 <script>
 	var gth_context_path = '${pageContext.request.contextPath}';
 </script>
@@ -43,7 +30,7 @@
 		<div class="row">
 
 			<div class="col s12 m12 l12">
-				<nav class="deep-orange">
+				<nav class="#33691e light-green darken-4">
 				<div class="nav-wrapper">
 					<div class="col s12">
 						<a href="#!" class="brand-logo">CONEIA</a> <a href="#"
@@ -51,14 +38,14 @@
 							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
 							<li><a href="sass.html">Home</a></li>
-							<li><a href="components.html">Programa</a></li>
+							<li><a href="#" class="programa">Programa</a></li>
 							<li><a href="javascript.html">Ponentes</a></li>
 							<li><a id="register">Registrarse</a></li>
 							<li><a href="mobile.html">Sign In</a></li>
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a href="sass.html">Home</a></li>
-							<li><a href="components.html">Programa</a></li>
+							<li><a href="#" class="programa">Programa</a></li>
 							<li><a href="javascript.html">Ponentes</a></li>
 							<li><a href="mobile.html">Registrarse</a></li>
 							<li><a href="mobile.html">Sign In</a></li>
@@ -71,20 +58,44 @@
 	</div>
 
 	<div id="space"></div>
+	<footer class="page-footer #33691e light-green darken-4">
+	<div class="footer-copyright #33691e light-green darken-4">
+		<div class="container">
+			Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
+				Team</a> All rights reserved. <span class="right">Developed by <a
+				class="grey-text text-lighten-4">Alpha Team</a></span>
+		</div>
+	</div>
+</footer>
+	<!-- Javascript-->
+<script src="<c:url value='/resources/js/jquery-3.2.1.min.js'></c:url>"
+	type="text/javascript"></script>
+<script src="<c:url value='/resources/js/plugins/materialize.min.js'></c:url>"
+	type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 
 			$(".button-collapse").sideNav();
-		})
+		});
+
+		
 
 		$("#register")
 				.click(
 						function() {
-							var con = new jsConnector();
 						    $.get("inscripcion",null,function (data, status){
 						        $("#space").html(data);
 						    });
-						})
+						});
+
+		$(".programa")
+		.click(
+				function() {
+				    $.get("programa",null,function (data, status){
+				        $("#space").html(data);
+				    });
+				})
+						
 	</script>
 </body>
 </html>

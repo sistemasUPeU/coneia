@@ -44,6 +44,17 @@ public class HomeController {
 		return model;
 	}
 	
+	@RequestMapping("programa")
+	public ModelAndView Program(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+	
+		model.setViewName("programa");
+		
+		
+		
+		return model;
+	}
+	
 	
 	
 	
