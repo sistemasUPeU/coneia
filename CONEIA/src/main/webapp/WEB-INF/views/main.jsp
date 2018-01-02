@@ -15,9 +15,10 @@
 <!-- Global Styles-->
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
-	<link rel='stylesheet prefetch'
+<link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
-
+<link rel="stylesheet"
+	href="<c:url value='resources/css/custom/menu.css'/>" />
 
 <script>
 	var gth_context_path = '${pageContext.request.contextPath}';
@@ -37,7 +38,7 @@
 							data-activates="mobile-demo" class="button-collapse"><i
 							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
-							<li><a href="sass.html">Home</a></li>
+							<li><a onclick="location.reload();">Home</a></li>
 							<li><a href="#" class="programa">Programa</a></li>
 							<li><a href="javascript.html">Ponentes</a></li>
 							<li><a id="register">Registrarse</a></li>
@@ -56,8 +57,18 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="space"></div>
+	<div id="space">
+		<div class="row center">
+			<div class="col s6">
+				<button class="circulo waves-effect waves-light programa">Programa
+					usuario nuevo</button>
+			</div>
+			<div class="col s6">
+				<button class="circulo waves-effect waves-light talleres">Programa
+					usuario registrado</button>
+			</div>
+		</div>
+	</div>
 	<footer class="page-footer #33691e light-green darken-4">
 	<div class="footer-copyright #33691e light-green darken-4">
 		<div class="container">
@@ -66,36 +77,38 @@
 				class="grey-text text-lighten-4">Alpha Team</a></span>
 		</div>
 	</div>
-</footer>
+	</footer>
 	<!-- Javascript-->
-<script src="<c:url value='/resources/js/jquery-3.2.1.min.js'></c:url>"
-	type="text/javascript"></script>
-<script src="<c:url value='/resources/js/plugins/materialize.min.js'></c:url>"
-	type="text/javascript"></script>
+	<script src="<c:url value='/resources/js/jquery-3.2.1.min.js'></c:url>"
+		type="text/javascript"></script>
+	<script
+		src="<c:url value='/resources/js/plugins/materialize.min.js'></c:url>"
+		type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 
 			$(".button-collapse").sideNav();
 		});
 
+
+
+		$("#register").click(function() {
+			$.get("inscripcion", null, function(data, status) {
+				$("#space").html(data);
+			});
+		});
+
+		$(".programa").click(function() {
+			$.get("programa", null, function(data, status) {
+				$("#space").html(data);
+			});
+		})
 		
-
-		$("#register")
-				.click(
-						function() {
-						    $.get("inscripcion",null,function (data, status){
-						        $("#space").html(data);
-						    });
-						});
-
-		$(".programa")
-		.click(
-				function() {
-				    $.get("programa",null,function (data, status){
-				        $("#space").html(data);
-				    });
-				})
-						
+		$(".talleres").click(function() {
+			$.get("talleres", null, function(data, status) {
+				$("#space").html(data);
+			});
+		})
 	</script>
 </body>
 </html>

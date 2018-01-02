@@ -55,6 +55,17 @@ public class HomeController {
 		return model;
 	}
 	
+	@RequestMapping("talleres")
+	public ModelAndView Taller(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+	
+		model.setViewName("talleres");
+		
+		
+		
+		return model;
+	}
+	
 	
 	
 	
