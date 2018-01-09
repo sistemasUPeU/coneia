@@ -1,5 +1,5 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 20-dic-2017 19:51:48 by Hibernate Tools 5.2.6.Final
+// Generated 07/01/2018 10:54:44 PM by Hibernate Tools 5.2.6.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

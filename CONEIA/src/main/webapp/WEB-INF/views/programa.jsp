@@ -1,5 +1,13 @@
+
+<%
+	HttpSession sesion = request.getSession();
+	if (sesion.getAttribute("dni") == null) {
+		response.sendRedirect("/CONEIA/");
+
+	} else {
+%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,6 +15,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
+<link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
+	rel="stylesheet" type="text/css" />
+<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
+<link rel="stylesheet"
+	href="<c:url value='resources/css/custom/menu.css'/>" />
 <link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -15,6 +29,50 @@
 	rel="stylesheet" type="text/css" />
 </head>
 <body>
+	<div id="mobile-collapse-button" class="section">
+
+		<div class="row">
+
+			<div class="col s12 m12 l12">
+				<nav class="#33691e light-green darken-4">
+				<div class="nav-wrapper">
+					<div class="col s12">
+						<a href="#!" class="brand-logo" ><img
+							class=""
+							src="<c:url value="/resources/img/coneia5.png"/>"
+							style="width: 200px; height:30%; outline-color: none;"></img></a>
+						<ul class="right hide-on-med-and-down">
+							<li><a class="principal">Home</a></li>
+							<li><a href="#" class="programa">Programa</a></li>
+							<li><a href="mobile.html">Asistencia</a></li>
+							<li><a class="dropdown-button" href="#!"
+								data-activates="dropdown1"><b>${sessionScope.nombre}</b></a>
+								<ul id='dropdown1' class='dropdown-content'>
+									<li><a href="#!" id="salir">Salir</a></li>
+
+								</ul></li>
+
+
+
+						</ul>
+						<ul class="side-nav" id="mobile-demo">
+							<li><a class="dropdown-button" href="#!"
+								data-activates="dropdown2"><b>${sessionScope.nombre}</b></a>
+								<ul id='dropdown2' class='dropdown-content '>
+									<li><a href="#!" id="salir">Salir</a></li>
+								</ul></li>
+
+							<li><a class="principal">Home</a></li>
+							<li><a href="#" class="programa">Programa</a></li>
+							<li><a href="mobile.html">Asistencia</a></li>
+
+						</ul>
+					</div>
+				</div>
+				</nav>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row center">
 
@@ -312,8 +370,8 @@
 							<div class="collapsible-header">
 								<div class="row center">
 									<div class="col l7 m7 s12">
-										<i class="material-icons">playlist_add_check</i> INGRESO - Visitas
-										técnicas
+										<i class="material-icons">playlist_add_check</i> INGRESO -
+										Visitas técnicas
 									</div>
 									<div class="col l4 m4 s10">6:30 - 8:00 am</div>
 									<div class="col l1 m1 s2 ">
@@ -464,8 +522,9 @@
 				</div>
 
 			</div>
-			<div id="swipe-4" class="col s12 #82b1ff blue accent-1" style="height: 1000px">
-				<div class="container" >
+			<div id="swipe-4" class="col s12 #82b1ff blue accent-1"
+				style="height: 1000px">
+				<div class="container">
 					<br /> <br />
 					<ul class="collapsible popout" data-collapsible="accordion"
 						id="staggered-test4">
@@ -562,8 +621,8 @@
 							<div class="collapsible-header">
 								<div class="row center">
 									<div class="col l7 m7 s12">
-										<i class="material-icons">playlist_add_check</i> INGRESO - Visitas
-										técnicas
+										<i class="material-icons">playlist_add_check</i> INGRESO -
+										Visitas técnicas
 									</div>
 									<div class="col l4 m4 s10">6:30 - 8:00 am</div>
 									<div class="col l1 m1 s2 ">
@@ -628,7 +687,9 @@
 							<div class="collapsible-header">
 								<div class="row center">
 									<div class="col l7 m7 s12">
-										<i class="material-icons">audiotrack</i>Clausura del evento, Entrega de premios, Presentación de la nueva sede y Firma de compromisos
+										<i class="material-icons">audiotrack</i>Clausura del evento,
+										Entrega de premios, Presentación de la nueva sede y Firma de
+										compromisos
 									</div>
 									<div class="col l4 m4 s10">2:00 - 5:00 pm</div>
 									<div class="col l1 m1 s2 ">
@@ -641,16 +702,72 @@
 								<span>Lorem ipsum dolor sit amet.</span>
 							</div>
 						</li>
-						
+
 
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<!-- 	<footer class="page-footer #33691e light-green darken-4" -->
+	<!-- 		style="position:absolute;bottom:0;width:100%"> -->
+	<!-- 	<div class="footer-copyright #33691e light-green darken-4"> -->
+	<!-- 		<div class="container"> -->
+	<!-- 			Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha -->
+	<!-- 				Team</a> All rights reserved. <span class="right">Developed by <a -->
+	<!-- 				class="grey-text text-lighten-4">Alpha Team</a></span> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+	<!-- 	</footer> -->
+	<div>
+		<%@include file="../../../jspf/footer.jspf"%>
+	</div>
+	<!-- Javascript-->
+	<script src="<c:url value='/resources/js/jquery-3.2.1.min.js'></c:url>"
+		type="text/javascript"></script>
+	<script
+		src="<c:url value='/resources/js/plugins/materialize.min.js'></c:url>"
+		type="text/javascript"></script>
 
 	<script src="<c:url value='/resources/js/programa.js'></c:url>"
 		type="text/javascript"></script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$(".button-collapse").sideNav();
+		});
+		var url = window.location.href;
+		var arr = url.split("/");
+		var context_path = arr[0] + "//" + arr[2] + "/CONEIA"
+
+		$("#register").click(function() {
+			$.get("inscripcion", null, function(data, status) {
+				$("#space").html(data);
+			});
+		});
+
+		$(".principal").click(function() {
+			var link = context_path + "/principal"
+
+			location.href = link;
+		})
+
+		$(".programa").click(function() {
+			var link = context_path + "/programa"
+
+			location.href = link;
+		})
+
+		$(".talleres").click(function() {
+			var link = context_path + "/talleres"
+
+			location.href = link;
+		})
+	</script>
 </body>
 </html>
+<%
+	}
+%>

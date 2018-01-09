@@ -5,6 +5,7 @@
   <table-filter match-catalog="dbconeia" match-name="detalle_inscripcion"/>
   <table-filter match-catalog="dbconeia" match-name="detalle_privilegio"/>
   <table-filter match-catalog="dbconeia" match-name="inscripcion"/>
+  <table-filter match-catalog="dbconeia" match-name="inscripcion_taller"/>
   <table-filter match-catalog="dbconeia" match-name="persona"/>
   <table-filter match-catalog="dbconeia" match-name="privilegio"/>
   <table-filter match-catalog="dbconeia" match-name="rol"/>

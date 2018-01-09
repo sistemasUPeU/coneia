@@ -1,17 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="UTF-8"%>
+
+<%
+	HttpSession sesion = request.getSession();
+	if (sesion.getAttribute("dni") == null) {
+		response.sendRedirect("/CONEIA/");
+
+	} else {
+%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Principal</title>
 <!--Global Config-->
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>GTH</title>
 <link rel="icon"
 	href="<c:url value='/resources/img/favicon/favicon.ico'></c:url>">
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
+
 <!-- Global Styles-->
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
@@ -22,14 +29,15 @@
 	rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Lobster+Two"
 	rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 <link rel="stylesheet"
-	href="<c:url value='resources/css/custom/menu.css'/>" />
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="<c:url value='resources/css/custom/principal.css'/>" />
 
 <script>
 	var gth_context_path = '${pageContext.request.contextPath}';
 </script>
-
 </head>
 <body>
 	<div id="mobile-collapse-button" class="section">
@@ -44,20 +52,30 @@
 							class=""
 							src="<c:url value="/resources/img/coneia5.png"/>"
 							style="width: 200px; height:30%; outline-color: none;"></img></a>
-						<a href="#" data-activates="mobile-demo" class="button-collapse"><i
-							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
-							<li><a class="home">Home</a></li>
+							<li><a class="principal">Home</a></li>
 							<li><a href="#" class="programa">Programa</a></li>
-							<li><a class="inscripcion">Inscripción</a></li>
-							<li><a class="login">Iniciar sesión</a></li>
+							<li><a href="mobile.html">Asistencia</a></li>
+							<li><a class="dropdown-button" href="#!"
+								data-activates="dropdown1"><b>${sessionScope.nombre}</b></a>
+								<ul id='dropdown1' class='dropdown-content'>
+									<li><a href="#!" id="salir">Salir</a></li>
+
+								</ul></li>
+
+
 
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
-							<li><a class="home">Home</a></li>
+							<li><a class="dropdown-button" href="#!"
+								data-activates="dropdown2"><b>${sessionScope.nombre}</b></a>
+								<ul id='dropdown2' class='dropdown-content '>
+									<li><a href="#!" id="salir">Salir</a></li>
+								</ul></li>
+
+							<li><a class="principal">Home</a></li>
 							<li><a href="#" class="programa">Programa</a></li>
-							<li><a class="inscripcion">Inscripción</a></li>
-							<li><a class="login">Iniciar sesión</a></li>
+							<li><a href="mobile.html">Asistencia</a></li>
 
 						</ul>
 					</div>
@@ -69,59 +87,46 @@
 	<div id="space"
 		style="position: relative; margin-top: 10%; margin-bottom: 10%">
 		<div class="row center">
-			<div class="col s12 m6 l6">
-				<div class="circulo waves-effect waves-light ">
+			<div class="col s12 ">
+				<div class="row">
+					<h6>Aquí se encuentra la programación del evento CONEIA 2018 y
+						además usted podrá elegir los talleres, ponencias o conferencias a
+						los que puede asistir.</h6>
+				</div>
 
-
+				<div class="circulo waves-effect waves-light programa">
 					<div class="circulo2">
-						<img class="contA mdi-action-open-with large icon-demo size-icon"
-							src="<c:url value="/resources/img/coneia.png"/>"
-							style="width: 50%; margin-left: 10%; margin-top: -5%; outline-color: none"></img>
+						<div class="row">
+							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
+						</div>
 						<div class="light italic letrinha"
 							style="margin-top: -5%; font-family: 'Lobster Two', cursive;">
-							<b>Inscripción</b>
+							<b>Programación</b>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m6 l6">
+			<div class="col s12 ">
+				<div class="row">
+					<h6>Aquí se irá mostrando los talleres, ponencias o conferencias en las que usted participó para la elaboración de su correspondiente certificado.</h6>
+				</div>
 				<a class="circulo login waves-effect waves-light "
-					style="border: 10px inset green; text-decoration: none; color: black">
+					style="text-decoration: none; color: black">
 					<div class="circulo2">
-						<i class="contA mdi-social-group large icon-demo size-icon"
-							style="color: green;"></i>
+						<div class="row">
+							<i class="fa fa-user-plus s6" aria-hidden="true"></i> <i
+								class="fa fa-user-times s6" aria-hidden="true"></i>
+						</div>
+
 						<div class="light italic letrinha"
 							style="margin-top: -5%; font-family: 'Lobster Two', cursive;">
-							<b>Iniciar sesión</b>
+							<b>Asistencia</b>
 						</div>
 					</div>
 				</a>
 			</div>
 		</div>
 
-		<div id="modal1" class="modal modal-fixed-footer"
-			style="width: 40%; height: 200px; margin-top: 15%">
-			<div class="modal-header"></div>
-			<div class="modal-content #b9f6ca green accent-1">
-				<div class="row">
-					<div class="input-field col s12">
-						<input type="text" id="dni" class="validate"
-							placeholder="Escriba su número de dni"
-							onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-							maxlength=8 autofocus /> <label for="dni">Escriba su
-							número de dni</label>
-					</div>
-
-
-				</div>
-
-
-			</div>
-			<div class="modal-footer">
-				<a href="#!"
-					class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-			</div>
-		</div>
 
 
 
@@ -142,10 +147,20 @@
 		type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('.modal').modal();
 			$(".button-collapse").sideNav();
 			$('.btn-message').click(function() {
 				swal("Here's a message!");
+			});
+			$('.dropdown-button').dropdown({
+				inDuration : 300,
+				outDuration : 225,
+				constrainWidth : true, // Does not change width of dropdown to that of the activator
+				hover : false, // Activate on hover
+				gutter : 0, // Spacing from edge
+				belowOrigin : true, // Displays dropdown below the button
+				alignment : 'left', // Displays dropdown with edge aligned to the left of button
+				stopPropagation : false
+			// Stops event propagation
 			});
 		});
 		var url = window.location.href;
@@ -164,8 +179,8 @@
 			location.href = link;
 		})
 
-		$(".home").click(function() {
-			var link = context_path + "/"
+		$(".principal").click(function() {
+			var link = context_path + "/principal"
 
 			location.href = link;
 		})
@@ -176,6 +191,17 @@
 			location.href = link;
 		})
 
+		$("#salir").on("click", function() {
+			$.post("logon", {
+				op : '2'
+			}, function() {
+				var link = context_path + "/"
+
+				location.href = link;
+			});
+
+		});
+
 		$(".talleres").click(function() {
 			$.get("talleres", null, function(data, status) {
 				$("#space").html(data);
@@ -184,3 +210,6 @@
 	</script>
 </body>
 </html>
+<%
+	}
+%>

@@ -1,5 +1,5 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 20-dic-2017 19:51:48 by Hibernate Tools 5.2.6.Final
+// Generated 07/01/2018 10:54:44 PM by Hibernate Tools 5.2.6.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -33,7 +33,7 @@ public class Taller implements java.io.Serializable {
 	private Date fecha;
 	private String descripcion;
 	private Integer nroVacantes;
-	private Set<DetalleInscripcion> detalleInscripcions = new HashSet<DetalleInscripcion>(0);
+	private Set<InscripcionTaller> inscripcionTallers = new HashSet<InscripcionTaller>(0);
 
 	public Taller() {
 	}
@@ -43,7 +43,7 @@ public class Taller implements java.io.Serializable {
 	}
 
 	public Taller(Tipo tipo, String nombre, String ponente, Date horaInicio, Date horaFin, Date fecha,
-			String descripcion, Integer nroVacantes, Set<DetalleInscripcion> detalleInscripcions) {
+			String descripcion, Integer nroVacantes, Set<InscripcionTaller> inscripcionTallers) {
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.ponente = ponente;
@@ -52,7 +52,7 @@ public class Taller implements java.io.Serializable {
 		this.fecha = fecha;
 		this.descripcion = descripcion;
 		this.nroVacantes = nroVacantes;
-		this.detalleInscripcions = detalleInscripcions;
+		this.inscripcionTallers = inscripcionTallers;
 	}
 
 	@Id
@@ -144,12 +144,12 @@ public class Taller implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taller")
-	public Set<DetalleInscripcion> getDetalleInscripcions() {
-		return this.detalleInscripcions;
+	public Set<InscripcionTaller> getInscripcionTallers() {
+		return this.inscripcionTallers;
 	}
 
-	public void setDetalleInscripcions(Set<DetalleInscripcion> detalleInscripcions) {
-		this.detalleInscripcions = detalleInscripcions;
+	public void setInscripcionTallers(Set<InscripcionTaller> inscripcionTallers) {
+		this.inscripcionTallers = inscripcionTallers;
 	}
 
 }

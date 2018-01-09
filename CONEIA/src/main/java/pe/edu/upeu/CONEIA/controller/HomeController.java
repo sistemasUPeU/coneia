@@ -39,8 +39,6 @@ public class HomeController {
 	
 		model.setViewName("inscripcion");
 		
-		
-		
 		return model;
 	}
 	
@@ -66,6 +64,27 @@ public class HomeController {
 		return model;
 	}
 	
+	@RequestMapping("login")
+	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+	
+		model.setViewName("login");
+		
+		
+		
+		return model;
+	}
+	
+	@RequestMapping("principal")
+	public ModelAndView Principal(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+	
+		model.setViewName("principal");
+		
+		
+		
+		return model;
+	}
 	
 	
 	

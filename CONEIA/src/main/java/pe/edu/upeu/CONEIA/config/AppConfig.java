@@ -27,6 +27,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = "pe.edu.upeu.CONEIA")
+
 //@PropertySource(value = { "classpath:application.properties" })
 
 public class AppConfig extends WebMvcConfigurerAdapter {
