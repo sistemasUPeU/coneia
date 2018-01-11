@@ -19,14 +19,11 @@
 	rel="stylesheet" type="text/css" />
 <link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
-<link rel="stylesheet"
-	href="<c:url value='resources/css/custom/menu.css'/>" />
-<link rel='stylesheet prefetch'
-	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link href="<c:url value='/resources/css/programa.css'></c:url>"
 	rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 	<div id="mobile-collapse-button" class="section">
@@ -41,6 +38,8 @@
 							class=""
 							src="<c:url value="/resources/img/coneia5.png"/>"
 							style="width: 200px; height:30%; outline-color: none;"></img></a>
+							<a href="#" data-activates="mobile-demo" class="button-collapse"><i
+							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
 							<li><a class="principal">Home</a></li>
 							<li><a href="#" class="programa">Programa</a></li>
@@ -48,7 +47,7 @@
 							<li><a class="dropdown-button" href="#!"
 								data-activates="dropdown1"><b>${sessionScope.nombre}</b></a>
 								<ul id='dropdown1' class='dropdown-content'>
-									<li><a href="#!" id="salir">Salir</a></li>
+									<li><a href="#!" class="salir">Salir</a></li>
 
 								</ul></li>
 
@@ -59,7 +58,7 @@
 							<li><a class="dropdown-button" href="#!"
 								data-activates="dropdown2"><b>${sessionScope.nombre}</b></a>
 								<ul id='dropdown2' class='dropdown-content '>
-									<li><a href="#!" id="salir">Salir</a></li>
+									<li><a href="#!" class="salir">Salir</a></li>
 								</ul></li>
 
 							<li><a class="principal">Home</a></li>
@@ -84,21 +83,21 @@
 		<div class="row">
 			<div class="col s12 #ccff90 light-green accent-1">
 				<ul id="tabs-swipe-demo" class="tabs  #ccff90 light-green accent-1">
-					<li class="tab col s3"><a id="1" class="#ccff90 "
+					<li class="tab "><a id="1" class="#ccff90 "
 						style="color: #003300; font-weight: bold" href="#swipe-1"
-						onclick="Materialize.showStaggeredList('#staggered-test')">LUNES</a></li>
-					<li class="tab col s3 active"><a
+						onclick="Materialize.showStaggeredList('#staggered-test')"><span class="nigga">LUNES</span></a></li>
+					<li class="tab active"><a
 						style="color: #003300; font-weight: bold" id="2" href="#swipe-2"
-						onclick="Materialize.showStaggeredList('#staggered-test2')">MARTES</a></li>
-					<li class="tab col s3"><a
+						onclick="Materialize.showStaggeredList('#staggered-test2')"><span class="nigga">MARTES</span></a></li>
+					<li class="tab"><a
 						style="color: #003300; font-weight: bold" id="3" href="#swipe-3"
-						onclick="Materialize.showStaggeredList('#staggered-test3')">MIÉRCOLES</a></li>
-					<li class="tab col s3 "><a
+						onclick="Materialize.showStaggeredList('#staggered-test3')"><span class="nigga">MIÉRCOLES</span></a></li>
+					<li class="tab"><a
 						style="color: #003300; font-weight: bold" id="4" href="#swipe-4"
-						onclick="Materialize.showStaggeredList('#staggered-test4')">JUEVES</a></li>
-					<li class="tab col s3 "><a
+						onclick="Materialize.showStaggeredList('#staggered-test4')"><span class="nigga">JUEVES</span></a></li>
+					<li class="tab"><a
 						style="color: #003300; font-weight: bold" id="5" href="#swipe-5"
-						onclick="Materialize.showStaggeredList('#staggered-test5')">VIERNES</a></li>
+						onclick="Materialize.showStaggeredList('#staggered-test5')"><span class="nigga">VIERNES</span></a></li>
 				</ul>
 			</div>
 
@@ -735,8 +734,23 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
+			$(".button-collapse").sideNav(
+					 {accordion: false}
 
-			$(".button-collapse").sideNav();
+					);
+			$('.collapsible').collapsible();
+			$('.dropdown-button').dropdown({
+				inDuration : 300,
+				outDuration : 225,
+				constrainWidth : true, // Does not change width of dropdown to that of the activator
+				hover : false, // Activate on hover
+				gutter : 0, // Spacing from edge
+				belowOrigin : true, // Displays dropdown below the button
+				alignment : 'left', // Displays dropdown with edge aligned to the left of button
+				stopPropagation : false
+			// Stops event propagation
+			});
 		});
 		var url = window.location.href;
 		var arr = url.split("/");
@@ -765,6 +779,17 @@
 
 			location.href = link;
 		})
+		
+		$(".salir").on("click", function() {
+			$.post("logon", {
+				op : '2'
+			}, function() {
+				var link = context_path + "/"
+
+				location.href = link;
+			});
+
+		});
 	</script>
 </body>
 </html>
