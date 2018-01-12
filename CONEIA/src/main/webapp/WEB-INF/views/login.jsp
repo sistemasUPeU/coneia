@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>CONEIA</title>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<link rel="icon"
-	href="<c:url value='/resources/img/favicon/favicon.ico'></c:url>">
+<link rel="png"
+	href="<c:url value='/resources/img/coneia.png'></c:url>">
 <!-- Global Styles-->
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
@@ -40,7 +40,7 @@
 							<i class="mdi-social-person-outline prefix"></i> <input
 								class="validate" id="user_dni" type="text"
 								onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-								maxlength=8  required="" aria-required="true" autofocus> <label for="user_dni"
+								maxlength=8  required aria-required="true" autofocus> <label for="user_dni"
 								data-error="Campo vacío" data-success="" class=""style="width:100%">Ingrese
 								su DNI</label>
 						</div>
@@ -92,6 +92,7 @@
 		});
 
 		$("#user_dni").keypress(function(e) {
+			console.log(e.which);
 			if (e.which == 13) {
 				$("#logon").click();
 			}

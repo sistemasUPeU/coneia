@@ -16,8 +16,8 @@
 <title>Principal</title>
 <!--Global Config-->
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<link rel="icon"
-	href="<c:url value='/resources/img/favicon/favicon.ico'></c:url>">
+<link rel="png"
+	href="<c:url value='/resources/img/coneia.png'></c:url>">
 
 <!-- Global Styles-->
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"

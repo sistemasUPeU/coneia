@@ -21,6 +21,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import pe.edu.upeu.CONEIA.dao.DetalleInscripcionDAO;
+import pe.edu.upeu.CONEIA.dao.InscripcionDAO;
+import pe.edu.upeu.CONEIA.daoImpl.DetalleInscripcionDaoImpl;
+import pe.edu.upeu.CONEIA.daoImpl.InscripcionDaoImpl;
+
 
 
 @Configuration
@@ -83,6 +88,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 //       return txManager;
 //    }
 	
+	@Bean
+    public InscripcionDAO getInscripcionDAO() {
+        return new InscripcionDaoImpl();
+    }
 	
+
+	
+	@Bean
+    public DetalleInscripcionDAO getDetalleInscripcionDAO() {
+        return new DetalleInscripcionDaoImpl();
+    }
 	
 }

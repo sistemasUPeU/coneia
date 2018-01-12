@@ -2,19 +2,32 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory name="">
-  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-  <property name="hibernate.connection.password">root</property>
-  <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/dbconeia</property>
-  <property name="hibernate.connection.username">root</property>
-  <mapping class="pe.edu.upeu.CONEIA.entity.Persona" package="pe.edu.upeu.CONEIA.entity"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.Rol"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.Inscripcion"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.InscripcionTaller"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.Taller"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.DetalleInscripcion"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.DetallePrivilegio"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.Tipo"/>
-  <mapping class="pe.edu.upeu.CONEIA.entity.Privilegio"/>
- </session-factory>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3307/dbconeia</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.jdbc.batch_size">20</property>
+
+
+		<mapping class="pe.edu.upeu.CONEIA.entity.DetalleInscripcion"
+			package="pe.edu.upeu.CONEIA.entity." resource="pe/edu/upeu/CONEIA/entity/DetalleInscripcion.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.DetallePrivilegio"
+			package="pe.edu.upeu.CONEIA.entity." resource="pe/edu/upeu/CONEIA/entity/DetallePrivilegio.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.Inscripcion"
+			package="pe.edu.upeu.CONEIA.entity." resource="pe/edu/upeu/CONEIA/entity/Inscripcion.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.InscripcionTaller"
+			package="pe.edu.upeu.CONEIA.entity." resource="pe/edu/upeu/CONEIA/entity/InscripcionTaller.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.Persona" package="pe.edu.upeu.CONEIA.entity."
+			resource="pe/edu/upeu/CONEIA/entity/Persona.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.Privilegio" package="pe.edu.upeu.CONEIA.entity."
+			resource="pe/edu/upeu/CONEIA/entity/Privilegio.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.Rol" package="pe.edu.upeu.CONEIA.entity."
+			resource="pe/edu/upeu/CONEIA/entity/Rol.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.Taller" package="pe.edu.upeu.CONEIA.entity."
+			resource="pe/edu/upeu/CONEIA/entity/Taller.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.Tipo" package="pe.edu.upeu.CONEIA.entity."
+			resource="pe/edu/upeu/CONEIA/entity/Tipo.hbm.xml" />
+	</session-factory>
 </hibernate-configuration>
