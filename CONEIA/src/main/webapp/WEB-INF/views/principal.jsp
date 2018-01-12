@@ -29,7 +29,8 @@
 	rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Lobster+Two"
 	rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quicksand"
+	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
@@ -48,10 +49,11 @@
 				<nav class="#33691e light-green darken-4">
 				<div class="nav-wrapper">
 					<div class="col s12">
-						<a href="#!" class="brand-logo" ><img
-							class=""
+						<a href="#!" class="brand-logo"><img class=""
 							src="<c:url value="/resources/img/coneia5.png"/>"
-							style="width: 200px; height:30%; outline-color: none;"></img></a>
+							style="width: 200px; height: 30%; outline-color: none;"></img></a>
+							<a href="#" data-activates="mobile-demo" class="button-collapse"><i
+							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
 							<li><a class="principal">Home</a></li>
 							<li><a href="#" class="programa">Programa</a></li>
@@ -59,7 +61,7 @@
 							<li><a class="dropdown-button" href="#!"
 								data-activates="dropdown1"><b>${sessionScope.nombre}</b></a>
 								<ul id='dropdown1' class='dropdown-content'>
-									<li><a href="#!" id="salir">Salir</a></li>
+									<li><a href="#!" class="salir">Salir</a></li>
 
 								</ul></li>
 
@@ -70,7 +72,7 @@
 							<li><a class="dropdown-button" href="#!"
 								data-activates="dropdown2"><b>${sessionScope.nombre}</b></a>
 								<ul id='dropdown2' class='dropdown-content '>
-									<li><a href="#!" id="salir">Salir</a></li>
+									<li><a href="#!" class="salir">Salir</a></li>
 								</ul></li>
 
 							<li><a class="principal">Home</a></li>
@@ -97,18 +99,26 @@
 				<div class="circulo waves-effect waves-light programa">
 					<div class="circulo2">
 						<div class="row">
+						<div class="col s12">
 							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
 						</div>
-						<div class="light italic letrinha"
-							style="margin-top: -5%; font-family: 'Lobster Two', cursive;">
-							<b>Programación</b>
+							
 						</div>
+						<div class="row">
+							<div class="light italic letrinha s12"
+								style="margin-top: -5%; font-family: 'Lobster Two', cursive;">
+								<b>Programación</b>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
 			<div class="col s12 ">
 				<div class="row">
-					<h6>Aquí se irá mostrando los talleres, ponencias o conferencias en las que usted participó para la elaboración de su correspondiente certificado.</h6>
+					<h6>Aquí se irá mostrando los talleres, ponencias o
+						conferencias en las que usted participó para la elaboración de su
+						correspondiente certificado.</h6>
 				</div>
 				<a class="circulo login waves-effect waves-light "
 					style="text-decoration: none; color: black">
@@ -191,7 +201,7 @@
 			location.href = link;
 		})
 
-		$("#salir").on("click", function() {
+		$(".salir").on("click", function() {
 			$.post("logon", {
 				op : '2'
 			}, function() {

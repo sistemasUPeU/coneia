@@ -20,3 +20,26 @@
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+@media screen and (min-device-width: 100px) and (max-device-width:
+	568px) {
+	.nigga{
+		font-size:12px;
+		
+	}
+	
+	
+	.tabs .tab{
+		width:15%;
+		padding:0;
+		height:36px;
+		min-width:50px;
+	}
+	
+	.tabs .tab a{
+		text-transform:lowercase;
+		padding:0;
+		min-width:50px;
+	}
+
+}
