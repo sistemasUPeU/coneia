@@ -1,7 +1,7 @@
 
 <%
 	HttpSession sesion = request.getSession();
-	if (sesion.getAttribute("dni") == null) {
+	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
 		response.sendRedirect("/CONEIA/");
 
 	} else {
@@ -45,7 +45,7 @@
 							<li><a href="#" class="programa">Programa</a></li>
 							<li><a href="mobile.html">Asistencia</a></li>
 							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown1"><b>${sessionScope.nombre}</b></a>
+								data-activates="dropdown1"><b>${sessionScope.nombre} ${sessionScope.paterno} ${sessionScope.materno}</b></a>
 								<ul id='dropdown1' class='dropdown-content'>
 									<li><a href="#!" class="salir">Salir</a></li>
 
@@ -56,7 +56,7 @@
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown2"><b>${sessionScope.nombre}</b></a>
+								data-activates="dropdown2"><b>${sessionScope.nombre} ${sessionScope.paterno} ${sessionScope.materno}</b></a>
 								<ul id='dropdown2' class='dropdown-content '>
 									<li><a href="#!" class="salir">Salir</a></li>
 								</ul></li>
@@ -733,13 +733,14 @@
 
 
 	<script type="text/javascript">
+		$($('.collapsible').collapsible());
 		$(document).ready(function() {
 			
 			$(".button-collapse").sideNav(
 					 {accordion: false}
 
 					);
-			$('.collapsible').collapsible();
+			
 			$('.dropdown-button').dropdown({
 				inDuration : 300,
 				outDuration : 225,

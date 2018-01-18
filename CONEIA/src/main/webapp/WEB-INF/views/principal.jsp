@@ -1,7 +1,7 @@
 
 <%
 	HttpSession sesion = request.getSession();
-	if (sesion.getAttribute("dni") == null) {
+	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
 		response.sendRedirect("/CONEIA/");
 
 	} else {
@@ -16,8 +16,7 @@
 <title>Principal</title>
 <!--Global Config-->
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<link rel="png"
-	href="<c:url value='/resources/img/coneia.png'></c:url>">
+<link rel="png" href="<c:url value='/resources/img/coneia.png'></c:url>">
 
 <!-- Global Styles-->
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
@@ -51,15 +50,16 @@
 					<div class="col s12">
 						<a href="#!" class="brand-logo"><img class=""
 							src="<c:url value="/resources/img/coneia5.png"/>"
-							style="width: 200px; height: 30%; outline-color: none;"></img></a>
-							<a href="#" data-activates="mobile-demo" class="button-collapse"><i
+							style="width: 200px; height: 30%; outline-color: none;"></img></a> <a
+							href="#" data-activates="mobile-demo" class="button-collapse"><i
 							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
 							<li><a class="principal">Home</a></li>
 							<li><a href="#" class="programa">Programa</a></li>
 							<li><a href="mobile.html">Asistencia</a></li>
 							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown1"><b>${sessionScope.nombre}</b></a>
+								data-activates="dropdown1"><b>${sessionScope.nombre}
+										${sessionScope.paterno} ${sessionScope.materno}</b></a>
 								<ul id='dropdown1' class='dropdown-content'>
 									<li><a href="#!" class="salir">Salir</a></li>
 
@@ -70,7 +70,8 @@
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown2"><b>${sessionScope.nombre}</b></a>
+								data-activates="dropdown2"><b>${sessionScope.nombre}
+										${sessionScope.paterno} ${sessionScope.materno}</b></a>
 								<ul id='dropdown2' class='dropdown-content '>
 									<li><a href="#!" class="salir">Salir</a></li>
 								</ul></li>
@@ -99,10 +100,10 @@
 				<div class="circulo waves-effect waves-light programa">
 					<div class="circulo2">
 						<div class="row">
-						<div class="col s12">
-							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-						</div>
-							
+							<div class="col s12">
+								<i class="fa fa-graduation-cap" aria-hidden="true"></i>
+							</div>
+
 						</div>
 						<div class="row">
 							<div class="light italic letrinha s12"
@@ -120,12 +121,14 @@
 						conferencias en las que usted participó para la elaboración de su
 						correspondiente certificado.</h6>
 				</div>
-				<a class="circulo login waves-effect waves-light "
+				<a class="circulo asistencia waves-effect waves-light "
 					style="text-decoration: none; color: black">
 					<div class="circulo2">
 						<div class="row">
-							<i class="fa fa-user-plus s6" aria-hidden="true"></i> <i
+							<div class="col s12">
+								<i class="fa fa-user-plus s6" aria-hidden="true"></i> <i
 								class="fa fa-user-times s6" aria-hidden="true"></i>
+							</div>
 						</div>
 
 						<div class="light italic letrinha"
@@ -195,8 +198,8 @@
 			location.href = link;
 		})
 
-		$(".login").click(function() {
-			var link = context_path + "/login"
+		$(".asistencia").click(function() {
+			var link = context_path + "/asistencia"
 
 			location.href = link;
 		})

@@ -43,23 +43,44 @@ public class HomeController {
 	}
 	
 	@RequestMapping("programa")
-	public ModelAndView Program(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView Program(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String rol = session.getAttribute("rol").toString();
 		ModelAndView model = new ModelAndView();
-	
-		model.setViewName("programa");
+		switch(rol) {
+		case "administrador":
+			model.setViewName("programaAdmin");
+			break;
+		case "participante":
+			model.setViewName("programa");
+			break;
+		case "":
+			model.setViewName("main");
+			break;
+			
+		}
+		
 		
 		
 		
 		return model;
 	}
 	
-	@RequestMapping("talleres")
-	public ModelAndView Taller(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("asistencia")
+	public ModelAndView Taller(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String rol = session.getAttribute("rol").toString();
 		ModelAndView model = new ModelAndView();
-	
-		model.setViewName("talleres");
-		
-		
+		switch(rol) {
+		case "administrador":
+			model.setViewName("asistenciaAdmin");
+			break;
+		case "participante":
+			model.setViewName("asistencia");
+			break;
+		case "":
+			model.setViewName("main");
+			break;
+			
+		}
 		
 		return model;
 	}
