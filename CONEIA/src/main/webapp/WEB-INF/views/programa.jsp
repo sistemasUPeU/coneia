@@ -26,6 +26,7 @@
 
 </head>
 <body>
+	<input type="hidden" value="${sessionScope.rol}" id="rolcito" />
 	<div id="mobile-collapse-button" class="section">
 
 		<div class="row">
@@ -34,18 +35,18 @@
 				<nav class="#33691e light-green darken-4">
 				<div class="nav-wrapper">
 					<div class="col s12">
-						<a href="#!" class="brand-logo" ><img
-							class=""
+						<a href="#!" class="brand-logo"><img class=""
 							src="<c:url value="/resources/img/coneia5.png"/>"
-							style="width: 200px; height:30%; outline-color: none;"></img></a>
-							<a href="#" data-activates="mobile-demo" class="button-collapse"><i
+							style="width: 200px; height: 30%; outline-color: none;"></img></a> <a
+							href="#" data-activates="mobile-demo" class="button-collapse"><i
 							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
 							<li><a class="principal">Home</a></li>
-							<li><a href="#" class="programa">Programa</a></li>
-							<li><a href="mobile.html">Asistencia</a></li>
+							<li><a  class="programa">Programa</a></li>
+							<li><a  class="asistencia">Asistencia</a></li>
 							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown1"><b>${sessionScope.nombre} ${sessionScope.paterno} ${sessionScope.materno}</b></a>
+								data-activates="dropdown1"><b>${sessionScope.nombre}
+										${sessionScope.paterno} ${sessionScope.materno}</b></a>
 								<ul id='dropdown1' class='dropdown-content'>
 									<li><a href="#!" class="salir">Salir</a></li>
 
@@ -56,14 +57,15 @@
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown2"><b>${sessionScope.nombre} ${sessionScope.paterno} ${sessionScope.materno}</b></a>
+								data-activates="dropdown2"><b>${sessionScope.nombre}
+										${sessionScope.paterno} ${sessionScope.materno}</b></a>
 								<ul id='dropdown2' class='dropdown-content '>
 									<li><a href="#!" class="salir">Salir</a></li>
 								</ul></li>
 
 							<li><a class="principal">Home</a></li>
-							<li><a href="#" class="programa">Programa</a></li>
-							<li><a href="mobile.html">Asistencia</a></li>
+							<li><a class="programa">Programa</a></li>
+							<li><a class="asistencia">Asistencia</a></li>
 
 						</ul>
 					</div>
@@ -82,22 +84,27 @@
 		</div>
 		<div class="row">
 			<div class="col s12 #ccff90 light-green accent-1">
-				<ul id="tabs-swipe-demo" class="tabs  #ccff90 light-green accent-1">
+				<ul class="tabs  #ccff90 light-green accent-1">
 					<li class="tab "><a id="1" class="#ccff90 "
 						style="color: #003300; font-weight: bold" href="#swipe-1"
-						onclick="Materialize.showStaggeredList('#staggered-test')"><span class="nigga">LUNES</span></a></li>
+						onclick="Materialize.showStaggeredList('#staggered-test')"><span
+							class="nigga">LUNES</span></a></li>
 					<li class="tab active"><a
 						style="color: #003300; font-weight: bold" id="2" href="#swipe-2"
-						onclick="Materialize.showStaggeredList('#staggered-test2')"><span class="nigga">MARTES</span></a></li>
-					<li class="tab"><a
-						style="color: #003300; font-weight: bold" id="3" href="#swipe-3"
-						onclick="Materialize.showStaggeredList('#staggered-test3')"><span class="nigga">MIÉRCOLES</span></a></li>
-					<li class="tab"><a
-						style="color: #003300; font-weight: bold" id="4" href="#swipe-4"
-						onclick="Materialize.showStaggeredList('#staggered-test4')"><span class="nigga">JUEVES</span></a></li>
-					<li class="tab"><a
-						style="color: #003300; font-weight: bold" id="5" href="#swipe-5"
-						onclick="Materialize.showStaggeredList('#staggered-test5')"><span class="nigga">VIERNES</span></a></li>
+						onclick="Materialize.showStaggeredList('#staggered-test2')"><span
+							class="nigga">MARTES</span></a></li>
+					<li class="tab"><a style="color: #003300; font-weight: bold"
+						id="3" href="#swipe-3"
+						onclick="Materialize.showStaggeredList('#staggered-test3')"><span
+							class="nigga">MIÉRCOLES</span></a></li>
+					<li class="tab"><a style="color: #003300; font-weight: bold"
+						id="4" href="#swipe-4"
+						onclick="Materialize.showStaggeredList('#staggered-test4')"><span
+							class="nigga">JUEVES</span></a></li>
+					<li class="tab"><a style="color: #003300; font-weight: bold"
+						id="5" href="#swipe-5"
+						onclick="Materialize.showStaggeredList('#staggered-test5')"><span
+							class="nigga">VIERNES</span></a></li>
 				</ul>
 			</div>
 
@@ -105,8 +112,8 @@
 				style="height: 1000px">
 				<div class="container">
 					<br /> <br />
-					<ul class="collapsible popout " data-collapsible="accordion"
-						id="staggered-test">
+					<ul class="collapsible " data-collapsible="accordion"
+						style="z-index: 15">
 						<li>
 							<div class="collapsible-header">
 								<div class="row center">
@@ -522,100 +529,97 @@
 
 			</div>
 			<div id="swipe-4" class="col s12 #82b1ff blue accent-1"
-				style="height: 1000px">
-				<div class="container">
-					<br /> <br />
-					<ul class="collapsible popout" data-collapsible="accordion"
-						id="staggered-test4">
-						<li>
-							<div class="collapsible-header">
-								<div class="row center">
-									<div class="col l7 m7 s12">
-										<i class="material-icons">style</i> Talleres especializados -
-										Visitas técnicas
-									</div>
-									<div class="col l4 m4 s10">6:30 am - 12:30 pm</div>
-									<div class="col l1 m1 s2 ">
-										<i class="material-icons">aspect_ratio</i>
-									</div>
-
+				style="height: 1000px; z-index: -5">
+				<br /> <br />
+				<ul class="collapsible popout" data-collapsible="accordion"
+					id="staggered-test4" style="z-index: 10">
+					<li>
+						<div class="collapsible-header">
+							<div class="row center">
+								<div class="col l7 m7 s12">
+									<i class="material-icons">style</i> Talleres especializados -
+									Visitas técnicas
 								</div>
-							</div>
-							<div class="collapsible-body">
-								<span>Lorem ipsum dolor sit amet.</span>
-							</div>
-						</li>
-						<li>
-							<div class="collapsible-header">
-								<div class="row center">
-									<div class="col l7 m7 s12">
-										<i class="material-icons">alarm_on</i> Almuerzo
-									</div>
-									<div class="col l4 m4 s10">12:30 - 2:00 pm</div>
-
+								<div class="col l4 m4 s10">6:30 am - 12:30 pm</div>
+								<div class="col l1 m1 s2 ">
+									<i class="material-icons">aspect_ratio</i>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="collapsible-header">
-								<div class="row center">
-									<div class="col l7 m7 s12">
-										<i class="material-icons">nature_people</i> <u>Conferencia
-											magistral</u> : Calidad de aire en interiores - Rutgers
-										University
-									</div>
-									<div class="col l4 m4 s10">2:00 - 3:30 pm</div>
-									<div class="col l1 m1 s2 ">
-										<i class="material-icons">aspect_ratio</i>
-									</div>
 
+							</div>
+						</div>
+						<div class="collapsible-body">
+							<span>Lorem ipsum dolor sit amet.</span>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header">
+							<div class="row center">
+								<div class="col l7 m7 s12">
+									<i class="material-icons">alarm_on</i> Almuerzo
 								</div>
-							</div>
-							<div class="collapsible-body">
-								<span>Lorem ipsum dolor sit amet.</span>
-							</div>
-						</li>
-						<li>
-							<div class="collapsible-header">
-								<div class="row center">
-									<div class="col l7 m7 s12">
-										<i class="material-icons">nature_people</i> <u>Conferencia
-											magistral</u> : Calidad de aire en interiores - Rutgers
-										University
-									</div>
-									<div class="col l4 m4 s10">3:30 - 5:00 pm</div>
-									<div class="col l1 m1 s2 ">
-										<i class="material-icons">aspect_ratio</i>
-									</div>
+								<div class="col l4 m4 s10">12:30 - 2:00 pm</div>
 
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header">
+							<div class="row center">
+								<div class="col l7 m7 s12">
+									<i class="material-icons">nature_people</i> <u>Conferencia
+										magistral</u> : Calidad de aire en interiores - Rutgers University
 								</div>
-							</div>
-							<div class="collapsible-body">
-								<span>Lorem ipsum dolor sit amet.</span>
-							</div>
-						</li>
-						<li>
-							<div class="collapsible-header">
-								<div class="row center">
-									<div class="col l7 m7 s12">
-										<i class="material-icons">transfer_within_a_station</i> COPA
-										CONEIA - FINAL
-									</div>
-									<div class="col l4 m4 s10">5:00 - 9:30 pm</div>
-
+								<div class="col l4 m4 s10">2:00 - 3:30 pm</div>
+								<div class="col l1 m1 s2 ">
+									<i class="material-icons">aspect_ratio</i>
 								</div>
-							</div>
-						</li>
 
-					</ul>
-				</div>
+							</div>
+						</div>
+						<div class="collapsible-body">
+							<span>Lorem ipsum dolor sit amet.</span>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header">
+							<div class="row center">
+								<div class="col l7 m7 s12">
+									<i class="material-icons">nature_people</i> <u>Conferencia
+										magistral</u> : Calidad de aire en interiores - Rutgers University
+								</div>
+								<div class="col l4 m4 s10">3:30 - 5:00 pm</div>
+								<div class="col l1 m1 s2 ">
+									<i class="material-icons">aspect_ratio</i>
+								</div>
+
+							</div>
+						</div>
+						<div class="collapsible-body">
+							<span>Lorem ipsum dolor sit amet.</span>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header">
+							<div class="row center">
+								<div class="col l7 m7 s12">
+									<i class="material-icons">transfer_within_a_station</i> COPA
+									CONEIA - FINAL
+								</div>
+								<div class="col l4 m4 s10">5:00 - 9:30 pm</div>
+
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
 			</div>
 			<div id="swipe-5" class="col s12 #82b1ff blue accent-1"
 				style="height: 1000px">
 				<div class="container">
 					<br /> <br />
 					<ul class="collapsible popout " data-collapsible="accordion"
-						id="staggered-test5">
+						id="staggered-test5" style="z-index: 10">
 						<li>
 							<div class="collapsible-header">
 								<div class="row center">
@@ -733,14 +737,14 @@
 
 
 	<script type="text/javascript">
-		$($('.collapsible').collapsible());
 		$(document).ready(function() {
-			
-			$(".button-collapse").sideNav(
-					 {accordion: false}
+			$('.collapsible').collapsible();
+			$(".button-collapse").sideNav({
+				accordion : false
+			}
 
-					);
-			
+			);
+
 			$('.dropdown-button').dropdown({
 				inDuration : 300,
 				outDuration : 225,
@@ -770,17 +774,28 @@
 		})
 
 		$(".programa").click(function() {
-			var link = context_path + "/programa"
-
+			var link="";
+			var rol =  $("#rolcito").val();
+			if(rol=="administrador"){
+				link = context_path + "/programaAdmin";
+				}else{
+					 link = context_path + "/programa";
+					}
+			
 			location.href = link;
 		})
 
-		$(".talleres").click(function() {
-			var link = context_path + "/talleres"
-
+		$(".asistencia").click(function() {
+			var link="";
+			var rol =  $("#rolcito").val();
+			if(rol=="administrador"){
+				link = context_path + "/asistenciaAdmin";
+				}else{
+					 link = context_path + "/asistencia";
+					}
 			location.href = link;
 		})
-		
+
 		$(".salir").on("click", function() {
 			$.post("logon", {
 				op : '2'

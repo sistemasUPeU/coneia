@@ -19,109 +19,101 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 @RequestMapping("/")
 public class HomeController {
-	
-	
+
 	@RequestMapping("/")
-	public String main(HttpServletRequest request, HttpServletResponse response,@RequestParam(value = "error", required = false) String error,
+	public String main(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {
-	
-		
+
 		return "main";
 	}
-	
+
 	@RequestMapping("inscripcion")
 	public ModelAndView SignIn(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
-	
+
 		model.setViewName("inscripcion");
+
+		return model;
+	}
+
+	@RequestMapping("programa")
+	public ModelAndView Program(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView();
 		
+		model.setViewName("programa");
+
 		return model;
 	}
 	
-	@RequestMapping("programa")
-	public ModelAndView Program(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		String rol = session.getAttribute("rol").toString();
+	@RequestMapping("programaAdmin")
+	public ModelAndView ProgramAdmin(HttpServletRequest request, HttpServletResponse response) {
+
 		ModelAndView model = new ModelAndView();
-		switch(rol) {
-		case "administrador":
-			model.setViewName("programaAdmin");
-			break;
-		case "participante":
-			model.setViewName("programa");
-			break;
-		case "":
-			model.setViewName("main");
-			break;
-			
-		}
 		
-		
-		
-		
+		model.setViewName("programaAdmin");
+
 		return model;
 	}
 	
 	@RequestMapping("asistencia")
-	public ModelAndView Taller(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		String rol = session.getAttribute("rol").toString();
+	public ModelAndView Asistencia(HttpServletRequest request, HttpServletResponse response) {
+
 		ModelAndView model = new ModelAndView();
-		switch(rol) {
-		case "administrador":
-			model.setViewName("asistenciaAdmin");
-			break;
-		case "participante":
-			model.setViewName("asistencia");
-			break;
-		case "":
-			model.setViewName("main");
-			break;
-			
-		}
 		
+		model.setViewName("asistencia");
+
 		return model;
 	}
 	
+	@RequestMapping("asistenciaAdmin")
+	public ModelAndView AsistenciaAdmin(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView();
+		
+		model.setViewName("asistenciaAdmin");
+
+		return model;
+	}
+
+	
+
 	@RequestMapping("login")
 	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
-	
+
 		model.setViewName("login");
-		
-		
-		
+
 		return model;
 	}
-	
+
 	@RequestMapping("principal")
 	public ModelAndView Principal(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
-	
+
 		model.setViewName("principal");
-		
-		
-		
+
 		return model;
 	}
-	
-	
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher;
 		int op = Integer.parseInt(request.getParameter("op"));
 		HttpSession session = request.getSession();
 		String url;
-		switch(op) {
+		switch (op) {
 		case 1:
-			
+
 			break;
-		
+
 		}
-		
+
 	}
-	
+
 }

@@ -40,6 +40,7 @@
 </script>
 </head>
 <body>
+<input type="hidden" value="${sessionScope.rol}" id="rolcito" />
 	<div id="mobile-collapse-button" class="section">
 
 		<div class="row">
@@ -55,8 +56,8 @@
 							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
 							<li><a class="principal">Home</a></li>
-							<li><a href="#" class="programa">Programa</a></li>
-							<li><a href="mobile.html">Asistencia</a></li>
+							<li><a class="programa">Programa</a></li>
+							<li><a class="asistencia">Asistencia</a></li>
 							<li><a class="dropdown-button" href="#!"
 								data-activates="dropdown1"><b>${sessionScope.nombre}
 										${sessionScope.paterno} ${sessionScope.materno}</b></a>
@@ -77,8 +78,8 @@
 								</ul></li>
 
 							<li><a class="principal">Home</a></li>
-							<li><a href="#" class="programa">Programa</a></li>
-							<li><a href="mobile.html">Asistencia</a></li>
+							<li><a class="programa">Programa</a></li>
+							<li><a class="asistencia">Asistencia</a></li>
 
 						</ul>
 					</div>
@@ -186,11 +187,17 @@
 			});
 		});
 
-		$(".programa").click(function() {
-			var link = context_path + "/programa"
 
+		$(".programa").click(function() {
+			var link="";
+			var rol =  $("#rolcito").val();
+			if(rol=="administrador"){
+				link = context_path + "/programaAdmin";
+				}else{
+					 link = context_path + "/programa";
+					}
 			location.href = link;
-		})
+		});
 
 		$(".principal").click(function() {
 			var link = context_path + "/principal"
@@ -199,8 +206,13 @@
 		})
 
 		$(".asistencia").click(function() {
-			var link = context_path + "/asistencia"
-
+			var link="";
+			var rol =  $("#rolcito").val();
+			if(rol=="administrador"){
+				link = context_path + "/asistenciaAdmin";
+				}else{
+					 link = context_path + "/asistencia";
+					}
 			location.href = link;
 		})
 
