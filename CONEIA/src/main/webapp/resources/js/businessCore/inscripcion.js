@@ -81,7 +81,7 @@ $("input[name=group1]").click(function() {
 var arrayProperties = new Array();
 
 $(".enrollment").click(function() {
-	$.get(context_path + "/inscripcion", null, function(data, status) {
+	$.get(gth_context_path + "/inscripcion", null, function(data, status) {
 		// $("#space").empty();
 		$("#space").html(data);
 	});
@@ -644,7 +644,7 @@ $("#accept").click(function() {
 				// $("#first").removeClass("step active
 				// feedbacking").addClass("step active");
 				// $(".wait-feedback").remove();
-				var link = context_path
+				var link = gth_context_path
 
 				location.href = link;
 			})

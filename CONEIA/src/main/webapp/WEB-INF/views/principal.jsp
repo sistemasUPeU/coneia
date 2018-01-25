@@ -5,6 +5,7 @@
 		response.sendRedirect("/CONEIA/");
 
 	} else {
+		
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
@@ -14,6 +15,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Principal</title>
+<link rel="shortcut icon"
+	href="<c:url value='/resources/img/favicon/favicon.ico'></c:url>">
 <!--Global Config-->
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <link rel="png" href="<c:url value='/resources/img/coneia.png'></c:url>">
@@ -40,18 +43,28 @@
 </script>
 </head>
 <body>
+<div class="preloader-background">
+	<div class="preloader-wrapper big active">
+		<div class="spinner-layer spinner-blue-only">
+			<div class="circle-clipper left">
+				<div class="circle"></div>
+			</div>
+			<div class="gap-patch">
+				<div class="circle"></div>
+			</div>
+			<div class="circle-clipper right">
+				<div class="circle"></div>
+			</div>
+		</div>
+	</div>
+</div>
 <input type="hidden" value="${sessionScope.rol}" id="rolcito" />
-	<div id="mobile-collapse-button" class="section">
-
-		<div class="row">
-
-			<div class="col s12 m12 l12">
-				<nav class="#33691e light-green darken-4">
-				<div class="nav-wrapper">
-					<div class="col s12">
+	<div id="mobile-collapse-button" class="section" style="padding-top:0">		
+				<nav class="#000000 black" >
+				<div class="nav-wrapper" >				
 						<a href="#!" class="brand-logo"><img class=""
-							src="<c:url value="/resources/img/coneia5.png"/>"
-							style="width: 200px; height: 30%; outline-color: none;"></img></a> <a
+							src="<c:url value="/resources/img/cones.png"/>"
+							style="width: 300px; height: 35%; outline-color: none;margin-left:5%"></img></a> <a
 							href="#" data-activates="mobile-demo" class="button-collapse"><i
 							class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down">
@@ -63,11 +76,7 @@
 										${sessionScope.paterno} ${sessionScope.materno}</b></a>
 								<ul id='dropdown1' class='dropdown-content'>
 									<li><a href="#!" class="salir">Salir</a></li>
-
 								</ul></li>
-
-
-
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a class="dropdown-button" href="#!"
@@ -80,13 +89,9 @@
 							<li><a class="principal">Home</a></li>
 							<li><a class="programa">Programa</a></li>
 							<li><a class="asistencia">Asistencia</a></li>
-
-						</ul>
-					</div>
+						</ul>					
 				</div>
-				</nav>
-			</div>
-		</div>
+				</nav>	
 	</div>
 	<div id="space"
 		style="position: relative; margin-top: 10%; margin-bottom: 10%">
@@ -140,10 +145,6 @@
 				</a>
 			</div>
 		</div>
-
-
-
-
 	</div>
 
 
@@ -175,7 +176,10 @@
 				alignment : 'left', // Displays dropdown with edge aligned to the left of button
 				stopPropagation : false
 			// Stops event propagation
+
+				
 			});
+			
 		});
 		var url = window.location.href;
 		var arr = url.split("/");
@@ -187,6 +191,13 @@
 			});
 		});
 
+		document.addEventListener("DOMContentLoaded", function(){
+			$('.preloader-background').delay(1700).fadeOut('slow');
+			
+			$('.preloader-wrapper')
+				.delay(1700)
+				.fadeOut();
+		});
 
 		$(".programa").click(function() {
 			var link="";
@@ -232,9 +243,11 @@
 				$("#space").html(data);
 			});
 		})
+		
+		
 	</script>
 </body>
 </html>
 <%
-	}
+		}
 %>

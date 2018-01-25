@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,8 +19,14 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "inscripcion_taller", catalog = "dbconeia")
+@NamedQueries({
+@NamedQuery(name="InscripcionTaller", query="FROM InscripcionTaller i where i.detalleInscripcion =:detalleInscripcion and i.hora  = :hora and i.fecha =:fecha")})
 public class InscripcionTaller implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idinscripcionTaller;
 	private DetalleInscripcion detalleInscripcion;
 	private Taller taller;
@@ -26,6 +34,7 @@ public class InscripcionTaller implements java.io.Serializable {
 	private Integer asistencia;
 	private Integer estado;
 	private Date hora;
+	private Date fecha_inscripcion;
 
 	public InscripcionTaller() {
 	}
@@ -37,7 +46,7 @@ public class InscripcionTaller implements java.io.Serializable {
 	}
 
 	public InscripcionTaller(int idinscripcionTaller, DetalleInscripcion detalleInscripcion, Taller taller, Date fecha,
-			Integer asistencia, Integer estado, Date hora) {
+			Integer asistencia, Integer estado, Date hora, Date fecha_inscripcion) {
 		this.idinscripcionTaller = idinscripcionTaller;
 		this.detalleInscripcion = detalleInscripcion;
 		this.taller = taller;
@@ -45,6 +54,7 @@ public class InscripcionTaller implements java.io.Serializable {
 		this.asistencia = asistencia;
 		this.estado = estado;
 		this.hora = hora;
+		this.fecha_inscripcion = fecha_inscripcion;
 	}
 
 	@Id
@@ -83,7 +93,18 @@ public class InscripcionTaller implements java.io.Serializable {
 	public Date getFecha() {
 		return this.fecha;
 	}
+	
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "fecha_inscripcion", length = 10)
+	public Date getFecha_inscripcion() {
+		return this.fecha_inscripcion;
+	}
 
+	public void setFecha_inscripcion(Date fecha_inscripcion) {
+		this.fecha_inscripcion = fecha_inscripcion;
+	}
+	
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}

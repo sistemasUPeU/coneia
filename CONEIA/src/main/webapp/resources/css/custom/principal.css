@@ -13,6 +13,73 @@
 	font-size:36px;
 }
 
+.preloader-background {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #eee;
+	
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+}
+
+ul, li{
+	list-style: none;
+	padding:0px;
+	margin:0px;
+}
+
+li{
+	display:inline-block;
+}
+
+li a {
+	padding:10px;
+	display:block;
+	text-decoration: none;
+
+	color:#ddd;
+	position:relative;
+}
+
+li a:after{
+	content:'';
+	width:0%;
+	transition:all 0.3s ease;
+	left:50%;
+}
+
+li a:before{
+	content:'';
+	width:0%;
+	transition:all 0.3s ease;
+	left:50%;
+}
+
+li a:hover:after{
+	content:'';
+	position:absolute;
+	bottom:0px;
+	left:50%;
+	background:lime;
+	height:3px;
+	width:50%;
+}
+
+li a:hover:before{
+	content:'';
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	background:lime;
+	height:3px;
+	width:50%;
+}
+
 @media screen and (min-device-width: 181px) and (max-device-width:
 	768px) {
 	
@@ -141,4 +208,30 @@ div#b1:hover p#inp1b {
 
 h6{
 	font-family: 'Quicksand', sans-serif;
+}
+
+nav {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .button-collapse i {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .brand-logo { 
+    font-size: 1.6rem; 
+}
+
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 100px;
+        line-height: 100px;
+    }
 }

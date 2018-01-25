@@ -1,3 +1,52 @@
+ul, li{
+	list-style: none;
+	padding:0px;
+	margin:0px;
+}
+
+
+li a {
+	padding:10px;
+	display:block;
+	text-decoration: none;
+
+	color:#ddd;
+	position:relative;
+}
+
+li a:after{
+	content:'';
+	width:0%;
+	transition:all 0.3s ease;
+	left:50%;
+}
+
+li a:before{
+	content:'';
+	width:0%;
+	transition:all 0.3s ease;
+	left:50%;
+}
+
+li a:hover:after{
+	content:'';
+	position:absolute;
+	bottom:0px;
+	left:50%;
+	background:lime;
+	height:3px;
+	width:50%;
+}
+
+li a:hover:before{
+	content:'';
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	background:lime;
+	height:3px;
+	width:50%;
+}
 .circulo {
 	width: 300px;
 	height: 300px;
@@ -5,12 +54,15 @@
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	display: inline-block;
+	background-color:white;
 	cursor: pointer;
-	background: #00bfa5;
 	margin-bottom: 3em;
-	border:10px outset green;
 	font-size:36px;
 }
+
+.parallax-container {
+      width: auto; min-width: 100%; position: relative; height: 0px; width: 100%; padding-bottom: 56.25%;
+    }
 
 @media screen and (min-device-width: 181px) and (max-device-width:
 	768px) {
@@ -144,4 +196,23 @@ p#inp1b {
 
 div#b1:hover p#inp1b {
 	margin-top: 80px;
+}
+
+nav {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .button-collapse i {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .brand-logo { 
+    font-size: 1.6rem; 
 }

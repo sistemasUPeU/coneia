@@ -44,6 +44,7 @@ public class LoginController {
 					session.setAttribute("paterno", personaMap.get("paterno"));
 					session.setAttribute("materno", personaMap.get("materno"));
 					session.setAttribute("rol", personaMap.get("rol"));
+					session.setAttribute("inscripcion", personaMap.get("inscripcion"));
 					Map<String, Object> datos = new HashMap<>();
 					x = 1;
 					datos.put("op", x);

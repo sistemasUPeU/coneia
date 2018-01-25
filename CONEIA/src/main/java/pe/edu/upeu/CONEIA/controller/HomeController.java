@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import pe.edu.upeu.CONEIA.dao.TallerDAO;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
+	private TallerDAO td = new TallerDAO();
 
 	@RequestMapping("/")
 	public String main(HttpServletRequest request, HttpServletResponse response,
@@ -43,10 +46,9 @@ public class HomeController {
 	@RequestMapping("programa")
 	public ModelAndView Program(HttpServletRequest request, HttpServletResponse response) {
 
-		ModelAndView model = new ModelAndView();
-		
+		ModelAndView model = new ModelAndView();	
 		model.setViewName("programa");
-
+		model.addObject("lista", td.readAll());
 		return model;
 	}
 	

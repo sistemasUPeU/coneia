@@ -12,6 +12,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,8 +24,15 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "taller", catalog = "dbconeia")
+@NamedQueries({
+@NamedQuery(name="Talleres", query="FROM Taller t where t.horaInicio  = :horaInicio and t.fecha=:fecha"),
+@NamedQuery(name="Stock", query="FROM Taller t where t.idtaller  = :idtaller")})
 public class Taller implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer idtaller;
 	private Tipo tipo;
 	private String nombre;

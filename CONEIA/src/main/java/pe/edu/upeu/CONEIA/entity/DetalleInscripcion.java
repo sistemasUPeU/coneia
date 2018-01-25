@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,8 +19,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "detalle_inscripcion", catalog = "dbconeia")
+@NamedQueries({
+@NamedQuery(name="Inscritos", query="FROM DetalleInscripcion d where d.iddetalleInscripcion  = :iddetalleInscripcion"),
+@NamedQuery(name="InscripcionPersona", query="FROM DetalleInscripcion d where d.persona = :persona")})
 public class DetalleInscripcion implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int iddetalleInscripcion;
 	private Inscripcion inscripcion;
 	private Persona persona;

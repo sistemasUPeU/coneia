@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import org.hibernate.Session;
 
+import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
 import pe.edu.upeu.CONEIA.util.HibernateUtils;
 
@@ -22,11 +23,15 @@ public class PersonaDAO {
 			Query query = s.createNamedQuery("ListarUser");
 			query.setParameter("dni", dni);
 			List<Persona> lista = query.getResultList();
-			Persona u = null;
+			Query inscripcion = s.createNamedQuery("InscripcionPersona");
+			Persona p = s.get(Persona.class,lista.get(0).getIdpersona());
+			inscripcion.setParameter("persona", p);
+			List<DetalleInscripcion> liston = inscripcion.getResultList();
 			
 			for (int j = 0; j < lista.size(); j++) {
 				map = new HashMap<String, Object>();
 				map.put("idpersona", lista.get(j).getIdpersona());
+				map.put("inscripcion", liston.get(j).getIddetalleInscripcion());
 				map.put("dni", lista.get(j).getDni());
 				map.put("nombre", lista.get(j).getNombre());
 				map.put("paterno", lista.get(j).getApePaterno());

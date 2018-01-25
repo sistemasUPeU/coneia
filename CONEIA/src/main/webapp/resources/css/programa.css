@@ -1,45 +1,191 @@
-.carousel .carousel-item{
-  width:100%;
-}
 
+
+.carousel .carousel-item {
+	width: 100%;
+}
 
 #staggered-test li {
-  opacity: 0;
+	opacity: 0;
 }
 
- /* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+.collapsible-body {
+	text-align: justify;
+	background: white;
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+	font-size: 18px;
+}
+
+.material-icons.md-24 {
+	font-size: 24px;
+}
+
+.material-icons.md-36 {
+	font-size: 36px;
+}
+
+.material-icons.md-48 {
+	font-size: 48px;
+}
 
 /* Rules for using icons as black on a light background. */
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.material-icons.md-dark {
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+	color: rgba(0, 0, 0, 0.26);
+}
 
 /* Rules for using icons as white on a dark background. */
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.md-light {
+	color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+	color: rgba(255, 255, 255, 0.3);
+}
+@media screen and (min-device-width: 567px) {
+	li a {
+	padding:10px;
+	display:block;
+	text-decoration: none;
+
+	color:#ddd;
+	position:relative;
+}
+
+li a:after{
+	content:'';
+	width:0%;
+	transition:all 0.3s ease;
+	left:50%;
+}
+
+li a:before{
+	content:'';
+	width:0%;
+	transition:all 0.3s ease;
+	left:50%;
+}
+
+li a:hover:after{
+	content:'';
+	position:absolute;
+	bottom:0px;
+	left:50%;
+	background:lime;
+	height:3px;
+	width:50%;
+}
+
+li a:hover:before{
+	content:'';
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	background:lime;
+	height:3px;
+	width:50%;
+}
+	
+	}
 
 @media screen and (min-device-width: 100px) and (max-device-width:
 	568px) {
-	.nigga{
-		font-size:12px;
+	.nigga {
+		font-size: 12px;
+	}
+	.collapsible-header {
+		line-height: 2rem;
+	}
+	.collapsible-body {
+		font-size: 12px;
 		
 	}
-	
-	
-	.tabs .tab{
-		width:15%;
-		padding:0;
-		height:36px;
-		min-width:50px;
+	.btn{
+	text-overflow: ellipsis;
+	height:25px;
+	line-height: 5px;
+	width:75%;
+	font-size: 8px;
 	}
-	
-	.tabs .tab a{
-		text-transform:lowercase;
-		padding:0;
-		min-width:50px;
+	.tabs .tab {
+		width: 15%;
+		padding: 0;
+		height: 36px;
+		min-width: 50px;
 	}
+	.tabs .tab a {
+		text-transform: lowercase;
+		padding: 0;
+		min-width: 50px;
+	}
+}
 
+.luz.on{
+  color: #0099ff;/*color del texto al cambiar*/
+  text-shadow:
+     1px  1px rgba(255, 255, 255, .1),
+    -1px -1px rgba(0, 0, 0, .88),
+     0px  0px 20px #0099ff;/*color de la luz del texto*/
+}
+.luz{
+  font-size:13px;/*tamaño de la fuente*/
+  color: #000000;
+  text-shadow:
+     1px  1px rgba(255, 255, 255, .1),
+    -1px -1px rgba(0, 0, 0, .88);
+}
+
+.collapsible li.active .i {
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+.neon {
+	font-size: 18px;
+	color: white;
+	text-shadow: 2px 2px 3px blue, 0 0 35px blue, 0 0 20px yellow;
+}
+
+.collapsible-header, .collapsible-body{
+	border: 1px solid white;
+	/* Color del borde, debe ser más oscuro que fondo */
+	background: white; /* Fondo */
+	border-radius: 6px; /* Bordes redondos */
+	box-shadow: inset 3px 3px 3px rgba(255, 255, 255, .7), inset -2px -2px
+		3px rgba(0, 0, 0, .1), 2px 2px 10px rgba(0, 0, 0, .1);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .9);
+	/* Sombra del texto */
+	text-align: center; /* Alineación del texto */
+}
+
+nav {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .button-collapse i {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .brand-logo { 
+    font-size: 1.6rem; 
+}
+
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 100px;
+        line-height: 100px;
+    }
 }
