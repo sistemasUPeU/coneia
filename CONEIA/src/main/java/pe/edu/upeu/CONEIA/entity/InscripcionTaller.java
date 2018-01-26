@@ -1,10 +1,12 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 03-ene-2018 11:40:37 by Hibernate Tools 5.1.0.Alpha1
+// Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,48 +25,41 @@ import javax.persistence.TemporalType;
 @NamedQuery(name="InscripcionTaller", query="FROM InscripcionTaller i where i.detalleInscripcion =:detalleInscripcion and i.hora  = :hora and i.fecha =:fecha")})
 public class InscripcionTaller implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private int idinscripcionTaller;
+	private Integer idinscripcionTaller;
 	private DetalleInscripcion detalleInscripcion;
 	private Taller taller;
 	private Date fecha;
 	private Integer asistencia;
 	private Integer estado;
 	private Date hora;
-	private Date fecha_inscripcion;
 
 	public InscripcionTaller() {
 	}
 
-	public InscripcionTaller(int idinscripcionTaller, DetalleInscripcion detalleInscripcion, Taller taller) {
-		this.idinscripcionTaller = idinscripcionTaller;
+	public InscripcionTaller(DetalleInscripcion detalleInscripcion, Taller taller) {
 		this.detalleInscripcion = detalleInscripcion;
 		this.taller = taller;
 	}
 
-	public InscripcionTaller(int idinscripcionTaller, DetalleInscripcion detalleInscripcion, Taller taller, Date fecha,
-			Integer asistencia, Integer estado, Date hora, Date fecha_inscripcion) {
-		this.idinscripcionTaller = idinscripcionTaller;
+	public InscripcionTaller(DetalleInscripcion detalleInscripcion, Taller taller, Date fecha, Integer asistencia,
+			Integer estado, Date hora) {
 		this.detalleInscripcion = detalleInscripcion;
 		this.taller = taller;
 		this.fecha = fecha;
 		this.asistencia = asistencia;
 		this.estado = estado;
 		this.hora = hora;
-		this.fecha_inscripcion = fecha_inscripcion;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idinscripcion_taller", unique = true, nullable = false)
-	public int getIdinscripcionTaller() {
+	public Integer getIdinscripcionTaller() {
 		return this.idinscripcionTaller;
 	}
 
-	public void setIdinscripcionTaller(int idinscripcionTaller) {
+	public void setIdinscripcionTaller(Integer idinscripcionTaller) {
 		this.idinscripcionTaller = idinscripcionTaller;
 	}
 
@@ -93,18 +88,7 @@ public class InscripcionTaller implements java.io.Serializable {
 	public Date getFecha() {
 		return this.fecha;
 	}
-	
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "fecha_inscripcion", length = 10)
-	public Date getFecha_inscripcion() {
-		return this.fecha_inscripcion;
-	}
 
-	public void setFecha_inscripcion(Date fecha_inscripcion) {
-		this.fecha_inscripcion = fecha_inscripcion;
-	}
-	
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}

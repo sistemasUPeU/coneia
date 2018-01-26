@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upeu.CONEIA.entity.DetalleInscripcion" table="detalle_inscripcion" catalog="dbconeia" optimistic-lock="version">
+        <id name="iddetalleInscripcion" type="java.lang.Integer">
+            <column name="iddetalle_inscripcion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="inscripcion" class="pe.edu.upeu.CONEIA.entity.Inscripcion" fetch="select">
+            <column name="idinscripcion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="persona" class="pe.edu.upeu.CONEIA.entity.Persona" fetch="select">
+            <column name="idpersona" not-null="true" />
+        </many-to-one>
+        <property name="estado" type="string">
+            <column name="estado" length="45" />
+        </property>
+        <property name="importe" type="java.lang.Integer">
+            <column name="importe" />
+        </property>
+        <set name="inscripcionTallers" table="inscripcion_taller" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iddetalle_inscripcion" not-null="true" />
+            </key>
+            <one-to-many class="pe.edu.upeu.CONEIA.entity.InscripcionTaller" />
+        </set>
+    </class>
+</hibernate-mapping>

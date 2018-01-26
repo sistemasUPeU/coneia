@@ -1,5 +1,5 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 03-ene-2018 11:40:37 by Hibernate Tools 5.1.0.Alpha1
+// Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,11 +1,13 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 03-ene-2018 11:40:37 by Hibernate Tools 5.1.0.Alpha1
+// Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1
 
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,44 +24,42 @@ import javax.persistence.Table;
 @NamedQueries({
 @NamedQuery(name="Inscritos", query="FROM DetalleInscripcion d where d.iddetalleInscripcion  = :iddetalleInscripcion"),
 @NamedQuery(name="InscripcionPersona", query="FROM DetalleInscripcion d where d.persona = :persona")})
+
 public class DetalleInscripcion implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private int iddetalleInscripcion;
+	private Integer iddetalleInscripcion;
 	private Inscripcion inscripcion;
 	private Persona persona;
 	private String estado;
+	private Integer importe;
 	private Set<InscripcionTaller> inscripcionTallers = new HashSet<InscripcionTaller>(0);
 
 	public DetalleInscripcion() {
 	}
 
-	public DetalleInscripcion(int iddetalleInscripcion, Inscripcion inscripcion, Persona persona) {
-		this.iddetalleInscripcion = iddetalleInscripcion;
+	public DetalleInscripcion(Inscripcion inscripcion, Persona persona) {
 		this.inscripcion = inscripcion;
 		this.persona = persona;
 	}
 
-	public DetalleInscripcion(int iddetalleInscripcion, Inscripcion inscripcion, Persona persona, String estado,
+	public DetalleInscripcion(Inscripcion inscripcion, Persona persona, String estado, Integer importe,
 			Set<InscripcionTaller> inscripcionTallers) {
-		this.iddetalleInscripcion = iddetalleInscripcion;
 		this.inscripcion = inscripcion;
 		this.persona = persona;
 		this.estado = estado;
+		this.importe = importe;
 		this.inscripcionTallers = inscripcionTallers;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "iddetalle_inscripcion", unique = true, nullable = false)
-	public int getIddetalleInscripcion() {
+	public Integer getIddetalleInscripcion() {
 		return this.iddetalleInscripcion;
 	}
 
-	public void setIddetalleInscripcion(int iddetalleInscripcion) {
+	public void setIddetalleInscripcion(Integer iddetalleInscripcion) {
 		this.iddetalleInscripcion = iddetalleInscripcion;
 	}
 
@@ -90,6 +90,15 @@ public class DetalleInscripcion implements java.io.Serializable {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	@Column(name = "importe")
+	public Integer getImporte() {
+		return this.importe;
+	}
+
+	public void setImporte(Integer importe) {
+		this.importe = importe;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "detalleInscripcion")

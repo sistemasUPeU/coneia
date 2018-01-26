@@ -1,68 +1,267 @@
-$(document)
-		.ready(
-				function() {
+$(document).ready(function() {
 
-					$('.stepper').activateStepper();
-					$(".button-collapse").sideNav();
-					$("#personal").hide();
-					$("#table-datatables").hide();
+	$('.dropify').dropify();
+	$('select').material_select();
+	// // Translated
+	// $('.dropify-fr').dropify({
+	// messages: {
+	// default: 'Glissez-déposez un fichier ici ou cliquez',
+	// replace: 'Glissez-déposez un fichier ou cliquez pour
+	// remplacer',
+	// remove: 'Remover',
+	// error: 'Désolé, le fichier trop volumineux'
+	// }
+	// });
 
-					listar();
+	$('.stepper').activateStepper();
+	$(".button-collapse").sideNav();
+	$("#personal").hide();
+	$("#table-datatables").hide();
 
-					$('input.career')
-							.autocomplete(
-									{
-										data : {
-											"Ingenieria de Sistemas" : null,
-											"Ingenieria Ambiental" : null,
-											"Ingenieria de Alimentos" : 'https://placehold.it/250x250',
-											"Contabilidad" : null,
-											"Administracion de Empresas" : null,
-											"Ingenieria Industrial" : null
-										},
-										limit : 4, // The max amount of results
-										// that can be shown at
-										// once.
-										// Default: Infinity.
-										onAutocomplete : function(val) {
-											// Callback function when value is
-											// autcompleted.
-										},
-										minLength : 1, // The minimum length of
-									// the input for the
-									// autocomplete
-									// to start. Default: 1.
-									});
-					$('input.univ')
-							.autocomplete(
-									{
-										data : {
-											"Universidad Peruana Union" : null,
-											"Universidad Nacional de Piura" : null,
-											"Universidad Nacional de Ingenieria" : 'https://placehold.it/250x250',
-											"USIL" : null,
-											"Cayetano Heredia" : null,
-											"UNMSM" : null
-										},
-										limit : 4, // The max amount of results
-										// that can be shown at
-										// once.
-										// Default: Infinity.
-										onAutocomplete : function(val) {
-											// Callback function when value is
-											// autcompleted.
-										},
-										minLength : 1, // The minimum length of
-									// the input for the
-									// autocomplete
-									// to start. Default: 1.
-									});
+	listar();
+	autocomplete();
 
-				});
+});
 
-var costo_inscripcion = 100;
+function autocomplete() {
+	$('input.career').autocomplete({
+		data : {
+			"Ingenieria de Sistemas" : null,
+			"Ingenieria Ambiental" : null,
+			"Ingenieria de Alimentos" : null,
+			"Administracion de Empresas" : null,
+			"Ingenieria Industrial" : null
+		},
+		limit : 4, // The max amount of results
+		// that can be shown at
+		// once.
+		// Default: Infinity.
+		onAutocomplete : function(val) {
+			// Callback function when value is
+			// autcompleted.
+		},
+		minLength : 1, // The minimum length of
+	// the input for the
+	// autocomplete
+	// to start. Default: 1.
+	});
+
+	$('input.univ')
+			.autocomplete(
+					{
+						data : {
+							"Universidad Nacional Mayor de San Marcos" : null,
+							"Universidad Nacional de Ingeniería" : null,
+							"Universidad Nacional Agraria La Molina" : null,
+							"Universidad Nacional Federico Villarreal" : null,
+							"Universidad Nacional del Callao" : null,
+							"Universidad Nacional de Educación Enrique Guzmán y Valle" : null,
+							"Universidad Nacional José Faustino Sánchez Carrión" : null,
+							"Pontificia Universidad Católica del Perú" : null,
+							"Universidad del Pacífico" : null,
+							"Universidad de Lima" : null,
+							"Universidad de San Martín de Porres" : null,
+							"Universidad Femenina del Sagrado Corazón" : null,
+							"Universidad Inca Garcilaso de la Vega" : null,
+							"Universidad Ricardo Palma" : null,
+							"Universidad Peruana Unión" : null,
+							"Universidad Marcelino Champagnat" : null,
+							"Universidad Peruana de Ciencias Aplicadas" : null,
+							"Universidad San Ignacio de Loyola" : null,
+							"Universidad Alas Peruanas" : null,
+							"Universidad Norbert Wiener" : null,
+							"Asociación Universidad Privada San Juan Bautista" : null,
+							"Universidad Tecnológica del Perú" : null,
+							"Universidad Católica Sedes Sapientiae" : null,
+							"Universidad Científica del Sur" : null,
+							"Universidad Peruana de Ciencia e Informática" : null,
+							"Universidad Antonio Ruiz de Montoya" : null,
+							"Universidad ESAN" : null,
+							"Universidad Las Américas" : null,
+							"Universidad Privada Telesup" : null,
+							"Facultad de Teología Pontificia y Civil de Lima" : null,
+							"Universidad Nacional Tecnológica del Cono Sur de Lima" : null,
+							"Universidad Nacional de Cañete" : null,
+							"Universidad Nacional de Barranca" : null,
+							"Universidad Privada Sergio Bernales" : null,
+							"Universidad Peruana Simón Bolívar" : null,
+							"Universidad de Ciencias y Humanidades" : null,
+							"Universidad Peruana de Integración Global" : null,
+							"Universidad Autónoma del Perú" : null,
+							"Universidad Privada Arzobispo Loayza" : null,
+							"Universidad Le Cordon Bleu" : null,
+							"Universidad Jaime Bausate y Meza" : null,
+							"Universidad de Ciencias y Artes de América Latina" : null,
+							"Universidad Peruana de Arte Orval" : null,
+							"Universidad Peruana de Investigación y Negocios" : null,
+							"Universidad San Andrés" : null,
+							"Universidad Interamericana para el Desarrollo" : null,
+							"Universidad Juan Pablo II" : null,
+							"Universidad de Ingeniería y Tecnología" : null,
+							"Universidad María Auxiliadora" : null,
+							"Universidad Santo Domingo de Guzmán" : null,
+							"Universidad Privada Peruano Alemana" : null,
+							"Universidad Nacional Santiago Antúnez de Mayolo" : null,
+							"Universidad Nacional del Santa" : null,
+							"Universidad Católica Los Ángeles de Chimbote" : null,
+							"Universidad San Pedro" : null,
+							"Universidad Nacional de Cajamarca" : null,
+							"Universidad Privada Antonio Guillermo Urrelo" : null,
+							"Universidad Nacional de Jaén" : null,
+							"Universidad Nacional Autónoma de Chota" : null,
+							"Universidad Nacional de Trujillo" : null,
+							"Universidad Privada Antenor Orrego" : null,
+							"Universidad César Vallejo" : null,
+							"Universidad Privada del Norte" : null,
+							"Universidad Católica de Trujillo Benedicto XVI" : null,
+							"Universidad Privada de Trujillo" : null,
+							"Universidad Privada Leonardo Da Vinci" : null,
+							"Universidad Nacional Pedro Ruiz Gallo" : null,
+							"Universidad Particular de Chiclayo" : null,
+							"Universidad Católica Santo Toribio de Mogrovejo" : null,
+							"Universidad Señor de Sipán" : null,
+							"Universidad Privada Juan Mejía Baca" : null,
+							"Universidad de Lambayeque" : null,
+							"Universidad Nacional de Piura" : null,
+							"Universidad de Piura" : null,
+							"Universidad Nacional de Frontera" : null,
+							"Universidad Nacional de Tumbes" : null,
+							"Universidad Nacional Micaela Bastidas de Apurímac" : null,
+							"Universidad Tecnológica de los Andes" : null,
+							"Universidad Nacional José María Arguedas" : null,
+							"Universidad Nacional de San Agustín" : null,
+							"Universidad Católica de Santa María" : null,
+							"Universidad Católica San Pablo" : null,
+							"Universidad Ciencias de la Salud" : null,
+							"Universidad Autónoma San Francisco" : null,
+							"Universidad La Salle" : null,
+							"Universidad Privada Autónoma del Sur" : null,
+							"Universidad Nacional de San Cristóbal de Huamanga" : null,
+							"Universidad de Ayacucho Federico Froebel" : null,
+							"Universidad Nacional de San Antonio Abad del Cusco" : null,
+							"Universidad Andina del Cusco" : null,
+							"Universidad Peruana Austral del Cusco" : null,
+							"Universidad Privada Líder Peruana" : null,
+							"Universidad Global del Cusco" : null,
+							"Universidad José Carlos Mariátegui" : null,
+							"Universidad Nacional de Moquegua" : null,
+							"Universidad Nacional del Altiplano" : null,
+							"Universidad Andina Néstor Cáceres Velásquez" : null,
+							"Universidad Nacional de Juliaca" : null,
+							"Universidad Privada San Carlos" : null,
+							"Universidad Nacional Jorge Basadre Grohmann" : null,
+							"Universidad Privada de Tacna" : null,
+							"Universidad Latinoamericana CIMA" : null,
+							"Universidad Nacional de Huancavelica" : null,
+							"Universidad para el Desarrollo Andino" : null,
+							"Universidad Nacional Hermilio Valdizán" : null,
+							"Universidad de Huánuco" : null,
+							"Universidad Nacional San Luis Gonzaga de Ica" : null,
+							"Universidad Privada de Ica" : null,
+							"Universidad Privada Ada A. Byron" : null,
+							"Universidad Nacional del Centro del Perú" : null,
+							"Universidad Peruana Los Andes" : null,
+							"Universidad Continental" : null,
+							"Universidad Peruana del Centro" : null,
+							"Universidad Privada de Huancayo Franklin Roosevelt" : null,
+							"Universidad Santo Tomás de Aquino de Ciencia e Integración" : null,
+							"Universidad Nacional Daniel Alcides Carrión" : null,
+							"Universidad Nacional Toribio Rodríguez de Mendoza de Amazonas" : null,
+							"Universidad de la Amazonia Mario Peláez Bazán" : null,
+							"Universidad Nacional de la Amazonia Peruana" : null,
+							"Universidad Científica del Perú" : null,
+							"Universidad Peruana del Oriente" : null,
+							"Universidad Privada de la Selva Peruana" : null,
+							"Universidad Nacional Amazónica de Madre de Dios" : null,
+							"Universidad Nacional Agraria de la Selva" : null,
+							"Universidad Nacional de San Martín" : null,
+							"Universidad Nacional de Ucayali" : null,
+							"Universidad Nacional Intercultural de la Amazonia" : null,
+							"Universidad Privada de Pucallpa" : null
+
+						},
+						limit : 5, // The max amount of results
+						// that can be shown at
+						// once.
+						// Default: Infinity.
+						onAutocomplete : function(val) {
+							// Callback function when value is
+							// autcompleted.
+						},
+						minLength : 1, // The minimum length of
+					// the input for the
+					// autocomplete
+					// to start. Default: 1.
+					});
+}
+var costo_inscripcion = 0;
 var opcion = 0;
 var s = "";
+var pos = 0
+var change = 0;
+// Used events
+
+
+//drEvent.on('dropify.beforeClear', function(event, element) {
+//	return confirm("Do you really want to delete \"" + element.filename
+//			+ "\" ?");
+//});
+//
+//drEvent.on('dropify.afterClear', function(event, element) {
+//	alert('File deleted');
+//});
+
+$("#select").change(function() {
+	change = $("#select").val();
+	console.log($("#select").val());
+	if (change == 2) {
+		$("#div_uni").addClass("hide");
+		$("#div_bus").removeClass("hide");
+		$("#importe_profesional").val('170')
+		costo_inscripcion = $("#importe_profesional").val(); //170 soles
+		console.log("costo profesional "+costo_inscripcion)
+
+	} else {
+		$("#div_bus").addClass("hide");
+		$("#div_uni").removeClass("hide");
+		$("#importe_alumno").val('140');
+		costo_inscripcion = $("#importe_alumno").val(); //140 soles
+
+	}
+
+	$("#personal input").each(function() {
+		$(this).removeAttr("disabled");
+		$(this).not($("#personal input").first()).val("");
+	})
+	$("#first-step").click();
+	var breaki = 1
+	$("#personal label").not(".hide label").each(function() {
+
+		// $(this).removeClass("modal abierto");
+
+		// console.log($(this));
+		if (breaki % 2 == 0) {
+
+			$(this).remove();
+
+			// return true;
+		} else {
+			$(this).removeClass("active");
+
+		}
+		breaki++;
+
+	});
+	$("#personal input.validate").each(function() {
+		console.log("cleaning");
+
+		$(this).removeClass("validate invalid valid").addClass("validate");
+
+	});
+	$('.stepper').getStep($('.stepper').getActiveStep()).removeClass('wrong');
+
+});
+
 $("input[name=group1]").click(function() {
 	opcion = $(this).val();
 	console.log("el campo seleccionado es: " + $(this).val());
@@ -70,11 +269,13 @@ $("input[name=group1]").click(function() {
 	if (opcion == 1) {
 		$("#table-datatables").hide();
 		$("#personal").show();
-		getIdEnrollment();
+		// getIdEnrollment();
 	} else {
 		$("#personal").hide();
 		$("#table-datatables").show();
-		getIdDetailEnrollment();
+		$("#ml_importe").val('130');
+		costo_inscripcion = $("#ml_importe").val(); //130 soles -- delegacion
+		// getIdDetailEnrollment();
 	}
 });
 
@@ -87,42 +288,39 @@ $(".enrollment").click(function() {
 	});
 
 });
-
-
-$("#dni").keyup(function(e) {
-	
-	console.log($("#dni").val().length);
-	if ($("#dni").val().length <8) {
-		console.log("falta")
-		$("#dni").next("label").attr('data-error','Faltan caracteres');
-    	$("#dni").removeClass("valid");
-    	$("#dni").addClass("invalid");
-	}else{
-		
-		console.log("complete")
-		$("#dni").removeClass("invalid");
-    	$("#dni").addClass("valid");
-
-		
-	}
-});
-$("#ml_dni").keyup(function(e) {
-	
-	console.log($("#ml_dni").val().length);
-	if ($("#ml_dni").val().length <8) {
-		console.log("falta")
-		$("#ml_dni").next("label").attr('data-error','Faltan caracteres');
-    	$("#ml_dni").removeClass("valid");
-    	$("#ml_dni").addClass("invalid");
-	}else{
-		
-		console.log("complete")
-		$("#ml_dni").removeClass("invalid");
-    	$("#ml_dni").addClass("valid");
-
-		
-	}
-});
+// ----Function to drive the max and min characters in a specific input
+// $("#dni").keyup(function(e) {
+//
+// console.log($("#dni").val().length);
+// if ($("#dni").val().length < 8) {
+// console.log("falta")
+// $("#dni").next("label").attr('data-error', 'Faltan caracteres');
+// $("#dni").removeClass("valid");
+// $("#dni").addClass("invalid");
+// } else {
+//
+// console.log("complete")
+// $("#dni").removeClass("invalid");
+// $("#dni").addClass("valid");
+//
+// }
+// });
+// $("#ml_dni").keyup(function(e) {
+//
+// console.log($("#ml_dni").val().length);
+// if ($("#ml_dni").val().length < 8) {
+// console.log("falta")
+// $("#ml_dni").next("label").attr('data-error', 'Faltan caracteres');
+// $("#ml_dni").removeClass("valid");
+// $("#ml_dni").addClass("invalid");
+// } else {
+//
+// console.log("complete")
+// $("#ml_dni").removeClass("invalid");
+// $("#ml_dni").addClass("valid");
+//
+// }
+// });
 
 // $(".register").click(function() {
 //
@@ -135,31 +333,53 @@ $("#ml_dni").keyup(function(e) {
 // })
 
 // $("#first-step").click(function(){
+var contador = 1
 function insertarPersona() {
 	if (opcion == 1) {
 		console.log("es opcion 1")
+		if (contador == 1) {
+			if (change == 2) {
+				var nombre = $("#name").val().toUpperCase();
+				var apellido = $("#last_name").val().toUpperCase();
+				var carrera = $("#career").val();
+				var universidad = $("#business").val().toUpperCase();
+				var dni = $("#dni").val();
+				var correo = $("#email").val();
+				var celular = $("#phone").val();
+				var importe = costo_inscripcion;
+			} else {
+				var nombre = $("#name").val().toUpperCase();
+				var apellido = $("#last_name").val().toUpperCase();
+				var carrera = $("#career").val();
+				var universidad = $("#university").val().toUpperCase();
+				var dni = $("#dni").val();
+				var correo = $("#email").val();
+				var celular = $("#phone").val();
+				var importe = costo_inscripcion;
+			}
 
-		var nombre = $("#name").val();
-		var apellido = $("#last_name").val();
-		var carrera = $("#career").val();
-		var universidad = $("#university").val();
-		var dni = $("#dni").val();
-		var correo = $("#email").val();
+			var properties = new Object();
+			properties.nombre = nombre;
+			properties.apellido = apellido;
+			properties.carrera = carrera;
+			properties.universidad = universidad;
+			properties.dni = dni;
+			properties.correo = correo;
+			properties.celular = celular;
+			properties.tipo = change;
+			properties.importe = importe;
 
-		var properties = new Object();
-		properties.nombre = nombre;
-		properties.apellido = apellido;
-		properties.carrera = carrera;
-		properties.universidad = universidad;
-		properties.dni = dni;
-		properties.correo = correo;
+			arrayProperties.push(properties);
 
-		arrayProperties.push(properties);
+			console.log(JSON.stringify(arrayProperties));
 
-		console.log(JSON.stringify(arrayProperties));
+			console.log("inserta");
+			listarReporte();
+			contador++
+		} else {
+			console.log("no se insertara por segunda vez");
+		}
 
-		console.log("inserta");
-		validation = true;
 	} else {
 		console.log("no es la opcion 1, ver op modal");
 
@@ -170,63 +390,110 @@ $("#second-step").click(function() {
 
 });
 
+chosen = 0;
 function validateFirstStep() {
 	var validation = true;
 	if ($('.step').first().find('input[type="radio"]:checked').length === 0) {
 		validation = false;
 		console.log("no selecciono opcion");
-		$('#first').removeClass('active').addClass('wrong');
 
-		return validation;
 	} else {
-		
+		console.log("si selecciono");
+
 		if (arrayProperties.length === 0) {
-			if(opcion==1){
-				console.log("i do not need you")
-			}else{
-			alertify.alert('Alert Title',
-					'Usted no ha agregado a ninguna persona', function() {
-						alertify.success('Ok');
-						// $("#first").removeClass("step active
-						// feedbacking").addClass("step active");
-						// $(".wait-feedback").remove();
-					})
-			validation = false;
+			if (opcion == 1) {
+				console.log("i do not need you");
+				if ($("#select").val() == null) {
+					console.log("nada select");
+					validation = false;
+				} else {
+					validation = true;
+				}
+			} else {
+				alertify.alert('Alert Title',
+						'Usted no ha agregado a ninguna persona', function() {
+							alertify.success('Ok');
+							// $("#first").removeClass("step active
+							// feedbacking").addClass("step active");
+							// $(".wait-feedback").remove();
+						})
+				validation = false;
+
 			}
 		} else {
-			if(opcion==1){
+			if (opcion == 1) {
 				console.log("i do not need you")
-				validation = true;
-			}else{
-				console.log("again you")
-			alertify.confirm('Confirm Title',
-					'Segura que no desea agregar a alguien mas?', function() {
-						alertify.success('Ok');
-						// $('#feedbacker').nextStep();
 
-						validation = true;
-					}, function() {
-						alertify.error('Cancel')
-						validation = false;
-						// falta una funcion para retroceder
-					});
+			} else {
+				console.log("again you");
+				console.log(validation);
+
+				if (arrayProperties.length >= 2) {
+					alertify.confirm('Confirm Title',
+							'Segura que no desea agregar a alguien mas?',
+							function() {
+								alertify.success('Ok');
+								// $('#feedbacker').nextStep();
+								console.log("confirmacion message");
+
+								listarReporte();
+
+							}, function() {
+								alertify.error('Cancel')
+								console.log("cancelar message");
+								$('.stepper').prevStep();
+
+								// falta una funcion para retroceder
+							});
+					costo_inscripcion = 130;
+					validation = true;
+				} else {
+					alertify
+							.alert(
+									'Alert Title',
+									'Para formar una delegación, esta debe ser conformada por 10 alumnos como mínimo',
+									function() {
+										alertify.success('Ok');
+										// $("#first").removeClass("step
+										// active
+										// feedbacking").addClass("step
+										// active");
+										// $(".wait-feedback").remove();
+									})
+					validation = false;
+				}
+
 			}
 		}
 
 	}
 	return validation;
+
 }
+$("#backFirst").click(function() {
+	if (opcion == 1) {
+		arrayProperties = new Array();
+		contador = 1;
+	}
+
+});
 
 function nextStepFirstHandler() {
+	console.log("response validateFirstStep>> " + validateFirstStep());
+
 	if (validateFirstStep()) {
 		insertarPersona();
 		console.log("first handler")
-		listarReporte();
+		// if(opcion==1){
+		// listarReporte();
+		// }
 		$('.stepper').nextStep();
 	} else {
 		// $('.stepper').getStep($('.stepper').getActiveStep()).destroyFeedback();
 		console.log("first handler2")
+
 		$('.stepper').destroyFeedback();
+		// $('#first').removeClass('active').addClass('wrong');
 		$('.stepper').getStep($('.stepper').getActiveStep()).addClass('wrong');
 	}
 }
@@ -241,28 +508,63 @@ function nextStepFirstHandler() {
 // }
 // return true;
 // }
-
+var open_modal = 0;
 function acceptHandlerModal() {
-	console.log("entro");
+	if (open_modal == 0) {
+		console.log("entro");
 
-	var nombre = $("#ml_name").val();
-	var apellido = $("#ml_last_name").val();
-	var carrera = $("#ml_career").val();
-	var universidad = $("#ml_university").val();
-	var dni = $("#ml_dni").val();
-	var correo = $("#ml_email").val();
+		var nombre = $("#ml_name").val().toUpperCase();
+		var apellido = $("#ml_last_name").val().toUpperCase();
+		var carrera = $("#ml_career").val();
+		var universidad = $("#ml_university").val().toUpperCase();
+		var dni = $("#ml_dni").val();
+		var celular = $("#ml_phone").val();
+		var correo = $("#ml_email").val();
 
-	var properties = new Object();
-	properties.nombre = nombre;
-	properties.apellido = apellido;
-	properties.carrera = carrera;
-	properties.universidad = universidad;
-	properties.dni = dni;
-	properties.correo = correo;
+		var properties = new Object();
+		properties.nombre = nombre;
+		properties.apellido = apellido;
+		properties.carrera = carrera;
+		properties.universidad = universidad;
+		properties.dni = dni;
+		properties.correo = correo;
+		properties.celular = celular;
+		properties.tipo = 1;
+		properties.importe = costo_inscripcion;
+		
+		arrayProperties.push(properties);
+		var data = JSON.stringify(arrayProperties)
+		console.log(JSON.stringify(arrayProperties));
+	} else {
+		var nombremod = $("#ml1_name").val().toUpperCase();
+		var apellidomod = $("#ml1_last_name").val().toUpperCase();
+		var carreramod = $("#ml1_career").val();
+		var universidadmod = $("#ml1_university").val().toUpperCase();
+		var dnimod = $("#ml1_dni").val();
+		var celularmod = $("#ml1_phone").val();
+		var correomod = $("#ml1_email").val();
+		
+		arrayProperties[pos].nombre = nombremod;
+		arrayProperties[pos].apellido = apellidomod;
 
-	arrayProperties.push(properties);
-	var data = JSON.stringify(arrayProperties)
-	console.log(JSON.stringify(arrayProperties));
+		arrayProperties[pos].dni = dnimod;
+
+		arrayProperties[pos].celular = celularmod;
+
+		arrayProperties[pos].universidad = universidadmod;
+
+		arrayProperties[pos].carrera = carreramod;
+
+		arrayProperties[pos].correo = correomod;
+
+		// arrayProperties.push(properties);
+		// var data = JSON.stringify(arrayProperties)
+		console.log(JSON.stringify(arrayProperties));
+		open_modal = 0;
+		$("#modal2").modal("close");
+		listar();
+
+	}
 
 	// limpiarModal();
 
@@ -290,10 +592,212 @@ function someOtherFunction() {
 	return true;
 };
 
+function validateThirdStep() {
+	// $("#accept").click(function() {
+	// console.log("validarTercerPaso");
+	// subirVoucher();
+
+	// console.log(arrayProperties);
+	// var data = JSON.stringify(arrayProperties);
+	// // var da = JSON.parse(arrayProperties);
+	// $.get("subscribe/createEnrollment", {
+	// op : data
+	// }, function(response, status) {
+	// console.log(response);
+	// if (response == 1) {
+	// alertify.alert('Success', 'Registrado correctamente', function() {
+	// alertify.success('Ok');
+	// // $("#first").removeClass("step active
+	// // feedbacking").addClass("step active");
+	// // $(".wait-feedback").remove();
+	// var link = context_path
+	//
+	// location.href = link;
+	// })
+	// } else {
+	// alertify.alert('Error', 'Registro fallido', function() {
+	// alertify.success('Ok');
+	// // $("#first").removeClass("step active
+	// // feedbacking").addClass("step active");
+	// // $(".wait-feedback").remove();
+	// })
+	// }
+	// })
+	//		
+
+	// });
+
+}
+
+$("#accept")
+		.click(
+				function(e) {
+					e.preventDefault();
+					console.log("function upload");
+
+					var file = $("#file-input").val();
+
+					var form = $('#lastStepForm')[0];
+
+					// Create an FormData object
+					var datosUploadFile = new FormData(form);
+
+					console.log(file + "  " + form + "  " + datosUploadFile);
+					console.log(file);
+					// data.append("idinscripcion", "56");
+
+					if (file != "") {
+
+						alertify
+								.confirm(
+										'Confirmar vacaciones',
+										'Esta seguro(a) de subir este archivo?',
+										function() {
+											alertify.success('Ok');
+											console.log(arrayProperties);
+											var data = JSON
+													.stringify(arrayProperties);
+											// var da =
+											// JSON.parse(arrayProperties);
+											$
+													.get(
+															"subscribe/createEnrollment",
+															{
+																op : data
+															},
+															function(response,
+																	status) {
+																console
+																		.log(response);
+																if (response != 0) {
+																	datosUploadFile
+																			.append(
+																					"idinscripcion",
+																					response);
+																	$
+																			.ajax({
+																				type : "POST",
+																				enctype : 'multipart/form-data',
+																				url : gth_context_path
+																						+ "/subscribe/uploadfile",
+																				data : datosUploadFile,
+																				processData : false,
+																				contentType : false,
+																				cache : false,
+																				timeout : 600000,
+																				// beforeSend
+																				// :
+																				// function(
+																				// xhr)
+																				// {
+																				// xhr
+																				// .setRequestHeader(
+																				// csrfHeader,
+																				// csrfToken);
+																				// },
+																				success : function(
+																						data) {
+																					console
+																							.log("success>"
+																									+ data);
+
+																					if (data == 1) {
+																						alertify
+																								.alert(
+																										'Success',
+																										'Excelente!. Por favor, esté atento a su correo, pronto confirmaremos su inscripción. Gracias!',
+																										function() {
+																											alertify
+																													.success('Ok');
+
+																											var link = gth_context_path
+
+																											location.href = link;
+																										})
+																					} else {
+
+																						alertify
+																								.alert(
+																										'Error',
+																										'Algo inesperado ocurrió, por favor, vuelva a intentarlo más tarde.',
+																										function() {
+																											alertify
+																													.success('Ok');
+																											var link = gth_context_path
+
+																											location.href = link;
+
+																										})
+																					}
+
+																				},
+																				error : function(
+																						e) {
+																					console
+																							.log(
+																									"No sube ",
+																									e);
+																					alertify
+																							.alert(
+																									'Error',
+																									'Algo inesperado ocurrió, por favor, vuelva a intentarlo más tarde.',
+																									function() {
+																										alertify
+																												.success('Ok');
+																										// $("#first").removeClass("step
+																										// active
+																										// feedbacking").addClass("step
+																										// active");
+																										// $(".wait-feedback").remove();
+																										var link = gth_context_path
+
+																										location.href = link;
+																									})
+
+																				}
+																			});
+
+																} else {
+																	alertify
+																			.alert(
+																					'Error',
+																					'Algo inesperado ocurrió, por favor, vuelva a intentarlo más tarde.',
+																					function() {
+																						alertify
+																								.success('Ok');
+																						var link = gth_context_path
+
+																						location.href = link;
+																						// $("#first").removeClass("step
+																						// active
+																						// feedbacking").addClass("step
+																						// active");
+																						// $(".wait-feedback").remove();
+																					})
+																}
+															})
+
+											// ------------------------------
+
+										}, function() {
+											alertify.error('Cancel')
+										});
+
+					} else {
+						alertify.alert('Error', 'Suba un documento por favor',
+								function() {
+									alertify.success('Ok');
+
+								})
+					}
+
+				})
+
 function listar() {
 
 	s = "";
 	var cont = 1;
+
 	for ( var i in arrayProperties) {
 		console.log(arrayProperties[i].nombre)
 		s += "<tr><td  >";
@@ -305,6 +809,8 @@ function listar() {
 		s += arrayProperties[i].apellido;
 		s += "</td><td>";
 		s += arrayProperties[i].dni;
+		s += "</td><td>";
+		s += arrayProperties[i].celular;
 		s += "</td><td>";
 		s += arrayProperties[i].universidad;
 		s += "</td><td>";
@@ -333,9 +839,25 @@ function listar() {
 	$("#contTable").append(createTable1());
 
 	$("#data").empty();
-	console.log(s);
+
 	$("#data").append(s);
-	$("#data-table-row-grouping").dataTable();
+	$("#data-table-row-grouping").dataTable({
+		"pageLength" : 3,
+		"bPaginate" : true,
+		"bLengthChange" : false,
+		"bFilter" : true,
+		"bInfo" : false,
+		"bAutoWidth" : true,
+		"language" : {
+			// "lengthMenu": "Display _MENU_ records per page",
+			"zeroRecords" : "Nada para mostrar - disculpe",
+			"info" : "Mostrando página _pag_ de _pags_",
+			"infoEmpty" : "Ningún alumno agregado"
+		// "infoFiltered": "(filtered from _MAX_ total records)"
+		}
+	// "displayLength": 2,
+	// "lengthMenu": [ 2, 3, 6, 7, 8 ]
+	});
 	$("input[type='search']").attr("name", "search");
 
 };
@@ -355,6 +877,8 @@ function listarReporte() {
 		a += "</td><td>";
 		a += arrayProperties[i].dni;
 		a += "</td><td>";
+		a += arrayProperties[i].celular;
+		a += "</td><td>";
 		a += arrayProperties[i].universidad;
 		a += "</td><td>";
 		a += arrayProperties[i].carrera;
@@ -362,7 +886,7 @@ function listarReporte() {
 		a += arrayProperties[i].correo;
 		a += "</td><td>";
 		a += "$";
-		a += costo_inscripcion;
+		a += arrayProperties[i].importe;
 		a += "</td>";
 
 		a += "</tr>";
@@ -387,7 +911,23 @@ function listarReporte() {
 	// } );
 	$("#data-table-row-grouping1")
 			.dataTable(
+
 					{
+						"pageLength" : 5,
+						"bPaginate" : true,
+						"bLengthChange" : false,
+						"bFilter" : true,
+						"bInfo" : false,
+						"bAutoWidth" : true,
+						"language" : {
+							// "lengthMenu": "Display _MENU_ records per page",
+							"zeroRecords" : "Nada para mostrar - disculpe",
+							"info" : "Mostrando página _pag_ de _pags_",
+							"infoEmpty" : "Ningún alumno agregado"
+						// "infoFiltered": "(filtered from _MAX_ total records)"
+						},
+						// "displayLength": 2,
+						// "lengthMenu": [ 2, 3, 6, 7, 8 ],
 						"footerCallback" : function(row, data, start, end,
 								display) {
 							var api = this.api(), data;
@@ -406,12 +946,12 @@ function listarReporte() {
 							};
 
 							// Total over all pages
-							total = api.column(6).data().reduce(function(a, b) {
+							total = api.column(7).data().reduce(function(a, b) {
 								return intVal(a) + intVal(b);
 							}, 0);
 
 							// Total over this page
-							pageTotal = api.column(6, {
+							pageTotal = api.column(7, {
 								page : 'current'
 							}).data().reduce(function(a, b) {
 								return intVal(a) + intVal(b);
@@ -421,28 +961,33 @@ function listarReporte() {
 							// $( api.column( 6 ).footer() ).html(
 							// '$'+pageTotal +' ( $'+ total +' total)'
 							// );
-							var descuento = 0;
-							if (size >= 10) {
-								console.log("tiene descuento");
-								descuento = costo_inscripcion * size;
-								descuento = descuento * 0.1;
+							// var descuento = 0;
+							// if (size >= 10) {
+							// console
+							// .log("tiene descuento, ejecutando desde tabla");
+							// descuento = costo_inscripcion * size;
+							// descuento = descuento * 0.1;
+							//
+							// } else {
+							// alertify
+							// .alert(
+							// 'Alert Title',
+							// 'Para obtener un descuento debe formar una
+							// delegacion con 10 integrantes a
+							// mas',
+							// function() {
+							// alertify.success('Ok');
+							// });
+							// }
 
-							} else {
-								alertify
-										.alert(
-												'Alert Title',
-												'Para obtener un descuento debe formar una delegacion con 10 integrantes a mas',
-												function() {
-													alertify.success('Ok');
-												});
-							}
-
-							$('tr:eq(1) td:eq(0)', api.table().footer()).html(
-									descuento);
+							// $('tr:eq(1) td:eq(0)',
+							// api.table().footer()).html(
+							// descuento);
 							$('tr:eq(0) td:eq(0)', api.table().footer()).html(
-									total);
-							$('tr:eq(2) td:eq(0)', api.table().footer()).html(
-									total - descuento);
+									"S/. " + total + ".00");
+							// $('tr:eq(2) td:eq(0)',
+							// api.table().footer()).html(
+							// total - descuento);
 
 							// $("#dis").html("des");
 							//
@@ -466,7 +1011,8 @@ function createTable1() {
 	// s += "<th class='hide' >N°</th>";
 	s += "<th>Nombres y Apellidos</th>";
 	s += "<th>Dni</th>";
-	s += "<th>Universidad</th>";
+	s += "<th>Celular</th>";
+	s += "<th>Entidad</th>";
 	s += "<th>Carrera</th>";
 	s += "<th>Correo</th>";
 	s += "<th>Operaciones</th>";
@@ -486,20 +1032,21 @@ function createTable2() {
 	// s += "<th class='hide' >N°</th>";
 	d += "<th>Nombres y Apellidos</th>";
 	d += "<th>Dni</th>";
-	d += "<th>Universidad</th>";
+	d += "<th>Celular</th>";
+	d += "<th>Entidad</th>";
 	d += "<th>Carrera</th>";
 	d += "<th>Correo</th>";
 	d += "<th>Costo</th>";
 	d += "</tr>";
 	d += "</thead>";
-	d += "<tfoot><tr>";
-	d += "<th colspan='6' style='text-align:right'>Subtotal:</th>";
-	d += "<td style='text-align:center'  id='total'></td></tr>";
-
-	d += "<tr>";
-	d += "<th colspan='6' style='text-align:right' >Descuento:</th>";
-	d += "<td style='text-align:center' id='dis'></td></tr>";
-	d += "<tr><th colspan='6' style='text-align:right' >Total:</th>";
+	d += "<tfoot>";
+	// d += "<tr><th colspan='6' style='text-align:right'>Subtotal:</th>";
+	// d += "<td style='text-align:center' id='total'></td></tr>";
+	//
+	// d += "<tr>";
+	// d += "<th colspan='6' style='text-align:right' >Descuento:</th>";
+	// d += "<td style='text-align:center' id='dis'></td></tr>";
+	d += "<tr><th colspan='7' style='text-align:right' >Total:</th>";
 	d += "<td style='text-align:center' id='dis'></td></tr></tfoot>";
 
 	d += "<tbody id='data1'></tbody>";
@@ -556,8 +1103,241 @@ $("#formValidate").validate({
 	}
 });
 
-$('.modal').modal({
-	dismissible : false, // Modal can be dismissed by clicking outside of the
+$("#lastStepForm").validate({
+	rules : {
+		field : {
+			required : true
+		}
+	}
+});
+var select_modal = 0;
+$('#modal1').modal(
+		{
+			dismissible : false, // Modal can be dismissed by clicking
+			// outside of the
+			// modal
+			opacity : .5, // Opacity of modal background
+			inDuration : 400, // Transition in duration
+			outDuration : 200, // Transition out duration
+			startingTop : '4%', // Starting top style attribute
+			endingTop : '10%', // Ending top style attribute
+			ready : function(modal, trigger) { // Callback for Modal open.
+				// Modal and
+				// trigger parameters available.
+
+				console.log(modal, trigger);
+
+			},
+			complete : function() {
+
+				if (select_modal == 1) {
+					var breaking = 1;
+
+					var size = $(".modal-form label").length;
+
+					$("#modal1 label").each(function() {
+
+						// $(this).removeClass("modal abierto");
+						console.log("modal abierto")
+						console.log($(this));
+
+						if (breaking % 2 == 0) {
+
+							$(this).removeClass("active");
+
+							// return true;
+						} else {
+
+							$(this).remove();
+						}
+						breaking++;
+					});
+
+					$(".modal-form input.validate").each(
+							function() {
+								console.log("cleaning");
+
+								$(this).removeClass("validate invalid valid")
+										.addClass("validate");
+
+							});
+
+					$("#ml_name").val("");
+					$("#ml_last_name").val("");
+					$("#ml_career").val("");
+					$("#ml_university").val("");
+					$("#ml_dni").val("");
+					$("#ml_email").val("");
+					$("#ml_phone").val("");
+				} else {
+					var breaking = 1;
+
+					var size = $(".modal-form label").length;
+
+					$("#modal1 label").each(function() {
+						// //
+						// // // $(this).removeClass("modal abierto");
+						// // console.log("modal abierto")
+						// // console.log($(this));
+						// //
+						// // if (breaking % 2 == 0) {
+						//
+						$(this).removeClass("active");
+						//
+						// // return true;
+						// // } else {
+						// //
+						// // $(this).remove();
+						// // }
+						// // breaking++;
+					});
+
+					$(".modal-form input.validate").each(
+							function() {
+								console.log("cleaning");
+
+								$(this).removeClass("validate invalid valid")
+										.addClass("validate");
+
+							});
+
+					$("#ml_name").val("");
+					$("#ml_last_name").val("");
+					$("#ml_career").val("");
+					$("#ml_university").val("");
+					$("#ml_dni").val("");
+					$("#ml_email").val("");
+					$("#ml_phone").val("");
+				}
+
+			} // Callback for Modal close
+
+		});
+
+$("#modal_cancel").click(function() {
+	select_modal = 0
+});
+$("#modal_confirm").click(function() {
+	select_modal = 1
+});
+
+// function getIdEnrollment() {
+// $.get("subscribe/InscripcionMax", function(data, status) {
+// console.log(JSON.parse(data));
+// $("#enrollment").val('');
+// $("#enrollment").val(data);
+// });
+// }
+
+// function getIdDetailEnrollment() {
+// $.get("subscribe/InscripcionDetalleMax", function(data, status) {
+// console.log(JSON.parse(data));
+// $("#sub_enrollment").val('');
+// $("#sub_enrollment").val(data);
+// });
+// }
+
+//
+$("#second-header").click(function(e) {
+	console.log("second step");
+	// e.preventDefault();
+	e.stopPropagation();
+	// e.stopInmediatePropagation();
+	// chosen = 1;
+	// if(validateFirstStep()){
+	//		
+	// }else{
+	// $('#first').removeClass('active').addClass('wrong');
+	// }
+	// me sale el anuncio si deseo agregar a alguien mas ---corregir
+	// validar input universidad
+	// crear form pago
+});
+
+$("#third-header").click(function(e) {
+	console.log("third step");
+	// e.preventDefault();
+	e.stopPropagation();
+
+});
+$("#first-header").click(function(e) {
+	console.log("first step");
+	// e.preventDefault();
+	e.stopPropagation();
+
+});
+
+$("#voucher").keyup(function() {
+	var nro = $("#voucher").val().toUpperCase();
+	$("#voucher").val(nro);
+});
+
+$("#cancel").click(function(e) {
+	e.preventDefault();
+	var link = gth_context_path
+
+	location.href = link;
+
+});
+
+function eliminar(id) {
+	console.log("eliminar");
+	console.log(id);
+	console.log(arrayProperties[id - 1].nombre);
+	arrayProperties.splice(id - 1, 1)
+	console.log(arrayProperties);
+	listar();
+
+}
+function modificar(id) {
+	console.log("modificar");
+	console.log(id);
+	$("#modal2").modal('open');
+	pos = id - 1;
+	var name = arrayProperties[pos].nombre;
+	var last_name = arrayProperties[pos].apellido;
+
+	var id = arrayProperties[pos].dni;
+
+	var phone = arrayProperties[pos].celular;
+
+	var univer = arrayProperties[pos].universidad;
+
+	var career = arrayProperties[pos].carrera;
+
+	var email = arrayProperties[pos].correo;
+	$("#ml1_name").val(name);
+	$("#ml1_last_name").val(last_name);
+	$("#ml1_career").val(career);
+	$("#ml1_university").val(univer);
+	$("#ml1_dni").val(id);
+	$("#ml1_email").val(email);
+	$("#ml1_phone").val(phone);
+	Materialize.updateTextFields();
+	open_modal = 1;
+	$("#modal2 label").each(function() {
+
+		// $(this).removeClass("modal abierto");
+		console.log("modal abierto")
+		console.log($(this));
+		$(this).addClass("active");
+
+		// if (breaking % 2 == 0) {
+		//
+		// $(this).addClass("active");
+		//
+		// // return true;
+		// } else {
+		//
+		// $(this).remove();
+		// }
+		// breaking++;
+	});
+}
+
+var select_modal = 0;
+$('#modal2').modal({
+	dismissible : true, // Modal can be dismissed by clicking outside of the
 	// modal
 	opacity : .5, // Opacity of modal background
 	inDuration : 400, // Transition in duration
@@ -572,99 +1352,43 @@ $('.modal').modal({
 	},
 	complete : function() {
 
-		var breaking = 1;
-
-		var size = $(".modal-form label").length;
-
-		$(".modal-form label").each(function() {
-
-			// $(this).removeClass("modal abierto");
-			console.log("modal abierto")
-			console.log($(this));
-
-			if (breaking % 2 == 0) {
-
-				$(this).removeClass("active");
-
-				// return true;
-			} else {
-
-				$(this).remove();
-			}
-			breaking++;
-
-		});
-
-		$(".modal-form input.validate").each(function() {
-			console.log("cleaning");
-
-			$(this).removeClass("validate invalid valid").addClass("validate");
-
-		});
-
-		$("#ml_name").val("");
-		$("#ml_last_name").val("");
-		$("#ml_career").val("");
-		$("#ml_university").val("");
-		$("#ml_dni").val("");
-		$("#ml_email").val("");
-
 	} // Callback for Modal close
 
 });
 
-function getIdEnrollment() {
-	$.get("subscribe/InscripcionMax", function(data, status) {
-		console.log(JSON.parse(data));
-		$("#enrollment").val('');
-		$("#enrollment").val(data);
-	});
-}
-
-function getIdDetailEnrollment() {
-	$.get("subscribe/InscripcionDetalleMax", function(data, status) {
-		console.log(JSON.parse(data));
-		$("#sub_enrollment").val('');
-		$("#sub_enrollment").val(data);
-	});
-}
-
-//
-$("#accept").click(function() {
-	console.log(arrayProperties);
-	var data = JSON.stringify(arrayProperties);
-	// var da = JSON.parse(arrayProperties);
-	$.get("subscribe/createEnrollment", {
-		op : data
-	}, function(response, status) {
-		console.log(response);
-		if (response == 1) {
-			alertify.alert('Success', 'Registrado correctamente', function() {
-				alertify.success('Ok');
-				// $("#first").removeClass("step active
-				// feedbacking").addClass("step active");
-				// $(".wait-feedback").remove();
-				var link = gth_context_path
-
-				location.href = link;
-			})
-		} else {
-			alertify.alert('Error', 'Registro fallido', function() {
-				alertify.success('Ok');
-				// $("#first").removeClass("step active
-				// feedbacking").addClass("step active");
-				// $(".wait-feedback").remove();
-			})
-		}
-	})
-
+$("#modal_edit_cancel").click(function() {
+	console.log("cancelar");
+	$("#modal2").modal("close");
 });
+$("#modal_edit_change").click(function() {
+	var breaking = 1;
 
-$("#second").click(function(e) {
-	console.log("second step");
-	e.preventDefault();
-	validateFirstStep()
-//me sale el anuncio si deseo agregar a alguien mas ---corregir
-	//validar input universidad
-	//crear form pago
+	var size = $(".modal-form label").length;
+
+	$("#modal2 label").each(function() {
+
+		// $(this).removeClass("modal abierto");
+		console.log("modal abierto")
+		console.log($(this));
+		$(this).addClass("active");
+
+		// if (breaking % 2 == 0) {
+		//
+		// $(this).addClass("active");
+		//
+		// // return true;
+		// } else {
+		//
+		// $(this).remove();
+		// }
+		// breaking++;
+	});
+
+	$("#modal2 input.validate").each(function() {
+		console.log("cleaning");
+
+		$(this).removeClass("validate invalid valid").addClass("validate");
+
+	});
+
 });

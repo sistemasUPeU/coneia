@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upeu.CONEIA.entity.InscripcionTaller" table="inscripcion_taller" catalog="dbconeia" optimistic-lock="version">
+        <id name="idinscripcionTaller" type="java.lang.Integer">
+            <column name="idinscripcion_taller" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="detalleInscripcion" class="pe.edu.upeu.CONEIA.entity.DetalleInscripcion" fetch="select">
+            <column name="iddetalle_inscripcion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taller" class="pe.edu.upeu.CONEIA.entity.Taller" fetch="select">
+            <column name="idtaller" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+        <property name="asistencia" type="java.lang.Integer">
+            <column name="asistencia" />
+        </property>
+        <property name="estado" type="java.lang.Integer">
+            <column name="estado" />
+        </property>
+        <property name="hora" type="time">
+            <column name="hora" length="8" />
+        </property>
+    </class>
+</hibernate-mapping>

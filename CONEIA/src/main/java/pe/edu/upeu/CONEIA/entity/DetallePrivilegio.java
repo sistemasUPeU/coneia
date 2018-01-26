@@ -1,5 +1,5 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 03-ene-2018 11:40:37 by Hibernate Tools 5.1.0.Alpha1
+// Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +18,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "detalle_privilegio", catalog = "dbconeia")
+@NamedQueries({
+@NamedQuery(name="MostrarPrivilegios", query="FROM DetallePrivilegio d where d.rol  = :rol")})
 public class DetallePrivilegio implements java.io.Serializable {
 
 	private Integer iddetallePrivilegio;

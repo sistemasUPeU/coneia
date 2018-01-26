@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upeu.CONEIA.entity.Persona" table="persona" catalog="dbconeia" optimistic-lock="version">
+        <id name="idpersona" type="java.lang.Integer">
+            <column name="idpersona" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="rol" class="pe.edu.upeu.CONEIA.entity.Rol" fetch="select">
+            <column name="idrol" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="100" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="8" />
+        </property>
+        <property name="universidad" type="string">
+            <column name="universidad" length="45" />
+        </property>
+        <property name="carrera" type="string">
+            <column name="carrera" length="45" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="45" />
+        </property>
+        <property name="celular" type="string">
+            <column name="celular" length="13" />
+        </property>
+        <property name="importe" type="java.lang.Double">
+            <column name="importe" precision="22" scale="0" />
+        </property>
+        <property name="tipo" type="java.lang.Integer">
+            <column name="tipo" />
+        </property>
+        <set name="detalleInscripcions" table="detalle_inscripcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idpersona" not-null="true" />
+            </key>
+            <one-to-many class="pe.edu.upeu.CONEIA.entity.DetalleInscripcion" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,5 +1,5 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 03-ene-2018 11:40:37 by Hibernate Tools 5.1.0.Alpha1
+// Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -29,10 +29,6 @@ import javax.persistence.TemporalType;
 @NamedQuery(name="Stock", query="FROM Taller t where t.idtaller  = :idtaller")})
 public class Taller implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer idtaller;
 	private Tipo tipo;
 	private String nombre;

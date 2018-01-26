@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upeu.CONEIA.entity.Rol" table="rol" catalog="dbconeia" optimistic-lock="version">
+        <id name="idrol" type="java.lang.Integer">
+            <column name="idrol" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="estado" type="java.lang.Integer">
+            <column name="estado" />
+        </property>
+        <set name="personas" table="persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idrol" not-null="true" />
+            </key>
+            <one-to-many class="pe.edu.upeu.CONEIA.entity.Persona" />
+        </set>
+        <set name="detallePrivilegios" table="detalle_privilegio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idrol" not-null="true" />
+            </key>
+            <one-to-many class="pe.edu.upeu.CONEIA.entity.DetallePrivilegio" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,5 +1,5 @@
 package pe.edu.upeu.CONEIA.entity;
-// Generated 03-ene-2018 11:40:37 by Hibernate Tools 5.1.0.Alpha1
+// Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,17 +24,22 @@ public class Inscripcion implements java.io.Serializable {
 
 	private Integer idinscripcion;
 	private Date fecha;
-	private String voucher;
+	private String nroVoucher;
+	private String urlVoucher;
 	private Integer estado;
+	private Date fechaUpdate;
 	private Set<DetalleInscripcion> detalleInscripcions = new HashSet<DetalleInscripcion>(0);
 
 	public Inscripcion() {
 	}
 
-	public Inscripcion(Date fecha, String voucher, Integer estado, Set<DetalleInscripcion> detalleInscripcions) {
+	public Inscripcion(Date fecha, String nroVoucher, String urlVoucher, Integer estado, Date fechaUpdate,
+			Set<DetalleInscripcion> detalleInscripcions) {
 		this.fecha = fecha;
-		this.voucher = voucher;
+		this.nroVoucher = nroVoucher;
+		this.urlVoucher = urlVoucher;
 		this.estado = estado;
+		this.fechaUpdate = fechaUpdate;
 		this.detalleInscripcions = detalleInscripcions;
 	}
 
@@ -50,8 +55,8 @@ public class Inscripcion implements java.io.Serializable {
 		this.idinscripcion = idinscripcion;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fecha", length = 19)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "fecha", length = 10)
 	public Date getFecha() {
 		return this.fecha;
 	}
@@ -60,13 +65,22 @@ public class Inscripcion implements java.io.Serializable {
 		this.fecha = fecha;
 	}
 
-	@Column(name = "voucher", length = 45)
-	public String getVoucher() {
-		return this.voucher;
+	@Column(name = "nro_voucher", length = 45)
+	public String getNroVoucher() {
+		return this.nroVoucher;
 	}
 
-	public void setVoucher(String voucher) {
-		this.voucher = voucher;
+	public void setNroVoucher(String nroVoucher) {
+		this.nroVoucher = nroVoucher;
+	}
+
+	@Column(name = "url_voucher", length = 45)
+	public String getUrlVoucher() {
+		return this.urlVoucher;
+	}
+
+	public void setUrlVoucher(String urlVoucher) {
+		this.urlVoucher = urlVoucher;
 	}
 
 	@Column(name = "estado")
@@ -76,6 +90,16 @@ public class Inscripcion implements java.io.Serializable {
 
 	public void setEstado(Integer estado) {
 		this.estado = estado;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "fecha_update", length = 10)
+	public Date getFechaUpdate() {
+		return this.fechaUpdate;
+	}
+
+	public void setFechaUpdate(Date fechaUpdate) {
+		this.fechaUpdate = fechaUpdate;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "inscripcion")

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 18:55:26 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upeu.CONEIA.entity.Inscripcion" table="inscripcion" catalog="dbconeia" optimistic-lock="version">
+        <id name="idinscripcion" type="java.lang.Integer">
+            <column name="idinscripcion" />
+            <generator class="identity" />
+        </id>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+        <property name="nroVoucher" type="string">
+            <column name="nro_voucher" length="45" />
+        </property>
+        <property name="urlVoucher" type="string">
+            <column name="url_voucher" length="45" />
+        </property>
+        <property name="estado" type="java.lang.Integer">
+            <column name="estado" />
+        </property>
+        <property name="fechaUpdate" type="date">
+            <column name="fecha_update" length="10" />
+        </property>
+        <set name="detalleInscripcions" table="detalle_inscripcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idinscripcion" not-null="true" />
+            </key>
+            <one-to-many class="pe.edu.upeu.CONEIA.entity.DetalleInscripcion" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -8,8 +8,10 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3307/dbconeia</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="hibernate.jdbc.batch_size">20</property>
 
+		<property name="hibernate.jdbc.batch_size">20</property>
+		<property name="show_sql">false</property>
+		<property name="format_sql">false</property>
 
 		<mapping class="pe.edu.upeu.CONEIA.entity.DetalleInscripcion"
 			package="pe.edu.upeu.CONEIA.entity." resource="pe/edu/upeu/CONEIA/entity/DetalleInscripcion.hbm.xml" />
@@ -29,5 +31,9 @@
 			resource="pe/edu/upeu/CONEIA/entity/Taller.hbm.xml" />
 		<mapping class="pe.edu.upeu.CONEIA.entity.Tipo" package="pe.edu.upeu.CONEIA.entity."
 			resource="pe/edu/upeu/CONEIA/entity/Tipo.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.VistaDetalleInscripcion"
+			package="pe.edu.upeu.CONEIA.entity." resource="pe/edu/upeu/CONEIA/entity/VistaDetalleInscripcion.hbm.xml" />
+		<mapping class="pe.edu.upeu.CONEIA.entity.VistaDetalleInscripcionId"
+			package="pe.edu.upeu.CONEIA.entity." resource="pe/edu/upeu/CONEIA/entity/VistaDetalleInscripcionId.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

@@ -1,5 +1,6 @@
 package pe.edu.upeu.CONEIA.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -8,16 +9,20 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -34,7 +39,9 @@ import pe.edu.upeu.CONEIA.service.InscripcionService;
 @RequestMapping("/subscribe")
 public class InscripcionController {
 	Gson gs =  new Gson();
-
+	public List<String> archi = new ArrayList<>();
+	private static String UPLOADED_FOLDER = "C:\\Users\\Harold\\git\\coneia4\\CONEIA\\src\\main\\webapp\\resources\\files";
+	
 	@Autowired
 	private InscripcionService insService;
 
@@ -91,7 +98,7 @@ public class InscripcionController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Error alquiler:" + e);
+			System.out.println("Error alquiler ususus:" + e);
 		}
 
 		System.out.println(g.toJson(ret));
@@ -99,23 +106,7 @@ public class InscripcionController {
 
 	}
 
-	@RequestMapping("/InscripcionMax")
-	public @ResponseBody String IdInscripcion(HttpServletRequest request, HttpServletResponse response) {
-		Gson g = new Gson();
-		int max = 0;
 
-		try {
-			max = insService.maxId();
-			System.out.println("max " + max);
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("Error alquiler:" + e);
-		}
-
-		return g.toJson(max);
-
-	}
 
 	@RequestMapping("/InscripcionDetalleMax")
 	public @ResponseBody String IdInscripcionDetalle(HttpServletRequest request, HttpServletResponse response) {
@@ -128,7 +119,7 @@ public class InscripcionController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Error alquiler:" + e);
+			System.out.println("Error alquiler detalle mx:" + e);
 		}
 
 		return g.toJson(maxdet);
@@ -141,7 +132,7 @@ public class InscripcionController {
 		Gson g = new Gson();
 
 
-		int maxdet = 0;
+		int answer = 0;
 
 		try {
 			// String name = request.getParameter("nombre");
@@ -174,15 +165,15 @@ public class InscripcionController {
 			System.out.println("controller string" + data);
 			
 
-			insService.create("", data);
-			maxdet = 1;
+			answer = insService.create("", data);
+			System.out.println("answer controller" + answer);
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Error controller:" + e);
 		}
 
-		return g.toJson(maxdet);
+		return g.toJson(answer);
 
 	}
 
@@ -197,26 +188,91 @@ public class InscripcionController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Error alquiler:" + e);
+			System.out.println("Error alquiler detail:" + e);
 		}
 
 		return g.toJson(maxdet);
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		RequestDispatcher dispatcher;
-		int op = Integer.parseInt(request.getParameter("op"));
-		HttpSession session = request.getSession();
-		String url;
-		switch (op) {
-		case 1:
+	
+	@Autowired
+	ServletContext context;
 
-			break;
+	@RequestMapping(path = "/uploadfile", method = RequestMethod.POST)
+    @ResponseBody
+	public int handleFormUpload(@RequestParam("file") List<MultipartFile> file,@RequestParam("voucher") String voucher, @RequestParam("idinscripcion") String id, HttpServletResponse response) throws IOException {
+
+		System.out.println(file);
+		System.out.println(voucher);
+		System.out.println("inscripcion> " + id);
+		int res = 0;
+		
+//        for (MultipartFile file : files) {
+//
+//            if (file.isEmpty()) {
+//                continue; //next pls
+//            }
+//
+//            byte[] bytes = file.getBytes();
+//            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+//            Files.write(path, bytes);
+//
+//        }
+		
+		
+		if (!file.isEmpty()) {
+
+			try {
+				for (MultipartFile fi : file) {
+					System.out.println(file);
+//					String path = context.getRealPath("/WEB-INF/") + File.separator + fi.getOriginalFilename();
+					
+					String path = UPLOADED_FOLDER  + File.separator + fi.getOriginalFilename();
+					String nome= fi.getOriginalFilename();
+				
+					nome="voucher"+id;
+					FilenameUtils fich = new FilenameUtils();
+					
+					path = UPLOADED_FOLDER  + File.separator + nome+"."+FilenameUtils.getExtension(path);
+					
+					
+					File destFile = new File(path);
+					
+					fi.transferTo(destFile);
+					archi.add(destFile.getName());
+					archi.add(destFile.getPath());
+//					FilenameUtils fich = new FilenameUtils();
+					archi.add(FilenameUtils.getExtension(path));
+					
+					
+					archi.add(String.valueOf(destFile.length()));
+					
+					String nombre = destFile.getName();
+					String url = destFile.getPath();
+					System.out.println(nombre);
+
+					Inscripcion in = new Inscripcion();
+					in.setIdinscripcion(Integer.parseInt(id));
+					in.setNroVoucher(voucher);
+					in.setUrlVoucher(nombre);
+					res = insService.update(in);
+//					res = vd.subirDocumento("", "", url, idvac);
+				}
+
+			} catch (IOException | IllegalStateException ec) {
+				ec.getMessage();
+				ec.printStackTrace();
+			}
+			System.out.println("gson> " + gs.toJson(archi));
+
+			System.out.println("respuesta>> " + res);
 
 		}
-
+		
+		 return res;// + url;
+		// return gson.toJson(archi);
 	}
+	
+	
 }

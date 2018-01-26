@@ -25,7 +25,7 @@
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
 <link rel='stylesheet prefetch'
-	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
+	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
 <link
 	href="<c:url value='/resources/js/plugins/sweetalert/sweetalert.css'></c:url>"
 	rel="stylesheet" type="text/css" />
@@ -302,8 +302,8 @@ var gth_context_path = "<%=request.getContextPath()%>";
 	function resize_parallax(div_id,img_w,img_h) {
 		var div = $('#' + div_id);
 		var divwidth = div.width();
-		if (divwidth < 769) { var pct = (img_h/img_w) * 105; } /* show full image, plus a little padding, if on static mobile view */
-		else { var pct = 60; } /* this is the HEIGHT as percentage of the current div WIDTH. you can change it to show more (or less) of your image */
+		if (divwidth < 769) { var pct = (img_h/img_w) * 105; } 
+		else { var pct = 60; }
 		var newheight = Math.round(divwidth * (pct/180));
 		newheight = newheight  + 'px';
 		div.height(newheight);
@@ -366,6 +366,16 @@ var gth_context_path = "<%=request.getContextPath()%>";
 		type="text/javascript"></script>
 	<script
 		src="<c:url value='/resources/js/plugins/data-tables/data-tables-script.js'></c:url>"
+		type="text/javascript"></script>
+
+
+
+	<script
+		src="<c:url value='/resources/js/plugins/dropify/js/dropify.min.js'></c:url>"
+		type="text/javascript"></script>
+
+	<script
+		src="<c:url value='/resources/js/plugins/alertify/alertify.min.js'></c:url>"
 		type="text/javascript"></script>
 
 </body>

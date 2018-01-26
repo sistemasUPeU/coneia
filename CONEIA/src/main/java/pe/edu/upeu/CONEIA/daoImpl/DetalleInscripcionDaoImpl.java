@@ -19,6 +19,7 @@ public class DetalleInscripcionDaoImpl implements DetalleInscripcionDAO {
 	
     
     private static Session s;
+//	final Session s = HibernateUtils.getSessionFactory();
 	private Transaction tt;
 	
 	@Override
@@ -26,7 +27,7 @@ public class DetalleInscripcionDaoImpl implements DetalleInscripcionDAO {
 		// TODO Auto-generated method stub
 		int x = 0;
 		try {
-			s = HibernateUtils.getSessionFactory().openSession();
+//			s = HibernateUtils.getSessionFactory().openSession();
 			tt = s.beginTransaction();
 			s.save(d);
 			tt.commit();
@@ -67,7 +68,7 @@ public class DetalleInscripcionDaoImpl implements DetalleInscripcionDAO {
 		 SessionFactory factory = cfg.buildSessionFactory();
 		 Session session = factory.openSession();
 		 
-		s= HibernateUtils.getSessionFactory().openSession();
+//		s= HibernateUtils.getSessionFactory().openSession();
 		Query query = s.createNativeQuery("select ifnull(max(iddetalle_inscripcion)+1, 1) from detalle_inscripcion");
 //		Query query = session.createQuery("select ifnull(max(a.idinscripcion), 0) from Inscripcion a");
 		int max = Integer.parseInt(query.getSingleResult().toString());

@@ -5,7 +5,10 @@
 		response.sendRedirect("/CONEIA/");
 
 	} else {
-		
+
+		if (Integer.parseInt(""+sesion.getAttribute("idrol")) == 3) {
+			response.sendRedirect("/CONEIA/admin/waiting");
+		} else {
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
@@ -43,55 +46,55 @@
 </script>
 </head>
 <body>
-<div class="preloader-background">
-	<div class="preloader-wrapper big active">
-		<div class="spinner-layer spinner-blue-only">
-			<div class="circle-clipper left">
-				<div class="circle"></div>
-			</div>
-			<div class="gap-patch">
-				<div class="circle"></div>
-			</div>
-			<div class="circle-clipper right">
-				<div class="circle"></div>
+	<div class="preloader-background">
+		<div class="preloader-wrapper big active">
+			<div class="spinner-layer spinner-blue-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<input type="hidden" value="${sessionScope.rol}" id="rolcito" />
-	<div id="mobile-collapse-button" class="section" style="padding-top:0">		
-				<nav class="#000000 black" >
-				<div class="nav-wrapper" >				
-						<a href="#!" class="brand-logo"><img class=""
-							src="<c:url value="/resources/img/cones.png"/>"
-							style="width: 300px; height: 35%; outline-color: none;margin-left:5%"></img></a> <a
-							href="#" data-activates="mobile-demo" class="button-collapse"><i
-							class="mdi-navigation-menu"></i></a>
-						<ul class="right hide-on-med-and-down">
-							<li><a class="principal">Home</a></li>
-							<li><a class="programa">Programa</a></li>
-							<li><a class="asistencia">Asistencia</a></li>
-							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown1"><b>${sessionScope.nombre}
-										${sessionScope.paterno} ${sessionScope.materno}</b></a>
-								<ul id='dropdown1' class='dropdown-content'>
-									<li><a href="#!" class="salir">Salir</a></li>
-								</ul></li>
-						</ul>
-						<ul class="side-nav" id="mobile-demo">
-							<li><a class="dropdown-button" href="#!"
-								data-activates="dropdown2"><b>${sessionScope.nombre}
-										${sessionScope.paterno} ${sessionScope.materno}</b></a>
-								<ul id='dropdown2' class='dropdown-content '>
-									<li><a href="#!" class="salir">Salir</a></li>
-								</ul></li>
+	<input type="hidden" value="${sessionScope.rol}" id="rolcito" />
+	<div id="mobile-collapse-button" class="section" style="padding-top: 0">
+		<nav class="#000000 black">
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo"><img class=""
+				src="<c:url value="/resources/img/cones.png"/>"
+				style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i
+				class="mdi-navigation-menu"></i></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a class="principal">Home</a></li>
+				<li><a class="programa">Programa</a></li>
+				<li><a class="asistencia">Asistencia</a></li>
+				<li><a class="dropdown-button" href="#!"
+					data-activates="dropdown1"><b>${sessionScope.nombre}
+							${sessionScope.paterno} ${sessionScope.materno}</b></a>
+					<ul id='dropdown1' class='dropdown-content'>
+						<li><a href="#!" class="salir">Salir</a></li>
+					</ul></li>
+			</ul>
+			<ul class="side-nav" id="mobile-demo">
+				<li><a class="dropdown-button" href="#!"
+					data-activates="dropdown2"><b>${sessionScope.nombre}
+							${sessionScope.paterno} ${sessionScope.materno}</b></a>
+					<ul id='dropdown2' class='dropdown-content '>
+						<li><a href="#!" class="salir">Salir</a></li>
+					</ul></li>
 
-							<li><a class="principal">Home</a></li>
-							<li><a class="programa">Programa</a></li>
-							<li><a class="asistencia">Asistencia</a></li>
-						</ul>					
-				</div>
-				</nav>	
+				<li><a class="principal">Home</a></li>
+				<li><a class="programa">Programa</a></li>
+				<li><a class="asistencia">Asistencia</a></li>
+			</ul>
+		</div>
+		</nav>
 	</div>
 	<div id="space"
 		style="position: relative; margin-top: 10%; margin-bottom: 10%">
@@ -133,7 +136,7 @@
 						<div class="row">
 							<div class="col s12">
 								<i class="fa fa-user-plus s6" aria-hidden="true"></i> <i
-								class="fa fa-user-times s6" aria-hidden="true"></i>
+									class="fa fa-user-times s6" aria-hidden="true"></i>
 							</div>
 						</div>
 
@@ -177,9 +180,8 @@
 				stopPropagation : false
 			// Stops event propagation
 
-				
 			});
-			
+
 		});
 		var url = window.location.href;
 		var arr = url.split("/");
@@ -191,22 +193,20 @@
 			});
 		});
 
-		document.addEventListener("DOMContentLoaded", function(){
+		document.addEventListener("DOMContentLoaded", function() {
 			$('.preloader-background').delay(1700).fadeOut('slow');
-			
-			$('.preloader-wrapper')
-				.delay(1700)
-				.fadeOut();
+
+			$('.preloader-wrapper').delay(1700).fadeOut();
 		});
 
 		$(".programa").click(function() {
-			var link="";
-			var rol =  $("#rolcito").val();
-			if(rol=="administrador"){
+			var link = "";
+			var rol = $("#rolcito").val();
+			if (rol == "administrador") {
 				link = context_path + "/programaAdmin";
-				}else{
-					 link = context_path + "/programa";
-					}
+			} else {
+				link = context_path + "/programa";
+			}
 			location.href = link;
 		});
 
@@ -217,13 +217,13 @@
 		})
 
 		$(".asistencia").click(function() {
-			var link="";
-			var rol =  $("#rolcito").val();
-			if(rol=="administrador"){
+			var link = "";
+			var rol = $("#rolcito").val();
+			if (rol == "administrador") {
 				link = context_path + "/asistenciaAdmin";
-				}else{
-					 link = context_path + "/asistencia";
-					}
+			} else {
+				link = context_path + "/asistencia";
+			}
 			location.href = link;
 		})
 
@@ -243,11 +243,10 @@
 				$("#space").html(data);
 			});
 		})
-		
-		
 	</script>
 </body>
 </html>
 <%
-		}
+	}
+	}
 %>

@@ -4,7 +4,7 @@ footer {
 }
 </style>
 
-<footer class="#33691e light-green darken-4">
+<footer class="page-footer green accent-3">
 	<div class="footer-copyright">
 		<div class="container">
 			Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
@@ -13,3 +13,14 @@ footer {
 		</div>
 	</div>
 </footer>
+
+
+<!-- <footer class="page-footer green accent-3"> -->
+
+<!-- 	<div class="footer-copyright"> -->
+<!-- 		<div class="container"> -->
+<!-- 			© 2014 Copyright Text <a class="grey-text text-lighten-4 right" -->
+<!-- 				href="#!">More Links</a> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </footer> -->
