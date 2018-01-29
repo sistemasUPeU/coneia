@@ -1,7 +1,7 @@
 
 <%
 	HttpSession sesion = request.getSession();
-	if (sesion.getAttribute("dni") != null ) {
+	if (sesion.getAttribute("dni") != null) {
 		response.sendRedirect("/CONEIA/principal");
 
 	} else {
@@ -18,12 +18,15 @@
 <title>CONEIA</title>
 <link rel="shortcut icon"
 	href="<c:url value='/resources/img/favicon/favicon.ico'></c:url>">
-<link rel="png" href="<c:url value='/resources/img/coneia.png'></c:url>">
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
+<%-- <link rel="png" href="<c:url value='/resources/img/coneia.png'></c:url>"> --%>
+
 <!-- Global Styles-->
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
+<link
+	href="<c:url value='/resources/js/plugins/dropify/css/dropify.min.css'/>"
+	type="text/css" rel="stylesheet" media="screen,projection">
+
 <link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
 <link
@@ -37,7 +40,7 @@
 
 
 <link
-	href="<c:url value='http://fonts.googleapis.com/icon?family=Material+Icons'></c:url>"
+	href="<c:url value='https://fonts.googleapis.com/icon?family=Material+Icons'></c:url>"
 	rel="stylesheet" type="text/css" />
 
 
@@ -105,20 +108,22 @@ var gth_context_path = "<%=request.getContextPath()%>";
 	</div>
 
 
-	<div class="parallax_img" id="img1"></div>
+	<!-- 	<div class="parallax_img" id="img1"></div> -->
 
 	<div class="row container">
-		<div id="space" style="position: relative; padding-top: 10%;">
-			<div class="row center">
+		<div id="space" style="position: relative; padding-top: 5%;">
+			<div class="row center" style="padding-top: 10%;">
 				<div class="col s12 m6 l6">
 
 
 					<a class="circulo enrollment waves-effect waves-light "
 						style="text-decoration: none; color: black">
 						<div class="circulo2">
-							<img class="contA mdi-action-open-with large icon-demo size-icon"
-								src="<c:url value="/resources/img/cones2.png"/>"
-								style="width: 50%; margin-left: 10%; margin-top: -5%; outline-color: none"></img>
+<!-- 							<img class="contA mdi-action-open-with large icon-demo size-icon" -->
+<%-- 								src="<c:url value="/resources/img/cones2.png"/>" --%>
+<!-- 								style="width: 50%; margin-left: 10%; margin-top: -5%; outline-color: none"></img> -->
+							<i class="contA mdi-action-assignment large icon-demo size-icon"
+								style="color: black; margin-top: 30%;"></i>
 							<div class="light italic letrinha"
 								style="margin-top: -5%; font-family: 'Lobster Two', cursive;">
 								<b>Inscripción</b>
@@ -132,7 +137,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 						style="text-decoration: none; color: black">
 						<div class="circulo2">
 							<i class="contA mdi-social-group large icon-demo size-icon"
-								style="color: green; margin-top: 10%;"></i>
+								style="color: black; margin-top: 30%;"></i>
 							<div class="light italic letrinha"
 								style="margin-top: -5%; font-family: 'Lobster Two', cursive;">
 								<b>Iniciar sesión</b>
@@ -141,46 +146,24 @@ var gth_context_path = "<%=request.getContextPath()%>";
 					</a>
 				</div>
 			</div>
-			<!-- 				<div id="modal1" class="modal modal-fixed-footer" -->
-			<!-- 					style="width: 40%; height: 200px; margin-top: 15%"> -->
-			<!-- 					<div class="modal-header"></div> -->
-			<!-- 					<div class="modal-content #b9f6ca green accent-1"> -->
-			<!-- 						<div class="row"> -->
-			<!-- 							<div class="input-field col s12"> -->
-			<!-- 								<input type="text" id="dni" class="validate" -->
-			<!-- 									placeholder="Escriba su número de dni" -->
-			<%-- 									onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" --%>
-			<!-- 									maxlength=8 autofocus /> <label for="dni">Escriba su -->
-			<!-- 									número de dni</label> -->
-			<!-- 							</div> -->
 
-
-			<!-- 						</div> -->
-
-
-			<!-- 					</div> -->
-			<!-- 					<div class="modal-footer"> -->
-			<!-- 						<a href="#!" -->
-			<!-- 							class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
-			<!-- 					</div> -->
-			<!-- 				</div> -->
 		</div>
 
 	</div>
 
-	<div class="parallax-container">
-		<div class="parallax">
-			<div
-				style="width: auto; min-width: 100%; position: relative; height: 0px; width: 100%; padding-bottom: 56.25%; margin: 0">
-				<video autoplay loop muted plays-inline
-					style="width: 100%; height: auto; margin: 0; padding: 0; position: absolute; right: 0; bottom: 0;; min-width: 100%;">
-					<source
-						src="http://posgrado.upeu.edu.pe/webmaster/videos/posgrado.mp4">
+	<!-- 	<div class="parallax-container"> -->
+	<!-- 		<div class="parallax"> -->
+	<!-- 			<div -->
+	<!-- 				style="width: auto; min-width: 100%; position: relative; height: 0px; width: 100%; padding-bottom: 56.25%; margin: 0"> -->
+	<!-- 				<video autoplay loop muted plays-inline -->
+	<!-- 					style="width: 100%; height: auto; margin: 0; padding: 0; position: absolute; right: 0; bottom: 0;; min-width: 100%;"> -->
+	<!-- 					<source -->
+	<!-- 						src="http://posgrado.upeu.edu.pe/webmaster/videos/posgrado.mp4"> -->
 
-				</video>
-			</div>
-		</div>
-	</div>
+	<!-- 				</video> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 	<div style="display: none">
 		<form id="loginForm">
 			<fieldset>
@@ -193,20 +176,20 @@ var gth_context_path = "<%=request.getContextPath()%>";
 					</div>
 				</div>
 				<div class="row margin">
-						<div class="input-field col s12">
-							<i class="mdi-social-person-outline prefix"></i> <input
-								class="validate" id="user_dni" type="text"
-								onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-								maxlength=8  required aria-required="true" autofocus> <label for="user_dni"
-								data-error="Campo vacío" data-success="" class=""style="width:100%">Ingrese
-								su DNI</label>
-						</div>
+					<div class="input-field col s12">
+						<i class="mdi-social-person-outline prefix"></i> <input
+							class="validate" id="user_dni" type="text"
+							onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+							maxlength=8 required aria-required="true" autofocus> <label
+							for="user_dni" data-error="Campo vacío" data-success="" class=""
+							style="width: 100%">Ingrese su DNI</label>
 					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<a id="logon" class="btn waves-effect waves-light col s12">Login</a>
-						</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<a id="logon" class="btn waves-effect waves-light col s12">Login</a>
 					</div>
+				</div>
 			</fieldset>
 		</form>
 
@@ -219,26 +202,27 @@ var gth_context_path = "<%=request.getContextPath()%>";
 		src="<c:url value='/resources/js/plugins/materialize.min.js'></c:url>"
 		type="text/javascript"></script>
 	<script
-		src="<c:url value='/resources/js/plugins/sweetalert/sweetalert.min.js'></c:url>"
-		type="text/javascript"></script>
-	<script
 		src="<c:url value='/resources/js/plugins/alertify/alertify.min.js'></c:url>"
 		type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.modal').modal();
 			$(".button-collapse").sideNav();
-			
-			$('.parallax').parallax();
+
+// 			$('.parallax').parallax();
 			/* resize the image(s) on page load */
-			resize_all_parallax();
+// 			resize_all_parallax();
+			
 		});
+		
+	
+		
 		var url = window.location.href;
 		var arr = url.split("/");
-		
-		$('#img1').css('background-image', 'url(' +gth_context_path +'/resources/img/cones3.png)');
 
-		
+		// 		$('#img1').css('background-image',
+		// 				'url(' + gth_context_path + '/resources/img/cones3.png)');
+
 		$(".programa").click(function() {
 			var link = gth_context_path + "/programa"
 
@@ -251,32 +235,39 @@ var gth_context_path = "<%=request.getContextPath()%>";
 			location.href = link;
 		})
 
-		$(".login").click(function() {
-			alertify.genericDialog ($('#loginForm')[0]).set('selector', 'input[type="text"]');
-		})
+		$(".login").click(
+				function() {
+					alertify.genericDialog($('#loginForm')[0]).set('selector',
+							'input[type="text"]');
+				})
 
 		$(".talleres").click(function() {
 			$.get("talleres", null, function(data, status) {
 				$("#space").html(data);
 			});
 		})
-		
-		$("#logon").click(function() {
-			var dni = $("#user_dni").val();
-			$.get("logon", {op:1,dni:dni}, function(data) {
-// 				alert(data);
-				var login = JSON.parse(data);
-		        if(login.op==1){
-		        	var link = gth_context_path + "/principal"
 
-					location.href = link;           
-		        }else{
-		        	$("#user_dni").next("label").attr('data-error','Número no registrado');
-		        	$("#user_dni").removeClass("valid");
-		        	$("#user_dni").addClass("invalid");
-		        }
-			});
-		});
+		$("#logon").click(
+				function() {
+					var dni = $("#user_dni").val();
+					$.get("logon", {
+						op : 1,
+						dni : dni
+					}, function(data) {
+						// 				alert(data);
+						var login = JSON.parse(data);
+						if (login.op == 1) {
+							var link = gth_context_path + "/principal"
+
+							location.href = link;
+						} else {
+							$("#user_dni").next("label").attr('data-error',
+									'Número no registrado');
+							$("#user_dni").removeClass("valid");
+							$("#user_dni").addClass("invalid");
+						}
+					});
+				});
 
 		$("#user_dni").keypress(function(e) {
 			console.log(e.which);
@@ -284,57 +275,61 @@ var gth_context_path = "<%=request.getContextPath()%>";
 				$("#logon").click();
 			}
 		});
-		
-	/* resize the image(s) on page resize */
-	$(window).on('resize', function(){
-		resize_all_parallax();
-	});
 
-	/* keep all of your resize function calls in one place so you don't have to edit them twice (on page load and resize) */
-	function resize_all_parallax() { 
-		var div_id = 'img1'; /* the ID of the div that you're resizing */
-		var img_w = 1000; /* the width of your image, in pixels */
-		var img_h = 548; /* the height of your image, in pixels */
-		resize_parallax(div_id,img_w,img_h);
-	}
- 
-	/* this resizes the parallax image down to an appropriate size for the viewport */
-	function resize_parallax(div_id,img_w,img_h) {
-		var div = $('#' + div_id);
-		var divwidth = div.width();
-		if (divwidth < 769) { var pct = (img_h/img_w) * 105; } 
-		else { var pct = 60; }
-		var newheight = Math.round(divwidth * (pct/180));
-		newheight = newheight  + 'px';
-		div.height(newheight);
-	}
+		/* resize the image(s) on page resize */
+// 		$(window).on('resize', function() {
+// 			resize_all_parallax();
+// 		});
 
-	alertify.genericDialog || alertify.dialog('genericDialog',function(){
-	    return {
-	        main:function(content){
-	            this.setContent(content);
-	        },
-	        setup:function(){
-	            return {
-	                focus:{
-	                    element:function(){
-	                        return this.elements.body.querySelector(this.get('selector'));
-	                    },
-	                    select:true
-	                },
-	                options:{
-	                    basic:true,
-	                    maximizable:false,
-	                    resizable:false,
-	                    padding:false
-	                }
-	            };
-	        },
-	        settings:{
-	            selector:undefined
-	        }
-	    };
-	});
+		/* keep all of your resize function calls in one place so you don't have to edit them twice (on page load and resize) */
+		// 		function resize_all_parallax() {
+		// 			var div_id = 'img1'; /* the ID of the div that you're resizing */
+		// 			var img_w = 1000; /* the width of your image, in pixels */
+		// 			var img_h = 548; /* the height of your image, in pixels */
+		// 			resize_parallax(div_id, img_w, img_h);
+		// 		}
+		/* this resizes the parallax image down to an appropriate size for the viewport */
+		// 		function resize_parallax(div_id, img_w, img_h) {
+		// 			var div = $('#' + div_id);
+		// 			var divwidth = div.width();
+		// 			if (divwidth < 769) {
+		// 				var pct = (img_h / img_w) * 105;
+		// 			} else {
+		// 				var pct = 60;
+		// 			}
+		// 			var newheight = Math.round(divwidth * (pct / 180));
+		// 			newheight = newheight + 'px';
+		// 			div.height(newheight);
+		// 		}
+		alertify.genericDialog
+				|| alertify.dialog('genericDialog', function() {
+					return {
+						main : function(content) {
+							this.setContent(content);
+						},
+						setup : function() {
+							return {
+								focus : {
+									element : function() {
+										return this.elements.body
+												.querySelector(this
+														.get('selector'));
+									},
+									select : true
+								},
+								options : {
+									basic : true,
+									maximizable : false,
+									resizable : false,
+									padding : false
+								}
+							};
+						},
+						settings : {
+							selector : undefined
+						}
+					};
+				});
 	</script>
 	<script
 		src="<c:url value='/resources/js/plugins/jquery-validation/jquery.validate.min.js'></c:url>"
@@ -342,6 +337,11 @@ var gth_context_path = "<%=request.getContextPath()%>";
 
 	<script
 		src="<c:url value='/resources/js/plugins/leanModal.js'></c:url>"
+		type="text/javascript"></script>
+
+
+	<script
+		src="<c:url value='/resources/js/plugins/dropify/js/dropify.min.js'></c:url>"
 		type="text/javascript"></script>
 
 	<script
@@ -369,10 +369,6 @@ var gth_context_path = "<%=request.getContextPath()%>";
 		type="text/javascript"></script>
 
 
-
-	<script
-		src="<c:url value='/resources/js/plugins/dropify/js/dropify.min.js'></c:url>"
-		type="text/javascript"></script>
 
 	<script
 		src="<c:url value='/resources/js/plugins/alertify/alertify.min.js'></c:url>"

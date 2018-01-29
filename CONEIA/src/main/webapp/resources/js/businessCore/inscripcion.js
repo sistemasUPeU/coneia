@@ -18,11 +18,22 @@ $(document).ready(function() {
 	$("#personal").hide();
 	$("#table-datatables").hide();
 
-	listar();
+	// listar();
 	autocomplete();
+	
 
 });
 
+$(window).on('resize', function() {
+	check()
+});
+function check(){
+	if ($(window).width() < 600) {
+		listarReporteMini();
+	}else{
+		listarReporte();
+	}
+}
 function autocomplete() {
 	$('input.career').autocomplete({
 		data : {
@@ -201,15 +212,15 @@ var pos = 0
 var change = 0;
 // Used events
 
+var drEvent = $('.dropify-event').dropify();
+drEvent.on('dropify.beforeClear', function(event, element) {
+	return confirm("Do you really want to delete \"" + element.filename
+			+ "\" ?");
+});
 
-//drEvent.on('dropify.beforeClear', function(event, element) {
-//	return confirm("Do you really want to delete \"" + element.filename
-//			+ "\" ?");
-//});
-//
-//drEvent.on('dropify.afterClear', function(event, element) {
-//	alert('File deleted');
-//});
+drEvent.on('dropify.afterClear', function(event, element) {
+	alert('File deleted');
+});
 
 $("#select").change(function() {
 	change = $("#select").val();
@@ -218,15 +229,15 @@ $("#select").change(function() {
 		$("#div_uni").addClass("hide");
 		$("#div_bus").removeClass("hide");
 		$("#importe_profesional").val('170')
-		costo_inscripcion = $("#importe_profesional").val(); //170 soles
-		console.log("costo profesional "+costo_inscripcion)
-
+		costo_inscripcion = $("#importe_profesional").val(); // 170 soles
+		console.log("costo profesional " + costo_inscripcion)
+		$(".select-dropdown").attr("name", "nombrecillo");
 	} else {
 		$("#div_bus").addClass("hide");
 		$("#div_uni").removeClass("hide");
 		$("#importe_alumno").val('140');
-		costo_inscripcion = $("#importe_alumno").val(); //140 soles
-
+		costo_inscripcion = $("#importe_alumno").val(); // 140 soles
+		$(".select-dropdown").attr("name", "nombrecillo");
 	}
 
 	$("#personal input").each(function() {
@@ -259,6 +270,7 @@ $("#select").change(function() {
 
 	});
 	$('.stepper').getStep($('.stepper').getActiveStep()).removeClass('wrong');
+	$(".select-dropdown").attr("name", "nombrecillo");
 
 });
 
@@ -274,7 +286,7 @@ $("input[name=group1]").click(function() {
 		$("#personal").hide();
 		$("#table-datatables").show();
 		$("#ml_importe").val('130');
-		costo_inscripcion = $("#ml_importe").val(); //130 soles -- delegacion
+		costo_inscripcion = $("#ml_importe").val(); // 130 soles -- delegacion
 		// getIdDetailEnrollment();
 	}
 });
@@ -374,7 +386,13 @@ function insertarPersona() {
 			console.log(JSON.stringify(arrayProperties));
 
 			console.log("inserta");
-			listarReporte();
+			
+			if ($(window).width() < 600) {
+				listarReporteMini();
+			}else{
+				listarReporte();
+			}
+			
 			contador++
 		} else {
 			console.log("no se insertara por segunda vez");
@@ -428,15 +446,19 @@ function validateFirstStep() {
 				console.log("again you");
 				console.log(validation);
 
-				if (arrayProperties.length >= 2) {
+				if (arrayProperties.length >= 10) {
 					alertify.confirm('Confirm Title',
-							'Segura que no desea agregar a alguien mas?',
+							'¿Seguro(a) que no desea agregar a alguien mas?',
 							function() {
 								alertify.success('Ok');
 								// $('#feedbacker').nextStep();
 								console.log("confirmacion message");
 
-								listarReporte();
+								if ($(window).width() < 600) {
+									listarReporteMini();
+								}else{
+									listarReporte();
+								}
 
 							}, function() {
 								alertify.error('Cancel')
@@ -509,8 +531,10 @@ function nextStepFirstHandler() {
 // return true;
 // }
 var open_modal = 0;
+
 function acceptHandlerModal() {
 	if (open_modal == 0) {
+
 		console.log("entro");
 
 		var nombre = $("#ml_name").val().toUpperCase();
@@ -531,11 +555,12 @@ function acceptHandlerModal() {
 		properties.celular = celular;
 		properties.tipo = 1;
 		properties.importe = costo_inscripcion;
-		
+
 		arrayProperties.push(properties);
 		var data = JSON.stringify(arrayProperties)
 		console.log(JSON.stringify(arrayProperties));
 	} else {
+
 		var nombremod = $("#ml1_name").val().toUpperCase();
 		var apellidomod = $("#ml1_last_name").val().toUpperCase();
 		var carreramod = $("#ml1_career").val();
@@ -543,7 +568,7 @@ function acceptHandlerModal() {
 		var dnimod = $("#ml1_dni").val();
 		var celularmod = $("#ml1_phone").val();
 		var correomod = $("#ml1_email").val();
-		
+
 		arrayProperties[pos].nombre = nombremod;
 		arrayProperties[pos].apellido = apellidomod;
 
@@ -560,9 +585,10 @@ function acceptHandlerModal() {
 		// arrayProperties.push(properties);
 		// var data = JSON.stringify(arrayProperties)
 		console.log(JSON.stringify(arrayProperties));
-		open_modal = 0;
+
 		$("#modal2").modal("close");
-		listar();
+		// listar();
+		listarCard();
 
 	}
 
@@ -572,18 +598,23 @@ function acceptHandlerModal() {
 	// $('.stepper').destroyFeedback();
 	// $('.stepper').getStep($('.stepper').getActiveStep()).addClass('wrong');
 
-	if (true) {
+	if (open_modal == 0) {
 		// $('.stepper').nextStep();
 		$("#modal1").modal('close');
 		$('.stepper').destroyFeedback();
 		$('.stepper').getStep($('.stepper').getActiveStep()).removeClass(
 				'wrong');
-		listar();
+		console.log("a punto de listar");
+		// listar();
+		crearCard();
 
 	} else {
 		// //
 		// $('.stepper').getStep($('.stepper').getActiveStep()).destroyFeedback();
-
+		open_modal = 0;
+		$('.stepper').destroyFeedback();
+		$('.stepper').getStep($('.stepper').getActiveStep()).removeClass(
+				'wrong');
 		console.log("herror handler");
 	}
 }
@@ -842,6 +873,10 @@ function listar() {
 
 	$("#data").append(s);
 	$("#data-table-row-grouping").dataTable({
+		responsive : {
+			details : false
+		},
+		// responsive: true,
 		"pageLength" : 3,
 		"bPaginate" : true,
 		"bLengthChange" : false,
@@ -861,6 +896,252 @@ function listar() {
 	$("input[type='search']").attr("name", "search");
 
 };
+
+var cont = 1;
+var contadiv = 1;
+var move = 1;
+var run = 0;
+function crearCard() {
+
+	if (cont == move) {
+		console.log("se crea un nuevo div  " + move);
+		console.log("numero div  " + contadiv);
+		var h = "";
+		h += '<div class="row" id="dash_' + contadiv + '">'
+		h += '</div>'
+
+		$("#ui-alert").append(h)
+		var esconder = contadiv - 1;
+		// $("#dash_" + esconder).hide();
+
+		var m = move - 1;
+		console.log("inicio" + m);
+		var b = "";
+
+		for (m; m < arrayProperties.length; m++) {
+			console.log("nro" + m);
+			console.log(arrayProperties[m].nombre)
+
+			b += '<div class="col s12 m6 l3">'
+
+			b += '		<div id="card-alert" class="card cyan darken-1">'
+			b += '		<div class="card-content white-text"  style="height: 66px;">'
+			b += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 21px;">'
+			b += arrayProperties[m].apellido + ', ' + arrayProperties[m].nombre
+					+ '</span>'
+			// b += ' <p>'+cont+'</p>'
+			b += '		</div>'
+			b += '		<div class="card-action cyan lighten-5">'
+			b += '			<div class="row">'
+			b += '			<div class="col s6 m6 l6 center">'
+			b += '	<a'
+				var run= m+1;
+			b += '		class="black-text btn waves-effect carta "onclick="eliminar('
+					+ run + ')"'
+			b += '		style="background-color: transparent;">'
+			b += '		<i class="large material-icons right "'
+			b += '		style="">delete_sweep</i>'
+			b += '	</a>'
+			b += '	</div>'
+			b += '	<div class="col s6 m6 l6 center">'
+			b += '	<a'
+			b += '		class="black-text btn waves-effect carta" onclick="modificar('
+					+ run + ')"'
+			b += '	style="background-color: transparent;"> <i'
+			b += '		class="large material-icons right "'
+			b += '		style="">mode_edit</i></a>'
+			b += '	</div>'
+
+			b += '	</div>'
+
+			b += '</div>'
+
+			b += '	</div>'
+
+			b += '</div>'
+
+			run++;
+		}
+
+		// $("#dash_" + contadiv).show();
+		$("#dash_" + contadiv).html(b);
+
+		move = cont + 8;
+		contadiv++;
+		cont++;
+		console.log("cont + " + cont + ", move " + move)
+		$('#pagination-long').html('');
+		var last = contadiv - 1;
+		$('#pagination-long').materializePagination(
+				{
+					align : 'center',
+					lastPage : last,
+					firstPage : 1,
+					useUrlParameter : false,
+					onClickCallback : function(requestedPage) {
+						console.log('Requested page from #pagination-long: '
+								+ requestedPage);
+						var back = requestedPage - 1
+						var forward = requestedPage + 1
+						$("#dash_" + back).hide();
+						$("#dash_" + forward).hide();
+						$("#dash_" + requestedPage).show();
+					}
+				});
+	
+
+	} else {
+
+		console.log("no es igual a los multilples de 8 " + cont);
+		var c = "";
+		var p = move - 9;
+		// var run = 1;
+		for (p; p < arrayProperties.length; p++) {
+			console.log("nro" + p);
+			console.log(arrayProperties[p].nombre)
+
+			c += '<div class="col s12 m3 l3">'
+
+			c += '		<div id="card-alert" class="card cyan darken-1">'
+			c += '		<div class="card-content white-text"  style="height: 66px;">'
+			c += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 21px;">'
+			c += arrayProperties[p].apellido + ', ' + arrayProperties[p].nombre
+					+ '</span>'
+			// b += ' <p>'+cont+'</p>'
+			c += '		</div>'
+			c += '		<div class="card-action cyan lighten-5">'
+			c += '			<div class="row">'
+			c += '			<div class="col s6 m6 l6 center">'
+			c += '	<a'
+				var run= p+1;
+			c += '		class="black-text btn waves-effect carta "onclick="eliminar('
+					+ run + ')"'
+			c += '		style="background-color: transparent;">'
+			c += '		<i class="large material-icons right "'
+			c += '		style="">delete_sweep</i>'
+			c += '	</a>'
+			c += '	</div>'
+			c += '	<div class="col s6 m6 l6 center">'
+			c += '	<a'
+			c += '		class="black-text btn waves-effect carta" onclick="modificar('
+					+ run + ')"'
+			c += '	style="background-color: transparent;"> <i'
+			c += '		class="large material-icons right "'
+			c += '		style="">mode_edit</i></a>'
+			c += '	</div>'
+
+			c += '	</div>'
+
+			c += '</div>'
+
+			c += '	</div>'
+
+			c += '</div>'
+
+			run++;
+		}
+		var mostrar = contadiv - 1;
+		$("#dash_" + mostrar).html(c);
+		// $("#dash_" + mostrar).show();
+		cont++;
+	}
+	
+	if (contadiv == 2) {
+
+	} else {
+		for (var j = 0; j < contadiv - 2; j++) {
+			console.log(j + " click")
+			$(".pagination.center-align li:last-child").click()
+		}
+	}
+
+	// $("#ui-alert").html(b);
+}
+
+function listarCard() {
+	var size = arrayProperties.length
+	var exitdiv = contadiv - 1;
+	var run = 1;
+	var limite = 1;
+	var p = 0;
+	var c = "";
+	for (var k = 0; k < exitdiv; k++) {
+		console.log("vamos por el div numero " + k);
+		c="";
+		if (k == 0) {
+			limite = p + 8;
+		} else {
+//			p = p + 2;
+			limite = p + 8;
+		}
+		console.log("justo a comenzar el recorrido " + p + " - " +limite+ " - " +size);
+		for (p; p < size; p++) {
+
+			console.log("mi bucle empieza en la pos " + p)
+
+			if (p == limite) {
+				console.log("este es el limite para comenzar un nuevo div"
+						+ limite);
+				var mos = k + 1;
+				console.log("numero del div listar " + mos)
+//				c="";
+//
+//				$("#dash_" + mos).html('');
+//				$("#dash_" + mos).html(c);
+				break;
+			} else {
+				console.log("no estamos en el limite");
+				
+				
+				c += '<div class="col s12 m3 l3">'
+
+				c += '		<div id="card-alert" class="card cyan darken-1">'
+				c += '		<div class="card-content white-text" style="height: 66px;">'
+				c += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 21px;">'
+				c += arrayProperties[p].apellido + ', '
+						+ arrayProperties[p].nombre + '</span>'
+				// b += ' <p>'+cont+'</p>'
+				c += '		</div>'
+				c += '		<div class="card-action cyan lighten-5">'
+				c += '			<div class="row">'
+				c += '			<div class="col s6 m6 l6 center">'
+				c += '	<a'
+
+				c += '		class="black-text btn waves-effect carta "onclick="eliminar('
+						+ run + ')"'
+				c += '		style="background-color: transparent;">'
+				c += '		<i class="large material-icons right "'
+				c += '		style="">delete_sweep</i>'
+				c += '	</a>'
+				c += '	</div>'
+				c += '	<div class="col s6 m6 l6 center">'
+				c += '	<a'
+				c += '		class="black-text btn waves-effect carta" onclick="modificar('
+						+ run + ')"'
+				c += '	style="background-color: transparent;"> <i'
+				c += '		class="large material-icons right "'
+				c += '		style="">mode_edit</i></a>'
+				c += '	</div>'
+
+				c += '	</div>'
+
+				c += '</div>'
+
+				c += '	</div>'
+
+				c += '</div>'
+			}
+
+			run++;
+		}
+		var mos = k + 1;
+		console.log("insertando en el div " + mos);
+		$("#dash_" + mos).html('');
+		$("#dash_" + mos).html(c);
+
+	}
+}
+
 function listarReporte() {
 
 	var a = "";
@@ -898,22 +1179,16 @@ function listarReporte() {
 	$("#reportTable").append(createTable2());
 	$("#data1").empty();
 	$("#data1").append(a);
-	// $("#data-table-row-grouping1").dataTable();
-	// $('#data-table-row-grouping1').dataTable( {
-	// "footerCallback": function( row, data, start, end, display ) {
-	// var api = this.api();
-	// $( api.column( 6 ).footer() ).html(
-	// api.column( 6 ).data().reduce( function ( a, b ) {
-	// return a + b;
-	// }, "S/. " )
-	// );
-	// }
-	// } );
+
 	$("#data-table-row-grouping1")
 			.dataTable(
 
 					{
-						"pageLength" : 5,
+						// responsive: true,
+						responsive : {
+							details : false
+						},
+						"pageLength" : 8,
 						"bPaginate" : true,
 						"bLengthChange" : false,
 						"bFilter" : true,
@@ -932,7 +1207,7 @@ function listarReporte() {
 								display) {
 							var api = this.api(), data;
 
-							//            
+							//
 							// //discount
 							var size = arrayProperties.length;
 							console.log(arrayProperties.length);
@@ -1002,9 +1277,97 @@ function listarReporte() {
 	// $('#data-table-row-grouping1').DataTable( );
 
 };
+function listarReporteMini() {
+
+	var a = "";
+	var cont = 1;
+	for ( var i in arrayProperties) {
+		console.log(arrayProperties[i].nombre)
+		a += "<tr><td  >";
+
+		a += arrayProperties[i].nombre;
+		a += ", ";
+		a += arrayProperties[i].apellido;
+		a += "</td><td>";
+		a += "$";
+		a += arrayProperties[i].importe;
+		a += "</td>";
+
+		a += "</tr>";
+		cont++;
+	}
+
+	$("#reportTable").empty();
+
+	$("#reportTable").append(createTable3());
+	$("#data2").empty();
+	$("#data2").append(a);
+
+	$("#data-table-row-grouping2")
+			.dataTable(
+
+					{
+						// responsive: true,
+						responsive : {
+							details : false
+						},
+						"pageLength" : 4,
+						"bPaginate" : true,
+						"bLengthChange" : false,
+						"bFilter" : true,
+						"bInfo" : false,
+						"bAutoWidth" : true,
+						"language" : {
+							// "lengthMenu": "Display _MENU_ records per page",
+							"zeroRecords" : "Nada para mostrar - disculpe",
+							"info" : "Mostrando página _pag_ de _pags_",
+							"infoEmpty" : "Ningún alumno agregado"
+						// "infoFiltered": "(filtered from _MAX_ total records)"
+						},
+						// "displayLength": 2,
+						// "lengthMenu": [ 2, 3, 6, 7, 8 ],
+						"footerCallback" : function(row, data, start, end,
+								display) {
+							var api = this.api(), data;
+
+							//
+							// //discount
+							var size = arrayProperties.length;
+							console.log(arrayProperties.length);
+
+							// Remove the formatting to get integer data for
+							// summation
+							var intVal = function(i) {
+								return typeof i === 'string' ? i.replace(
+										/[\$,]/g, '') * 1
+										: typeof i === 'number' ? i : 0;
+							};
+
+							// Total over all pages
+							total = api.column(1).data().reduce(function(a, b) {
+								return intVal(a) + intVal(b);
+							}, 0);
+
+							// Total over this page
+							pageTotal = api.column(1, {
+								page : 'current'
+							}).data().reduce(function(a, b) {
+								return intVal(a) + intVal(b);
+							}, 0);
+
+			
+							$('tr:eq(0) td:eq(0)', api.table().footer()).html(
+									"S/. " + total + ".00");
+			
+
+						}
+					});
+
+};
 
 function createTable1() {
-	var s = "<table id='data-table-row-grouping' class='bordered highlight centered' >";
+	// class='bordered highlight centered'
+	var s = "<table id='data-table-row-grouping' class='display nowrap' cellspacing='0' width='100%'>";
 	s += "<thead>";
 	s += "<tr>";
 	s += "<th>Nro</th>";
@@ -1025,18 +1388,17 @@ function createTable1() {
 };
 
 function createTable2() {
-	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered' >";
+	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered' cellspacing='0' width='100%'>";
 	d += "<thead>";
 	d += "<tr>";
 	d += "<th>Nro</th>";
-	// s += "<th class='hide' >N°</th>";
-	d += "<th>Nombres y Apellidos</th>";
+	d += "<th data-priority='1'>Nombres y Apellidos</th>";
 	d += "<th>Dni</th>";
 	d += "<th>Celular</th>";
 	d += "<th>Entidad</th>";
 	d += "<th>Carrera</th>";
 	d += "<th>Correo</th>";
-	d += "<th>Costo</th>";
+	d += "<th data-priority='2'>Costo</th>";
 	d += "</tr>";
 	d += "</thead>";
 	d += "<tfoot>";
@@ -1050,6 +1412,24 @@ function createTable2() {
 	d += "<td style='text-align:center' id='dis'></td></tr></tfoot>";
 
 	d += "<tbody id='data1'></tbody>";
+	d += "</table>";
+	return d;
+
+};
+function createTable3() {
+	var d = "<table id='data-table-row-grouping2' class='bordered highlight centered' cellspacing='0' width='100%'>";
+	d += "<thead>";
+	d += "<tr>";
+	d += "<th data-priority='1'>Nombres y Apellidos</th>";
+	d += "<th data-priority='2'>Costo</th>";
+	d += "</tr>";
+	d += "</thead>";
+	d += "<tfoot>";
+
+	d += "<tr><th colspan='1' style='text-align:right' >Total:</th>";
+	d += "<td style='text-align:center' id='dis'></td></tr></tfoot>";
+
+	d += "<tbody id='data2'></tbody>";
 	d += "</table>";
 	return d;
 
@@ -1286,7 +1666,10 @@ function eliminar(id) {
 	console.log(arrayProperties[id - 1].nombre);
 	arrayProperties.splice(id - 1, 1)
 	console.log(arrayProperties);
-	listar();
+	// listar();
+	listarCard();
+//	move=move-1;
+	cont = cont-1;
 
 }
 function modificar(id) {
@@ -1392,3 +1775,24 @@ $("#modal_edit_change").click(function() {
 	});
 
 });
+
+$("#cleaner").click(
+		function() {
+			alertify.confirm('Eliminar todo',
+					'¿Seguro(a) que desea eliminar todo?', function() {
+						alertify.success('Ok');
+						// $('#feedbacker').nextStep();
+						console.log("confirmacion message");
+						arrayProperties = new Array();
+						$("#pagination-long").html("");
+						$("#ui-alert").html("");
+//						crearCard();
+						cont = 1;
+						move=1;
+						contadiv = 1;
+					}, function() {
+						alertify.error('Cancel')
+
+						// falta una funcion para retroceder
+					});
+		})

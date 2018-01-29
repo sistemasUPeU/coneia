@@ -32,15 +32,15 @@ public class LoginController {
 	private static final Persona p = new Persona();
 	private static Gson gson = new Gson();
 	Map<String, Object> personaMap = new HashMap<>();
-	Map<String, Object> maleta = null;
-//	final Session s = HibernateUtils.getSessionFactory();
+	List<Map<String, Object>> privilegioLista = null;
+
+	// final Session s = HibernateUtils.getSessionFactory();
 	@RequestMapping(value = "/logon")
 	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String dni = request.getParameter("dni");
 		HttpSession session = request.getSession(true);
-		
-		Session s = HibernateUtils.getSessionFactory().openSession();
+
 		System.out.println("login controller");
 
 		int x = 0;
@@ -62,22 +62,11 @@ public class LoginController {
 					Map<String, Object> datos = new HashMap<>();
 
 					int idrol = Integer.parseInt(personaMap.get("idrol").toString());
-					Query privilegios = s.createNamedQuery("MostrarPrivilegios");
-					Rol r = s.get(Rol.class, idrol);
-					privilegios.setParameter("rol", r);
 
-					@SuppressWarnings("unchecked")
-					List<DetallePrivilegio> liston = privilegios.getResultList();
-					List<Map<String, Object>> privilegioListon = new ArrayList<>();
-					for (int j = 0; j < liston.size(); j++) {
-						maleta = new HashMap<>();
-						maleta.put("nombre", liston.get(j).getPrivilegio().getNombre());
-						System.out.println(liston.get(j).getPrivilegio().getNombre());
-						maleta.put("url", liston.get(j).getPrivilegio().getUrl());
-						maleta.put("icons", liston.get(j).getPrivilegio().getIcons());
-						privilegioListon.add(maleta);
-					}
-					session.setAttribute("listaPrivilegios", privilegioListon);
+					privilegioLista = new ArrayList<>();
+					privilegioLista = pd.listarPrivilegios(idrol);
+
+					session.setAttribute("listaPrivilegios", privilegioLista);
 
 					x = 1;
 					datos.put("op", x);
@@ -85,7 +74,7 @@ public class LoginController {
 					datos.put("dni", personaMap.get("dni"));
 					datos.put("rol", personaMap.get("rol"));
 					datos.put("idrol", personaMap.get("idrol"));
-					datos.put("listaPrivilegios", privilegioListon);
+					datos.put("listaPrivilegios", privilegioLista);
 					System.out.println(datos);
 					System.out.println(gson.toJson(datos));
 					out.println(gson.toJson(datos));

@@ -40,7 +40,7 @@ import pe.edu.upeu.CONEIA.service.InscripcionService;
 public class InscripcionController {
 	Gson gs =  new Gson();
 	public List<String> archi = new ArrayList<>();
-	private static String UPLOADED_FOLDER = "C:\\Users\\Harold\\git\\coneia4\\CONEIA\\src\\main\\webapp\\resources\\files";
+	private static String UPLOADED_FOLDER = "C:\\Users\\Harold\\git\\coneia5\\CONEIA\\src\\main\\webapp\\resources\\files";
 	
 	@Autowired
 	private InscripcionService insService;

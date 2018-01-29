@@ -1,11 +1,14 @@
 <aside id="left-sidebar-nav">
 	<input type="hidden" value="${sessionScope.dni}" id="dni" />
-	<ul id="slide-out" style="width: 15%;"
+	<ul id="slide-out"
 		class="side-nav fixed leftside-navigation dataAside">
 	</ul>
 	<a href="#" data-activates="slide-out"
-		class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only green accent-3"><i
-		class="mdi-navigation-menu"></i></a>
+		class="sidebar-collapse button-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only green accent-3"><i
+		class="material-icons">menu</i></a>
+
+
+
 	<div class="input-field col s12 l12">
 		<input id="trab" type="hidden" class="validate">
 	</div>
@@ -146,6 +149,13 @@
 										onClose : function(el) {
 											// 											alert('Closed');
 										} // Callback for Collapsible close
+									});
+									$('.button-collapse').sideNav({
+										menuWidth : 320, // Default is 300
+										edge : 'left', // Choose the horizontal origin
+										closeOnClick : false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+										draggable : true
+									// Choose whether you can drag to open on touch screens,
 									});
 								}
 							});

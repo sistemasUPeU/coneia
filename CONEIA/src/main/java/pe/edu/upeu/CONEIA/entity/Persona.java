@@ -22,7 +22,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "persona", catalog = "dbconeia")
 
-@NamedQueries({@NamedQuery( name="ListarUser" , query="from Persona p where p.dni=:dni")})
+@NamedQueries({@NamedQuery( name="ListarUser" , query="from Persona p where p.dni=:dni"),
+	@NamedQuery( name="ListarUser1" , query="select d from DetalleInscripcion d join d.persona a join d.inscripcion c where a.dni = :dni and c.estado = 1")
+})
+
 public class Persona implements java.io.Serializable {
 
 	private Integer idpersona;

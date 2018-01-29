@@ -1,12 +1,16 @@
 package pe.edu.upeu.CONEIA.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,6 +35,9 @@ import pe.edu.upeu.CONEIA.service.MailService;
 @Controller
 @RequestMapping("/admin")
 public class AdministradorController {
+	
+	private static String UPLOADED_FOLDER = "C:\\Users\\Harold\\git\\coneia5\\CONEIA\\src\\main\\webapp\\resources\\files";
+	
 	@Autowired
 	private InscripcionService insService;
 
@@ -48,6 +55,13 @@ public class AdministradorController {
 		return "pendiente";
 	}
 
+	@RequestMapping("/aprove")
+	public String confirmados(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		// ModalAndView m = new ModalAndView()
+
+		return "aceptado";
+	}
 	@RequestMapping("/responsew")
 	public @ResponseBody String responsew(HttpServletRequest request, HttpServletResponse response) {
 
@@ -356,5 +370,59 @@ public class AdministradorController {
 
 		return gs.toJson(peopleWaitingDelegacion);
 	}
+	
+	@RequestMapping(value = "/viewdoc")
+	public void jarchiv1(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		ServletContext cntx = request.getServletContext();
+		// Get the absolute path of the image
+		// String filename = cntx.getRealPath("/WEB-INF/dddd.png");
+//		PrintWriter out = response.getWriter();
+
+//		List<Map<String, Object>> result1 = rd.cargarMotivo("CTO-001841");
+//		System.out.println(gson.toJson(result1));
+//		System.out.println();
+
+//		String nom = (String) result1.get(0).get("NO_ARCHIVO");
+//		String tipo = (String) result1.get(0).get("TI_ARCHIVO");
+		System.out.println("controller cargar archivo");
+		String nombre = request.getParameter("nombre");
+		
+		String filename = cntx.getRealPath("/resources/files/" + nombre);
+//		String filename = UPLOADED_FOLDER+"\\" + nombre;
+//		 String filenam1e ="E:\\TRABAJO\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\gth\\WEB-INF\\david\\"+nom;
+
+		System.out.println(nombre + "//" + "//" + filename);
+		
+		
+		
+//		System.out.println(nom + "//" + "//" + filenam1e);
+//		out.println(filename);
+		// retrieve mimeType dynamically
+		String mime = cntx.getMimeType(filename);
+		if (mime == null) {
+			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			return;
+		}
+
+		response.setContentType(mime);
+		File file = new File(filename);
+		response.setContentLength((int) file.length());
+
+		FileInputStream in = new FileInputStream(file);
+		OutputStream out = response.getOutputStream();
+		System.out.println(out);
+		// Copy the contents of the file to the output stream
+		byte[] buf = new byte[1024];
+		int count = 0;
+		while ((count = in.read(buf)) >= 0) {
+			out.write(buf, 0, count);
+		}
+		out.close();
+		in.close();
+
+	}
+	
+	
+	
 
 }

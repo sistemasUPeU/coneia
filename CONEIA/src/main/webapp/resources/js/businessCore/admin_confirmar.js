@@ -20,36 +20,42 @@ function confirmarModal(id) {
 			console.log("entro" + tipo[i].nro);
 			var m = "";
 			m += '	<p class="card-title grey-text text-darken-4">'
-				
+
 			m += '	<i class="small material-icons prefix small cyan-text text-darken-2"'
-			m += '	style="margin-right: 6%; vertical-align: -8px;">person</i>' + tipo[i].nombre
+			m += '	style="margin-right: 6%; vertical-align: -8px;">person</i>'
+					+ tipo[i].nombre
 			m += '	</p>'
 			m += '<p>'
 			m += '	<i'
 			m += '		class="small material-icons prefix small cyan-text text-darken-2"'
-			m += '		style="margin-right: 6%;vertical-align: -8px;">person_outline</i>' + tipo[i].apellidos
+			m += '		style="margin-right: 6%;vertical-align: -8px;">person_outline</i>'
+					+ tipo[i].apellidos
 			m += '</p>'
 			m += '<p>'
 			m += '<i'
 			m += '	class="small material-icons prefix small cyan-text text-darken-2"'
-			m += '	style="margin-right: 6%;vertical-align: -8px;">perm_identity</i>' + tipo[i].dni
+			m += '	style="margin-right: 6%;vertical-align: -8px;">perm_identity</i>'
+					+ tipo[i].dni
 			m += '</p>'
 			m += '<p>'
 			m += '	<i'
 			m += '	class="small material-icons prefix small cyan-text text-darken-2"'
-			m += 'style="margin-right: 6%;vertical-align: -8px;">attach_money</i>' + tipo[i].importe
-			
+			m += 'style="margin-right: 6%;vertical-align: -8px;">attach_money</i>'
+					+ tipo[i].importe
+
 			m += '</p>'
 
 			$("#column1").html(m);
 			var n = "";
 			n += '<p>'
 			n += '<i class="small material-icons prefix small cyan-text text-darken-2"'
-			n += 'style="margin-right: 6%;vertical-align: -8px;">phone_android</i>' + tipo[i].celular
+			n += 'style="margin-right: 6%;vertical-align: -8px;">phone_android</i>'
+					+ tipo[i].celular
 			n += '	</p>'
 			n += '<p>'
 			n += '<i class="small material-icons prefix small cyan-text text-darken-2"'
-			n += '	style="margin-right: 6%;vertical-align: -8px;">business</i>' + tipo[i].entidad
+			n += '	style="margin-right: 6%;vertical-align: -8px;">business</i>'
+					+ tipo[i].entidad
 			n += '	</p>'
 			n += '	<p>'
 			n += '	<i'
@@ -65,7 +71,8 @@ function confirmarModal(id) {
 			n += '</p>'
 			n += '<p>'
 			n += '<i class="small material-icons prefix small cyan-text text-darken-2"'
-			n += '	style="margin-right: 6%;vertical-align: -8px;">credit_card</i>' + tipo[i].nro
+			n += '	style="margin-right: 6%;vertical-align: -8px;">credit_card</i>'
+					+ tipo[i].nro
 			n += '	</p>'
 
 			$("#column2").html(n);
@@ -76,6 +83,7 @@ function confirmarModal(id) {
 			u += '	style="width: 90%; height: 380px; "'
 			u += 'src="' + coneia_context_path + '/resources/files/'
 					+ tipo[i].url + '" '
+
 			u += 'alt="sample"'
 			u += 'data-caption="Esc para volver" >'
 
@@ -155,7 +163,6 @@ function listar() {
 						// console.log(jQuery.type(tipo));
 						console.log(jQuery.type(data));
 						console.log("punto");
-
 
 						var h = "";
 						var rounds = 0
@@ -401,7 +408,6 @@ $("#enviarConfirmacion").click(
 								$(".lean-overlay").css("opacity", "0");
 
 								actualizarEstadoInscripcion(idinscripcion, 1);
-						
 
 							});
 				} else {
@@ -422,7 +428,7 @@ $("#enviarObservacion").click(
 			back = 1;
 			var mensaje = $("#message").val();
 			$("#falseway").addClass("hide");
-//			$("#trueway").removeClass("hide");
+			// $("#trueway").removeClass("hide");
 
 			$.get(coneia_context_path + "/admin/getemails", {
 				op : 2,
@@ -439,7 +445,6 @@ $("#enviarObservacion").click(
 								$("#modal3").modal('close');
 								$(".lean-overlay").css("opacity", "0");
 								actualizarEstadoInscripcion(idinscripcion, 2);
-							
 
 							});
 
@@ -533,7 +538,7 @@ function showTable() {
 		a += "</td><td>";
 		a += arrayProperties[i].correo;
 		a += "</td><td>";
-		a += arrayProperties[i].importe; //deberia ser 130 soles
+		a += arrayProperties[i].importe; // deberia ser 130 soles
 		// a += costo_inscripcion;
 		a += "</td>";
 
@@ -652,7 +657,7 @@ function showTable() {
 	$('.materialboxed').materialbox();
 	$("#modal4").modal('open');
 	$("#trueway_del").removeClass('hide');
-	
+
 	// $('#data-table-row-grouping1').DataTable( );
 
 };
@@ -725,8 +730,6 @@ $("#enviarConfirmacion_del").click(
 
 								actualizarEstadoInscripcion(idinscripcion, 1);
 
-						
-
 							});
 				} else {
 					alertify.alert('Alert Title',
@@ -746,7 +749,7 @@ $("#enviarObservacion_del").click(
 			back = 2;
 			var mensaje = $("#message_del").val();
 			$("#falseway_del").addClass("hide");
-//			$("#trueway_del").removeClass("hide");
+			// $("#trueway_del").removeClass("hide");
 
 			$.get(coneia_context_path + "/admin/getemails", {
 				op : 2,
@@ -763,8 +766,6 @@ $("#enviarObservacion_del").click(
 								$("#modal4").modal('close');
 								// $(".lean-overlay").css("opacity", "0");
 								actualizarEstadoInscripcion(idinscripcion, 2);
-
-						
 
 							});
 				}

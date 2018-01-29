@@ -247,8 +247,6 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 		Session s = HibernateUtils.getSessionFactory().openSession();
 		// final Session s = HibernateUtils.getSessionFactory();
 		try {
-			Map<String, Object> map = null;
-			Map<String, Object> map1 = null;
 
 			// Query query0 = s.createQuery("select d from DetalleInscripcion d join
 			// d.persona a where a.tipo = 1");

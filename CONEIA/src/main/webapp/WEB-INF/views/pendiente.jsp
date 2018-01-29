@@ -4,11 +4,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%@include file="../../../jspf/general.jspf"%>
 <link
 	href="<c:url value='http://fonts.googleapis.com/icon?family=Material+Icons'></c:url>"
 	rel="stylesheet" type="text/css" />
+<style>
+div.container {
+	max-width: 1200px
+}
 
+.special_row {
+	width: 40%;
+	margin-top: 7%;
+	margin-bottom: 7%;
+}
+
+@media only screen and (max-width: 600px) {
+	.special_row {
+		width: 90%;
+		padding: 0px;
+		margin-top: 7%;
+		margin-bottom: 7%;
+	}
+	#slide-out {
+		width : 30%;		
+	}
+}
+</style>
 
 </head>
 <body>
@@ -25,7 +48,7 @@
 
 				<div class="container" style="width: 95%;">
 					<div class="section">
-						<div class="container" style="width: 40%;">
+						<div class="container special_row">
 							<div class="row">
 								<div class="input-field col s12">
 									<i class="material-icons prefix">lock</i> <select
@@ -138,66 +161,11 @@
 							<!-- 								</div> -->
 							<!-- 							</div> -->
 						</div>
-						<!-- start blog list -->
-						<!-- 						<div id="blog-posts" class="row"> -->
-						<!-- 							<div class="blog-sizer"></div> -->
-
-						<!-- 							<div class="blog"> -->
-						<!-- 								<div class="card"> -->
-						<!-- 									<div class="card-image waves-effect waves-block waves-light"> -->
-						<!-- 										<a href="#"><img -->
-						<%-- 											src="<c:url value="/resources/images/avatar.jpg"/>" --%>
-						<!-- 											alt="blog-img"> </a> -->
-						<!-- 									</div> -->
-						<!-- 									<ul class="card-action-buttons"> -->
-						<!-- 										<li><a -->
-						<!-- 											class="btn-floating waves-effect waves-light green accent-4"><i -->
-						<!-- 												class="mdi-social-share"></i></a></li> -->
-						<!-- 										<li><a -->
-						<!-- 											class="btn-floating waves-effect waves-light light-blue"><i -->
-						<!-- 												class="mdi-action-info activator"></i></a></li> -->
-						<!-- 									</ul> -->
-						<!-- 									<div class="card-content"> -->
-						<!-- 										<p class="row"> -->
-						<!-- 											<span class="left"><a href="">Web Design</a></span> <span -->
-						<!-- 												class="right">18th June, 2015</span> -->
-						<!-- 										</p> -->
-						<!-- 										<h4 class="card-title grey-text text-darken-4"> -->
-						<!-- 											<a href="#" class="grey-text text-darken-4">Material -->
-						<!-- 												Design Card - For Blog Post Article</a> -->
-						<!-- 										</h4> -->
-						<!-- 										<p class="blog-post-content">Lorem ipsum dolor sit amet, -->
-						<!-- 											consectetur adipisicing elit.</p> -->
-						<!-- 										<div class="row"> -->
-						<!-- 											<div class="col s2"> -->
-						<%-- 												<img src="<c:url value="/resources/images/avatar.jpg"/>" --%>
-						<!-- 													alt="" class="circle responsive-img valign profile-image"> -->
-						<!-- 											</div> -->
-						<!-- 											<div class="col s9"> -->
-						<!-- 												By <a href="#">John Doe</a> -->
-						<!-- 											</div> -->
-						<!-- 										</div> -->
-						<!-- 									</div> -->
-						<!-- 									<div class="card-reveal"> -->
-						<!-- 										<span class="card-title grey-text text-darken-4"><i -->
-						<!-- 											class="mdi-navigation-close right"></i> Apple MacBook Pro -->
-						<!-- 											A1278 13"</span> -->
-						<!-- 										<p>Here is some more information about this blog that is -->
-						<!-- 											only revealed once clicked on.</p> -->
-						<!-- 									</div> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-
-
-
-
-
-
-
-
-
-
-
+						<br>
+						<br>
+						<br>
+						<br>
+	
 
 
 
@@ -354,7 +322,8 @@
 
 									</div>
 
-									<div class="container hide" id="falseway_del" style="width: 45%">
+									<div class="container hide" id="falseway_del"
+										style="width: 45%">
 
 										<a class="waves-effect waves-light btn left indigo"
 											style="margin-right: 10%;" id="back_del"><i
@@ -423,23 +392,7 @@
 		src="<c:url value='/resources/js/businessCore/admin_confirmar.js'></c:url>"
 		type="text/javascript"></script>
 
-	<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-	<!-- 	<script type="text/javascript" src="js/plugins.min.js"></script> -->
-	<!--custom-script.js - Add your own theme custom JS-->
-	<!-- 	<script type="text/javascript" src="js/custom-script.js"></script> -->
-	<!-- magnific-popup -->
 
-
-	<script type="text/javascript">
-		/*
-		 * Masonry container for blog page
-		 */
-	</script>
-	<script type="text/javascript">
-		/*
-		 * Masonry container for Gallery page
-		 */
-	</script>
 
 </body>
 </html>
