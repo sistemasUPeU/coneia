@@ -11,13 +11,13 @@ var idinscripcion = 0;
 var arrayProperties = new Array();
 var back = 0;
 function confirmarModal(id) {
-	console.log(id);
+	
 
 	idinscripcion = id;
 	for (var i = 0; i < tipo.length; i++) {
 		if (tipo[i].idinscripcion == idinscripcion) {
 
-			console.log("entro" + tipo[i].nro);
+			
 			var m = "";
 			m += '	<p class="card-title grey-text text-darken-4">'
 
@@ -97,7 +97,7 @@ function confirmarModal(id) {
 	$("#div_message label").addClass("active");
 	$("#modal3").modal('open');
 	$("#trueway").removeClass('hide');
-	// $("#modal1").modal('open');
+
 }
 
 $('#modal3').modal({
@@ -111,7 +111,6 @@ $('#modal3').modal({
 	ready : function(modal, trigger) { // Callback for Modal open. Modal and
 		// trigger parameters available.
 
-		console.log(modal, trigger);
 
 	},
 	complete : function() {
@@ -130,7 +129,6 @@ $('#modal4').modal({
 	ready : function(modal, trigger) { // Callback for Modal open. Modal and
 		// trigger parameters available.
 
-		console.log(modal, trigger);
 
 	},
 	complete : function() {
@@ -141,12 +139,12 @@ $('#modal4').modal({
 
 $("#get_selected").change(function() {
 	change = $("#get_selected").val();
-	console.log($("#get_selected").val());
+	
 	if (change == 1) {
-		console.log("es personal");
+		
 		listar();
 	} else {
-		console.log("es delegacion");
+		
 		listarDelegacion();
 
 	}
@@ -158,13 +156,9 @@ function listar() {
 			.get(
 					coneia_context_path + "/admin/responsew",
 					function(data) {
-						console.log(data);
+						
 						tipo = JSON.parse(data);
-						console.log(tipo);
-						// console.log(JSON.parse(data)[0])
-						// console.log(jQuery.type(tipo));
-						console.log(jQuery.type(data));
-						console.log("punto");
+						
 
 						var h = "";
 						var rounds = 0
@@ -174,10 +168,9 @@ function listar() {
 							rounds = tipo.length;
 						}
 
-						console.log("numero de repeticiones" + rounds);
+					
 						for (var i = 0; i < rounds; i++) {
-							console.log(i);
-							console.log(tipo[i].idinscripcion);
+						
 
 							h += '<div class="col s12 m6 l4">'
 							h += '	<div id="profile-card" class="card">'
@@ -214,31 +207,7 @@ function listar() {
 
 						$("#pizarra").html(h);
 
-						// / / $.each(data, function(index, contenido) {
-						// / / console.log(index);
-						// / / console.log(contenido.nombre);
-						// / console.log(contenido.inscripcion);
-						// / / console.log(jQuery.type(contenido))
-						// / / });
-
-						// / / $.each(tipo, function (index, obj){
-						// / $("#tablita
-						// / /
-						// tr:last").after("<tr><td>"+obj.idtipo+"</td><td>"+obj.nombre+"</td><td><button
-						// / / type='button' class='btn btn-warning'
-						// / / onclick='modificarTipo("+obj.idtipo+")'>"+
-						// / "<i class='fa fa-pencil'
-						// / /
-						// aria-hidden='true'></i></button></td><td><button
-						// / / type='button'
-						// / / class='btn btn-danger'
-						// / / onclick='eliminarTipo("+obj.idtipo+")'><i
-						// / / class='fa fa-trash'
-						// / / aria-hidden='true'></i></a></td></tr>");
-						// / /
-						// / console.log(obj.persona.nombre)
-						// / / console.log(obj.persona)
-						// / / });
+		
 
 					});
 }
@@ -249,23 +218,18 @@ function listarDelegacion() {
 			.get(
 					coneia_context_path + "/admin/resdelegacion",
 					function(data) {
-						console.log("data, lista delegacion" + data);
+						
 						tipodel = JSON.parse(data);
-						console.log("gson data, lista delegacion" + tipodel);
-						// console.log(JSON.parse(data)[0])
-						// console.log(jQuery.type(tipo));
-						console.log(jQuery.type(data));
-						console.log("punto delegacion");
+						
 						var idins = 0;
-						// new Array();
-						// var array = new Array();
+					
 						var arrayid = [];
 
 						var arrayfecha = [];
-						console.log(tipo.length);
+						
 						for (var i = 0; i < tipodel.length; i++) {
-							// console.log("array begin>>> " + array);
-							console.log("pos>" + i);
+							
+						
 							// array.push(i);
 							if (i == 0) {
 								idins = tipodel[i].idinscripcion;
@@ -282,8 +246,6 @@ function listarDelegacion() {
 							}
 						}
 
-						console.log("array>>> " + arrayid);
-						console.log("array>>> " + arrayid.length);
 						var h = "";
 						var rounds1 = 0
 						if (arrayid.length > 12) {
@@ -291,8 +253,7 @@ function listarDelegacion() {
 						} else {
 							rounds1 = arrayid.length;
 						}
-						console.log("numero de repeticiones delegacion"
-								+ rounds1);
+				
 						for (var i = 0; i < rounds1; i++) {
 
 							h += '<div class="col s12 m6 l4">'
@@ -337,7 +298,7 @@ function listarDelegacion() {
 }
 
 function confirmarModalDelegacion(id) {
-	console.log(id);
+
 	idinscripcion = id;
 
 	arrayProperties = new Array();
@@ -361,8 +322,7 @@ function confirmarModalDelegacion(id) {
 
 			arrayProperties.push(properties);
 
-			console.log("recorrido " + i + " persona"
-					+ JSON.stringify(arrayProperties));
+		
 		}
 	}
 
@@ -394,21 +354,20 @@ $("#enviarConfirmacion").click(
 			$("#trueway").addClass("hide");
 			back = 1;
 			var mensaje = "";
-			console.log(mensaje);
-			console.log("mostrando loader");
+		
 			
 			$('#loader-wrap').fadeIn('fast');
 			$('.progress').fadeIn('fast');
 	
 			
-			console.log("ya comenzo a enviar email");
+		
 			$.get(coneia_context_path + "/admin/getemails", {
 				op : 1,
 				idinscripcion : idinscripcion,
 				sms : mensaje,
 				opcion : 1
 			}, function(data, status) {
-				console.log("respuesta emails script> " + data);
+				
 				
 //				----mostrando loader
 			
@@ -437,7 +396,6 @@ $("#enviarConfirmacion").click(
 				}
 			})
 
-			// $("#message").focus();
 		});
 
 $("#enviarObservacion").click(
@@ -445,7 +403,7 @@ $("#enviarObservacion").click(
 			back = 1;
 			var mensaje = $("#message").val();
 			$("#falseway").addClass("hide");
-			// $("#trueway").removeClass("hide");
+			
 			$('#loader-wrap').fadeIn('fast');
 			$('.progress').fadeIn('fast');
 
@@ -455,7 +413,7 @@ $("#enviarObservacion").click(
 				sms : mensaje,
 				opcion : 1
 			}, function(data, status) {
-				console.log("respuesta emails script> " + data);
+				
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
 					$('#loader-wrap').delay(1000).fadeOut('fast');
@@ -472,7 +430,7 @@ $("#enviarObservacion").click(
 				}
 			})
 
-			// $("#message").focus();
+	
 		});
 
 function actualizarEstadoInscripcion(idinscripcion, estado) {
@@ -481,7 +439,7 @@ function actualizarEstadoInscripcion(idinscripcion, estado) {
 		idinscripcion : idinscripcion,
 		estado : estado
 	}, function(data, status) {
-		console.log("respuesta emails script> " + data);
+		
 		if (data == '1') {
 
 			alertify.alert('Alert Title', 'Inscripcion aprobada', function() {
@@ -532,7 +490,6 @@ function showTable() {
 				"Evaluación de Inscripción: Delegación Nº "
 						+ arrayProperties[i].idinscripcion);
 
-		// u += '<div id="img_open" class="material-placeholder">'
 		u = "";
 		u += '<img class="materialboxed" '
 		u += '	style="width: 90%; height: 380px; "'
@@ -572,17 +529,7 @@ function showTable() {
 	$("#tablegroup").append(createTable2());
 	$("#data1").empty();
 	$("#data1").append(a);
-	// $("#data-table-row-grouping1").dataTable();
-	// $('#data-table-row-grouping1').dataTable( {
-	// "footerCallback": function( row, data, start, end, display ) {
-	// var api = this.api();
-	// $( api.column( 6 ).footer() ).html(
-	// api.column( 6 ).data().reduce( function ( a, b ) {
-	// return a + b;
-	// }, "S/. " )
-	// );
-	// }
-	// } );
+
 	$("#data-table-row-grouping1")
 			.dataTable(
 
@@ -609,7 +556,7 @@ function showTable() {
 							//            
 							// //discount
 							var size = arrayProperties.length;
-							console.log(arrayProperties.length);
+						
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -709,7 +656,7 @@ $("#enviarConfirmacion_del").click(
 			$("#trueway_del").addClass("hide");
 			back = 2;
 			var mensaje = "";
-			console.log(mensaje);
+			
 			$('#loader-wrap1').fadeIn('fast');
 			$('.progress').fadeIn('fast');
 		
@@ -719,7 +666,7 @@ $("#enviarConfirmacion_del").click(
 				sms : mensaje,
 				opcion : 2
 			}, function(data, status) {
-				console.log("respuesta emails script> " + data);
+				
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
 					$('#loader-wrap1').delay(1000).fadeOut('fast');
@@ -728,7 +675,7 @@ $("#enviarConfirmacion_del").click(
 							function() {
 								alertify.success('Ok');
 								$("#modal4").modal('close');
-								// $(".lean-overlay").css("opacity", "0");
+							
 
 								actualizarEstadoInscripcion(idinscripcion, 1);
 
@@ -743,7 +690,7 @@ $("#enviarConfirmacion_del").click(
 				}
 			})
 
-			// $("#message").focus();
+			
 		});
 
 $("#enviarObservacion_del").click(
@@ -760,7 +707,7 @@ $("#enviarObservacion_del").click(
 				sms : mensaje,
 				opcion : 2
 			}, function(data, status) {
-				console.log("respuesta emails script> " + data);
+				
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
 					$('#loader-wrap1').delay(1000).fadeOut('fast');
@@ -769,12 +716,12 @@ $("#enviarObservacion_del").click(
 							function() {
 								alertify.success('Ok');
 								$("#modal4").modal('close');
-								// $(".lean-overlay").css("opacity", "0");
+							
 								actualizarEstadoInscripcion(idinscripcion, 2);
 
 							});
 				}
 			})
 
-			// $("#message").focus();
+		
 		});

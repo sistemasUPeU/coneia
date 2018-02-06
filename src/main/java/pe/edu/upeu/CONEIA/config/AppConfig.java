@@ -72,15 +72,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		return multipartResolver;
 	}
 
-//	@Bean
-//	public InscripcionDAO getInscripcionDAO() {
-//		return new InscripcionDaoImpl();
-//	}
-//
-//	@Bean
-//	public DetalleInscripcionDAO getDetalleInscripcionDAO() {
-//		return new DetalleInscripcionDaoImpl();
-//	}
 
 	@Bean
 	public JavaMailSender getMailSender() {

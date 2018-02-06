@@ -47,69 +47,9 @@ public class InscripcionController {
 
 	@Autowired
 	private DetalleInscripcionService detalleService;
-	// @Autowired
-	// private DetalleInscripcionService detInsService;
-
-	@RequestMapping("/")
-	public @ResponseBody String main(HttpServletRequest request, HttpServletResponse response) {
-		Gson g = new Gson();
-
-		// TODO Auto-generated method stub
-
-		List<Map<String, Object>> ret = new ArrayList<>();
-		Map<String, Object> alq = null;
-		List<String> lista = new ArrayList<>();
-		List<String> x = new ArrayList<>();
-		lista.add("Juan");
-		lista.add("Pepe");
-		lista.add("Pedro");
-		lista.add("Tito");
-		lista.add("Lucas");
-		lista.add("Marcos");
-		lista.add("Santiago");
-		lista.add("Usil");
-		lista.add("San Marcos");
-		lista.add("UpEu");
-		lista.add("Cayetano");
-		lista.add("Hala Madrid");
-
-		x.add("123");
-		x.add("789");
-		x.add("456");
-		x.add("159");
-		x.add("753");
-		x.add("486");
-		x.add("426");
-		x.add("942");
-		x.add("931");
-		x.add("138");
-		x.add("178");
-		x.add("194");
-
-		try {
-
-			for (int i = 0; i < lista.size(); i++) {
-				alq = new HashMap<String, Object>();
-
-				alq.put("name", lista.get(i));
-				alq.put("icon", x.get(i));
-				ret.add(alq);
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("Error alquiler ususus:" + e);
-		}
-
-		System.out.println(g.toJson(ret));
-		return g.toJson(ret);
-
-	}
 
 
 
-
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/createEnrollment")
 	public @ResponseBody String CreateEnrollment(HttpServletRequest request, HttpServletResponse response) {
 		Gson g = new Gson();
@@ -119,7 +59,6 @@ public class InscripcionController {
 		
 			Inscripcion h = new Inscripcion();
 
-//			Object datos = gs.fromJson(request.getParameter("op"), List<String> df);
 			Object datos = request.getParameter("op");
 			String data =  request.getParameter("op");
 			System.out.println("controller obj" + datos);
@@ -138,22 +77,6 @@ public class InscripcionController {
 
 	}
 
-	@RequestMapping("/createDetailEnrollment")
-	public @ResponseBody String CreateDetailEnrollment(HttpServletRequest request, HttpServletResponse response) {
-		Gson g = new Gson();
-		int maxdet = 0;
-
-		try {
-			maxdet = detalleService.maxIdDetalle();
-			System.out.println("maxdet " + maxdet);
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("Error alquiler detail:" + e);
-		}
-
-		return g.toJson(maxdet);
-	}
 
 	
 	@Autowired
@@ -174,7 +97,6 @@ public class InscripcionController {
 			try {
 				for (MultipartFile fi : file) {
 					System.out.println(file);
-//					String path = context.getRealPath("/WEB-INF/") + File.separator + fi.getOriginalFilename();
 					
 					String path = UPLOADED_FOLDER  + File.separator + fi.getOriginalFilename();
 					
@@ -221,7 +143,7 @@ public class InscripcionController {
 
 		}
 		
-		 return res;// + url;
+		 return res;
 
 	}
 	

@@ -17,8 +17,6 @@
 <%@include file="../../../jspf/general.jspf"%>
 
 <style>
-
-
 div.container {
 	max-width: 1200px
 }
@@ -100,11 +98,6 @@ div.container {
 							<br> <br> <br> <br>
 
 
-
-
-							<!-- 						</div> -->
-							<!--/ end blog list -->
-
 							<div id="modal3" class="modal modal-fixed-footer">
 
 								<div class="modal-content modal-form">
@@ -128,10 +121,7 @@ div.container {
 										</div>
 
 										<div class="col s12 m12 l4" id="picture">
-											<!-- 									D:\\RRHH\\GTH\\gth01\\src\\main\\resources\\jasperreports\\request_report.jasper -->
-											<%-- 									<object id="request" data="<c:url value="/resources/files/voucher50.jpg"/>" --%>
-
-											<!-- 										type="image/jpeg" width="auto" height="auto"> </object> -->
+										
 											<img class="materialboxed" style="width: 90%; height: 380px;"
 												src="<c:url value="/resources/files/voucher56.jpg"/>"
 												alt="sample"
@@ -231,10 +221,7 @@ div.container {
 										</div>
 
 										<div class="col s12 m12 l4" id="picture_del">
-											<!-- 									D:\\RRHH\\GTH\\gth01\\src\\main\\resources\\jasperreports\\request_report.jasper -->
-											<%-- 									<object id="request" data="<c:url value="/resources/files/voucher50.jpg"/>" --%>
-
-											<!-- 										type="image/jpeg" width="auto" height="auto"> </object> -->
+										
 											<img class="materialboxed" style="width: 90%; height: 380px;"
 												src="<c:url value="/resources/files/voucher56.jpg"/>"
 												alt="sample"
@@ -309,10 +296,7 @@ div.container {
 				</div>
 			</section>
 		</div>
-		<%-- 		<%-- 		<%@include file="../../../jspf/info_puesto.jspf"%> --%>
-		<!-- 		<div id="table-datatables" class="card-panel"> -->
-		<!-- 			<div class="col s12 m8 l9 contT"></div> -->
-		<!-- 		</div> -->
+	
 	</div>
 	<%@include file="../../../jspf/footer.jspf"%>
 	<!-- chartist -->

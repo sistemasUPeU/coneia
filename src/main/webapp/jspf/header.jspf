@@ -21,24 +21,14 @@
 						class="waves-effect waves-block waves-light tooltipped redirect"
 						data-position="bottom" data-delay="50" data-tooltip="Menú"><i
 							class="medium material-icons prefix">navigation</i></a></li>
-<!-- 					<li><a href="javascript:void(0);" -->
-<!-- 						class="waves-effect waves-block waves-light toggle-fullscreen tooltipped" -->
-<!-- 						data-position="bottom" data-delay="50" -->
-<!-- 						data-tooltip="Pantalla Completa"><i -->
-<!-- 							class="mdi-action-settings-overscan"></i></a></li> -->
-<!-- 					<li><a href="javascript:void(0);" -->
-<!-- 						class="waves-effect waves-block waves-light notification-button" -->
-<!-- 						data-activates="notifications-dropdown"><i -->
-<!-- 							class="mdi-social-notifications"><small -->
-<!-- 								class="notification-badge">5</small></i> </a></li> -->
+
 					<li><a 
 						class="waves-effect waves-block waves-light tooltipped salir"
 						data-position="bottom" data-delay="50"
 						data-tooltip="Cerrar Sesión"><i class="medium material-icons prefix">exit_to_app</i></a>
 					</li>
 				</ul>
-				<!-- translation-button -->
-				<!-- notifications-dropdown -->
+
 				<ul id="notifications-dropdown" class="dropdown-content">
 					<li>
 						<h5>
@@ -46,9 +36,7 @@
 						</h5>
 					</li>
 					<li class="divider"></li>
-<!-- 					<li><a href="#!"><i class="mdi-action-add-shopping-cart"></i> -->
-<!-- 							A new order has been placed!</a> <time class="media-meta" -->
-<!-- 							datetime="2015-06-12T20:50:48+08:00">2 hours ago</time></li> -->
+
 				</ul>
 			</div>
 		</nav>
@@ -74,17 +62,13 @@ $(document).ready(function(){
 	
 		var nombre = "${sessionScope.nombre}";
 		var apellidos =  "${sessionScope.apellidos}";
-// 		$.getJSON(coneia_context_path + '/components',"opc=usuario",function(objJSON){
-// 			if(objJSON !== null){
+
 				var s='';
 				s +='<img src="<c:url value="/resources/img/user.png"/>" alt="Usuario">';
 				s +=nombre.toUpperCase()+", "+apellidos.toUpperCase();
 				$(".cgProfile").empty();
 				$(".cgProfile").append(s);
-// 			}else{
-// 				console.error("No se esta cargando la información");
-// 			}
-// 		});
+
 	}catch(e){
 		console.error("error al listar info : "+e);
 	}	

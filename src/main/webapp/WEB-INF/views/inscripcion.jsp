@@ -110,8 +110,6 @@ div.radio p {
 													<div class="step-title waves-effect" id="first-header">Datos
 														Generales</div>
 													<div class="step-content">
-														<!-- 														<div class="container" -->
-														<!-- 															style="width: 100%; padding-top: 1%;"> -->
 														<div class="row">
 															<div class="col s12 m6 l6 radio">
 
@@ -136,7 +134,6 @@ div.radio p {
 
 															</div>
 														</div>
-														<!-- 														</div> -->
 														<div id="personal" class="container">
 															<div class="row">
 																<div class="input-field col s12 m6 l6">
@@ -540,9 +537,6 @@ div.radio p {
 																					<input type="file" name="file" id="file-input"
 																						class="dropify" data-max-file-size="1M"
 																						data-errors-position="outside" required />
-																					<!-- 																				<input -->
-																					<!-- 																				type="text" id="idvac" name="idvac" -->
-																					<!-- 																				value="VAC-000004" class="hide" /> -->
 																				</div>
 
 

@@ -64,9 +64,8 @@ $("#selected")
 		.change(
 				function() {
 					cambio = $("#selected").val();
-					console.log($("#selected").val());
+
 					if (cambio == 1) {
-						console.log("es personal");
 
 						var p = "";
 						p += '<option value="" disabled selected>Seleccione una opción</option>'
@@ -78,7 +77,7 @@ $("#selected")
 						$('select').material_select();
 						// listar();
 					} else {
-						console.log("es delegacion");
+
 						// listarDelegacion();
 
 						var a = "";
@@ -94,7 +93,7 @@ $("#selected")
 				});
 
 $("#clean").click(function() {
-	console.log("limpiar");
+
 	$("#fecha").val("");
 	$("#selected").val(0);
 	$("#set").html("");
@@ -107,14 +106,12 @@ $("#clean").click(function() {
 
 function buscar(e) {
 	// e.preventDefault();
-	console.log("buscando");
+
 	filtro = $("#set").val();
-	console.log(filtro);
+
 	fecha = $("#fecha").val();
 
 	if (fecha != "" && cambio != "" && filtro != "" && filtro != null) {
-		console.log("life goes on");
-		console.log(fecha + "," + cambio + "," + filtro);
 
 		$.get(coneia_context_path + "/admin/tables", {
 			op : cambio,
@@ -158,9 +155,6 @@ function construirArray(change, point) {
 
 			arrayProperties.push(properties);
 
-			console.log("recorrido " + i + " persona"
-					+ JSON.stringify(arrayProperties));
-
 		}
 	}
 
@@ -176,7 +170,8 @@ function showTable(target) {
 	if (target == 1) {
 
 		for ( var i in arrayProperties) {
-			if (arrayProperties[i].entidad == 'UNIVERSIDAD PERUANA UNION' || arrayProperties[i].entidad == 'UNIVERSIDAD PERUANA UNIÓN') {
+			if (arrayProperties[i].entidad == 'UNIVERSIDAD PERUANA UNION'
+					|| arrayProperties[i].entidad == 'UNIVERSIDAD PERUANA UNIÓN') {
 
 				if (arrayProperties[i].tipo == 3) {
 					a += "<tr style='background-color: lightgray;'><td  >";
@@ -241,7 +236,8 @@ function showTable(target) {
 	} else {
 		if (target == 2) {
 			for ( var i in arrayProperties) {
-				if (arrayProperties[i].entidad != 'UNIVERSIDAD PERUANA UNION' && arrayProperties[i].entidad != 'UNIVERSIDAD PERUANA UNIÓN') {
+				if (arrayProperties[i].entidad != 'UNIVERSIDAD PERUANA UNION'
+						&& arrayProperties[i].entidad != 'UNIVERSIDAD PERUANA UNIÓN') {
 					if (arrayProperties[i].tipo == 3) {
 						a += "<tr style='background-color: lightgray;'><td  >";
 					} else {
@@ -390,7 +386,8 @@ function showTable(target) {
 									page : 'all'
 								}
 							},
-							messageTop : 'Reporte de inscripciones confirmadas CONEIA 2018 - '+fecha
+							messageTop : 'Reporte de inscripciones confirmadas CONEIA 2018 - '
+									+ fecha
 						} ],
 						"pageLength" : 10,
 						"bPaginate" : true,
@@ -414,7 +411,6 @@ function showTable(target) {
 							//            
 							// //discount
 							var size = arrayProperties.length;
-							console.log(arrayProperties.length);
 
 							// Remove the formatting to get integer data for
 							// summation

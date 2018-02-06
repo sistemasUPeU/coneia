@@ -9,11 +9,6 @@ import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,10 +19,9 @@ import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.DetallePrivilegio;
 import pe.edu.upeu.CONEIA.entity.Persona;
 import pe.edu.upeu.CONEIA.entity.Rol;
-import pe.edu.upeu.CONEIA.util.HibernateUtils;
 @Repository
 public class PersonaDaoImpl implements PersonaDAO {
-//	
+
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -47,8 +41,6 @@ public class PersonaDaoImpl implements PersonaDAO {
 		Map<String, Object> map = null;
 		try {
 			
-//			Query query = f.createQuery(
-//					"select d from DetalleInscripcion d join d.persona a join d.inscripcion b where a.dni =dni and b.estado = 1");
 			
 			Query query = f.createNamedQuery("ListarUser");
 			query.setParameter("dni", dni);
@@ -67,7 +59,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 				map.put("importe", lista.get(j).getImporte());
 				map.put("correo", lista.get(j).getCorreo());
 				map.put("idrol", lista.get(j).getRol().getIdrol());
-				// liston.add(map);
+		
 
 			}
 			
@@ -77,7 +69,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
-//			f.close();
+
 		}
 		System.out.println(gs.toJson(map));
 		return map;
@@ -120,7 +112,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 		// TODO Auto-generated method stub
 		Session f = sessionFactory.getCurrentSession();
 		Gson gs = new Gson();
-		List<Map<String, Object>> lista_login = new ArrayList<>();
+
 		Map<String, Object> map = null;
 		try {
 
@@ -130,7 +122,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 			query.setParameter("idpersona", idpersona);
 			@SuppressWarnings("unchecked")
 			List<DetalleInscripcion> lista = query.getResultList();
-			Persona u = null;
+
 			if(lista.size()!=0) {
 				for (int j = 0; j < lista.size(); j++) {
 					map = new HashMap<String, Object>();
@@ -146,7 +138,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 					map.put("idrol", lista.get(j).getPersona().getRol().getIdrol());
 					map.put("inscripcion", lista.get(j).getIddetalleInscripcion());
 					map.put("estadoinscripcion", lista.get(j).getInscripcion().getEstado());
-					// liston.add(map);
+				
 
 				}
 			}else {
@@ -157,8 +149,6 @@ public class PersonaDaoImpl implements PersonaDAO {
 
 		} catch (Exception e) {
 			System.out.println(e);
-		} finally {
-//			f.close();
 		}
 		
 		

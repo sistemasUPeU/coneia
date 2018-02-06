@@ -86,35 +86,35 @@ var gth_context_path = "<%=request.getContextPath()%>";
 </head>
 <body>
 
-	<div id="mobile-collapse-button" class="section"
-		style="padding-top: 0; padding-bottom: 0">
-		<nav class="#000000 black">
-			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo"><img class=""
-					src="<c:url value="/resources/img/cones.png"/>"
-					style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i
-					class="mdi-navigation-menu"></i></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a class="home">Home</a></li>
-					<li><a class="enrollment">Inscripción</a></li>
-					<li><a class="login">Iniciar sesión</a></li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li><a class="home">Home</a></li>
-					<li><a class="enrollment">Inscripción</a></li>
-					<li><a class="login">Iniciar sesión</a></li>
+<!-- 	<div id="mobile-collapse-button" class="section" -->
+<!-- 		style="padding-top: 0; padding-bottom: 0"> -->
+<!-- 		<nav class="#000000 black"> -->
+<!-- 			<div class="nav-wrapper"> -->
+<!-- 				<a href="#!" class="brand-logo"><img class="" -->
+<%-- 					src="<c:url value="/resources/img/cones.png"/>" --%>
+<!-- 					style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a> -->
+<!-- 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i -->
+<!-- 					class="mdi-navigation-menu"></i></a> -->
+<!-- 				<ul class="right hide-on-med-and-down"> -->
+<!-- 					<li><a class="home">Home</a></li> -->
+<!-- 					<li><a class="enrollment">Inscripción</a></li> -->
+<!-- 					<li><a class="login">Iniciar sesión</a></li> -->
+<!-- 				</ul> -->
+<!-- 				<ul class="side-nav" id="mobile-demo"> -->
+<!-- 					<li><a class="home">Home</a></li> -->
+<!-- 					<li><a class="enrollment">Inscripción</a></li> -->
+<!-- 					<li><a class="login">Iniciar sesión</a></li> -->
 
-				</ul>
-			</div>
-		</nav>
-	</div>
+<!-- 				</ul> -->
+<!-- 			</div> -->
+<!-- 		</nav> -->
+<!-- 	</div> -->
 
 
 	<!-- 	<div class="parallax_img" id="img1"></div> -->
 
 	<div class="row container">
-		<div id="space" style="position: relative; padding-top: 5%;">
+		<div id="space" style="position: relative; padding-top: 1%;">
 			<div class="row center" style="padding-top: 10%;">
 				<div class="col s12 m6 l6">
 
@@ -122,9 +122,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 					<a class="circulo enrollment waves-effect waves-light "
 						style="text-decoration: none; color: black">
 						<div class="circulo2">
-							<!-- 							<img class="contA mdi-action-open-with large icon-demo size-icon" -->
-							<%-- 								src="<c:url value="/resources/img/cones2.png"/>" --%>
-							<!-- 								style="width: 50%; margin-left: 10%; margin-top: -5%; outline-color: none"></img> -->
+					
 							<i class="contA mdi-action-assignment large icon-demo size-icon"
 								style="color: black; margin-top: 30%;"></i>
 							<div class="light italic letrinha"
@@ -154,19 +152,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 
 	</div>
 
-	<!-- 	<div class="parallax-container"> -->
-	<!-- 		<div class="parallax"> -->
-	<!-- 			<div -->
-	<!-- 				style="width: auto; min-width: 100%; position: relative; height: 0px; width: 100%; padding-bottom: 56.25%; margin: 0"> -->
-	<!-- 				<video autoplay loop muted plays-inline -->
-	<!-- 					style="width: 100%; height: auto; margin: 0; padding: 0; position: absolute; right: 0; bottom: 0;; min-width: 100%;"> -->
-	<!-- 					<source -->
-	<!-- 						src="http://posgrado.upeu.edu.pe/webmaster/videos/posgrado.mp4"> -->
 
-	<!-- 				</video> -->
-	<!-- 			</div> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
 	<div style="display: none">
 		<form id="loginForm">
 			<fieldset>
@@ -276,30 +262,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 			}
 		});
 
-		/* resize the image(s) on page resize */
-		// 		$(window).on('resize', function() {
-		// 			resize_all_parallax();
-		// 		});
-		/* keep all of your resize function calls in one place so you don't have to edit them twice (on page load and resize) */
-		// 		function resize_all_parallax() {
-		// 			var div_id = 'img1'; /* the ID of the div that you're resizing */
-		// 			var img_w = 1000; /* the width of your image, in pixels */
-		// 			var img_h = 548; /* the height of your image, in pixels */
-		// 			resize_parallax(div_id, img_w, img_h);
-		// 		}
-		/* this resizes the parallax image down to an appropriate size for the viewport */
-		// 		function resize_parallax(div_id, img_w, img_h) {
-		// 			var div = $('#' + div_id);
-		// 			var divwidth = div.width();
-		// 			if (divwidth < 769) {
-		// 				var pct = (img_h / img_w) * 105;
-		// 			} else {
-		// 				var pct = 60;
-		// 			}
-		// 			var newheight = Math.round(divwidth * (pct / 180));
-		// 			newheight = newheight + 'px';
-		// 			div.height(newheight);
-		// 		}
+
 		alertify.genericDialog
 				|| alertify.dialog('genericDialog', function() {
 					return {

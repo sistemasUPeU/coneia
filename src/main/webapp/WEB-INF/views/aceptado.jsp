@@ -112,11 +112,7 @@
 	<br>
 	<br>
 
-	<%-- 		<%-- 		<%@include file="../../../jspf/info_puesto.jspf"%> --%>
-	<!-- 		<div id="table-datatables" class="card-panel"> -->
-	<!-- 			<div class="col s12 m8 l9 contT"></div> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
+
 	<%@include file="../../../jspf/footer.jspf"%>
 	<!-- chartist -->
 

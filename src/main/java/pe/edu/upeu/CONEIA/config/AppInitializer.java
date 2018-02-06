@@ -9,9 +9,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class AppInitializer 
-//implements WebApplicationInitializer
-extends AbstractAnnotationConfigDispatcherServletInitializer
+public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
 {
 
 	public void onStartup(ServletContext container) throws ServletException {

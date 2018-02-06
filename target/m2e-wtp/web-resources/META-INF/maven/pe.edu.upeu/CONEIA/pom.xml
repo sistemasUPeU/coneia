@@ -7,11 +7,13 @@
 	<version>1</version>
 	<name>CONEIA Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
 	<properties>
 		<java-version>1.8</java-version>
 		<springframework.version>4.3.1.RELEASE</springframework.version>
 		<slf4j.log4j12.version>1.7.6</slf4j.log4j12.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -167,11 +169,23 @@
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0.2</version>
 		</dependency>
-		
+
 
 
 	</dependencies>
+
+
+
 	<build>
 		<finalName>CONEIA</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.4.0.905</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>

@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!--Global Config-->
-<!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1"> -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CONEIA</title>
 <link rel="shortcut icon"
@@ -9,8 +9,7 @@
 <link
 	href="<c:url value='/resources/js/plugins/dropify/css/dropify.min.css'/>"
 	type="text/css" rel="stylesheet" media="screen,projection">
-<!-- <link rel='stylesheet prefetch' -->
-<!-- 	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'> -->
+
 <link
 	href="<c:url value='/resources/css/0.100.2/css/materialize.min.css'/>"
 	type="text/css" rel="stylesheet" media="screen,projection">
@@ -18,8 +17,6 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster+Two"
 	rel="stylesheet">
 
-
-<!-- /META-INF/resources/webjars/materialize/0.100.2/dist/css/materialize.min.css -->
 
 <link
 	href="<c:url value='https://fonts.googleapis.com/icon?family=Material+Icons'></c:url>"
@@ -34,9 +31,6 @@
 	href="<c:url value='/resources/css/perfect-scrollbar.css'></c:url>"
 	rel="stylesheet" type="text/css" />
 
-<!-- <link -->
-<%-- 	href="<c:url value='/resources/materialize-stepper.min.css'></c:url>" --%>
-<!-- 	rel="stylesheet" type="text/css" /> -->
 
 <link
 	href="<c:url value='/resources/js/plugins/data-tables/css/jquery.dataTables.min.css'></c:url>"
@@ -44,9 +38,6 @@
 
 <link href="<c:url value='/resources/css/alertify.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
-
-
-
 
 
 

@@ -55,9 +55,7 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 	public InscripcionDaoImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	// private static Session s;
-	// private Transaction tt;
-	// Gson gs = new Gson();
+
 
 	public int create(Object obj, String str) {
 
@@ -195,21 +193,7 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 		return x;
 	}
 
-	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public Inscripcion read(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Map<String, Object>> readAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List<DetalleInscripcion> PendientesPersonales() {
 		// TODO Auto-generated method stub

@@ -25,21 +25,16 @@ public class InscripcionServiceImpl implements InscripcionService {
 	@Autowired
 	private InscripcionDAO idao;
 
-	// create(Inscripcion d, Object obj, List<Map<String, Object>> lista)
+
 	@Transactional
 	public int create(Object obj, String str) {
-		// TODO Auto-generated method stub
-		// System.out.println("service impl> " + obj);
+
 		int x = 0;
 		try {
 			int y = idao.create(obj, str);
 			System.out.println("create service" + y);
 			x = y;
-			// if (y==1) {
-			// x=1;
-			// }else {
-			// x=0;
-			// }
+
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -53,9 +48,6 @@ public class InscripcionServiceImpl implements InscripcionService {
 	public int update(Inscripcion d) {
 		// TODO Auto-generated method stub
 
-		System.out.println("service imp nro>" + d.getNroVoucher());
-		System.out.println("service imp id>" + d.getIdinscripcion());
-		System.out.println("service imp url>" + d.getUrlVoucher());
 
 		int x = 0;
 		try {
@@ -74,21 +66,6 @@ public class InscripcionServiceImpl implements InscripcionService {
 		}
 
 		return x;
-	}
-
-	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public Inscripcion read(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Map<String, Object>> readAll() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	public List<DetalleInscripcion> PendientesPersonales() {

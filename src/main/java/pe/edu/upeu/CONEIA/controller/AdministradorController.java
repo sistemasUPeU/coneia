@@ -50,15 +50,11 @@ public class AdministradorController {
 	@RequestMapping("/waiting")
 	public String main(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		// ModalAndView m = new ModalAndView()
-
 		return "pendiente";
 	}
 
 	@RequestMapping("/aprove")
 	public String confirmados(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-		// ModalAndView m = new ModalAndView()
 
 		return "aceptado";
 	}
@@ -68,22 +64,12 @@ public class AdministradorController {
 		Gson g = new Gson();
 		insService.PendientesPersonales();
 		List<Map<String, Object>> peopleWaitingPersonal = new ArrayList<>();
-		// PrintWriter out = response.getWriter();
+
 		List<DetalleInscripcion> lista = insService.PendientesPersonales();
 		System.out.println("tamaa;ooo> " + lista.size());
 		List<String> ret = new ArrayList<>();
 		Map<String, Object> map = null;
-		// for (int j = 0; j < lista.size(); j++) {
-		// System.out.println("entro a reccorer");
-		// map = new HashMap<>();
-		// map.put("estado", gs.toJson(lista.get(j).getEstado()));
-		// // map.put("idinscripcion",
-		// lista.get(j).getInscripcion().getIdinscripcion());
-		// // map.put("voucher", lista.get(j).getInscripcion().getNroVoucher());
-		// // map.put("iddetalle", lista.get(j).getIddetalleInscripcion());
-		// peopleWaitingPersonal.add(map);
-		// }
-		// System.out.println(peopleWaitingPersonal);
+
 
 		for (DetalleInscripcion c : lista) {
 			System.out.println("entro a reccorer");
@@ -104,9 +90,6 @@ public class AdministradorController {
 			map.put("idinscripcion", c.getInscripcion().getIdinscripcion());
 			
 
-			// map.put("idinscripcion", lista.get(j).getInscripcion().getIdinscripcion());
-			// map.put("voucher", lista.get(j).getInscripcion().getNroVoucher());
-			// map.put("iddetalle", lista.get(j).getIddetalleInscripcion());
 			System.out.println(map);
 			peopleWaitingPersonal.add(map);
 
@@ -124,7 +107,7 @@ public class AdministradorController {
 		Gson g = new Gson();
 
 		List<Map<String, Object>> peopleWaitingDelegacion = new ArrayList<>();
-		// PrintWriter out = response.getWriter();
+
 		List<DetalleInscripcion> lista1 = insService.PendientesDelegacion();
 		System.out.println("tamaa;ooo> " + lista1.size());
 		List<String> ret = new ArrayList<>();
@@ -149,9 +132,6 @@ public class AdministradorController {
 			map.put("fecha", c.getInscripcion().getFecha());
 			map.put("idinscripcion", c.getInscripcion().getIdinscripcion());
 
-			// map.put("idinscripcion", lista.get(j).getInscripcion().getIdinscripcion());
-			// map.put("voucher", lista.get(j).getInscripcion().getNroVoucher());
-			// map.put("iddetalle", lista.get(j).getIddetalleInscripcion());
 			System.out.println(map);
 			peopleWaitingDelegacion.add(map);
 
@@ -165,8 +145,7 @@ public class AdministradorController {
 
 	@RequestMapping(path = "/getemails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String enviarCorreo(HttpServletRequest request, HttpServletResponse response) {
-		// TrabajadorFiltradoDAO DAO = new
-		// TrabajadorFiltradoDAO(AppConfig.getDataSource());
+		
 
 		List<Map<String, Object>> emails = new ArrayList<>();
 		int id = Integer.parseInt(request.getParameter("idinscripcion"));
@@ -189,15 +168,7 @@ public class AdministradorController {
 			arrayEmail[i] = emails.get(i).get("email").toString();
 			arrayName[i] = emails.get(i).get("nombre").toString();
 			arrayLastName[i] = emails.get(i).get("apellidos").toString();
-			// if(i==1) {
-			// arrayEmail[i] = "agregado@agregado";
-			// arrayName[i] = "agregado1 nombre";
-			// arrayLastName[i] = "apellido agregado";
-			// }else {
-			// arrayEmail[i] = emails.get(i).get("email").toString();
-			// arrayName[i] = emails.get(i).get("nombre").toString();
-			// arrayLastName[i] = emails.get(i).get("apellidos").toString();
-			// }
+
 		}
 
 		if (op == 1) {
@@ -206,7 +177,7 @@ public class AdministradorController {
 		
 
 			String header = "Felicitaciones!!\t\r\n";
-			String body = "Ya estas inscrito en el XIII CONEIA,  te esperamos este 04 de Junio.\t\r\n";
+			String body = "Ya estás inscrito en el XIII CONEIA,  te esperamos este 04 de Junio.\t\r\n";
 			String footer = "Cuentale a todos tus amigos que ya estas inscrit@";
 
 			System.out.println("array listo a enviar> " + gs.toJson(arrayEmail));
@@ -237,7 +208,7 @@ public class AdministradorController {
 		int idins = Integer.parseInt(request.getParameter("idinscripcion"));
 		int state = Integer.parseInt(request.getParameter("estado"));
 
-		// re = insService.PendientesPersonales();
+
 		re = insService.updateState(idins, state);
 		System.out.println("respuesta actualizar estado controller" + re);
 
@@ -292,9 +263,6 @@ public class AdministradorController {
 				map.put("fecha", c.getInscripcion().getFecha());
 				map.put("idinscripcion", c.getInscripcion().getIdinscripcion());
 
-				// map.put("idinscripcion", lista.get(j).getInscripcion().getIdinscripcion());
-				// map.put("voucher", lista.get(j).getInscripcion().getNroVoucher());
-				// map.put("iddetalle", lista.get(j).getIddetalleInscripcion());
 				System.out.println(map);
 				peopleWaitingDelegacion.add(map);
 
@@ -327,9 +295,6 @@ public class AdministradorController {
 				map.put("fecha", c.getInscripcion().getFecha());
 				map.put("idinscripcion", c.getInscripcion().getIdinscripcion());
 
-				// map.put("idinscripcion", lista.get(j).getInscripcion().getIdinscripcion());
-				// map.put("voucher", lista.get(j).getInscripcion().getNroVoucher());
-				// map.put("iddetalle", lista.get(j).getIddetalleInscripcion());
 				System.out.println(map);
 				peopleWaitingDelegacion.add(map);
 
@@ -341,10 +306,6 @@ public class AdministradorController {
 
 		}
 		
-//		// re = insService.PendientesPersonales();
-////		 re = insService.updateState(idins, state);
-//		 System.out.println("respuesta actualizar estado controller" + re);
-
 		return gs.toJson(peopleWaitingDelegacion);
 	}
 	
@@ -390,9 +351,6 @@ public class AdministradorController {
 				map.put("idinscripcion", c.getInscripcion().getIdinscripcion());
 				map.put("fechaupdate", c.getInscripcion().getFechaUpdate());
 
-				// map.put("idinscripcion", lista.get(j).getInscripcion().getIdinscripcion());
-				// map.put("voucher", lista.get(j).getInscripcion().getNroVoucher());
-				// map.put("iddetalle", lista.get(j).getIddetalleInscripcion());
 				System.out.println(map);
 				peopleaprove.add(map);
 
@@ -426,10 +384,7 @@ public class AdministradorController {
 				map.put("idinscripcion", c.getInscripcion().getIdinscripcion());
 				map.put("fechaupdate", c.getInscripcion().getFechaUpdate());
 
-				// map.put("idinscripcion", lista.get(j).getInscripcion().getIdinscripcion());
-				// map.put("voucher", lista.get(j).getInscripcion().getNroVoucher());
-				// map.put("iddetalle", lista.get(j).getIddetalleInscripcion());
-				System.out.println(map);
+					System.out.println(map);
 				peopleaprove.add(map);
 
 			}
@@ -447,30 +402,17 @@ public class AdministradorController {
 	@RequestMapping(value = "/viewdoc")
 	public void jarchiv1(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ServletContext cntx = request.getServletContext();
-		// Get the absolute path of the image
-		// String filename = cntx.getRealPath("/WEB-INF/dddd.png");
-//		PrintWriter out = response.getWriter();
 
-//		List<Map<String, Object>> result1 = rd.cargarMotivo("CTO-001841");
-//		System.out.println(gson.toJson(result1));
-//		System.out.println();
-
-//		String nom = (String) result1.get(0).get("NO_ARCHIVO");
-//		String tipo = (String) result1.get(0).get("TI_ARCHIVO");
 		System.out.println("controller cargar archivo");
 		String nombre = request.getParameter("nombre");
 		
 		String filename = cntx.getRealPath("/resources/files/" + nombre);
 //		String filename = UPLOADED_FOLDER+"\\" + nombre;
-//		 String filenam1e ="E:\\TRABAJO\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\gth\\WEB-INF\\h\\"+nom;
+//		 String filenam1e ="E:\\CONEIA\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\gth\\WEB-INF\\h\\"+nom;
 
 		System.out.println(nombre + "//" + "//" + filename);
 		
 		
-		
-//		System.out.println(nom + "//" + "//" + filenam1e);
-//		out.println(filename);
-		// retrieve mimeType dynamically
 		String mime = cntx.getMimeType(filename);
 		if (mime == null) {
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

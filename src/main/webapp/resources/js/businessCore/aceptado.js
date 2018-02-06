@@ -16,7 +16,7 @@ $('#modal8').modal({
 	ready : function(modal, trigger) { // Callback for Modal open. Modal and
 		// trigger parameters available.
 
-		console.log(modal, trigger);
+		
 
 	},
 	complete : function() {
@@ -30,14 +30,14 @@ var cambio = 0;
 var lista = 0;
 $("#change").change(function() {
 	cambio = $("#change").val();
-	console.log($("#change").val());
+	
 	if (cambio == 1) {
-		console.log("es personal");
+		
 		consultar(cambio);
-		// listar();
+		
 	} else {
-		console.log("es delegacion");
-		// listarDelegacion();
+		
+	
 		consultar(cambio);
 
 	}
@@ -45,7 +45,7 @@ $("#change").change(function() {
 });
 
 function consultar(point) {
-console.log(point);
+
 	if (point == 1) {
 		$.get(coneia_context_path + "/admin/aceptados", {
 			op : point,
@@ -58,7 +58,7 @@ console.log(point);
 			op : point,
 		}, function(data, status) {
 			var lista = JSON.parse(data);
-			console.log(lista);
+			
 			construirArray(lista);
 		});
 	}
@@ -66,7 +66,7 @@ console.log(point);
 }
 
 $("#clean").click(function() {
-	console.log("limpiar");
+
 
 	$("#change").val(0);
 	$('select').material_select();
@@ -78,7 +78,7 @@ $("#clean").click(function() {
 function construirArray(array) {
 
 	arrayProperties = new Array();
-console.log(array);
+
 	if (array != null) {
 		for (var i = 0; i < array.length; i++) {
 
@@ -100,8 +100,7 @@ console.log(array);
 			
 			arrayProperties.push(properties);
 
-			console.log("recorrido " + i + " persona"
-					+ JSON.stringify(arrayProperties));
+	
 
 		}
 	}
@@ -214,10 +213,8 @@ function showTable() {
 								display) {
 							var api = this.api(), data;
 
-							//            
-							// //discount
 							var size = arrayProperties.length;
-							console.log(arrayProperties.length);
+							
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -276,7 +273,7 @@ function createTable2() {
 	d += "</thead>";
 	d += "<tfoot>";
 
-	d += "<tr><th colspan='10' style='text-align:right' >Total:</th>";
+	d += "<tr><th colspan='11' style='text-align:right' >Total:</th>";
 	d += "<td style='text-align:center' id='dis'></td></tr></tfoot>";
 
 	d += "<tbody id='data5'></tbody>";
@@ -286,7 +283,7 @@ function createTable2() {
 };
 
 function verVoucher(url) {
-	console.log(url);
+	
 	var nombre_file = url;
 
 
@@ -305,11 +302,7 @@ function verVoucher(url) {
 	$("#modal8").modal('open');
 	
 	var ruta_img = coneia_context_path + '/resources/files/' + url;
-//	var link = document.createElement('a');
+
 	$("#download").attr("href",ruta_img).attr("download", url);
-//	link.href = url;
-//	link.download = url;
-//	document.body.appendChild(link);
-//	link.click();
-//	$(".lean-overlay").css("opacity", "0.5");
+
 }

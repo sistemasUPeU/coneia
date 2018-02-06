@@ -8,7 +8,6 @@ $(document).ready(function() {
 	$("#personal").hide();
 	$("#table-datatables").hide();
 
-	// listar();
 	autocomplete();
 	$("#switcher").prop('checked', true);
 	$("#mensaje_info").show();
@@ -17,6 +16,8 @@ $(document).ready(function() {
 $(window).on('resize', function() {
 	check()
 });
+
+// function to catch the dashboard´s width when it changes  - works on Chrome
 function check() {
 	if ($(window).width() < 600) {
 		listarReporteMini();
@@ -32,12 +33,13 @@ function check() {
 
 $("#switcher").on("change", function() {
 	var status = $(this).prop('checked');
-	console.log(status);
+	
 	if (status == false) {
-		console.log("going on");
+		
 		$("#switcher").prop('checked', true);
 	}
 });
+
 function autocomplete() {
 	$('input.career').autocomplete({
 		data : {
@@ -47,15 +49,12 @@ function autocomplete() {
 			"Administracion de Empresas" : null,
 			"Ingenieria Industrial" : null
 		},
-		limit : 4, // The max amount of results
-		// that can be shown at
-		// once.
+		limit : 5, // The max amount of results that can be shown at once.
 		// Default: Infinity.
 		onAutocomplete : function(val) {
-			// Callback function when value is
-			// autcompleted.
+
 		},
-		minLength : 1, // The minimum length of
+		minLength : 0, // The minimum length of
 	// the input for the
 	// autocomplete
 	// to start. Default: 1.
@@ -200,21 +199,24 @@ function autocomplete() {
 						// once.
 						// Default: Infinity.
 						onAutocomplete : function(val) {
-							// Callback function when value is
-							// autcompleted.
+
 						},
-						minLength : 1, // The minimum length of
+						minLength : 0, // The minimum length of
 					// the input for the
 					// autocomplete
 					// to start. Default: 1.
 					});
 }
+
+// Global variables
+
 var costo_inscripcion = 0;
 var opcion = 0;
 var s = "";
 var pos = 0
 var change = 0;
-// Used events
+
+// active dropify
 
 var drEvent = $('.dropify-event').dropify();
 drEvent.on('dropify.beforeClear', function(event, element) {
@@ -226,15 +228,16 @@ drEvent.on('dropify.afterClear', function(event, element) {
 	alert('File deleted');
 });
 
+// function to catch the change on select input (profesional - estudiante)
 $("#select").change(function() {
 	change = $("#select").val();
-	console.log($("#select").val());
+	
 	if (change == 2) {
 		$("#div_uni").addClass("hide");
 		$("#div_bus").removeClass("hide");
 		$("#importe_profesional").val('170')
 		costo_inscripcion = $("#importe_profesional").val(); // 170 soles
-		console.log("costo profesional " + costo_inscripcion)
+		
 		$(".select-dropdown").attr("name", "nombrecillo");
 	} else {
 		$("#div_bus").addClass("hide");
@@ -252,9 +255,6 @@ $("#select").change(function() {
 	var breaki = 1
 	$("#personal label").not(".hide label").each(function() {
 
-		// $(this).removeClass("modal abierto");
-
-		// console.log($(this));
 		if (breaki % 2 == 0) {
 
 			$(this).remove();
@@ -268,7 +268,7 @@ $("#select").change(function() {
 
 	});
 	$("#personal input.validate").each(function() {
-		console.log("cleaning");
+		
 
 		$(this).removeClass("validate invalid valid").addClass("validate");
 
@@ -282,7 +282,7 @@ $("input[name=group1]")
 		.click(
 				function() {
 					opcion = $(this).val();
-					console.log("el campo seleccionado es: " + $(this).val());
+					
 
 					if (opcion == 1) {
 						$("#table-datatables").hide();
@@ -296,9 +296,8 @@ $("input[name=group1]")
 						costo_inscripcion = $("#ml_importe").val(); // 130 soles
 						// --
 						// delegacion
-						var $toastContent = $(
-								'<span class="center">La delegación debe estar conformada por 10 alumnos como mínimo.</span>')
-						
+						var $toastContent = $('<span class="center">La delegación debe estar conformada por 10 alumnos como mínimo.</span>')
+
 						Materialize.toast($toastContent, 4000);
 						// getIdDetailEnrollment();
 					}
@@ -306,8 +305,7 @@ $("input[name=group1]")
 
 var arrayProperties = new Array();
 
-
-
+// show the window-steps-enrollment
 $(".enrollment").click(function() {
 	$.get(gth_context_path + "/inscripcion", null, function(data, status) {
 		// $("#space").empty();
@@ -319,7 +317,7 @@ $(".enrollment").click(function() {
 var contador = 1
 function insertarPersona() {
 	if (opcion == 1) {
-		console.log("es opcion 1")
+		
 		if (contador == 1) {
 			if (change == 2) {
 				var nombre = $("#name").val().toUpperCase();
@@ -354,9 +352,7 @@ function insertarPersona() {
 
 			arrayProperties.push(properties);
 
-			console.log(JSON.stringify(arrayProperties));
-
-			console.log("inserta");
+		
 
 			if ($(window).width() < 600) {
 				listarReporteMini();
@@ -371,64 +367,57 @@ function insertarPersona() {
 
 			contador++
 		} else {
-			console.log("no se insertara por segunda vez");
+			
 		}
 
 	} else {
-		console.log("no es la opcion 1, ver op modal");
+		
 
 	}
 };
-
-$("#second-step").click(function() {
-
-});
 
 chosen = 0;
 function validateFirstStep() {
 	var validation = true;
 	if ($('.step').first().find('input[type="radio"]:checked').length === 0) {
 		validation = false;
-		console.log("no selecciono opcion");
+	
 
 	} else {
-		console.log("si selecciono");
+		
 
 		if (arrayProperties.length === 0) {
 			if (opcion == 1) {
-				console.log("i do not need you");
+				
 				if ($("#select").val() == null) {
-					console.log("nada select");
+					
 					validation = false;
 				} else {
 					validation = true;
 				}
 			} else {
-				alertify.alert('Alert Title',
+				alertify.alert('Alerta',
 						'Usted no ha agregado a ninguna persona', function() {
 							alertify.success('Ok');
-							// $("#first").removeClass("step active
-							// feedbacking").addClass("step active");
-							// $(".wait-feedback").remove();
+
 						})
 				validation = false;
 
 			}
 		} else {
 			if (opcion == 1) {
-				console.log("i do not need you")
+				
 
 			} else {
-				console.log("again you");
-				console.log(validation);
+		
 
-				if (arrayProperties.length >= 2) {
-					alertify.confirm('Confirm Title',
+				if (arrayProperties.length >= 10) {
+					alertify.confirm('Confirmación',
 							'¿Seguro(a) que no desea agregar a alguien mas?',
 							function() {
 								alertify.success('Ok');
-								// $('#feedbacker').nextStep();
-								console.log("confirmacion message");
+
+							
 
 								if ($(window).width() < 600) {
 									listarReporteMini();
@@ -443,25 +432,20 @@ function validateFirstStep() {
 
 							}, function() {
 								alertify.error('Cancel')
-								console.log("cancelar message");
+								
 								$('.stepper').prevStep();
 
-								// falta una funcion para retroceder
 							});
 					costo_inscripcion = 130;
 					validation = true;
 				} else {
 					alertify
 							.alert(
-									'Alert Title',
+									'Alerta',
 									'Para formar una delegación, esta debe ser conformada por 10 alumnos como mínimo',
 									function() {
 										alertify.success('Ok');
-										// $("#first").removeClass("step
-										// active
-										// feedbacking").addClass("step
-										// active");
-										// $(".wait-feedback").remove();
+
 									})
 					validation = false;
 				}
@@ -482,18 +466,16 @@ $("#backFirst").click(function() {
 });
 
 function nextStepFirstHandler() {
-	console.log("response validateFirstStep>> " + validateFirstStep());
+
 
 	if (validateFirstStep()) {
 		insertarPersona();
-		console.log("first handler")
-		// if(opcion==1){
-		// listarReporte();
-		// }
+		
+
 		$('.stepper').nextStep();
 	} else {
 		// $('.stepper').getStep($('.stepper').getActiveStep()).destroyFeedback();
-		console.log("first handler2")
+		
 
 		$('.stepper').destroyFeedback();
 		// $('#first').removeClass('active').addClass('wrong');
@@ -501,23 +483,12 @@ function nextStepFirstHandler() {
 	}
 }
 
-//
-// function validateModal() {
-//
-// if (true) {
-//		
-// } else {
-// console.log("error");
-// }
-// return true;
-// }
 var open_modal = 0;
 var contador_dele = 1;
 function acceptHandlerModal() {
-	console.log("contador delegacion " + contador_dele);
+	
 	if (open_modal == 0) {
 
-		console.log("entro");
 
 		var nombre = $("#ml_name").val().toUpperCase();
 		var apellido = $("#ml_last_name").val().toUpperCase();
@@ -535,21 +506,21 @@ function acceptHandlerModal() {
 		properties.dni = dni;
 		properties.correo = correo;
 		properties.celular = celular;
-		if(contador_dele==1){
-			properties.tipo = 3; //tipo delegado
+		if (contador_dele == 1) {
+			properties.tipo = 3; // tipo delegado
 			$("#mensaje_info").hide();
-		}else{
+		} else {
 			properties.tipo = 1;
 		}
-		
+
 		properties.importe = costo_inscripcion;
 
 		arrayProperties.push(properties);
 		var data = JSON.stringify(arrayProperties)
-		console.log(JSON.stringify(arrayProperties));
-		
+	
+
 		contador_dele++;
-		
+
 	} else {
 
 		var nombremod = $("#ml1_name").val().toUpperCase();
@@ -573,40 +544,31 @@ function acceptHandlerModal() {
 
 		arrayProperties[pos].correo = correomod;
 
-		// arrayProperties.push(properties);
-		// var data = JSON.stringify(arrayProperties)
-		console.log(JSON.stringify(arrayProperties));
+	
 
 		$("#modal2").modal("close");
-		// listar();
+
 		listarCard();
 
 	}
 
-	// limpiarModal();
-
-	// $('.stepper').getStep($('.stepper').getActiveStep()).destroyFeedback();
-	// $('.stepper').destroyFeedback();
-	// $('.stepper').getStep($('.stepper').getActiveStep()).addClass('wrong');
-
 	if (open_modal == 0) {
-		// $('.stepper').nextStep();
+
 		$("#modal1").modal('close');
 		$('.stepper').destroyFeedback();
 		$('.stepper').getStep($('.stepper').getActiveStep()).removeClass(
 				'wrong');
-		console.log("a punto de listar");
-		// listar();
+		
+
 		crearCard();
 
 	} else {
-		// //
-		// $('.stepper').getStep($('.stepper').getActiveStep()).destroyFeedback();
+
 		open_modal = 0;
 		$('.stepper').destroyFeedback();
 		$('.stepper').getStep($('.stepper').getActiveStep()).removeClass(
 				'wrong');
-		console.log("herror handler");
+	
 	}
 }
 
@@ -615,39 +577,6 @@ function someOtherFunction() {
 };
 
 function validateThirdStep() {
-	// $("#accept").click(function() {
-	// console.log("validarTercerPaso");
-	// subirVoucher();
-
-	// console.log(arrayProperties);
-	// var data = JSON.stringify(arrayProperties);
-	// // var da = JSON.parse(arrayProperties);
-	// $.get("subscribe/createEnrollment", {
-	// op : data
-	// }, function(response, status) {
-	// console.log(response);
-	// if (response == 1) {
-	// alertify.alert('Success', 'Registrado correctamente', function() {
-	// alertify.success('Ok');
-	// // $("#first").removeClass("step active
-	// // feedbacking").addClass("step active");
-	// // $(".wait-feedback").remove();
-	// var link = context_path
-	//
-	// location.href = link;
-	// })
-	// } else {
-	// alertify.alert('Error', 'Registro fallido', function() {
-	// alertify.success('Ok');
-	// // $("#first").removeClass("step active
-	// // feedbacking").addClass("step active");
-	// // $(".wait-feedback").remove();
-	// })
-	// }
-	// })
-	//		
-
-	// });
 
 }
 
@@ -655,7 +584,7 @@ $("#accept")
 		.click(
 				function(e) {
 					e.preventDefault();
-					console.log("function upload");
+					
 
 					var file = $("#file-input").val();
 
@@ -664,19 +593,17 @@ $("#accept")
 					// Create an FormData object
 					var datosUploadFile = new FormData(form);
 
-					console.log(file + "  " + form + "  " + datosUploadFile);
-					console.log(file);
-					// data.append("idinscripcion", "56");
+			
 
 					if (file != "") {
 
 						alertify
 								.confirm(
-										'Confirmar vacaciones',
+										'Confirmación',
 										'Esta seguro(a) de subir este archivo?',
 										function() {
 											alertify.success('Ok');
-											console.log(arrayProperties);
+											
 											var data = JSON
 													.stringify(arrayProperties);
 											// var da =
@@ -707,8 +634,7 @@ $("#accept")
 																				contentType : false,
 																				cache : false,
 																				timeout : 600000,
-																			
-																				
+
 																				success : function(
 																						data) {
 																					console
@@ -782,11 +708,7 @@ $("#accept")
 																						var link = gth_context_path
 
 																						location.href = link;
-																						// $("#first").removeClass("step
-																						// active
-																						// feedbacking").addClass("step
-																						// active");
-																						// $(".wait-feedback").remove();
+
 																					})
 																}
 															})
@@ -813,7 +735,7 @@ function listar() {
 	var cont = 1;
 
 	for ( var i in arrayProperties) {
-		console.log(arrayProperties[i].nombre)
+	
 		s += "<tr><td  >";
 		s += cont;
 		s += "</td>";
@@ -859,7 +781,7 @@ function listar() {
 		responsive : {
 			details : false
 		},
-		// responsive: true,
+
 		"pageLength" : 3,
 		"bPaginate" : true,
 		"bLengthChange" : false,
@@ -873,8 +795,7 @@ function listar() {
 			"infoEmpty" : "Ningún alumno agregado"
 		// "infoFiltered": "(filtered from _MAX_ total records)"
 		}
-	// "displayLength": 2,
-	// "lengthMenu": [ 2, 3, 6, 7, 8 ]
+
 	});
 	$("input[type='search']").attr("name", "search");
 
@@ -887,23 +808,20 @@ var run = 0;
 function crearCard() {
 
 	if (cont == move) {
-		console.log("se crea un nuevo div  " + move);
-		console.log("numero div  " + contadiv);
+	
 		var h = "";
 		h += '<div class="row" id="dash_' + contadiv + '">'
 		h += '</div>'
 
 		$("#ui-alert").append(h)
 		var esconder = contadiv - 1;
-		// $("#dash_" + esconder).hide();
 
 		var m = move - 1;
-		console.log("inicio" + m);
+		
 		var b = "";
 
 		for (m; m < arrayProperties.length; m++) {
-			console.log("nro" + m);
-			console.log(arrayProperties[m].nombre)
+	
 
 			b += '<div class="col s12 m6 l3">'
 
@@ -912,7 +830,7 @@ function crearCard() {
 			b += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 60px;   text-align: center;">'
 			b += arrayProperties[m].apellido + ', ' + arrayProperties[m].nombre
 					+ '</span>'
-			// b += ' <p>'+cont+'</p>'
+
 			b += '		</div>'
 			b += '		<div class="card-action cyan lighten-5">'
 			b += '			<div class="row">'
@@ -946,13 +864,12 @@ function crearCard() {
 			run++;
 		}
 
-		// $("#dash_" + contadiv).show();
 		$("#dash_" + contadiv).html(b);
 
 		move = cont + 8;
 		contadiv++;
 		cont++;
-		console.log("cont + " + cont + ", move " + move)
+	
 		$('#pagination-long').html('');
 		var last = contadiv - 1;
 		$('#pagination-long').materializePagination(
@@ -962,8 +879,7 @@ function crearCard() {
 					firstPage : 1,
 					useUrlParameter : false,
 					onClickCallback : function(requestedPage) {
-						console.log('Requested page from #pagination-long: '
-								+ requestedPage);
+						
 						var back = requestedPage - 1
 						var forward = requestedPage + 1
 						$("#dash_" + back).hide();
@@ -974,13 +890,11 @@ function crearCard() {
 
 	} else {
 
-		console.log("no es igual a los multilples de 8 " + cont);
 		var c = "";
 		var p = move - 9;
 		// var run = 1;
 		for (p; p < arrayProperties.length; p++) {
-			console.log("nro" + p);
-			console.log(arrayProperties[p].nombre)
+			
 
 			c += '<div class="col s12 m3 l3">'
 
@@ -989,7 +903,7 @@ function crearCard() {
 			c += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 60px;   text-align: center;">'
 			c += arrayProperties[p].apellido + ', ' + arrayProperties[p].nombre
 					+ '</span>'
-			// b += ' <p>'+cont+'</p>'
+
 			c += '		</div>'
 			c += '		<div class="card-action cyan lighten-5">'
 			c += '			<div class="row">'
@@ -1032,14 +946,14 @@ function crearCard() {
 
 	} else {
 		for (var j = 0; j < contadiv - 2; j++) {
-			console.log(j + " click")
+		
 			$(".pagination.center-align li:last-child").click()
 		}
 	}
 
 	// $("#ui-alert").html(b);
 }
-
+//function to list the card-group
 function listarCard() {
 	var size = arrayProperties.length
 	var exitdiv = contadiv - 1;
@@ -1048,7 +962,7 @@ function listarCard() {
 	var p = 0;
 	var c = "";
 	for (var k = 0; k < exitdiv; k++) {
-		console.log("vamos por el div numero " + k);
+	
 		c = "";
 		if (k == 0) {
 			limite = p + 8;
@@ -1056,24 +970,18 @@ function listarCard() {
 			// p = p + 2;
 			limite = p + 8;
 		}
-		console.log("justo a comenzar el recorrido " + p + " - " + limite
-				+ " - " + size);
+
 		for (p; p < size; p++) {
 
-			console.log("mi bucle empieza en la pos " + p)
 
 			if (p == limite) {
-				console.log("este es el limite para comenzar un nuevo div"
-						+ limite);
+			
 				var mos = k + 1;
-				console.log("numero del div listar " + mos)
-				// c="";
-				//
-				// $("#dash_" + mos).html('');
-				// $("#dash_" + mos).html(c);
+			
+
 				break;
 			} else {
-				console.log("no estamos en el limite");
+			
 
 				c += '<div class="col s12 m3 l3">'
 
@@ -1082,7 +990,7 @@ function listarCard() {
 				c += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 21px;">'
 				c += arrayProperties[p].apellido + ', '
 						+ arrayProperties[p].nombre + '</span>'
-				// b += ' <p>'+cont+'</p>'
+				
 				c += '		</div>'
 				c += '		<div class="card-action cyan lighten-5">'
 				c += '			<div class="row">'
@@ -1117,7 +1025,7 @@ function listarCard() {
 			run++;
 		}
 		var mos = k + 1;
-		console.log("insertando en el div " + mos);
+	
 		$("#dash_" + mos).html('');
 		$("#dash_" + mos).html(c);
 
@@ -1129,7 +1037,7 @@ function listarReporte() {
 	var a = "";
 	var cont = 1;
 	for ( var i in arrayProperties) {
-		console.log(arrayProperties[i].nombre)
+
 		a += "<tr><td  >";
 		a += cont;
 		a += "</td>";
@@ -1138,17 +1046,16 @@ function listarReporte() {
 		a += ", ";
 		a += arrayProperties[i].apellido;
 		a += "</td><td>";
-		if(arrayProperties[i].tipo==1){
-			a+="Alumno"
-		}else{
-			if(arrayProperties[i].tipo==3){
-				a+="Delegado"
-			}else{
-				a+="Profesional"
+		if (arrayProperties[i].tipo == 1) {
+			a += "Alumno"
+		} else {
+			if (arrayProperties[i].tipo == 3) {
+				a += "Delegado"
+			} else {
+				a += "Profesional"
 			}
 		}
 
-		
 		a += "</td><td>";
 		a += arrayProperties[i].dni;
 		a += "</td><td>";
@@ -1178,7 +1085,7 @@ function listarReporte() {
 			.dataTable(
 
 					{
-						// responsive: true,
+						
 						responsive : {
 							details : false
 						},
@@ -1201,10 +1108,9 @@ function listarReporte() {
 								display) {
 							var api = this.api(), data;
 
-							//
-							// //discount
+							
 							var size = arrayProperties.length;
-							console.log(arrayProperties.length);
+							
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -1226,14 +1132,11 @@ function listarReporte() {
 								return intVal(a) + intVal(b);
 							}, 0);
 
-							
 							$('tr:eq(0) td:eq(0)', api.table().footer()).html(
 									"S/. " + total + ".00");
-						
 
 						}
 					});
-	
 
 };
 function listarReporteMini() {
@@ -1241,7 +1144,7 @@ function listarReporteMini() {
 	var a = "";
 	var cont = 1;
 	for ( var i in arrayProperties) {
-		console.log(arrayProperties[i].nombre)
+		
 		a += "<tr><td  >";
 
 		a += arrayProperties[i].nombre;
@@ -1266,7 +1169,7 @@ function listarReporteMini() {
 			.dataTable(
 
 					{
-						// responsive: true,
+						
 						responsive : {
 							details : false
 						},
@@ -1292,7 +1195,7 @@ function listarReporteMini() {
 							//
 							// //discount
 							var size = arrayProperties.length;
-							console.log(arrayProperties.length);
+							
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -1327,7 +1230,7 @@ function listarReporteMedium() {
 	var a = "";
 	var cont = 1;
 	for ( var i in arrayProperties) {
-		console.log(arrayProperties[i].nombre)
+		
 		a += "<tr><td  >";
 		a += cont;
 		a += "</td>";
@@ -1384,7 +1287,7 @@ function listarReporteMedium() {
 							//
 							// //discount
 							var size = arrayProperties.length;
-							console.log(arrayProperties.length);
+							
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -1535,7 +1438,7 @@ function createModal(id, nombre) {
 
 };
 
-// $("#guardarInscripcion").on("click", function(e) {
+
 
 jQuery.validator.setDefaults({
 	debug : true,
@@ -1572,7 +1475,6 @@ $('#modal1').modal(
 				// Modal and
 				// trigger parameters available.
 
-				console.log(modal, trigger);
 
 			},
 			complete : function() {
@@ -1585,8 +1487,7 @@ $('#modal1').modal(
 					$("#modal1 label").each(function() {
 
 						// $(this).removeClass("modal abierto");
-						console.log("modal abierto")
-						console.log($(this));
+					
 
 						if (breaking % 2 == 0) {
 
@@ -1602,7 +1503,7 @@ $('#modal1').modal(
 
 					$(".modal-form input.validate").each(
 							function() {
-								console.log("cleaning");
+							
 
 								$(this).removeClass("validate invalid valid")
 										.addClass("validate");
@@ -1622,26 +1523,14 @@ $('#modal1').modal(
 					var size = $(".modal-form label").length;
 
 					$("#modal1 label").each(function() {
-						// //
-						// // // $(this).removeClass("modal abierto");
-						// // console.log("modal abierto")
-						// // console.log($(this));
-						// //
-						// // if (breaking % 2 == 0) {
-						//
+					
 						$(this).removeClass("active");
-						//
-						// // return true;
-						// // } else {
-						// //
-						// // $(this).remove();
-						// // }
-						// // breaking++;
+						
 					});
 
 					$(".modal-form input.validate").each(
 							function() {
-								console.log("cleaning");
+							
 
 								$(this).removeClass("validate invalid valid")
 										.addClass("validate");
@@ -1668,31 +1557,18 @@ $("#modal_confirm").click(function() {
 	select_modal = 1
 });
 
-
 $("#second-header").click(function(e) {
-	console.log("second step");
-	// e.preventDefault();
+	
 	e.stopPropagation();
-	// e.stopInmediatePropagation();
-	// chosen = 1;
-	// if(validateFirstStep()){
-	//		
-	// }else{
-	// $('#first').removeClass('active').addClass('wrong');
-	// }
-	// me sale el anuncio si deseo agregar a alguien mas ---corregir
-	// validar input universidad
-	// crear form pago
+
 });
 
 $("#third-header").click(function(e) {
-	console.log("third step");
 	// e.preventDefault();
 	e.stopPropagation();
 
 });
 $("#first-header").click(function(e) {
-	console.log("first step");
 	// e.preventDefault();
 	e.stopPropagation();
 
@@ -1712,11 +1588,9 @@ $("#cancel").click(function(e) {
 });
 
 function eliminar(id) {
-	console.log("eliminar");
-	console.log(id);
-	console.log(arrayProperties[id - 1].nombre);
+
 	arrayProperties.splice(id - 1, 1)
-	console.log(arrayProperties);
+
 	// listar();
 	listarCard();
 	// move=move-1;
@@ -1724,8 +1598,7 @@ function eliminar(id) {
 
 }
 function modificar(id) {
-	console.log("modificar");
-	console.log(id);
+
 	$("#modal2").modal('open');
 	pos = id - 1;
 	var name = arrayProperties[pos].nombre;
@@ -1751,21 +1624,9 @@ function modificar(id) {
 	open_modal = 1;
 	$("#modal2 label").each(function() {
 
-		// $(this).removeClass("modal abierto");
-		console.log("modal abierto")
-		console.log($(this));
 		$(this).addClass("active");
 
-		// if (breaking % 2 == 0) {
-		//
-		// $(this).addClass("active");
-		//
-		// // return true;
-		// } else {
-		//
-		// $(this).remove();
-		// }
-		// breaking++;
+		
 	});
 }
 
@@ -1781,7 +1642,6 @@ $('#modal2').modal({
 	ready : function(modal, trigger) { // Callback for Modal open. Modal and
 		// trigger parameters available.
 
-		console.log(modal, trigger);
 
 	},
 	complete : function() {
@@ -1791,7 +1651,7 @@ $('#modal2').modal({
 });
 
 $("#modal_edit_cancel").click(function() {
-	console.log("cancelar");
+
 	$("#modal2").modal("close");
 });
 $("#modal_edit_change").click(function() {
@@ -1801,25 +1661,12 @@ $("#modal_edit_change").click(function() {
 
 	$("#modal2 label").each(function() {
 
-		// $(this).removeClass("modal abierto");
-		console.log("modal abierto")
-		console.log($(this));
 		$(this).addClass("active");
 
-		// if (breaking % 2 == 0) {
-		//
-		// $(this).addClass("active");
-		//
-		// // return true;
-		// } else {
-		//
-		// $(this).remove();
-		// }
-		// breaking++;
+		
 	});
 
 	$("#modal2 input.validate").each(function() {
-		console.log("cleaning");
 
 		$(this).removeClass("validate invalid valid").addClass("validate");
 
@@ -1832,8 +1679,7 @@ $("#cleaner").click(
 			alertify.confirm('Eliminar todo',
 					'¿Seguro(a) que desea eliminar todo?', function() {
 						alertify.success('Ok');
-						// $('#feedbacker').nextStep();
-						console.log("confirmacion message");
+
 						arrayProperties = new Array();
 						$("#pagination-long").html("");
 						$("#ui-alert").html("");
@@ -1844,6 +1690,6 @@ $("#cleaner").click(
 					}, function() {
 						alertify.error('Cancel')
 
-						// falta una funcion para retroceder
+						
 					});
 		})

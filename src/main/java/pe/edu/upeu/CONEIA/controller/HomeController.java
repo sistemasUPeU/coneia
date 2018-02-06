@@ -102,20 +102,6 @@ public class HomeController {
 		return model;
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		RequestDispatcher dispatcher;
-		int op = Integer.parseInt(request.getParameter("op"));
-		HttpSession session = request.getSession();
-		String url;
-		switch (op) {
-		case 1:
 
-			break;
-
-		}
-
-	}
 
 }

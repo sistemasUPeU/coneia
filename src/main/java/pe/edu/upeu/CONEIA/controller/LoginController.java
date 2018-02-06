@@ -7,31 +7,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Query;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 
-
-import pe.edu.upeu.CONEIA.entity.DetallePrivilegio;
-import pe.edu.upeu.CONEIA.entity.Persona;
-import pe.edu.upeu.CONEIA.entity.Rol;
 import pe.edu.upeu.CONEIA.service.PersonaService;
-import pe.edu.upeu.CONEIA.util.HibernateUtils;
 
 @Controller
 public class LoginController {
-//	private static final PersonaDAO pd = new PersonaDAO();
-	private static final Persona p = new Persona();
+
+
 	private static Gson gson = new Gson();
 	Map<String, Object> personaMap = new HashMap<>();
 	List<Map<String, Object>> personaLogin = null;
@@ -40,7 +33,7 @@ public class LoginController {
 	@Autowired
 	private PersonaService ps;
 	
-	// final Session s = HibernateUtils.getSessionFactory();
+
 	@RequestMapping(value = "/logon")
 	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -51,7 +44,7 @@ public class LoginController {
 		int op = Integer.parseInt(request.getParameter("op"));
 		System.out.println(op);
 		System.out.println(dni + ", " + op);
-		RequestDispatcher dispatcher;
+
 		int idr=0;
 		int idp=0;
 		try {
@@ -71,7 +64,7 @@ public class LoginController {
 							x=0;
 						}else {
 						System.out.println("estado de inscripcion " +personaMap.get("estadoinscripcion"));
-						int estadoins = Integer.parseInt(personaMap.get("estadoinscripcion").toString());
+						System.out.println(Integer.parseInt(personaMap.get("estadoinscripcion").toString()));
 						
 
 						session.setAttribute("idp", personaMap.get("idpersona"));
@@ -128,7 +121,7 @@ public class LoginController {
 				session.setAttribute("rol", null);
 				session.setAttribute("idrol", null);
 				session.invalidate();
-
+				response.sendRedirect("/portal/");
 			}
 		} catch (Exception e) {
 			System.out.println("login controller" + e);
