@@ -1,0 +1,26 @@
+<div class="row" id="cont_info"></div>
+<script>
+function list_info_puesto(){
+	try{
+		$.getJSON(gth_context_path + '/components',"opc=puesto",function(objJSON){
+			if(objJSON !== null){
+				var s='';
+				s +='<div class="col s12 m12 l12">';
+				s +='<ol class="breadcrumbs">';
+				s +='<li class="active">Departamento de '+objJSON.info_puesto.dep+'</li>';
+				s +='<li class="active">Area de '+objJSON.info_puesto.area+'</li>';
+				s +='<li class="active">Sección de '+objJSON.info_puesto.seccion+'</li>';
+				s +='<li>Puesto de '+objJSON.info_puesto.puesto+'</li>';
+				s +='</ol>';
+				s +='</div>';
+				$("#cont_info").empty();
+				$("#cont_info").append(s);
+			}else{
+				console.error("No se esta cargando la información");
+			}
+		});
+	}catch(e){
+		console.error("error al listar info : "+e);
+	}
+}
+</script>
