@@ -67,14 +67,14 @@ public class LoginController {
 						System.out.println(Integer.parseInt(personaMap.get("estadoinscripcion").toString()));
 						
 
-						session.setAttribute("idp", personaMap.get("idpersona"));
-						session.setAttribute("dni", personaMap.get("dni"));
-						session.setAttribute("nombre", personaMap.get("nombre"));
-						session.setAttribute("apellidos", personaMap.get("apellidos"));
-						session.setAttribute("rol", personaMap.get("rol"));
-						session.setAttribute("idrol", personaMap.get("idrol"));
-						session.setAttribute("inscripcion", personaMap.get("inscripcion"));
-						x = 1;
+//						session.setAttribute("idp", personaMap.get("idpersona"));
+//						session.setAttribute("dni", personaMap.get("dni"));
+//						session.setAttribute("nombre", personaMap.get("nombre"));
+//						session.setAttribute("apellidos", personaMap.get("apellidos"));
+//						session.setAttribute("rol", personaMap.get("rol"));
+//						session.setAttribute("idrol", personaMap.get("idrol"));
+//						session.setAttribute("inscripcion", personaMap.get("inscripcion"));
+						x = 2;
 						}
 						
 					}else{

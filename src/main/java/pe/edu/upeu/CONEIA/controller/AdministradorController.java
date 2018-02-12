@@ -47,6 +47,8 @@ public class AdministradorController {
 	public Gson gs = new Gson();
 	Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
+	
+	
 	@RequestMapping("/waiting")
 	public String main(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -171,28 +173,37 @@ public class AdministradorController {
 
 		}
 
-		if (op == 1) {
-
-			System.out.println("controller op 1, opcion positiva");
+		String header="";
+		String body = "";
+		String footer = "";
 		
-
-			String header = "Felicitaciones!!\t\r\n";
-			String body = "Ya estás inscrito en el XIII CONEIA,  te esperamos este 04 de Junio.\t\r\n";
-			String footer = "Cuentale a todos tus amigos que ya estas inscrit@";
-
-			System.out.println("array listo a enviar> " + gs.toJson(arrayEmail));
-			System.out.println("array listo a enviar> " + gs.toJson(arrayName));
-			System.out.println("array listo a enviar> " + gs.toJson(arrayLastName));
+		if (op == 1) {
+			System.out.println("controller op 1, opcion positiva");
+			if(opcion==1) { //confirmacion personal
+				header = "Felicitaciones!!\t\r\n";
+				body = "Ya estás inscrito en el XIII CONEIA,  te esperamos este 04 de Junio.\t\r\n";
+				footer = "Cuéntale a todos tus amigos que ya estas inscrit@";
+			}else { //confirmacion delegacion
+				header = "Felicitaciones!!\t\r\n";
+				body = "Tu delegación está inscrita en el XIII CONEIA, te esperamos este 04 de Junio.\t\r\n";
+				footer = "Cuéntale a todos tus amig@s.";
+				
+				
+			}
+			
 			ms.sendEmail(arrayEmail, arrayName, arrayLastName, header, body, footer);
 		} else {
-
-			String header = "Hola!!\r\n";
-			String body = mensaje;
-			String footer = "No te preocupes, aún tienes tiempo para solucionarlo, ven y únete al XIII CONEIA";
 			System.out.println("controller op 2, opcion negativa");
-			System.out.println("array listo a enviar> " + gs.toJson(arrayEmail));
-			System.out.println("array listo a enviar> " + gs.toJson(arrayName));
-			System.out.println("array listo a enviar> " + gs.toJson(arrayLastName));
+			if(opcion==1) {//observacion personal
+				header = "Hola!!\r\n";
+				body =  mensaje;
+				footer = "No te preocupes, aún tienes tiempo para solucionarlo, ven y únete al XIII CONEIA";
+			}else { //observacion delegacion
+				header = "Hola!!\r\n";
+				body = " Tu delegacion ha sido observada. " + mensaje;
+				footer = "Pero no te preocupes, aún tienes tiempo para solucionarlo, ven y únete al XIII CONEIA";
+			}
+			
 			ms.sendEmail(arrayEmail, arrayName, arrayLastName, header, body, footer);
 		}
 

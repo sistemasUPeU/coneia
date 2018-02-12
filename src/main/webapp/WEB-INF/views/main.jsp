@@ -67,7 +67,6 @@
 
 <script>
 var gth_context_path = "<%=request.getContextPath()%>";
-
 </script>
 <style>
 .parallax_img {
@@ -86,29 +85,29 @@ var gth_context_path = "<%=request.getContextPath()%>";
 </head>
 <body>
 
-<!-- 	<div id="mobile-collapse-button" class="section" -->
-<!-- 		style="padding-top: 0; padding-bottom: 0"> -->
-<!-- 		<nav class="#000000 black"> -->
-<!-- 			<div class="nav-wrapper"> -->
-<!-- 				<a href="#!" class="brand-logo"><img class="" -->
-<%-- 					src="<c:url value="/resources/img/cones.png"/>" --%>
-<!-- 					style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a> -->
-<!-- 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i -->
-<!-- 					class="mdi-navigation-menu"></i></a> -->
-<!-- 				<ul class="right hide-on-med-and-down"> -->
-<!-- 					<li><a class="home">Home</a></li> -->
-<!-- 					<li><a class="enrollment">Inscripción</a></li> -->
-<!-- 					<li><a class="login">Iniciar sesión</a></li> -->
-<!-- 				</ul> -->
-<!-- 				<ul class="side-nav" id="mobile-demo"> -->
-<!-- 					<li><a class="home">Home</a></li> -->
-<!-- 					<li><a class="enrollment">Inscripción</a></li> -->
-<!-- 					<li><a class="login">Iniciar sesión</a></li> -->
+	<!-- 	<div id="mobile-collapse-button" class="section" -->
+	<!-- 		style="padding-top: 0; padding-bottom: 0"> -->
+	<!-- 		<nav class="#000000 black"> -->
+	<!-- 			<div class="nav-wrapper"> -->
+	<!-- 				<a href="#!" class="brand-logo"><img class="" -->
+	<%-- 					src="<c:url value="/resources/img/cones.png"/>" --%>
+	<!-- 					style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a> -->
+	<!-- 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i -->
+	<!-- 					class="mdi-navigation-menu"></i></a> -->
+	<!-- 				<ul class="right hide-on-med-and-down"> -->
+	<!-- 					<li><a class="home">Home</a></li> -->
+	<!-- 					<li><a class="enrollment">Inscripción</a></li> -->
+	<!-- 					<li><a class="login">Iniciar sesión</a></li> -->
+	<!-- 				</ul> -->
+	<!-- 				<ul class="side-nav" id="mobile-demo"> -->
+	<!-- 					<li><a class="home">Home</a></li> -->
+	<!-- 					<li><a class="enrollment">Inscripción</a></li> -->
+	<!-- 					<li><a class="login">Iniciar sesión</a></li> -->
 
-<!-- 				</ul> -->
-<!-- 			</div> -->
-<!-- 		</nav> -->
-<!-- 	</div> -->
+	<!-- 				</ul> -->
+	<!-- 			</div> -->
+	<!-- 		</nav> -->
+	<!-- 	</div> -->
 
 
 	<!-- 	<div class="parallax_img" id="img1"></div> -->
@@ -122,7 +121,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 					<a class="circulo enrollment waves-effect waves-light "
 						style="text-decoration: none; color: black">
 						<div class="circulo2">
-					
+
 							<i class="contA mdi-action-assignment large icon-demo size-icon"
 								style="color: black; margin-top: 30%;"></i>
 							<div class="light italic letrinha"
@@ -201,6 +200,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 			// 			$('.parallax').parallax();
 			/* resize the image(s) on page load */
 			// 			resize_all_parallax();
+			$("#user_dni").val("");
 		});
 
 		var url = window.location.href;
@@ -225,6 +225,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 				function() {
 					alertify.genericDialog($('#loginForm')[0]).set('selector',
 							'input[type="text"]');
+					$("#user_dni").val("");
 				})
 
 		$(".talleres").click(function() {
@@ -242,15 +243,25 @@ var gth_context_path = "<%=request.getContextPath()%>";
 					}, function(data) {
 						// 				alert(data);
 						var login = JSON.parse(data);
+						console.log("OP " + login.op)
 						if (login.op == 1) {
 							var link = gth_context_path + "/principal"
 
 							location.href = link;
 						} else {
-							$("#user_dni").next("label").attr('data-error',
-									'Número no registrado');
+
+							if (login.op == 2) {
+							
+																var link = gth_context_path + "/error"
+																location.href = link;
+							} else {
+								$("#user_dni").next("label").attr('data-error',
+										'Número no registrado');
+							}
+
 							$("#user_dni").removeClass("valid");
 							$("#user_dni").addClass("invalid");
+							$("#user_dni").val("");
 						}
 					});
 				});
@@ -261,7 +272,6 @@ var gth_context_path = "<%=request.getContextPath()%>";
 				$("#logon").click();
 			}
 		});
-
 
 		alertify.genericDialog
 				|| alertify.dialog('genericDialog', function() {
@@ -294,9 +304,9 @@ var gth_context_path = "<%=request.getContextPath()%>";
 				});
 
 		$(window).on("load", function() {
-						window.location.hash = "no-back-button";
+			window.location.hash = "no-back-button";
 
-						window.location.hash = "Again-No-back-button" //chrome
+			window.location.hash = "Again-No-back-button" //chrome
 
 			window.onhashchange = function() {
 				window.location.hash = "";

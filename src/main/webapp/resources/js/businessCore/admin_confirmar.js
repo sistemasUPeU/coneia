@@ -355,7 +355,7 @@ $("#enviarConfirmacion").click(
 			back = 1;
 			var mensaje = "";
 		
-			
+//			mostrando loader
 			$('#loader-wrap').fadeIn('fast');
 			$('.progress').fadeIn('fast');
 	
@@ -367,11 +367,7 @@ $("#enviarConfirmacion").click(
 				sms : mensaje,
 				opcion : 1
 			}, function(data, status) {
-				
-				
-//				----mostrando loader
-			
-				
+								
 				
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
