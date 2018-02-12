@@ -2,12 +2,12 @@
 <%
 	HttpSession sesion = request.getSession();
 	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
-		response.sendRedirect("/portal/");
+		response.sendRedirect(request.getContextPath()+"/");
 
 	} else {
 
 		if (Integer.parseInt("" + sesion.getAttribute("idrol")) == 5) {
-			response.sendRedirect("/portal/admin/waiting");
+			response.sendRedirect(request.getContextPath()+"/admin/waiting");
 		} else {
 			
 %>
