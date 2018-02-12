@@ -212,16 +212,20 @@ function showTable(target) {
 				a += "</td><td>";
 				a += arrayProperties[i].operacion;
 				a += "</td><td>";
-				if (arrayProperties[i].tipo == 1) {
-					a += 'ALUM-';
-				} else {
-					if (arrayProperties[i].tipo == 3) {
-
-						a += 'DELE-';
+				if(cambio==1){
+					if (arrayProperties[i].tipo == 1) {
+						a += 'ALUM-';
 					} else {
-						a += 'PROF-';
-					}
+						if (arrayProperties[i].tipo == 3) {
 
+							a += 'DELE-';
+						} else {
+							a += 'PROF-';
+						}
+
+					}
+				}else{
+					a += 'DELE-';
 				}
 				a += arrayProperties[i].idinscripcion;
 				a += "</td><td>";
@@ -237,7 +241,7 @@ function showTable(target) {
 		if (target == 2) {
 			for ( var i in arrayProperties) {
 				if (arrayProperties[i].entidad != 'UNIVERSIDAD PERUANA UNION'
-						&& arrayProperties[i].entidad != 'UNIVERSIDAD PERUANA UNIÓN') {
+						&& arrayProperties[i].entidad != 'UNIVERSIDAD PERUANA UNIÓN' && arrayProperties[i].tipo != 2 ) {
 					if (arrayProperties[i].tipo == 3) {
 						a += "<tr style='background-color: lightgray;'><td  >";
 					} else {
@@ -277,16 +281,20 @@ function showTable(target) {
 					a += "</td><td>";
 					a += arrayProperties[i].operacion;
 					a += "</td><td>";
-					if (arrayProperties[i].tipo == 1) {
-						a += 'ALUM-';
-					} else {
-						if (arrayProperties[i].tipo == 3) {
-
-							a += 'DELE-';
+					if(cambio==1){
+						if (arrayProperties[i].tipo == 1) {
+							a += 'ALUM-';
 						} else {
-							a += 'PROF-';
-						}
+							if (arrayProperties[i].tipo == 3) {
 
+								a += 'DELE-';
+							} else {
+								a += 'PROF-';
+							}
+
+						}
+					}else{
+						a += 'DELE-';
 					}
 					a += arrayProperties[i].idinscripcion;
 					a += "</td><td>";
@@ -340,16 +348,20 @@ function showTable(target) {
 						a += "</td><td>";
 						a += arrayProperties[i].operacion;
 						a += "</td><td>";
-						if (arrayProperties[i].tipo == 1) {
-							a += 'ALUM-';
-						} else {
-							if (arrayProperties[i].tipo == 3) {
-
-								a += 'DELE-';
+						if(cambio==1){
+							if (arrayProperties[i].tipo == 1) {
+								a += 'ALUM-';
 							} else {
-								a += 'PROF-';
-							}
+								if (arrayProperties[i].tipo == 3) {
 
+									a += 'DELE-';
+								} else {
+									a += 'PROF-';
+								}
+
+							}
+						}else{
+							a += 'DELE-';
 						}
 						a += arrayProperties[i].idinscripcion;
 						a += "</td><td>";

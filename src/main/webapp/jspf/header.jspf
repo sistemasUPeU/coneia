@@ -6,9 +6,9 @@
 			<div class="nav-wrapper grey darken-3">
 				<ul class="left">
 					<li><h1 class="logo-wrapper">
-							<a href="<%=request.getContextPath()%>/"
-								class="brand-logo darken-1 redirect" style="padding:1px 20px;"><img
-								src="<c:url value="/resources/img/cones.png"/>" alt="gth logo" style="width: 125px; "></a>
+<%-- 							<a href="<%=request.getContextPath()%>/" --%>
+<!-- 								class="brand-logo darken-1 redirect" style="padding:1px 20px;"><img -->
+<%-- 								src="<c:url value="/resources/img/cones.png"/>" alt="gth logo" style="width: 125px; "></a> --%>
 						</h1></li>
 				</ul>
 				<ul class="right hide-on-med-and-down">

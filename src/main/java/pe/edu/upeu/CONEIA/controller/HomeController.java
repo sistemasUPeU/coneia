@@ -33,6 +33,11 @@ public class HomeController {
 
 		return "main";
 	}
+	@RequestMapping("error")
+	public String error(HttpServletRequest request, HttpServletResponse response) {
+	
+		return "error";
+	}
 
 	@RequestMapping("inscripcion")
 	public ModelAndView SignIn(HttpServletRequest request, HttpServletResponse response) {

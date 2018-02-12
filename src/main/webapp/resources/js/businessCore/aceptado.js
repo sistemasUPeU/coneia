@@ -155,17 +155,23 @@ function showTable() {
 		a += "</td><td>";
 		a += arrayProperties[i].operacion;
 		a += "</td><td>";
-		if (arrayProperties[i].tipo == 1) {
-			a += 'ALUM-';
-		} else {
-			if (arrayProperties[i].tipo == 3) {
-
-				a += 'DELE-';
+		
+		if(cambio==1){
+			if (arrayProperties[i].tipo == 1) {
+				a += 'ALUM-';
 			} else {
-				a += 'PROF-';
-			}
+				if (arrayProperties[i].tipo == 3) {
 
+					a += 'DELE-';
+				} else {
+					a += 'PROF-';
+				}
+
+			}
+		}else{
+			a += 'DELE-';
 		}
+
 		a += arrayProperties[i].idinscripcion;
 		a += "</td><td>";
 		a += arrayProperties[i].fechaupdate;

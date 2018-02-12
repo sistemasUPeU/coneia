@@ -77,7 +77,7 @@
 
 		$("#logon").click(function() {
 			var dni = $("#user_dni").val();
-			$("#user_dni").val("");
+		
 			$.get("logon", {op:1,dni:dni}, function(data) {
 // 				alert(data);
 				var login = JSON.parse(data);
@@ -89,6 +89,7 @@
 		        	$("#user_dni").next("label").attr('data-error','Número no registrado');
 		        	$("#user_dni").removeClass("valid");
 		        	$("#user_dni").addClass("invalid");
+		        	$("#user_dni").empty();
 		        }
 			});
 		});
