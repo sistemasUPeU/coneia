@@ -21,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "persona", catalog = "appconeia_db")
-@NamedQueries({@NamedQuery( name="ListarUser" , query="from Persona p where p.dni=:dni"),
+@NamedQueries({@NamedQuery( name="ListarUser" , query="from Persona p where p.dni=:dni and p.password =:clave"),
 	@NamedQuery( name="ListarUser1" , query="select d from DetalleInscripcion d join d.persona a join d.inscripcion c where a.dni = :dni and c.estado = 1")
 })
 public class Persona implements java.io.Serializable {
@@ -37,6 +37,8 @@ public class Persona implements java.io.Serializable {
 	private String celular;
 	private Double importe;
 	private Integer tipo;
+	private String password;
+	private Integer update_pass;
 	private Set<DetalleInscripcion> detalleInscripcions = new HashSet<DetalleInscripcion>(0);
 
 	public Persona() {
@@ -47,7 +49,7 @@ public class Persona implements java.io.Serializable {
 	}
 
 	public Persona(Rol rol, String nombre, String apellidos, String dni, String universidad, String carrera,
-			String correo, String celular, Double importe, Integer tipo, Set<DetalleInscripcion> detalleInscripcions) {
+			String correo, String celular, Double importe, Integer tipo, String password,Integer update_pass,Set<DetalleInscripcion> detalleInscripcions) {
 		this.rol = rol;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -58,6 +60,8 @@ public class Persona implements java.io.Serializable {
 		this.celular = celular;
 		this.importe = importe;
 		this.tipo = tipo;
+		this.password = password;
+		this.update_pass = update_pass;
 		this.detalleInscripcions = detalleInscripcions;
 	}
 
@@ -162,6 +166,24 @@ public class Persona implements java.io.Serializable {
 
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
+	}
+	
+	@Column(name = "password", length = 25)
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	@Column(name = "update_pass")
+	public Integer getUpdate_pass() {
+		return this.update_pass;
+	}
+
+	public void setUpdate_pass(Integer update_pass) {
+		this.update_pass = update_pass;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "persona")

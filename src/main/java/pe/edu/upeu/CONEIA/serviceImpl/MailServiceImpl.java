@@ -93,7 +93,7 @@ public class MailServiceImpl implements MailService {
 			     message.setSubject("INSCRIPCIONES CONEIA 2018 - UPeU, Lima");
 			     
 			     message.setText(header +"\t\r" + 
-			    		 ape+", " + name+ ". " + body +"\t\r" + footer, true);
+			    		 ape+", " + name+ ". " + body +"\t\r" + footer, false);
 			     
 
 			   }
@@ -104,6 +104,49 @@ public class MailServiceImpl implements MailService {
 	}
 
 
+
+	@Override
+	public int sendEmail(String email, String nombre, String apellidos, String header, String body, String footer) {
+		
+		 MimeMessagePreparator preparator = getMessagePreparatorSingular(email, nombre, apellidos, header, body, footer);
+			int x =0;
+			try {
+				mailSender.send(preparator);
+				
+				System.out.println("Message Send...Hurrey");
+				x = 1;
+			} catch (MailException ex) {
+				System.err.println(ex.getMessage());
+			}
+			return x;
+	}
+
+
+	
+	private MimeMessagePreparator getMessagePreparatorSingular( String to, String name, String ape, String header, String body, String footer) {
+
+
+		MimeMessagePreparator preparator1 = new MimeMessagePreparator() {
+			 @Override
+			   public void prepare(MimeMessage mimeMessage) throws MessagingException {
+				 
+				 
+			     MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+
+			     message.setFrom("inscripciones.coneia@upeu.edu.pe");
+			     message.setTo(to);
+			     message.setSubject("RECUPERACIÓN DE CONTRASEÑA CONEIA 2018");
+			     
+			     message.setText(header +"\t\r" + 
+			    		 ape+", " + name+ ". " + body +"\t\r" + footer, false);
+			     
+
+			   }
+			 };
+		
+		
+		return preparator1;
+	}
 
 
 

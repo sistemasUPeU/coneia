@@ -2,7 +2,8 @@
 <%
 	HttpSession sesion = request.getSession();
 	if (sesion.getAttribute("dni") != null) {
-		response.sendRedirect("/portal/principal");
+		// 		response.sendRedirect("/portal/principal");
+		response.sendRedirect(request.getContextPath() + "/principal");
 
 	} else {
 %>
@@ -66,7 +67,7 @@
 	rel="stylesheet" type="text/css" />
 
 <script>
-var gth_context_path = "<%=request.getContextPath()%>";
+var gth_context_path = '<%=request.getContextPath()%>';
 </script>
 <style>
 .parallax_img {
@@ -154,32 +155,108 @@ var gth_context_path = "<%=request.getContextPath()%>";
 
 	<div style="display: none">
 		<form id="loginForm">
-			<fieldset>
+
+			<div class="row margin">
+				<div class="input-field col s12 center">
+					<br /> <br /> <img
+						class="home mdi-action-open-with large icon-demo size-icon"
+						src="<c:url value="/resources/img/cones2.png"/>"
+						style="width: 50%; cursor: pointer; margin-left: 10%; margin-top: -5%; outline-color: none"></img>
+				</div>
+			</div>
+			<div class="sign_in" id="sign_in">
 				<div class="row margin">
-					<div class="input-field col s12 center">
-						<br /> <br /> <img
-							class="home mdi-action-open-with large icon-demo size-icon"
-							src="<c:url value="/resources/img/cones2.png"/>"
-							style="width: 50%; cursor: pointer; margin-left: 10%; margin-top: -5%; outline-color: none"></img>
+					<div class="input-field col s12">
+						<i class="mdi-social-person prefix"></i> <input class="validate"
+							id="user_dni" type="text"
+							onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+							maxlength=8 required aria-required="true"> <label
+							for="user_dni" data-error="Campo vacío" data-success="" class=""
+							style="width: 100%">DNI</label>
 					</div>
 				</div>
 				<div class="row margin">
 					<div class="input-field col s12">
-						<i class="mdi-social-person-outline prefix"></i> <input
-							class="validate" id="user_dni" type="text"
-							onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-							maxlength=8 required aria-required="true" autofocus> <label
-							for="user_dni" data-error="Campo vacío" data-success="" class=""
-							style="width: 100%">Ingrese su DNI</label>
+						<i class="mdi-communication-vpn-key prefix"></i> <input
+							class="validate" id="user_pass" type="password" required
+							aria-required="true"> <label for="user_pass"
+							data-error="Campo vacío" data-success="" class=""
+							style="width: 100%">Contraseña</label>
 					</div>
 				</div>
+				<div style="text-align: center">
+					<a href="#" onclick="showChange()">¿Se ha olvidado su
+						contraseña?</a>
+				</div>
+				<div style="text-align: center;">
+					<label id="msm" style="color: red" style="width: 100%"></label>
+				</div>
+
+
 				<div class="row">
 					<div class="input-field col s12">
 						<a id="logon" class="btn waves-effect waves-light col s12">Login</a>
 					</div>
 				</div>
-			</fieldset>
+
+			</div>
+			<div class="restore_password" id="restore_password">
+
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="mdi-hardware-phone-android prefix"></i> <input
+							class="validate" id="user_phone" type="text" name="cuser_phone"
+							onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+							onkeydown="checkvalid()" minlength=9 maxlength=9 required>
+						<label for="user_phone" style="width: 100%">Celular</label>
+
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="mdi-communication-email prefix"></i> <input
+							id="user_email" name="cuser_email" type="email" class="validate"
+							onkeydown="checkvalid()" required aria-required="true"> <label
+							for="user_email">Correo</label>
+
+					</div>
+
+
+
+				</div>
+				<div style="text-align: center">
+					<a href="#" onclick="showChangeSign()">Iniciar sesión</a>
+				</div>
+
+				<div class="container" id="loader-wrap" style="width: 50%">
+					<p class="center">Procesando</p>
+					<div class="progress"
+						style="background-color: rgba(255, 64, 64, 0)">
+
+						<div class="indeterminate"></div>
+					</div>
+				</div>
+
+				<div style="text-align: center;">
+					<label id="msm_change" style="color: red" style="width: 100%"></label>
+				</div>
+
+
+				<div class="row">
+					<div class="input-field col s12">
+						<a id="changePassword"
+							class="btn waves-effect waves-light col s12">Enviar solicitud</a>
+						<input id="reset" class="hide" type="reset">
+					</div>
+				</div>
+
+			</div>
 		</form>
+
+
+
+
 
 	</div>
 
@@ -192,6 +269,14 @@ var gth_context_path = "<%=request.getContextPath()%>";
 	<script
 		src="<c:url value='/resources/js/plugins/alertify/alertify.min.js'></c:url>"
 		type="text/javascript"></script>
+	<script
+		src="<c:url value='/resources/js/plugins/formatter/jquery.formatter.min.js'></c:url>"
+		type="text/javascript"></script>
+
+	<script
+		src="<c:url value='/resources/js/plugins/jquery-validation/jquery.validate.min.js'></c:url>"
+		type="text/javascript"></script>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.modal').modal();
@@ -201,6 +286,97 @@ var gth_context_path = "<%=request.getContextPath()%>";
 			/* resize the image(s) on page load */
 			// 			resize_all_parallax();
 			$("#user_dni").val("");
+			$("#restore_password").hide();
+			$('.progress').fadeOut('fast');
+			$('#loader-wrap').fadeOut('fast');
+
+		});
+		// 		$('#user_phone').formatter({
+		// 			'pattern' : '{{999}}-{{999}}-{{999}}',
+		// // 			'persistent' : true
+		// 		});
+
+		function checkvalid() {
+			console.log("letra");
+			if ($("#user_email-error").hasClass("active").toString() == "true") {
+				console.log("active")
+				$("#user_email-error").css("margin-top", "60px")
+				$("#user_email-error").css("font-size", "10px;");
+				$("#user_email-error").css("color", "red");
+			} else {
+				console.log("no activo");
+				$("#user_email-error").css("margin-top", "35px")
+				$("#user_email-error").css("font-size", "7px;");
+				$("#user_email-error").css("color", "red");
+			}
+
+			if ($("#user_phone-error").hasClass("active").toString() == "true") {
+				console.log("active")
+				$("#user_phone-error").css("margin-top", "60px")
+				$("#user_phone-error").css("font-size", "12px;");
+				$("#user_phone-error").css("color", "red");
+			} else {
+				console.log("no activo");
+				$("#user_phone-error").css("margin-top", "35px")
+				$("#user_phone-error").css("font-size", "7px;");
+				$("#user_phone-error").css("color", "red");
+			}
+
+		}
+
+		$("user_email").click(function() {
+			checkvalid();
+		});
+
+		$("#loginForm").on("click", function() {
+			checkvalid();
+
+		})
+
+		function showChange() {
+			console.log("cambiar window")
+			$("#sign_in").hide().prop('required', false);
+			// 			$("#restore_password").removeClass("hide");
+			$("#restore_password").show();
+
+		}
+		function showChangeSign(){
+			$("#sign_in").show()
+			// 			$("#restore_password").removeClass("hide");
+			$("#restore_password").hide().prop('required', false);
+		}
+
+		$("#loginForm").validate({
+			rules : {
+				cuser_phone : {
+					required : true,
+					minlength : 9
+				},
+				cuser_email : {
+					required : true
+				},
+
+				messages : {
+					cuser_phone : {
+						required : "Este campo es requerido",
+						minlength : "Ingrese al menos 9 caracteres"
+					},
+					cuser_email : {
+						required : "Este campo es requerido",
+
+					},
+
+				},
+				errorElement : 'div',
+				errorPlacement : function(error, element) {
+					var placement = $(element).data('error');
+					if (placement) {
+						$(placement).append(error)
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			}
 		});
 
 		var url = window.location.href;
@@ -222,7 +398,12 @@ var gth_context_path = "<%=request.getContextPath()%>";
 		})
 
 		$(".login").click(
+
 				function() {
+					$("#restore_password").hide();
+					$("#sign_in").show();
+					$("#reset").click()
+					Materialize.updateTextFields();
 					alertify.genericDialog($('#loginForm')[0]).set('selector',
 							'input[type="text"]');
 					$("#user_dni").val("");
@@ -234,37 +415,263 @@ var gth_context_path = "<%=request.getContextPath()%>";
 			});
 		})
 
-		$("#logon").click(
-				function() {
-					var dni = $("#user_dni").val();
-					$.get("logon", {
-						op : 1,
-						dni : dni
-					}, function(data) {
-						// 				alert(data);
-						var login = JSON.parse(data);
-						console.log("OP " + login.op)
-						if (login.op == 1) {
-							var link = gth_context_path + "/principal"
+		$("#logon")
+				.click(
+						function() {
+							var dni = $("#user_dni").val();
+							var clave = $("#user_pass").val();
 
-							location.href = link;
-						} else {
+							if (dni == "") {
 
-							if (login.op == 2) {
-							
-																var link = gth_context_path + "/error"
-																location.href = link;
+								if (clave == "") {
+									$("#user_pass").next("label").attr(
+											'data-error', 'Campo vacío');
+									$("#user_dni").next("label").attr(
+											'data-error', 'Campo vacío');
+									$("#user_dni").next("label").addClass(
+											"active")
+									$("#user_dni").removeClass("valid");
+									$("#user_dni").addClass("invalid");
+									$("#user_pass").next("label").addClass(
+											"active")
+									$("#user_pass").removeClass("valid");
+									$("#user_pass").addClass("invalid");
+								} else {
+									$("#user_dni").next("label").attr(
+											'data-error', 'Campo vacío');
+									$("#user_dni").next("label").addClass(
+											"active")
+									$("#user_dni").removeClass("valid");
+									$("#user_dni").addClass("invalid");
+								}
+
 							} else {
-								$("#user_dni").next("label").attr('data-error',
-										'Número no registrado');
+
+								if (clave == "") {
+									$("#user_pass").next("label").attr(
+											'data-error', 'Campo vacío');
+
+									$("#user_pass").next("label").addClass(
+											"active")
+									$("#user_pass").removeClass("valid");
+									$("#user_pass").addClass("invalid");
+								} else {
+									$
+											.get(
+													"logon",
+													{
+														op : 1,
+														dni : dni,
+														clave : clave
+													},
+													function(data) {
+														// 				alert(data);
+														var login = JSON
+																.parse(data);
+														console.log("OP "
+																+ login.op)
+														if (login.op == 1) {
+															$("#msm").text("");
+															$("#msm")
+																	.text(
+																			'Inscripción no aprobada');
+														} else {
+
+															if (login.op == 2) {
+
+																var link = gth_context_path
+																		+ "/principal"
+																location.href = link;
+
+															} else {
+																if (login.op == 3) {
+																	var link = gth_context_path
+																			+ "/principal"
+																	location.href = link;
+																} else {
+																	$("#msm")
+																			.text(
+																					"");
+																	$("#msm")
+																			.text(
+
+																			'El usuario o la contraseña son incorrectos');
+																}
+
+															}
+
+															$("#user_dni")
+																	.removeClass(
+																			"valid");
+															$("#user_dni")
+																	.addClass(
+																			"invalid");
+															$("#user_dni").val(
+																	"");
+														}
+													});
+								}
+
 							}
 
-							$("#user_dni").removeClass("valid");
-							$("#user_dni").addClass("invalid");
-							$("#user_dni").val("");
-						}
-					});
-				});
+						});
+
+		$("#changePassword")
+				.click(
+						function() {
+							var phone = $("#user_phone").val();
+							var email = $("#user_email").val();
+							if ($("#user_email").hasClass("valid").toString() == "true"
+									&& $("#user_phone").hasClass("valid")
+											.toString() == "true") {
+								console.log(phone + " , " + email);
+								$('#loader-wrap').fadeIn('fast');
+								$('.progress').fadeIn('fast');
+								$
+										.get(
+												"resetPassword",
+												{
+													numero : phone,
+													correo : email
+												},
+												function(data) {
+													console.log(data);
+													var converse = JSON
+															.parse(data);
+													console
+															.log("existencia usuario "
+																	+ converse.res);
+													if (converse.res == 1) {
+														var idpersona = converse.idpersona;
+
+														var nombre = converse.nombre;
+														var apellidos = converse.apellidos;
+
+														var text = "";
+														var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+														for (var i = 0; i < 8; i++)
+															text += possible
+																	.charAt(Math
+																			.floor(Math
+																					.random()
+																					* possible.length));
+
+														var nueva_pass = text;
+
+														//la contrase;a ha sido recuperada, necesita cambiar de contrase;a
+														$
+																.get(
+																		"changepassword",
+																		{
+																			pass_new_1 : nueva_pass,
+																			idper : idpersona,
+																			estado_pass : 0
+																		},
+																		function(
+																				data) {
+																			console
+																					.log("resetear contrase;a "
+																							+ data);
+																			if (data == 1) {
+																				console
+																						.log("la contrase;a se reseteo");
+																				console
+																						.log("a punto de enviar correo");
+																				$
+																						.get(
+																								"emailRestorePassword",
+																								{
+																									correo : email,
+																									nombre : nombre,
+																									apellidos : apellidos,
+																									nueva_pass : nueva_pass
+																								},
+																								function(
+																										data) {
+																									console
+																											.log("confirmacion email restores pass"
+																													+ data);
+
+																									if (data == 1) {
+																										$(
+																												'.progress')
+																												.delay(
+																														800)
+																												.fadeOut(
+																														'fast');
+																										$(
+																												'#loader-wrap')
+																												.delay(
+																														800)
+																												.fadeOut(
+																														'fast');
+																										$(
+																												"#msm_change")
+																												.text(
+																														"");
+																										$(
+																												"#msm_change")
+																												.text(
+																														"Una contraseña nueva ha sido enviada a su correo.");
+																										setTimeout(
+																												function() {
+																													location.href = gth_context_path
+																															+ "/";
+																												},
+																												3000);
+																									} else {
+																										$(
+																												'.progress')
+																												.delay(
+																														200)
+																												.fadeOut(
+																														'fast');
+																										$(
+																												'#loader-wrap')
+																												.delay(
+																														200)
+																												.fadeOut(
+																														'fast');
+																										$(
+																												"#msm_change")
+																												.text(
+																														"");
+																										$(
+																												"#msm_change")
+																												.text(
+																														"Error enviando email. Inténtelo más tarde porfavor.");
+																										setTimeout(
+																												function() {
+																													location.href = gth_context_path
+																															+ "/";
+																												},
+																												3000);
+																									}
+																								});
+
+																			}
+																		});
+
+													} else {
+														console.log("error");
+														$('.progress').delay(
+																200).fadeOut(
+																'fast');
+														$('#loader-wrap')
+																.delay(200)
+																.fadeOut('fast');
+														$("#msm_change").text(
+																"");
+														$("#msm_change")
+																.text(
+																		"Los datos ingresados no existen");
+													}
+
+												})
+							}
+
+						});
 
 		$("#user_dni").keypress(function(e) {
 			console.log(e.which);
@@ -313,9 +720,7 @@ var gth_context_path = "<%=request.getContextPath()%>";
 			}
 		})
 	</script>
-	<script
-		src="<c:url value='/resources/js/plugins/jquery-validation/jquery.validate.min.js'></c:url>"
-		type="text/javascript"></script>
+
 
 	<script
 		src="<c:url value='/resources/js/plugins/leanModal.js'></c:url>"

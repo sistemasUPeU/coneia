@@ -1,12 +1,10 @@
 <aside id="left-sidebar-nav">
-	<input type="hidden" value="${sessionScope.dni}" id="dni" />
+	<input type="hidden" value="${sessionScope.idrol}" id="idrol" />
 	<ul id="slide-out" class="side-nav fixed leftside-navigation dataAside">
 	</ul>
 	<a href="#" data-activates="slide-out"
 		class="sidebar-collapse button-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only green accent-3"><i
 		class="material-icons">menu</i></a>
-
-
 
 	<div class="input-field col s12 l12">
 		<input id="trab" type="hidden" class="validate">
@@ -17,7 +15,8 @@
 <script>
 	var dni;
 	$(document).ready(function() {
-		dni = $("#dni").val();
+		idrol = $("#idrol").val();
+
 		console.log(dni);
 		listPrivilegios();
 
@@ -30,7 +29,7 @@
 
 			$
 					.getJSON(
-							coneia_context_path + '/logon?op=1&dni=' + dni,
+							coneia_context_path + '/privilegios?idrol=' + idrol ,
 
 							function(objJson) {
 
@@ -59,7 +58,7 @@
 											s += '<li><a href="'+coneia_context_path+ '/admin/aprove">Confirmados</a></li>';
 
 										} else {
-											s += '<a href="'+coneia_context_path+ "/admin" +lista[i].url + '"class=" waves-effect waves-light" style="    padding-left: 16px; padding-right: 16px;" ><i class="medium material-icons prefix">insert_chart</i>  '
+											s += '<a href="'+coneia_context_path+ "/admin" +lista[i].url + '"class=" waves-effect waves-light" style="    padding-left: 16px; padding-right: 16px;" ><i class="medium material-icons prefix">'+lista[i].icons+'</i>  '
 													+ lista[i].nombre + '</a>';
 
 										}

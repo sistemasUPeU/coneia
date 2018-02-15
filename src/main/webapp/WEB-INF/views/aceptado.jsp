@@ -2,7 +2,7 @@
 <%
 	HttpSession sesion = request.getSession();
 	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
-		response.sendRedirect("/portal/");
+		response.sendRedirect(request.getContextPath() + "/");
 
 	} else {
 %>

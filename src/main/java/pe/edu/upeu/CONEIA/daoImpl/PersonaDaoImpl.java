@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.ParameterMode;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,6 +19,7 @@ import com.google.gson.Gson;
 import pe.edu.upeu.CONEIA.dao.PersonaDAO;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.DetallePrivilegio;
+import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
 import pe.edu.upeu.CONEIA.entity.Rol;
 @Repository
@@ -33,7 +36,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	public Map<String, Object> login(String dni) {
+	public Map<String, Object> login(String dni, String clave) {
 
 		Session f = sessionFactory.getCurrentSession();
 		Gson gs = new Gson();
@@ -44,6 +47,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 			
 			Query query = f.createNamedQuery("ListarUser");
 			query.setParameter("dni", dni);
+			query.setParameter("clave", clave);
 			@SuppressWarnings("unchecked")
 			List<Persona> lista = query.getResultList();
 			Persona u = null;
@@ -138,6 +142,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 					map.put("idrol", lista.get(j).getPersona().getRol().getIdrol());
 					map.put("inscripcion", lista.get(j).getIddetalleInscripcion());
 					map.put("estadoinscripcion", lista.get(j).getInscripcion().getEstado());
+					map.put("clave", lista.get(j).getPersona().getPassword());
 				
 
 				}
@@ -155,4 +160,118 @@ public class PersonaDaoImpl implements PersonaDAO {
 		System.out.println("dao impl persona estado inscirpcion "+gs.toJson(map));
 		return map;
 	}
+	
+	
+	@Override
+	public int checkpass(int idpersona) {
+		// TODO Auto-generated method stub
+		Session f = sessionFactory.getCurrentSession();
+		Gson gs = new Gson();
+
+		Map<String, Object> map = null;
+		int respuesta = 0;
+		try {
+
+			
+			Query query = f.createQuery(
+					"select d from Persona d where d.idpersona =:idpersona");
+			query.setParameter("idpersona", idpersona);
+			@SuppressWarnings("unchecked")
+			List<Persona> lista = query.getResultList();
+
+			if(lista.size()!=0) {
+				
+					String dni = lista.get(0).getDni();
+					String clave = lista.get(0).getPassword();
+					int estado_update_pass = lista.get(0).getUpdate_pass();
+					System.out.println("1 era "+dni + " , " + clave);
+					
+
+					if(estado_update_pass==0) {
+						//es necesario cambiar la contrase;a
+						respuesta = 1;
+						
+					}else {
+						 //la contrase;a ya se cambio
+						respuesta = 2;
+					}
+
+			}else {
+			 //hubo un error, la lista esta vacia
+				respuesta = 0;
+			}
+		
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	return respuesta;
+	}
+	
+	@Override
+	public int updatePassword(int idpersona, String nuevapass, int estado) {
+		// TODO Auto-generated method stub
+
+		int x = 0;
+		Session s = sessionFactory.getCurrentSession();
+
+		StoredProcedureQuery querys2 = s.createStoredProcedureQuery("updatePassword")
+				.registerStoredProcedureParameter("idp", Integer.class, ParameterMode.IN)
+				.registerStoredProcedureParameter("newpass", String.class, ParameterMode.IN)
+				.registerStoredProcedureParameter("estado", Integer.class, ParameterMode.IN)
+				.setParameter("idp", idpersona).setParameter("newpass", nuevapass).setParameter("estado", estado);
+
+		System.out.println("change pass "+querys2.execute());
+
+		x = 1;
+		System.out.println("casi final");
+		return x;
+	}
+	
+	
+	
+	@Override
+	public Map<String, Object> validarCambio(String numero, String correo) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = null;
+		int x = 0;
+		Session s = sessionFactory.getCurrentSession();
+		
+		
+		Query query = s.createQuery(
+				"select d from DetalleInscripcion d join fetch d.persona a join fetch d.inscripcion b where b.estado = 1 and a.celular =:numero and a.correo=:correo");
+		query.setParameter("numero", numero);
+		query.setParameter("correo", correo);
+		
+		
+		@SuppressWarnings("unchecked")
+		List<DetalleInscripcion> lista = query.getResultList();
+		if(lista.size()!=0) {
+			for (int j = 0; j < lista.size(); j++) {
+				map = new HashMap<String, Object>();
+				map.put("op", 1);
+				map.put("idpersona", lista.get(j).getPersona().getIdpersona());
+				map.put("nombre", lista.get(j).getPersona().getNombre());
+				map.put("apellidos", lista.get(j).getPersona().getApellidos());
+				map.put("dni", lista.get(j).getPersona().getDni());
+				map.put("clave", lista.get(j).getPersona().getPassword());
+			
+
+			}
+		}else {
+			map = new HashMap<String, Object>();
+			map.put("op", 0);
+		}
+
+		x = 1;
+		System.out.println("casi final" + map);
+		return map;
+	}
+	
+	
+	
+	
+	
+	
 }

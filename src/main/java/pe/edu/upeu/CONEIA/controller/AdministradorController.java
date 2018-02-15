@@ -60,6 +60,13 @@ public class AdministradorController {
 
 		return "aceptado";
 	}
+	
+	@RequestMapping("/configurar")
+	public String configurar(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		return "configurar";
+	}
+	
 	@RequestMapping("/responsew")
 	public @ResponseBody String responsew(HttpServletRequest request, HttpServletResponse response) {
 

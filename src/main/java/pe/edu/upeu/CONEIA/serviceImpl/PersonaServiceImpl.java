@@ -18,10 +18,10 @@ public class PersonaServiceImpl implements PersonaService{
 	private PersonaDAO pd;
 
 	@Override
-	public Map<String, Object> login(String dni) {
+	public Map<String, Object> login(String dni, String clave) {
 		// TODO Auto-generated method stub
 		
-		return pd.login(dni);
+		return pd.login(dni, clave);
 	}
 	
 	@Override
@@ -33,6 +33,25 @@ public class PersonaServiceImpl implements PersonaService{
 	public Map<String, Object> validarEstado(int idpersona) {
 		// TODO Auto-generated method stub
 		return pd.validarEstado(idpersona);
+	}
+
+	@Override
+	public int checkpass(int idpersona) {
+		// TODO Auto-generated method stub
+		return pd.checkpass(idpersona);
+	}
+
+	@Override
+	@Transactional
+	public int updatePassword(int idpersona, String nuevapass, int estado) {
+		// TODO Auto-generated method stub
+		return pd.updatePassword(idpersona, nuevapass, estado);
+	}
+
+	@Override
+	public Map<String, Object> validarCambio(String numero, String correo) {
+		// TODO Auto-generated method stub
+		return pd.validarCambio(numero, correo);
 	}
 
 }

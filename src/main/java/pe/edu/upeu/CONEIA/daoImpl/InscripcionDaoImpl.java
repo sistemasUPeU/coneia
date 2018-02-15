@@ -122,6 +122,8 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 				persona.setCelular(celular);
 				persona.setTipo(tipo);
 				persona.setImporte(importe);
+				persona.setPassword(dni);
+				persona.setUpdate_pass(0);
 
 				Rol r = s.get(Rol.class, 6);
 				persona.setRol(r);
