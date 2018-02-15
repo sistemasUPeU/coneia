@@ -2,8 +2,9 @@
 <%
 	HttpSession sesion = request.getSession();
 	if (sesion.getAttribute("dni") != null) {
-		// 		response.sendRedirect("/portal/principal");
+
 		response.sendRedirect(request.getContextPath() + "/principal");
+
 
 	} else {
 %>

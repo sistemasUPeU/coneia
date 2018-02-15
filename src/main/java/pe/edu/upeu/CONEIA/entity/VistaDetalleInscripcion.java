@@ -1,10 +1,6 @@
 package pe.edu.upeu.CONEIA.entity;
 // Generated 30-ene-2018 10:51:27 by Hibernate Tools 5.1.0.Alpha1
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
