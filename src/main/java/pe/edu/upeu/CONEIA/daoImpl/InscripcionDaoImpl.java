@@ -36,6 +36,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import pe.edu.upeu.CONEIA.dao.InscripcionDAO;
+import pe.edu.upeu.CONEIA.entity.Configuracion;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
@@ -452,5 +453,12 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 
 		return lista10;
 	}
+	
+	
+	
+
+	
+	
+	
 
 }

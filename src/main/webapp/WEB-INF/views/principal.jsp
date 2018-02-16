@@ -311,14 +311,14 @@
 			});
 
 			var idp = $("#ip").val();
-			console.log(idp);
+		
 			$.get("checkpass", {
 				idpersona : idp
 			}, function(data) {
 
 				var data_con = JSON.parse(data);
 				var estadopass = data_con.estadopass;
-				console.log(estadopass);
+				
 
 				if (estadopass == 1) {
 					//falta cambiar contrase;a
@@ -330,12 +330,12 @@
 		});
 		
 		function changePassword(){
-			console.log("success!!");
+			
 			var nueva = $("#pass_new_1").val();
 			var idpersona = $("#idper").val();
-			console.log("valores " + nueva + " , " + idper );
+			
 			$.get("changepassword",{pass_new_1 : nueva, idper : idpersona, estado_pass: 1}, function(data){
-				console.log(data);
+			
 				if(data==1){
 					
 					$("#mensaje").text("Se cambió la contraseña")

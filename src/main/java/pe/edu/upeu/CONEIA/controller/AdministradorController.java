@@ -26,9 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import pe.edu.upeu.CONEIA.entity.Configuracion;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
+import pe.edu.upeu.CONEIA.service.ConfiguracionService;
 import pe.edu.upeu.CONEIA.service.InscripcionService;
 import pe.edu.upeu.CONEIA.service.MailService;
 
@@ -40,6 +42,9 @@ public class AdministradorController {
 	
 	@Autowired
 	private InscripcionService insService;
+	
+	@Autowired
+	private ConfiguracionService confService;
 
 	@Autowired
 	public MailService ms;
@@ -188,11 +193,11 @@ public class AdministradorController {
 			System.out.println("controller op 1, opcion positiva");
 			if(opcion==1) { //confirmacion personal
 				header = "Felicitaciones!!\t\r\n";
-				body = "Ya estás inscrito en el XIII CONEIA,  te esperamos este 04 de Junio.\t\r\n";
-				footer = "Cuéntale a todos tus amigos que ya estas inscrit@";
+				body = "Ya estás inscrito en el XIII CONEIA,  te esperamos este 04 de Junio.\t\r Recuerda, que para iniciar sesión la contraseña es tu DNI.\t\r";
+				footer = "Cuéntale a todos tus amigos que ya estás inscrit@";
 			}else { //confirmacion delegacion
 				header = "Felicitaciones!!\t\r\n";
-				body = "Tu delegación está inscrita en el XIII CONEIA, te esperamos este 04 de Junio.\t\r\n";
+				body = "Tu delegación está inscrita en el XIII CONEIA, te esperamos este 04 de Junio.\t\rRecuerda a tu grupo, que para iniciar sesión la contraseña es su DNI.\t\r";
 				footer = "Cuéntale a todos tus amig@s.";
 				
 				
@@ -455,7 +460,58 @@ public class AdministradorController {
 
 	}
 	
+	@RequestMapping("/getPrecios")
+	public @ResponseBody String precios(HttpServletRequest request, HttpServletResponse response) {
+
+		int re = 0;
+		Gson g = new Gson();
+		
+		List<Map<String, Object>> getprecios = null;
+
+		List<String> ret = new ArrayList<>();
+		Map<String, Object> map = null;
+
+		getprecios = new ArrayList<>();
+			 getprecios = confService.getPrecios();
+
+			System.out.println(getprecios);
+			System.out.println(gs.toJson(getprecios));
+		return gs.toJson(getprecios);
+	}
 	
+	@RequestMapping("/activeSeason")
+	public @ResponseBody String activeSeason(HttpServletRequest request, HttpServletResponse response) {
+
+		int re = 0;
+		Gson g = new Gson();
+		int idactivo = Integer.parseInt(request.getParameter("ida"));
+		int idtoactive = Integer.parseInt(request.getParameter("idp"));
+
+
+		int update = 0;
+		update = confService.updateSeason(idactivo, idtoactive);
+
+		System.out.println(gs.toJson(update));
+		return gs.toJson(update);
+	}
+	
+	@RequestMapping("/updateCost")
+	public @ResponseBody String updateCost(HttpServletRequest request, HttpServletResponse response) {
+
+		int re = 0;
+		Gson g = new Gson();
+		int idc = Integer.parseInt(request.getParameter("idc"));
+		int precioDele = Integer.parseInt(request.getParameter("dele"));
+		int precioAlu = Integer.parseInt(request.getParameter("alu"));
+		int precioPro = Integer.parseInt(request.getParameter("pro"));
+
+
+		int update = 0;
+		update = confService.updateCost(idc, precioDele, precioAlu, precioPro);
+
+		System.out.println(gs.toJson(update));
+		return gs.toJson(update);
+	}
 	
 
 }

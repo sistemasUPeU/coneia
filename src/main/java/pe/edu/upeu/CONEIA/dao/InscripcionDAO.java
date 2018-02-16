@@ -18,4 +18,6 @@ public interface InscripcionDAO {
 	public List<DetalleInscripcion> Delegacion(String fecha);
 	public List<DetalleInscripcion> AceptadosDelegacion();
 	public List<DetalleInscripcion> AprobadosPersonal();
+	
+
 }

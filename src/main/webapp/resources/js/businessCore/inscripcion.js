@@ -11,7 +11,34 @@ $(document).ready(function() {
 	autocomplete();
 	$("#switcher").prop('checked', true);
 	$("#mensaje_info").show();
+	
+	getPrecios();
 });
+
+var precio_delegacion=0;
+var precio_alumno=0;
+var precio_profesional=0;
+function getPrecios(){
+	$.get("admin/getPrecios", function(data) {
+
+		con = JSON.parse(data);
+
+		$.each(con, function(index, obj) {
+			var estado = obj.estado;
+			if (estado == 1) {
+				
+				precio_delegacion=obj.delegacion;
+				precio_alumno=obj.alumno;
+				precio_profesional=obj.profesional;
+			} 
+
+
+		});
+		
+		console.log("precios " +precio_delegacion + " , " + precio_alumno + " , "+precio_profesional);
+
+	})
+}
 
 $(window).on('resize', function() {
 	check()
@@ -236,14 +263,16 @@ $("#select").change(function() {
 		$("#div_uni").addClass("hide");
 		$("#div_bus").removeClass("hide");
 		$("#importe_profesional").val('170')
-		costo_inscripcion = $("#importe_profesional").val(); // 170 soles
+//		costo_inscripcion = $("#importe_profesional").val(); // 170 soles
+		costo_inscripcion = precio_profesional;
 		
 		$(".select-dropdown").attr("name", "nombrecillo");
 	} else {
 		$("#div_bus").addClass("hide");
 		$("#div_uni").removeClass("hide");
 		$("#importe_alumno").val('140');
-		costo_inscripcion = $("#importe_alumno").val(); // 140 soles
+//		costo_inscripcion = $("#importe_alumno").val(); // 140 soles
+		costo_inscripcion = precio_alumno;
 		$(".select-dropdown").attr("name", "nombrecillo");
 	}
 
@@ -293,7 +322,9 @@ $("input[name=group1]")
 						$("#personal").hide();
 						$("#table-datatables").show();
 						$("#ml_importe").val('130');
-						costo_inscripcion = $("#ml_importe").val(); // 130 soles
+//						costo_inscripcion = $("#ml_importe").val(); // delegacion 130 soles
+						
+						costo_inscripcion=precio_delegacion;
 						// --
 						// delegacion
 						var $toastContent = $('<span class="center">La delegación debe estar conformada por 10 alumnos como mínimo.</span>')

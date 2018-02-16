@@ -88,7 +88,7 @@ public class MailServiceImpl implements MailService {
 				 
 			     MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
-			     message.setFrom("developeralpha@testing.com");
+			     message.setFrom("inscripciones.coneia@upeu.edu.pe");
 			     message.setTo(to);
 			     message.setSubject("INSCRIPCIONES CONEIA 2018 - UPeU, Lima");
 			     

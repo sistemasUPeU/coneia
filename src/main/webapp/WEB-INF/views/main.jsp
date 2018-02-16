@@ -298,26 +298,26 @@ var gth_context_path = '<%=request.getContextPath()%>';
 		// 		});
 
 		function checkvalid() {
-			console.log("letra");
+			
 			if ($("#user_email-error").hasClass("active").toString() == "true") {
-				console.log("active")
+				
 				$("#user_email-error").css("margin-top", "60px")
 				$("#user_email-error").css("font-size", "10px;");
 				$("#user_email-error").css("color", "red");
 			} else {
-				console.log("no activo");
+				
 				$("#user_email-error").css("margin-top", "35px")
 				$("#user_email-error").css("font-size", "7px;");
 				$("#user_email-error").css("color", "red");
 			}
 
 			if ($("#user_phone-error").hasClass("active").toString() == "true") {
-				console.log("active")
+		
 				$("#user_phone-error").css("margin-top", "60px")
 				$("#user_phone-error").css("font-size", "12px;");
 				$("#user_phone-error").css("color", "red");
 			} else {
-				console.log("no activo");
+				
 				$("#user_phone-error").css("margin-top", "35px")
 				$("#user_phone-error").css("font-size", "7px;");
 				$("#user_phone-error").css("color", "red");
@@ -335,7 +335,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 		})
 
 		function showChange() {
-			console.log("cambiar window")
+			
 			$("#sign_in").hide().prop('required', false);
 			// 			$("#restore_password").removeClass("hide");
 			$("#restore_password").show();
@@ -407,7 +407,10 @@ var gth_context_path = '<%=request.getContextPath()%>';
 					Materialize.updateTextFields();
 					alertify.genericDialog($('#loginForm')[0]).set('selector',
 							'input[type="text"]');
-					$("#user_dni").val("");
+					
+					$("#msm")
+					.text(
+							"");
 				})
 
 		$(".talleres").click(function() {
@@ -469,8 +472,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 														// 				alert(data);
 														var login = JSON
 																.parse(data);
-														console.log("OP "
-																+ login.op)
+														
 														if (login.op == 1) {
 															$("#msm").text("");
 															$("#msm")
@@ -479,13 +481,13 @@ var gth_context_path = '<%=request.getContextPath()%>';
 														} else {
 
 															if (login.op == 2) {
-
+																		//HA SIDO APROBADO
 																var link = gth_context_path
-																		+ "/principal"
+																		+ "/error"
 																location.href = link;
 
 															} else {
-																if (login.op == 3) {
+																if (login.op == 3) {//ADMINISTRADOR
 																	var link = gth_context_path
 																			+ "/principal"
 																	location.href = link;
@@ -497,6 +499,10 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																			.text(
 
 																			'El usuario o la contraseña son incorrectos');
+																	
+																	$("#user_dni").val("");
+																	$("#user_pass").val("");
+																	 Materialize.updateTextFields();
 																}
 
 															}
@@ -525,7 +531,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 							if ($("#user_email").hasClass("valid").toString() == "true"
 									&& $("#user_phone").hasClass("valid")
 											.toString() == "true") {
-								console.log(phone + " , " + email);
+								
 								$('#loader-wrap').fadeIn('fast');
 								$('.progress').fadeIn('fast');
 								$
@@ -536,12 +542,10 @@ var gth_context_path = '<%=request.getContextPath()%>';
 													correo : email
 												},
 												function(data) {
-													console.log(data);
+													
 													var converse = JSON
 															.parse(data);
-													console
-															.log("existencia usuario "
-																	+ converse.res);
+												
 													if (converse.res == 1) {
 														var idpersona = converse.idpersona;
 
@@ -571,14 +575,9 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																		},
 																		function(
 																				data) {
-																			console
-																					.log("resetear contrase;a "
-																							+ data);
+																		
 																			if (data == 1) {
-																				console
-																						.log("la contrase;a se reseteo");
-																				console
-																						.log("a punto de enviar correo");
+																				
 																				$
 																						.get(
 																								"emailRestorePassword",
@@ -590,9 +589,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																								},
 																								function(
 																										data) {
-																									console
-																											.log("confirmacion email restores pass"
-																													+ data);
+																									
 
 																									if (data == 1) {
 																										$(
@@ -655,7 +652,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																		});
 
 													} else {
-														console.log("error");
+														
 														$('.progress').delay(
 																200).fadeOut(
 																'fast');
@@ -675,7 +672,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 						});
 
 		$("#user_dni").keypress(function(e) {
-			console.log(e.which);
+			
 			if (e.which == 13) {
 				$("#logon").click();
 			}

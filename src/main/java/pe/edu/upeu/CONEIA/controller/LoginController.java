@@ -70,20 +70,20 @@ public class LoginController {
 						personaMap = ps.validarEstado(idp);
 						if(Integer.parseInt(personaMap.get("op").toString())==0) {
 							System.out.println("es nulo");
-							x=1;
+							x=1;//todavia no ha sido aprobada
 						}else {
 						System.out.println("estado de inscripcion " +personaMap.get("estadoinscripcion"));
 						System.out.println(Integer.parseInt(personaMap.get("estadoinscripcion").toString()));
+//						
+//						session.setAttribute("idp", personaMap.get("idpersona"));
+//						session.setAttribute("dni", personaMap.get("dni"));
+//						session.setAttribute("nombre", personaMap.get("nombre"));
+//						session.setAttribute("apellidos", personaMap.get("apellidos"));
+//						session.setAttribute("rol", personaMap.get("rol"));
+//						session.setAttribute("idrol", personaMap.get("idrol"));
+//						session.setAttribute("inscripcion", personaMap.get("inscripcion"));
 						
-						session.setAttribute("idp", personaMap.get("idpersona"));
-						session.setAttribute("dni", personaMap.get("dni"));
-						session.setAttribute("nombre", personaMap.get("nombre"));
-						session.setAttribute("apellidos", personaMap.get("apellidos"));
-						session.setAttribute("rol", personaMap.get("rol"));
-						session.setAttribute("idrol", personaMap.get("idrol"));
-						session.setAttribute("inscripcion", personaMap.get("inscripcion"));
-						
-						x = 2;
+						x = 2;//ha sido aprobado
 						}
 						
 					}else{
@@ -103,7 +103,7 @@ public class LoginController {
 //
 //						session.setAttribute("listaPrivilegios", privilegioLista);
 
-						x = 3;
+						x = 3;//administrador
 						
 					}
 					
@@ -150,9 +150,7 @@ public class LoginController {
 		privilegioLista = new ArrayList<>();
 		privilegioLista = ps.listarPrivilegios(rol);
 		datos.put("listaPrivilegios", privilegioLista);
-	
 		out.println(gson.toJson(datos));
-		
 		
 	}
 	
