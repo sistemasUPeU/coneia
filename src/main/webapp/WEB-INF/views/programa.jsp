@@ -10,1039 +10,1097 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>Programa - CONEIA</title>
 <link rel="shortcut icon"
 	href="<c:url value='/resources/img/favicon/favicon.ico'></c:url>">
+	
 <link href="<c:url value='/resources/css/materialize.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
 <link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
+	<link href="<c:url value='/resources/css/alertify.min.css'></c:url>"
+	rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<link href="<c:url value='/resources/css/alertify.min.css'></c:url>"
-	rel="stylesheet" type="text/css" />
+
 <link href="https://fonts.googleapis.com/css?family=Lobster+Two"
 	rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 <link href="<c:url value='/resources/css/programa.css'></c:url>"
 	rel="stylesheet" type="text/css" />
-
+<script>
+var coneia_context_path = "<%=request.getContextPath()%>";
+	function setUrlPath(url) {
+		var s = coneia_context_path + url;
+		return s;
+	}
+</script>
+<style>
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+html {
+  height: 100%;
+  min-height: 100%;
+}
+body {
+  min-height: 100%;
+}
+</style>
 </head>
-<body>
+<body >
 	<input type="hidden" value="${sessionScope.rol}" id="rolcito" />
-	<div id="mobile-collapse-button" class="section" style="padding-top: 0">
-		<nav class="#000000 black">
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo"><img class=""
-				src="<c:url value="/resources/img/cones.png"/>"
-				style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i
-				class="mdi-navigation-menu"></i></a>
-			<ul class="right hide-on-med-and-down">
-				<li><a class="m principal">Home</a></li>
-				<li><a class="m programa">Programa</a></li>
-				<li><a class="m asistencia">Asistencia</a></li>
-				<li><a class="m dropdown-button" href="#!"
-					data-activates="dropdown1"><b>${sessionScope.nombre}
-							${sessionScope.paterno} ${sessionScope.materno}</b></a>
-					<ul id='dropdown1' class='dropdown-content'>
-						<li><a href="#!" class="salir">Salir</a></li>
-					</ul></li>
-			</ul>
-			<ul class="side-nav" id="mobile-demo">
-				<li><a class="dropdown-button" href="#!"
-					data-activates="dropdown2"><b>${sessionScope.nombre}
-							${sessionScope.paterno} ${sessionScope.materno}</b></a>
-					<ul id='dropdown2' class='dropdown-content '>
-						<li><a href="#!" class="salir">Salir</a></li>
-					</ul></li>
+	<div class="todo" >
+		<div id="mobile-collapse-button" class="section"
+			style="padding-top: 0">
+			<nav class="#000000 black">
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo"><img class=""
+					src="<c:url value="/resources/img/cones.png"/>"
+					style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i
+					class="mdi-navigation-menu"></i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a class="m principal">Home</a></li>
+					<li><a class="m dropdown-button" href="#!"
+						data-activates="dropdown1"><b>${sessionScope.nombre}
+								${sessionScope.apellidos}</b></a>
+						<ul id='dropdown1' class='dropdown-content'>
+							<li><a href="#!" class="salir">Salir</a></li>
+						</ul></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a class="dropdown-button" href="#!"
+						data-activates="dropdown2"><b>${sessionScope.nombre}
+								${sessionScope.apellidos} </b></a>
+						<ul id='dropdown2' class='dropdown-content '>
+							<li><a href="#!" class="salir">Salir</a></li>
+						</ul></li>
 
-				<li><a class="principal">Home</a></li>
-				<li><a class="programa">Programa</a></li>
-				<li><a class="asistencia">Asistencia</a></li>
-			</ul>
-		</div>
-		</nav>
-
-	</div>
-
-	<div class="row center container">
-
-		<h4>
-			<i class="material-icons md-dark md-36">alarm</i><span
-				style="font-family: 'Lobster Two', cursive;">Programación
-				para el evento </span> CONEIA <span
-				style="font-family: 'Lobster Two', cursive;">2018</span>
-		</h4>
-
-	</div>
-	<div class="row center container" >
-		<div class="col s3"> Inscripción:</div>
-		<div class="col s6">
-			<div class="progress">
-				<div class="determinate" style="width: 100%"></div>
-			</div>
-		</div>
-		<div class="col s3" id="progreso"></div>
-	</div>
-
-	<div class="row">
-		<div class="col s12 #ccff90 light-green accent-1">
-			<ul class="tabs  #ccff90 light-green accent-1">
-				<li class="tab "><a id="1" class="#ccff90 "
-					style="color: #003300; font-weight: bold" href="#swipe-1"
-					onclick="Materialize.showStaggeredList('#staggered-test')"><span
-						class="nigga">LUNES</span></a></li>
-				<li class="tab active"><a
-					style="color: #003300; font-weight: bold" id="2" href="#swipe-2"
-					onclick="Materialize.showStaggeredList('#staggered-test2')"><span
-						class="nigga">MARTES</span></a></li>
-				<li class="tab"><a style="color: #003300; font-weight: bold"
-					id="3" href="#swipe-3"
-					onclick="Materialize.showStaggeredList('#staggered-test3')"><span
-						class="nigga">MIÉRCOLES</span></a></li>
-				<li class="tab"><a style="color: #003300; font-weight: bold"
-					id="4" href="#swipe-4"
-					onclick="Materialize.showStaggeredList('#staggered-test4')"><span
-						class="nigga">JUEVES</span></a></li>
-				<li class="tab"><a style="color: #003300; font-weight: bold"
-					id="5" href="#swipe-5"
-					onclick="Materialize.showStaggeredList('#staggered-test5')"><span
-						class="nigga">VIERNES</span></a></li>
-			</ul>
-		</div>
-
-		<!-- D I A   L U N E S -->
-		<div id="swipe-1" class="col s12 #82b1ff blue accent-1"
-			style="height: auto">
-			<div class="row container">
-				<br /> <br />
-				<ul class="collapsible popout" data-collapsible="accordion"
-					 style="z-index: 15">
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">rowing</i> Recepción de delegaciones
-									y entrega de materiales
-								</div>
-								<div class="col l4 m4 s11">6:30 - 8:30 am</div>
-								<div class="col l1 m1 s1 "></div>
-							</div>
-						</div>
-
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">highlight</i> Inauguración del evento
-								</div>
-								<div class="col l4 m4 s11">8:30 - 10:30 am</div>
-								<div class="col l1 m1 s1 ">
-									<i class="material-icons i right">expand_more</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<div class="row center">Lugar: CARPA MÓVIL</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">mic</i> Ponencias paralelas <span
-										class="luz" id="blink">(Inscripción)</span>
-								</div>
-								<div class="col l4 m4 s11">10:30 am - 12:30 pm</div>
-								<div class="col l1 m1 s1 ">
-									<i class="material-icons i right">expand_more</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<div class="row center">Horario: 10:30 - 11:30 am</div>
-							<div class="row center choose1">Elija una de las tres
-								ponencias a las que asistirá</div>
-							<div class="row center took1" style="display: none">Ya
-								eligió el horario</div>
-							<div class="row center bot1" style="display: none">
-								<button
-									class="1 btn waves-effect waves-light #ff6d00 orange accent-4 again1">
-									Volver a elegir <i class="material-icons right">colorize</i>
-								</button>
-							</div>
-							<div class="row center pick1">
-
-								<div class="col s4">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[0].tema}" /> </b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[1].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[0].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											<c:out value="${lista[0].stock}" />
-										</span>
-									</div>
-									<div class="row">
-										<button
-											class="btn waves-effect waves-light  #00b0ff light-blue accent-3 b1"
-											type="submit">
-											<i class="material-icons right">done_all</i>
-										</button>
-
-									</div>
-
-								</div>
-								<div class="col s4">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[1].tema}" /> </b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[1].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[1].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											<c:out value="${lista[1].stock}" />
-										</span>
-									</div>
-									<div class="row">
-										<button
-											class="btn waves-effect waves-light  #00b0ff light-blue accent-3 b2"
-											type="submit">
-											<i class="material-icons right">done_all</i>
-										</button>
-
-									</div>
-
-								</div>
-								<div class="col s4">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[2].tema}" /> </b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[2].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[2].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											<c:out value="${lista[2].stock}" />
-										</span>
-									</div>
-									<div class="row">
-										<button
-											class="btn waves-effect waves-light  #00b0ff light-blue accent-3 b3"
-											type="submit">
-											<i class="material-icons right">done_all</i>
-										</button>
-
-									</div>
-
-								</div>
-
-							</div>
-							<div class="row">
-								<div class="divider"></div>
-							</div>
-							<div class="row center ">
-								<i class="material-icons md-18">access_time</i> Horario: 11:30
-								am- 12:30 pm
-							</div>
-							<div class="row center choose2">Elija una de las tres
-								ponencias a las que asistirá</div>
-							<div class="row center took2" style="display: none">Ya
-								eligió el horario</div>
-							<div class="row center bot2" style="display: none">
-								<button
-									class="1 btn waves-effect waves-light #ff6d00 orange accent-4 again2">
-									Volver a elegir <i class="material-icons right">colorize</i>
-								</button>
-								<!-- 									<button -->
-								<!-- 										class="1 btn waves-effect waves-light #5c6bc0 indigo lighten-1"> -->
-								<!-- 										Ver Asistencia<i class="material-icons right">touch_app</i> -->
-								<!-- 									</button> -->
-
-							</div>
-							<div class="row center a2" style="display: none"></div>
-							<div class="row center pick2">
-
-								<div class="col s4">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[3].tema}" /> </b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[3].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[3].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											<c:out value="${lista[3].stock}" />
-										</span>
-									</div>
-									<div class="row">
-										<button
-											class="btn waves-effect waves-light  #00b0ff light-blue accent-3 b4"
-											type="submit">
-											<i class="material-icons right">done_all</i>
-										</button>
-
-									</div>
-
-								</div>
-								<div class="col s4">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[4].tema}" /> </b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[4].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[4].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											<c:out value="${lista[4].stock}" />
-										</span>
-									</div>
-									<div class="row">
-										<button
-											class="btn waves-effect waves-light  #00b0ff light-blue accent-3 b5"
-											type="submit">
-											<i class="material-icons right">done_all</i>
-										</button>
-
-									</div>
-
-								</div>
-								<div class="col s4">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[5].tema}" /> </b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[5].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[5].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											<c:out value="${lista[5].stock}" />
-										</span>
-									</div>
-									<div class="row">
-										<button
-											class="btn waves-effect waves-light  #00b0ff light-blue accent-3 b6"
-											type="submit">
-											<i class="material-icons right">done_all</i>
-										</button>
-
-									</div>
-
-								</div>
-							</div>
-
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">pan_tool</i> Panel
-								</div>
-								<div class="col l4 m4 s10">12:30 - 1:00 pm</div>
-								<div class="col l1 m1 s2 "></div>
-
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">alarm_on</i> Almuerzo
-								</div>
-								<div class="col l4 m4 s10">1:00 - 2:30 pm</div>
-
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header ">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature_people</i> <u>Conferencia
-										magistral</u>
-								</div>
-								<div class="col l4 m4 s10">3:00 - 4:00 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons i md-24">expand_more</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<div class="row center">
-								<div class="col s3"></div>
-								<div class="col s6">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[6].tema }"></c:out></b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[6].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[6].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											No require de inscripción </span>
-									</div>
-									<div class="row">
-										<button
-											class="1 btn waves-effect waves-light #00b0ff light-blue accent-3"
-											type="submit" disabled>
-											<i class="material-icons right">done_all</i>
-										</button>
-									</div>
-								</div>
-								<div class="col s3"></div>
-							</div>
-
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">hourglass_full</i> Intervalo
-									Ambiental - Cultural
-								</div>
-								<div class="col l4 m4 s10">4:00 - 4:30 pm</div>
-								<div class="col l1 m1 s2 "></div>
-
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature_people</i> <u>Conferencia
-										magistral</u>
-								</div>
-								<div class="col l4 m4 s10">4:30 - 6:00 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons i md-24">expand_more</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<div class="row center">
-								<div class="col s3"></div>
-								<div class="col s6">
-									<div class="row">
-										<img
-											class="contA mdi-action-open-with large icon-demo size-icon"
-											src="<c:url value="/resources/img/coneia.png"/>"
-											style="width: 50%;"></img>
-									</div>
-									<div class="row">
-										Tema: <b><c:out value="${lista[7].tema }"></c:out></b>
-									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[7].ponente}" /></i>
-									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[7].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											No require de inscripción </span>
-									</div>
-									<div class="row">
-										<button
-											class="1 btn waves-effect waves-light #00b0ff light-blue accent-3"
-											type="submit" disabled>
-											<i class="material-icons right">done_all</i>
-										</button>
-									</div>
-								</div>
-								<div class="col s3"></div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">format_shapes</i> Presentación de
-									delegaciones
-								</div>
-								<div class="col l4 m4 s10">6:00 - 7:00 pm</div>
-
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons i md-24">expand_more</i>
-								</div>
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<div class="row center">
-								Lugar:
-								<c:out value="${lista[8].lugar}" />
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">brightness_3</i> NOCHE CULTURAL
-								</div>
-								<div class="col l4 m4 s10">7:30 - 9:30 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons i md-24">expand_more</i>
-								</div>
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<div class="row center">
-								Lugar:
-								<c:out value="${lista[9].lugar}" />
-							</div>
-						</div>
-					</li>
+					<li><a class="principal">Home</a></li>
 
 				</ul>
 			</div>
+			</nav>
+
 		</div>
+		<div class="row center container">
+			<div class="col s12"><h4>
+					<i class="material-icons md-dark md-36 white">alarm</i><span
+						style="font-family: 'Lobster Two', cursive;">Programación
+						para el evento </span> CONEIA <span
+						style="font-family: 'Lobster Two', cursive;">2018</span>
+				</h4></div>
+		</div>
+		<div class="fijo" style="width: 100%; background: white" >
+			<div class="row center container">
+				
+				<div class="col s3">Inscripción:</div>
+				<div class="col s6">
+					<div class="progress" style="height: 1em; border-radius: 5px;">
+						<div class="determinate" style="width: 100%; background: #0091ea"></div>
+					</div>
+				</div>
+				<div class="col s3" id="progreso"></div>
+			</div>
+			<div class="row center confirmar" style="display: none">
+				<button
+					class="btn  #0091ea waves-effect waves-light btn light-blue accent-4">
+					Confirmar</button>
+			</div>
 
-		<!-- D  I  A     M  A  R  T  E  S -->
-		<div id="swipe-2" class="col s12 #82b1ff blue accent-1"
-			style="height: auto">
-			<div class="container">
-				<br /> <br />
-				<ul class="collapsible popout" data-collapsible="accordion"
-					id="staggered-test2">
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">style</i> Talleres especializados y
-									visitas técnicas <span
-										class="luz" id="blink2">(Inscripción)</span>
-								</div>
-								<div class="col l4 m4 s11">6:30 am - 12:30 pm</div>
-								<div class="col l1 m1 s1 ">
-									<i class="material-icons i right">expand_more</i>
-								</div>
 
+		</div>
+		<div class="row  #304ffe indigo accent-4" style="height: auto;min-height:1000px;" id="urusai">
+			<div class="col s12 #ccff90 light-green accent-1" id="myHeader">
+				<ul class="tabs  #ccff90 light-green accent-1">
+					<li class="tab "><a id="one" class="#ccff90 "
+						style="color: #003300; font-weight: bold" href="#swipe-1"
+						onclick="Materialize.showStaggeredList('#staggered-test')"><span
+							class="nigga">LUNES</span></a></li>
+					<li class="tab active"><a
+						style="color: #003300; font-weight: bold" id="two" href="#swipe-2"
+						onclick="Materialize.showStaggeredList('#staggered-test2')"><span
+							class="nigga">MARTES</span></a></li>
+					<li class="tab"><a style="color: #003300; font-weight: bold"
+						id="three" href="#swipe-3"
+						onclick="Materialize.showStaggeredList('#staggered-test3')"><span
+							class="nigga">MIÉRCOLES</span></a></li>
+					<li class="tab"><a style="color: #003300; font-weight: bold"
+						id="four" href="#swipe-4"
+						onclick="Materialize.showStaggeredList('#staggered-test4')"><span
+							class="nigga">JUEVES</span></a></li>
+					<li class="tab"><a style="color: #003300; font-weight: bold"
+						id="five" href="#swipe-5"
+						onclick="Materialize.showStaggeredList('#staggered-test5')"><span
+							class="nigga">VIERNES</span></a></li>
+				</ul>
+			</div>
+
+			<!-- D I A   L U N E S -->
+			<div id="swipe-1" class="col s12 #304ffe indigo accent-4"
+				style="height: auto; margin-bottom: 1em;">
+				<div class="row container">
+					<br /> <br />
+					<ul class="collapsible popout" data-collapsible="accordion"
+						style="z-index: 15">
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">rowing</i> Recepción de delegaciones
+										y entrega de materiales
+									</div>
+									<div class="col l4 m4 s11">06:30 - 08:30 am</div>
+									<div class="col l1 m1 s1 "></div>
+								</div>
 							</div>
-						</div>
-						<div class="collapsible-body">
-						<div class="row">
-							<div class="col s6">
-								<div class="col s12">
-									<div class="row">
-										Tema: <b><c:out value="${lista[4].tema}" /> </b>
+
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">highlight</i> Inauguración del
+										evento
 									</div>
-									<div class="row">
-										Ponente:<i> <c:out value="${lista[4].ponente}" /></i>
+									<div class="col l4 m4 s11">08:30 - 10:30 am</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
 									</div>
-									<div class="row">
-										Lugar:
-										<c:out value="${lista[4].lugar}" />
-									</div>
-									<div class="row">
-										Cupos: <span class="1" style="color: green; font-weight: bold">
-											<c:out value="${lista[4].stock}" />
-										</span>
-									</div>
-								
+									<input type="hidden" id="a" value="<c:out value="${actividadesLunes[2].idtaller}" />"/>
 								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">Lugar: CARPA MÓVIL</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">mic</i> Ponencias paralelas <span
+											class="luz" id="blink">(Elegir opción)</span>
+									</div>
+									<div class="col l4 m4 s11">10:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+
+								<div class="row center ponenciasLunes"></div>
+								<div class="row">
+									<div class="divider"></div>
+								</div>
+								<div class="row center ponenciasLunes2"></div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">pan_tool</i> Panel
+									</div>
+									<div class="col l4 m4 s10">12:30 - 01:00 pm</div>
+									<div class="col l1 m1 s2 "></div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">alarm_on</i> Almuerzo
+									</div>
+									<div class="col l4 m4 s10">01:00 - 02:30 pm</div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header ">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature_people</i> <u>Conferencia
+											magistral</u>
+									</div>
+									<div class="col l4 m4 s10">02:30 - 04:00 pm</div>
+									<div class="col l1 m1 s2 ">
+										<i class="material-icons i md-24">expand_more</i>
+									</div>
 									
-							
-							</div>
-							<div class="col s6"></div>
-						
-						</div>
-						
-							
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">alarm_on</i> Almuerzo
 								</div>
-								<div class="col l4 m4 s10">12:30 - 2:00 pm</div>
-
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">layers_clear</i> <u>Concursos</u>
-								</div>
-								<div class="col l4 m4 s10">2:00 - 6:00 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6 ">
+										<div class="row">
+											Tema: <b><c:out value="${conferenciaLunes[0].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Ponente:<i> <c:out value="${conferenciaLunes[0].ponente}" /></i>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${conferenciaLunes[0].lugar}" />
+										</div>
+										<input type="hidden" id="b" value="<c:out value="${conferenciaLunes[0].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
 								</div>
 
 							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">transfer_within_a_station</i> GINKANA
-									Y COPA CONEIA - PRIMERA FASE
-								</div>
-								<div class="col l4 m4 s10">6:00 - 9:30 pm</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">hourglass_full</i> Intervalo
+										Ambiental - Cultural
+									</div>
+									<div class="col l4 m4 s10">04:00 - 04:30 pm</div>
+									<div class="col l1 m1 s2 "></div>
 
+								</div>
 							</div>
-						</div>
-					</li>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature_people</i> <u>Conferencia
+											magistral</u>
+									</div>
+									<div class="col l4 m4 s10">04:30 - 06:00 pm</div>
+									<div class="col l1 m1 s2 ">
+										<i class="material-icons i md-24">expand_more</i>
+									</div>
 
-				</ul>
-			</div>
-		</div>
-
-		<!-- D  I  A     M  I  E  R  C  O  L  E  S -->
-		<div id="swipe-3" class="col s12 #82b1ff blue accent-1"
-			style="height: auto">
-			<div class="container">
-				<br /> <br />
-				<ul class="collapsible popout " data-collapsible="accordion"
-					id="staggered-test3">
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">playlist_add_check</i> INGRESO
 								</div>
-								<div class="col l4 m4 s10">6:30 - 8:00 am</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
 							</div>
-
-
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">mic</i> Ponencias paralelas
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${conferenciaLunes[1].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Ponente:<i> <c:out value="${conferenciaLunes[1].ponente}" /></i>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${conferenciaLunes[1].lugar}" />
+										</div><input type="hidden" id="c" value="<c:out value="${conferenciaLunes[1].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
 								</div>
-								<div class="col l4 m4 s10">8:00 - 10:00 am</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
 							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature</i> Intervalo ambiental
-								</div>
-								<div class="col l4 m4 s10">10:00 - 10:30 am</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">format_shapes</i> Presentación de
+										delegaciones
+									</div>
+									<div class="col l4 m4 s10">06:00 - 07:00 pm</div>
 
+									<div class="col l1 m1 s2 ">
+										<i class="material-icons i md-24">expand_more</i>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">mic</i> Ponencias paralelas
-								</div>
-								<div class="col l4 m4 s10">10:30 am - 12:30 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
+							<div class="collapsible-body">
+								<div class="row center">
+									Lugar:
+									<c:out value="${actividadesLunes[0].lugar}" />
+								</div><input type="hidden" id="d" value="<c:out value="${actividadesLunes[0].idtaller}" />"/>
 							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">alarm_on</i> Almuerzo
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">brightness_3</i> NOCHE CULTURAL
+									</div>
+									<div class="col l4 m4 s10">07:30 - 09:30 pm</div>
+									<div class="col l1 m1 s2 ">
+										<i class="material-icons i md-24">expand_more</i>
+									</div>
 								</div>
-								<div class="col l4 m4 s10">1:00 - 2:00 pm</div>
-
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">blur_on</i>FERIA AMBIENTAL - CONCURSO
-									DE FOTOGRAFÍA - ELECCIÓN DE SEDE XIV CONEIA-2019
-								</div>
-								<div class="col l4 m4 s10">2:00 - 3:00 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
+							<div class="collapsible-body">
+								<div class="row center">
+									Lugar:
+									<c:out value="${actividadesLunes[1].lugar}" />
+								</div><input type="hidden" id="e" value="<c:out value="${actividadesLunes[1].idtaller}" />"/>
 							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature_people</i> <u>Conferencia
-										magistral</u> : Edificios inteligentes y energías limpias -
-									Rutgers University
-								</div>
-								<div class="col l4 m4 s10">4:30 - 6:00 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
+						</li>
 
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature_people</i> <u>Conferencia
-										magistral</u> : Calidad de aire en interiores - Rutgers University
-								</div>
-								<div class="col l4 m4 s10">6:00 - 7:30 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature</i> COMPROMISO AMBIENTAL -
-									CONEIA AL DÍA
-								</div>
-								<div class="col l4 m4 s10">7:30 - 9:30 pm</div>
-
-							</div>
-						</div>
-					</li>
-
-				</ul>
+					</ul>
+				</div>
 			</div>
 
+			<!-- D  I  A     M  A  R  T  E  S -->
+			<div id="swipe-2" class="col s12 #304ffe indigo accent-4"
+				style="height: auto; margin-bottom: 2em">
+				<div class="container">
+					<br /> <br />
+					<ul class="collapsible popout" data-collapsible="accordion"
+						id="staggered-test2">
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">style</i> Talleres especializados y
+										visitas técnicas <span class="luz" id="blink2">(Elegir
+											opción)</span>
+									</div>
+									<div class="col l4 m4 s11">06:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<h6 style="color: grey; line-height: 30px;">
+										Considere que si elige una <u>visita técnica</u> entonces
+										deberá asistir el <b>jueves</b> a un taller especializado; en
+										cambio, si elige un <u>taller especializado</u> entonces el <b>jueves</b>
+										deberá asistir una visita técnica
+									</h6>
+								</div>
+								<div class="row">
+									<input class="with-gap col s6" name="grupo1" type="radio"
+										value="vt1" id="vt1" checked /> <label for="vt1">Visitas
+										técnicas</label> <input class="with-gap col s6" name="grupo1"
+										type="radio" id="tm1" value="tm1" /> <label for="tm1">Talleres
+										especializados</label>
+								</div>
+								<div class="row ">
+									<div class="col s6 visitaMartes"></div>
+									<div class="col s6 talleresMartes"></div>
+
+								</div>
+
+
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">alarm_on</i> Almuerzo
+									</div>
+									<div class="col l4 m4 s10">01:00 - 02:30 pm</div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">layers_clear</i> <u>Concursos</u>
+									</div>
+									<div class="col l4 m4 s11">02:30 - 06:00 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${concursoMartes[0].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${concursoMartes[0].lugar}" />
+										</div>
+										<div class="row">
+											Cupos: <span class="1"
+												style="color: green; font-weight: bold"> No require
+												de inscripción </span>
+										</div><input type="hidden" id="f" value="<c:out value="${concursoMartes[0].idtaller}" />"/>
+										<div class="row" style="display: none">
+											<button
+												class="1 btn waves-effect waves-light #00b0ff light-blue accent-3"
+												type="submit" disabled>
+												<i class="material-icons right">done_all</i>
+											</button>
+										</div>
+									</div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${concursoMartes[1].tema }"></c:out></b>
+										</div>
+
+										<div class="row">
+											Lugar:
+											<c:out value="${concursoMartes[1].lugar}" />
+										</div>
+										
+									</div>
+								</div>
+								<div class="row center">
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${concursoMartes[2].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${concursoMartes[2].lugar}" />
+										</div>
+										<input type="hidden" id="g" value="<c:out value="${concursoMartes[2].idtaller}" />"/>
+									</div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${concursoMartes[3].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${concursoMartes[3].lugar}" />
+										</div>
+									
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">local_florist</i>Mi compromiso con
+										el medio ambiente
+									</div>
+									<div class="col l4 m4 s11">06:00 - 09:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${concursoMartes[4].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${concursoMartes[4].lugar}" />
+										</div>
+										<input type="hidden" id="h" value="<c:out value="${concursoMartes[4].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+
+			<!-- D  I  A     M  I  E  R  C  O  L  E  S -->
+			<div id="swipe-3" class="col s12 #304ffe indigo accent-4"
+				style="height: auto; margin-bottom: 2em">
+				<div class="container">
+					<br /> <br />
+					<ul class="collapsible popout " data-collapsible="accordion"
+						id="staggered-test3">
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">playlist_add_check</i> INGRESO
+									</div>
+									<div class="col l4 m4 s10">06:30 - 08:00 am</div>
+									<div class="col l1 m1 s1 "></div><input type="hidden" id="i" value="<c:out value="${actividadesMiercoles[3].idtaller}" />"/>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">mic</i> Ponencias paralelas <span
+											class="luz" id="blink4">(Elegir opción)</span>
+									</div>
+									<div class="col l4 m4 s11">08:00 - 10:00 am</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center ponenciasMiercoles1"></div>
+								<div class="row">
+									<div class="divider"></div>
+								</div>
+								<div class="row center ponenciasMiercoles2"></div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature</i> Intervalo Ambiental -
+										Cultural
+									</div>
+									<div class="col l4 m4 s11">10:00 - 10:30 am</div>
+									<div class="col l1 m1 s1 "></div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">mic</i> Ponencias paralelas <span
+											class="luz" id="blink5">(Elegir opción)</span>
+									</div>
+									<div class="col l4 m4 s11">10:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center ponenciasMiercoles3"></div>
+								<div class="row">
+									<div class="divider"></div>
+								</div>
+								<div class="row center ponenciasMiercoles4"></div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">pan_tool</i> Panel
+									</div>
+									<div class="col l4 m4 s10">12:30 - 01:00 pm</div>
+									<div class="col l1 m1 s2 "></div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">alarm_on</i> Almuerzo
+									</div>
+									<div class="col l4 m4 s10">01:00 - 02:00 pm</div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">blur_on</i>FERIA AMBIENTAL -
+										CONCURSO DE FOTOGRAFÍA
+									</div>
+									<div class="col l4 m4 s11">02:00 - 04:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${actividadesMiercoles[0].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${actividadesMiercoles[0].lugar}" />
+										</div>
+										
+									</div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${actividadesMiercoles[1].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${actividadesMiercoles[1].lugar}" />
+										</div>
+										<input type="hidden" id="j" value="<c:out value="${actividadesMiercoles[1].idtaller}" />"/>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature_people</i> <u>Conferencia
+											magistral</u>
+									</div>
+									<div class="col l4 m4 s11">04:30 - 06:00 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${conferenciaMiercoles[0].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Ponente: <b><c:out
+													value="${conferenciaMiercoles[0].ponente }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${conferenciaMiercoles[0].lugar}" />
+										</div>
+										<input type="hidden" id="k" value="<c:out value="${conferenciaMiercoles[0].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature</i> Intervalo Ambiental -
+										Cultural
+									</div>
+									<div class="col l4 m4 s11">06:00 - 06:30 pm</div>
+									<div class="col l1 m1 s1 "></div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature_people</i> <u>Conferencia
+											magistral</u>
+									</div>
+									<div class="col l4 m4 s11">06:30 - 08:00 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${conferenciaMiercoles[1].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Ponente: <b><c:out
+													value="${conferenciaMiercoles[1].ponente }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${conferenciaMiercoles[1].lugar}" />
+										</div>
+										<input type="hidden" id="l" value="<c:out value="${conferenciaMiercoles[1].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature</i> CONFRATERNIZACIÓN
+										AMBIENTAL
+									</div>
+									<div class="col l4 m4 s11">08:30 - 09:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+
+									<div class="col s3"></div>
+									<div class="col s6">
+
+										<div class="row">
+											Tema: <b><c:out value="${actividadesMiercoles[2].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${actividadesMiercoles[2].lugar}" />
+										</div>
+										<input type="hidden" id="m" value="<c:out value="${actividadesMiercoles[2].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
+								</div>
+
+							</div>
+						</li>
+
+					</ul>
+				</div>
+
+			</div>
+			<!-- D  I  A     J  U  E  V  E  S -->
+			<div id="swipe-4" class="col s12 #304ffe indigo accent-4"
+				style="height: auto; margin-bottom: 2em">
+				<div class="container">
+					<br /> <br />
+					<ul class="collapsible popout" data-collapsible="accordion"
+						id="staggered-test4" style="z-index: 10">
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">style</i> Talleres especializados -
+										Visitas técnicas <span class="luz" id="blink3">(Elegir
+											opción)</span>
+									</div>
+									<div class="col l4 m4 s11">06:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<h6 style="color: grey; line-height: 30px;">
+										Considere que si elige una <u>visita técnica</u> entonces
+										deberá asistir el <b>martes</b> a un taller especializado; en
+										cambio, si elige un <u>taller especializado</u> entonces el <b>martes</b>
+										deberá asistir a una visita técnica
+									</h6>
+								</div>
+								<div class="row">
+									<input class="with-gap col s6" name="grupo2" type="radio"
+										id="vt2" value="vt2" /> <label for="vt2">Visitas
+										técnicas</label> <input class="with-gap col s6" name="grupo2"
+										type="radio" id="tm2" checked /> <label for="tm2" value="tm2">Talleres
+										especializados</label>
+								</div>
+								<div class="row ">
+									<div class="col s6 visitasJueves"></div>
+									<div class="col s6 talleresJueves"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">alarm_on</i> Almuerzo
+									</div>
+									<div class="col l4 m4 s10">12:30 - 02:00 pm</div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature_people</i> <u>Conferencia
+											magistral</u>
+									</div>
+									<div class="col l4 m4 s11">02:00 - 03:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${conferenciaJueves[0].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Ponente: <b><c:out
+													value="${conferenciaJueves[0].ponente }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${conferenciaJueves[0].lugar}" />
+										</div>
+										<input type="hidden" id="n" value="<c:out value="${conferenciaJueves[0].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature</i> Intervalo Ambiental -
+										Cultural
+									</div>
+									<div class="col l4 m4 s11">03:30 - 04:00 pm</div>
+									<div class="col l1 m1 s1 "></div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature_people</i> <u>Conferencia
+											magistral</u>
+									</div>
+									<div class="col l4 m4 s11">04:00 - 05:30 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${conferenciaJueves[1].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Ponente: <b><c:out
+													value="${conferenciaJueves[1].ponente }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${conferenciaJueves[1].lugar}" />
+										</div>
+										<input type="hidden" id="o" value="<c:out value="${conferenciaJueves[1].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">transfer_within_a_station</i> COPA
+										CONEIA
+									</div>
+									<div class="col l4 m4 s10">05:30 - 09:30 pm</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									Lugar: LOSAS DEPORTIVAS
+								</div>
+								<input type="hidden" id="p" value="<c:out value="${conferenciaJueves[2].idtaller}" />"/>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+
+			<!-- D  I  A    V  I  E  R  N  E  S -->
+			<div id="swipe-5" class="col s12 #304ffe indigo accent-4"
+				style="height: auto; margin-bottom: 2em">
+				<div class="container">
+					<br /> <br />
+					<ul class="collapsible popout " data-collapsible="accordion"
+						id="staggered-test5" style="z-index: 10">
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">playlist_add_check</i> INGRESO
+									</div>
+									<div class="col l4 m4 s11">06:30 - 08:00 am</div>
+									<div class="col l1 m1 s1 "></div>
+								</div><input type="hidden" id="q" value="<c:out value="${actividadesViernes[2].idtaller}" />"/>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header biselado">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">mic</i> Ponencias paralelas <span
+											class="luz" id="blink6">(Elegir opción)</span>
+									</div>
+									<div class="col l4 m4 s11">8:00 - 10:00 am</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center ponenciasViernes1"></div>
+								<div class="row">
+									<div class="divider"></div>
+								</div>
+								<div class="row center ponenciasViernes2"></div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">hourglass_full</i> Intervalo
+										Ambiental - Cultural
+									</div>
+									<div class="col l4 m4 s11">10:00 - 10:30 am</div>
+									<div class="col l1 m1 s1 "></div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">nature_people</i> <u>Conferencia
+											magistral</u> - ELECCIÓN DE SEDE CONEIA 2019
+									</div>
+									<div class="col l4 m4 s11">10:30 am - 12:00 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${conferenciaViernes[0].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${conferenciaViernes[0].lugar}" />
+										</div>
+										<input type="hidden" id="r" value="<c:out value="${conferenciaViernes[0].idtaller}" />"/>
+									</div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${actividadesViernes[0].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${actividadesViernes[0].lugar}" />
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">alarm_on</i> Almuerzo
+									</div>
+									<div class="col l4 m4 s11">12:00 - 02:00 pm</div>
+									<div class="col l1 m1 s1 "></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<div class="row center">
+									<div class="col l7 m7 s12">
+										<i class="material-icons">audiotrack</i>CLAUSURA DEL EVENTO
+									</div>
+									<div class="col l4 m4 s11">02:00 - 05:00 pm</div>
+									<div class="col l1 m1 s1 ">
+										<i class="material-icons i right">expand_more</i>
+									</div>
+
+								</div>
+							</div>
+							<div class="collapsible-body">
+								<div class="row center">
+									<div class="col s3"></div>
+									<div class="col s6">
+										<div class="row">
+											Tema: <b><c:out value="${actividadesViernes[1].tema }"></c:out></b>
+										</div>
+										<div class="row">
+											Lugar:
+											<c:out value="${actividadesViernes[1].lugar}" />
+										</div>
+										<input type="hidden" id="s" value="<c:out value="${actividadesViernes[1].idtaller}" />"/>
+									</div>
+									<div class="col s3"></div>
+								</div>
+							</div>
+						</li>
+
+
+					</ul>
+				</div>
+			</div>
+
 		</div>
-		<!-- D  I  A     J  U  E  V  E  S -->
-		<div id="swipe-4" class="col s12 #82b1ff blue accent-1"
-			style="height: auto; z-index: -5">
-			<div class="container">
-				<br /> <br />
-				<ul class="collapsible popout" data-collapsible="accordion"
-					id="staggered-test4" style="z-index: 10">
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">style</i> Talleres especializados -
-									Visitas técnicas
-								</div>
-								<div class="col l4 m4 s10">6:30 am - 12:30 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">alarm_on</i> Almuerzo
-								</div>
-								<div class="col l4 m4 s10">12:30 - 2:00 pm</div>
-
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature_people</i> <u>Conferencia
-										magistral</u> : Calidad de aire en interiores - Rutgers University
-								</div>
-								<div class="col l4 m4 s10">2:00 - 3:30 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature_people</i> <u>Conferencia
-										magistral</u> : Calidad de aire en interiores - Rutgers University
-								</div>
-								<div class="col l4 m4 s10">3:30 - 5:00 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">transfer_within_a_station</i> COPA
-									CONEIA - FINAL
-								</div>
-								<div class="col l4 m4 s10">5:00 - 9:30 pm</div>
-
-							</div>
-						</div>
-					</li>
-
-				</ul>
+		<div class="row center confirmar"
+			style="display: none; margin-bottom: 1em; margin-top: 1em">
+			<button
+				class="btn btn-large #0091ea waves-effect waves-light btn light-blue accent-4">
+				Confirmar</button>
+		</div>
+		<div class="page-footer #00c853 green accent-4" style="padding: 0;float:left;width:100%;bottom:0">
+		<div class="footer-copyright">
+			<div class="row container">
+				Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
+					Team</a> All rights reserved. <span class="right ">Developed by
+					<a class="grey-text text-lighten-4">Alpha Team</a>
+				</span>
 			</div>
 		</div>
-
-		<!-- D  I  A    V  I  E  R  N  E  S -->
-		<div id="swipe-5" class="col s12 #82b1ff blue accent-1"
-			style="height: 1000px">
-			<div class="container">
-				<br /> <br />
-				<ul class="collapsible popout " data-collapsible="accordion"
-					id="staggered-test5" style="z-index: 10">
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">playlist_add_check</i> INGRESO
-								</div>
-								<div class="col l4 m4 s10">6:30 - 8:00 am</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-
-
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header biselado">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">mic</i> Ponencias paralelas
-								</div>
-								<div class="col l4 m4 s10">8:00 - 10:00 am</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">nature</i> PROYECCIÓN SOCIAL
-								</div>
-								<div class="col l4 m4 s10">10:00 am - 12:30 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">alarm_on</i> Almuerzo
-								</div>
-								<div class="col l4 m4 s10">12:30 - 2:00 pm</div>
-
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">
-							<div class="row center">
-								<div class="col l7 m7 s12">
-									<i class="material-icons">audiotrack</i>Clausura del evento,
-									Entrega de premios, Presentación de la nueva sede y Firma de
-									compromisos
-								</div>
-								<div class="col l4 m4 s10">2:00 - 5:00 pm</div>
-								<div class="col l1 m1 s2 ">
-									<i class="material-icons">aspect_ratio</i>
-								</div>
-
-							</div>
-						</div>
-						<div class="collapsible-body">
-							<span>Lorem ipsum dolor sit amet.</span>
-						</div>
-					</li>
-
-
-				</ul>
-			</div>
 		</div>
-
 	</div>
+	<div class="row center loadin" style="margin-top: 20%; display: none">
+		<h2 class="col s12" style="font-family:'Cinzel', serif;">Horario registrado</h2>
+		<br />
+		<h5 class="col s12">Redireccionando ...</h5>
 	</div>
-	<!-- 	<footer class="page-footer #33691e light-green darken-4" -->
-	<!-- 		style="position:absolute;bottom:0;width:100%"> -->
-	<!-- 	<div class="footer-copyright #33691e light-green darken-4"> -->
-	<!-- 		<div class="container"> -->
-	<!-- 			Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha -->
-	<!-- 				Team</a> All rights reserved. <span class="right">Developed by <a -->
-	<!-- 				class="grey-text text-lighten-4">Alpha Team</a></span> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
-	<!-- 	</footer> -->
-	<div>
-		<%@include file="../../../jspf/footer.jspf"%>
-	</div>
+
 	<!-- Javascript-->
 	<script src="<c:url value='/resources/js/jquery-3.2.1.min.js'></c:url>"
 		type="text/javascript"></script>
@@ -1054,10 +1112,23 @@
 		type="text/javascript"></script>
 	<script src="<c:url value='/resources/js/programa.js'></c:url>"
 		type="text/javascript"></script>
-
+	<script
+		src="<c:url value='/resources/js/plugins/floatThead/jquery.floatThead.min.js'></c:url>"
+		type="text/javascript"></script>
+	<script
+		src="<c:url value='/resources/js/plugins/floatThead/jquery.floatThead-slim.min.js'></c:url>"
+		type="text/javascript"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$.get("inscrito",null,function(data){
+				if(data>10){
+					var link = context_path + "/principal"
+
+					location.href = link;
+				}
+			})
+			
 			$('.collapsible').collapsible();
 			$(".button-collapse").sideNav({
 				accordion : false
@@ -1126,6 +1197,23 @@
 			});
 
 		});
+
+		window.onscroll = function() {
+			myFunction()
+		};
+
+		var header = document.getElementById("myHeader");
+		var sticky = header.offsetTop;
+
+		function myFunction() {
+			if (window.pageYOffset>=sticky) {
+				header.classList.add("sticky");
+				$("#urusai").css("padding-top","9%")
+			} else {
+				header.classList.remove("sticky");
+				$("#urusai").css("padding-top","0%");
+			}
+		}
 	</script>
 </body>
 </html>

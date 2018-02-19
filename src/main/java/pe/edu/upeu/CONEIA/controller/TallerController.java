@@ -24,55 +24,75 @@ import pe.edu.upeu.CONEIA.dao.TallerDAO;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.InscripcionTaller;
 import pe.edu.upeu.CONEIA.entity.Taller;
+import pe.edu.upeu.CONEIA.service.TallerService;
 import pe.edu.upeu.CONEIA.util.HibernateUtils;
 
 
 @Controller
 public class TallerController {
-	TallerDAO td = new TallerDAO();
-	Gson gson = new Gson();
-	private static Session s;
+
+	private Gson gson = new Gson();
+	
+	@Autowired
+	private TallerService td;
+	
 	InscripcionTaller it = new InscripcionTaller();
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	@RequestMapping("/talleres")
-	protected void doGet(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+
+	@RequestMapping("customTaller")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
+		RequestDispatcher dispatcher;
 		int op = Integer.parseInt(request.getParameter("op"));
+		HttpSession session = request.getSession();
+		String url;
 		switch (op) {
-		case 1:
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			String date = request.getParameter("fecha");
-			Date fecha= formatter.parse(date);
-			SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm");
-			String hour = request.getParameter("hora");
-			Date hora = formatter2.parse(hour);
-			int id = Integer.parseInt(session.getAttribute("inscripcion").toString());
-			out.println(gson.toJson(td.buscarTaller(hora, fecha, id)));
+		case 1://visitas MARTES
+			out.println(gson.toJson(td.findTalleres(4, "2018-06-05")));
 			break;
-		case 2:
-			s = sessionFactory.getCurrentSession();
-//			s = HibernateUtils.getSessionFactory().openSession();
-			int idd = Integer.parseInt(session.getAttribute("inscripcion").toString());
-			int idt = Integer.parseInt(request.getParameter("idtaller"));
-			SimpleDateFormat formatter3 = new SimpleDateFormat("HH:mm");
-			String hour2 = request.getParameter("hora");
-			SimpleDateFormat formatter4 = new SimpleDateFormat("yyyy-MM-dd");
-			String date2 = request.getParameter("fecha");
-			Date fecha2= formatter4.parse(date2);
-			Date hora2 = formatter3.parse(hour2);
-			DetalleInscripcion di = s.get(DetalleInscripcion.class,idd);
-			Taller t = s.get(Taller.class, idt);
-			it.setDetalleInscripcion(di);
-			it.setTaller(t);
-			it.setHora(hora2);
-			it.setFecha(fecha2);
-			out.println(td.create(it));
+		case 2://talleres MARTES
+			out.println(gson.toJson(td.findTalleres(2, "2018-06-05")));
 			break;
+		case 3://visitas JUEVES
+			out.println(gson.toJson(td.findTalleres(4, "2018-06-07")));
+			break;
+		case 4://talleres JUEVES
+			out.println(gson.toJson(td.findTalleres(2, "2018-06-07")));
+			break;
+		case 5://ponencia LUNES 1
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-04","10:30")));
+			break;
+		case 6://ponencia LUNES 2
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-04","11:30")));
+			break;
+		case 7://ponencia MIERCOLES 1
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06","08:00")));
+			break;
+		case 8://ponencia MIERCOLES 2
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06","09:00")));
+			break;
+		case 9://ponencia MIERCOLES 3 
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06","10:30")));
+			break;
+		case 10://ponencia MIERCOLES 4
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06","11:30")));
+			break;
+		case 11://ponencia VIERNES 1
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-08","08:00")));
+			break;
+		case 12://ponencia VIERNES 2
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-08","09:00")));
+			break;
+
 		}
+		
 
 	}
+	
+	
 }

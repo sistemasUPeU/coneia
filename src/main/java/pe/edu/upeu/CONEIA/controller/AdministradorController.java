@@ -5,14 +5,21 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -30,9 +38,13 @@ import pe.edu.upeu.CONEIA.entity.Configuracion;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
+import pe.edu.upeu.CONEIA.entity.Taller;
+import pe.edu.upeu.CONEIA.entity.Tipo;
 import pe.edu.upeu.CONEIA.service.ConfiguracionService;
 import pe.edu.upeu.CONEIA.service.InscripcionService;
+import pe.edu.upeu.CONEIA.service.InscripcionTallerService;
 import pe.edu.upeu.CONEIA.service.MailService;
+import pe.edu.upeu.CONEIA.service.TallerService;
 
 @Controller
 @RequestMapping("/admin")
@@ -48,6 +60,12 @@ public class AdministradorController {
 
 	@Autowired
 	public MailService ms;
+	
+	@Autowired
+	private TallerService td;
+	
+	@Autowired
+	private InscripcionTallerService its;
 
 	public Gson gs = new Gson();
 	Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -513,5 +531,181 @@ public class AdministradorController {
 		return gs.toJson(update);
 	}
 	
+	@RequestMapping("/asistencia")
+	public String assistance(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		// ModalAndView m = new ModalAndView()
+
+		return "asistenciaAdmin";
+	}
+
+	@RequestMapping("programaAdmin")
+	public ModelAndView ProgramAdmin(HttpServletRequest request, HttpServletResponse response) throws ParseException {
+
+		ModelAndView model = new ModelAndView();
+
+		model.setViewName("programaAdmin");
+		model.addObject("conferenciaLunes", td.findTalleres(3, "2018-06-04"));
+		model.addObject("actividadesLunes", td.findTalleres(5, "2018-06-04"));
+		model.addObject("concursoMartes", td.findTalleres(5, "2018-06-05"));
+		model.addObject("actividadesMiercoles", td.findTalleres(5, "2018-06-06"));
+		model.addObject("conferenciaMiercoles", td.findTalleres(3, "2018-06-06"));
+		model.addObject("conferenciaJueves", td.findTalleres(3, "2018-06-07"));
+		model.addObject("conferenciaViernes", td.findTalleres(3, "2018-06-08"));
+		model.addObject("actividadesViernes", td.findTalleres(5, "2018-06-08"));
+
+		return model;
+	}
+	
+	@RequestMapping("customTaller")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, ParseException {
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		RequestDispatcher dispatcher;
+		int op = Integer.parseInt(request.getParameter("op"));
+		HttpSession session = request.getSession();
+		String url;
+		switch (op) {
+		case 1:// visitas MARTES
+			out.println(gson.toJson(td.findTalleres(4, "2018-06-05")));
+			break;
+		case 2:// talleres MARTES
+			out.println(gson.toJson(td.findTalleres(2, "2018-06-05")));
+			break;
+		case 3:// visitas JUEVES
+			out.println(gson.toJson(td.findTalleres(4, "2018-06-07")));
+			break;
+		case 4:// talleres JUEVES
+			out.println(gson.toJson(td.findTalleres(2, "2018-06-07")));
+			break;
+		case 5:// ponencia LUNES 1
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-04", "10:30")));
+			break;
+		case 6:// ponencia LUNES 2
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-04", "11:30")));
+			break;
+		case 7:// ponencia MIERCOLES 1
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06", "08:00")));
+			break;
+		case 8:// ponencia MIERCOLES 2
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06", "09:00")));
+			break;
+		case 9:// ponencia MIERCOLES 3
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06", "10:30")));
+			break;
+		case 10:// ponencia MIERCOLES 4
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-06", "11:30")));
+			break;
+		case 11:// ponencia VIERNES 1
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-08", "08:00")));
+			break;
+		case 12:// ponencia VIERNES 2
+			out.println(gson.toJson(td.findTalleres2(1, "2018-06-08", "09:00")));
+			break;
+		case 13:
+			String tema = request.getParameter("tema");
+			String ponente = request.getParameter("ponente");
+			String lugar = request.getParameter("lugar");
+			int stock = Integer.parseInt(request.getParameter("stock"));
+			int idtaller = Integer.parseInt(request.getParameter("idtaller"));
+			int idtipo = Integer.parseInt(request.getParameter("idtipo"));
+			if (td.update(idtaller, idtipo, tema, ponente, lugar, stock) == 1) {
+				out.println(1);
+			} else {
+				out.println(0);
+			}
+			break;
+		case 14:
+			out.println(gson.toJson(td.findTalleres(3, "2018-06-04")));
+			break;
+		case 15:
+			out.println(gson.toJson(td.findTalleres(5, "2018-06-04")));
+			break;
+		case 16:
+			out.println(gson.toJson(td.findTalleres(5, "2018-06-05")));
+			break;
+		case 17:
+			out.println(gson.toJson(td.findTalleres(5, "2018-06-06")));
+			break;
+		case 18:
+			out.println(gson.toJson(td.findTalleres(3, "2018-06-06")));
+			break;
+		case 19:
+			out.println(gson.toJson(td.findTalleres(3, "2018-06-07")));
+			break;
+		case 20:
+			out.println(gson.toJson(td.findTalleres(3, "2018-06-08")));
+			break;
+		case 21:
+			out.println(gson.toJson(td.findTalleres(5, "2018-06-08")));
+			break;
+		case 22:
+			int idtipo1 = Integer.parseInt(request.getParameter("idtipo"));
+			String tema1 = request.getParameter("tema");
+			String ponente1 = request.getParameter("ponente");
+			String horaI = request.getParameter("horaI");
+			String horaF = request.getParameter("horaF");
+			String fecha1 = request.getParameter("fecha");
+			String lugar1 = request.getParameter("lugar");
+			System.out.println(horaI+"\n"+horaF+"\n"+fecha1);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
+			Date date = formatter.parse(fecha1);
+			SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm",Locale.US);
+			Date hourI = formatter2.parse(horaI);
+			Date hourF = formatter2.parse(horaF);
+			int stock1 = Integer.parseInt(request.getParameter("stock"));
+			Taller ta = new Taller();
+			Tipo ti = new Tipo();
+			ti.setIdtipo(idtipo1);
+			ta.setTipo(ti);
+			ta.setNombre(tema1);
+			ta.setPonente(ponente1);
+			ta.setHoraInicio(hourI);
+			ta.setHoraFin(hourF);
+			ta.setFecha(date);
+			ta.setDescripcion(lugar1);
+			ta.setNroVacantes(stock1);ta.setEstado(1);	
+			if(td.nuevoTaller(ta)==1) {
+				out.println(1);
+			}else {
+				out.println(0);
+			}
+			break;
+		case 23:
+			int id = Integer.parseInt(request.getParameter("id"));
+			if(td.eliminar(id)==1) {
+				out.println(1);
+			}else {
+				out.println(0);
+			}
+			break;
+		case 24: 
+			int idtipo2 = Integer.parseInt(request.getParameter("idtipo"));
+			String fecha2 = request.getParameter("fecha");
+			System.out.println(fecha2);
+			SimpleDateFormat formatter3 = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
+			Date date2 = formatter3.parse(fecha2);
+			out.println(gson.toJson(td.findTalleres(idtipo2, fecha2)));
+			break;
+		case 25:
+			String fech = request.getParameter("fecha");
+			out.println(gson.toJson(its.showVistaPersonaTaller(fech)));
+			break;
+		case 26:
+			int idd = Integer.parseInt(request.getParameter("idd"));
+			String time = request.getParameter("fecha");
+			out.println(gson.toJson(its.showVistaAsistencia(idd, time)));
+			break;
+		case 27:
+			int idit= Integer.parseInt(request.getParameter("idit"));
+			out.print(its.actualizarAsistencia(idit));
+			break;
+		case 28:
+			out.println(gson.toJson(its.reporteAsistencia()));
+			break;
+		}
+
+	}
 
 }

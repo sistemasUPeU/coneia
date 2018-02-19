@@ -483,7 +483,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 															if (login.op == 2) {
 																		//HA SIDO APROBADO
 																var link = gth_context_path
-																		+ "/error"
+																		+ "/principal"
 																location.href = link;
 
 															} else {

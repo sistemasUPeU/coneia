@@ -47,21 +47,22 @@
 										s += '<ul class="collapsible collapsible-accordion">';
 
 										s += '<li class="bold">';
-
+//jejee falta configurar si lo tienes por ahi pegalo aqui porfa
 
 										if (lista[i].url == '/confirmarinscripcion') {
-											s += '<a class="collapsible-header waves-effect waves-light" ><i class="medium material-icons prefix">playlist_add_check</i>  '
-													+ lista[i].nombre + '</a>';
+											s += '<a class="collapsible-header waves-effect waves-light" ><i class="medium material-icons prefix">'+lista[i].icons+'</i>  '
+													+ lista[i].nombre +'<i class="material-icons i right">expand_more</i></a>';
 											s += '<div class="collapsible-body" style="padding: 0;">';
 											s += '<ul>';
 											s += '<li><a href="'+coneia_context_path+ '/admin/waiting">En espera</a></li>';
 											s += '<li><a href="'+coneia_context_path+ '/admin/aprove">Confirmados</a></li>';
 
-										} else {
+										} else{
 											s += '<a href="'+coneia_context_path+ "/admin" +lista[i].url + '"class=" waves-effect waves-light" style="    padding-left: 16px; padding-right: 16px;" ><i class="medium material-icons prefix">'+lista[i].icons+'</i>  '
-													+ lista[i].nombre + '</a>';
+											+ lista[i].nombre + '</a>';
 
 										}
+										
 										s += '</ul>';
 										s += '</div>';
 										s += '</li>';

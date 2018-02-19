@@ -26,7 +26,9 @@ import javax.persistence.TemporalType;
 @Table(name = "taller", catalog = "appconeia_db")
 @NamedQueries({
 @NamedQuery(name="Talleres", query="FROM Taller t where t.horaInicio  = :horaInicio and t.fecha=:fecha"),
-@NamedQuery(name="Stock", query="FROM Taller t where t.idtaller  = :idtaller")})
+@NamedQuery(name="Stock", query="FROM Taller t where t.idtaller  = :idtaller"),
+@NamedQuery(name="TalleresPersonalizado", query="FROM Taller t where t.tipo  =:tipo and fecha=:fecha and t.estado=1"),
+@NamedQuery(name="TalleresPersonalizado2", query="FROM Taller t where t.tipo  =:tipo and fecha=:fecha and horaInicio=:horaInicio and t.estado=1")})
 public class Taller implements java.io.Serializable {
 
 	private Integer idtaller;
@@ -38,6 +40,7 @@ public class Taller implements java.io.Serializable {
 	private Date fecha;
 	private String descripcion;
 	private Integer nroVacantes;
+	private Integer estado;
 	private Set<InscripcionTaller> inscripcionTallers = new HashSet<InscripcionTaller>(0);
 
 	public Taller() {
@@ -156,5 +159,16 @@ public class Taller implements java.io.Serializable {
 	public void setInscripcionTallers(Set<InscripcionTaller> inscripcionTallers) {
 		this.inscripcionTallers = inscripcionTallers;
 	}
+
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
+	
+	
+	
 
 }
