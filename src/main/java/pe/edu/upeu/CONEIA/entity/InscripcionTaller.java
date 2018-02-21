@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "inscripcion_taller", catalog = "appconeia_db")
 @NamedQueries({
-@NamedQuery(name="InscripcionTaller", query="FROM InscripcionTaller i where i.detalleInscripcion =:detalleInscripcion and i.hora  = :hora and i.fecha =:fecha")})
+@NamedQuery(name="InscripcionTaller", query="FROM InscripcionTaller i where i.detalleInscripcion =:detalleInscripcion")})
 public class InscripcionTaller implements java.io.Serializable {
 
 	private Integer idinscripcionTaller;

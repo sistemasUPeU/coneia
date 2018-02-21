@@ -43,6 +43,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/logon")
 	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf8");
 		PrintWriter out = response.getWriter();
 		String dni = request.getParameter("dni");
 		String clave = request.getParameter("clave");
@@ -75,13 +76,13 @@ public class LoginController {
 						System.out.println("estado de inscripcion " +personaMap.get("estadoinscripcion"));
 						System.out.println(Integer.parseInt(personaMap.get("estadoinscripcion").toString()));
 //						
-//						session.setAttribute("idp", personaMap.get("idpersona"));
-//						session.setAttribute("dni", personaMap.get("dni"));
-//						session.setAttribute("nombre", personaMap.get("nombre"));
-//						session.setAttribute("apellidos", personaMap.get("apellidos"));
-//						session.setAttribute("rol", personaMap.get("rol"));
-//						session.setAttribute("idrol", personaMap.get("idrol"));
-//						session.setAttribute("inscripcion", personaMap.get("inscripcion"));
+						session.setAttribute("idp", personaMap.get("idpersona"));
+						session.setAttribute("dni", personaMap.get("dni"));
+						session.setAttribute("nombre", personaMap.get("nombre"));
+						session.setAttribute("apellidos", personaMap.get("apellidos"));
+						session.setAttribute("rol", personaMap.get("rol"));
+						session.setAttribute("idrol", personaMap.get("idrol"));
+						session.setAttribute("inscripcion", personaMap.get("inscripcion"));
 						
 						x = 2;//ha sido aprobado
 						}
@@ -143,6 +144,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/privilegios")
 	public void listarPrivilegios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf8");
 		PrintWriter out = response.getWriter();
 		int rol = Integer.parseInt(request.getParameter("idrol"));
 		HttpSession session = request.getSession(true);

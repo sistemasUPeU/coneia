@@ -36,7 +36,7 @@ import sun.misc.*;
 public class Test {
 
 	public static Session s;
-	private static TallerDAO td = new TallerDAO();
+//	private static TallerDAO td = new TallerDAO();
 	private static Taller t = new Taller();;
 	private static DetalleInscripcion d = new DetalleInscripcion();;
 	private static Gson gson = new Gson();
@@ -315,15 +315,15 @@ public class Test {
 		d.setIddetalleInscripcion(1);
 		it.setDetalleInscripcion(d);
 		it.setTaller(t);
-		if (td.create(it) == 1) {
-			System.out.println("Jonas estas de suerte");
-		} else {
-			System.out.println("nada Jonas");
-		}
+//		if (td.create(it) == 1) {
+//			System.out.println("Jonas estas de suerte");
+//		} else {
+//			System.out.println("nada Jonas");
+//		}
 	}
 
 	public static void listar() {
-		System.out.println(gson.toJson(td.readAll()));
+//		System.out.println(gson.toJson(td.readAll()));
 	}
 
 	public static void login() {
@@ -335,7 +335,7 @@ public class Test {
 		Date fecha = formatter.parse("2018-06-04");
 		SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm");
 		Date hora = formatter2.parse("10:30");
-		System.out.println(gson.toJson(td.buscarTaller(hora, fecha, 1)));
+//		System.out.println(gson.toJson(td.buscarTaller(hora, fecha, 1)));
 	}
 
 }

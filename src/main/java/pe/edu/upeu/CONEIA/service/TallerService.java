@@ -1,4 +1,4 @@
-package pe.edu.upeu.CONEIA.dao;
+package pe.edu.upeu.CONEIA.service;
 
 import java.text.ParseException;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import pe.edu.upeu.CONEIA.entity.Taller;
 
-public interface TallerDAO {
+public interface TallerService {
 	public int nuevoTaller(Taller t);
 	public int eliminar(int id);
 	public int update(int idtaller,int idtipo,String tema,String ponente,String lugar,int stock);
