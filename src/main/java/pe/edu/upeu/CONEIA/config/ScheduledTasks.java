@@ -25,9 +25,6 @@ import pe.edu.upeu.CONEIA.test.Test;
 @Service
 public class ScheduledTasks {
 
-	  private static final Logger LOG = Logger.getLogger(ScheduledTasks.class);
-	  private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
 	
 //	  @Scheduled(fixedDelay=10000)
 //	  @Scheduled(cron="0 0 18 ? * Sun")

@@ -107,7 +107,7 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 			lista = query.getResultList();
 			for(VistaPersonaTaller v : lista) {
 				date=dfDateMedium.format(v.getFecha());
-				String[] fecha = date.split("/");
+				String[] fecha = date.split("-");
 				String anio = fecha[2];String mes = fecha[1];String dia = fecha[0];
 				String fechon = anio+"-"+mes+"-"+dia;
 				long num = cuantos(v.getIdd());

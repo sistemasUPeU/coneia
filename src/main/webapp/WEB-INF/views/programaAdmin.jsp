@@ -900,6 +900,33 @@ margin-left:30%;
 		$('.progress').fadeOut('fast');
 		$('#loader-wrap').fadeOut('fast');
 		$('#loader-wrap1').fadeOut('fast');
+		
+		$(document).ready(function() {
+
+			checkSize();
+
+		});
+		
+		$(window).on('resize', function() {
+			checkSize()
+		});
+
+		function checkSize() {
+			if ($(window).width() < 600) {
+				// your code here
+			
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
+				
+
+			} else {
+
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
+				
+			}
+		}
+	</script>
 	</script>
 
 

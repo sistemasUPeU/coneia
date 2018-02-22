@@ -144,6 +144,34 @@
 				$('body').addClass('loaded');
 			}, 200);
 		})
+		
+		$(document).ready(function() {
+
+			checkSize();
+
+		});
+
+
+		$(window).on('resize', function() {
+			checkSize()
+		});
+
+		function checkSize() {
+			if ($(window).width() < 600) {
+				// your code here
+			
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
+				
+
+			} else {
+
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
+				
+			}
+		}
+
 	</script>
 
 </body>

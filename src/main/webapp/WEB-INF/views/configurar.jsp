@@ -369,6 +369,8 @@
 			}
 		}
 
+
+
 		function checkSize() {
 			if ($(window).width() <= 600) {
 				// your code here
@@ -379,6 +381,9 @@
 				$(".header2").parent().addClass("center");
 				$(".header3").text("Temporada 3");
 				$(".header3").parent().addClass("center");
+				
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
 
 			} else {
 
@@ -388,6 +393,9 @@
 				$(".header2").parent().addClass("left").removeClass("center");
 				$(".header3").text("Precios: Temporada 3");
 				$(".header3").parent().addClass("left").removeClass("center");
+				
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
 			}
 		}
 	</script>
