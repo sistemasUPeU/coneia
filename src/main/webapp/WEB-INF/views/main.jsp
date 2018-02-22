@@ -114,7 +114,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 
 	<!-- 	<div class="parallax_img" id="img1"></div> -->
 
-	<div class="row container">
+	<div class="">
 		<div id="space" style="position: relative; padding-top: 1%;">
 			<div class="row center" style="padding-top: 10%;">
 				<div class="col s12 m6 l6">
@@ -290,12 +290,32 @@ var gth_context_path = '<%=request.getContextPath()%>';
 			$("#restore_password").hide();
 			$('.progress').fadeOut('fast');
 			$('#loader-wrap').fadeOut('fast');
+			checkSize();
 
 		});
-		// 		$('#user_phone').formatter({
-		// 			'pattern' : '{{999}}-{{999}}-{{999}}',
-		// // 			'persistent' : true
-		// 		});
+
+
+		$(window).on('resize', function() {
+			checkSize()
+		});
+
+		function checkSize() {
+			if ($(window).width() < 600) {
+				// your code here
+			
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
+				
+
+			} else {
+
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
+				
+			}
+		}
+
+
 
 		function checkvalid() {
 			

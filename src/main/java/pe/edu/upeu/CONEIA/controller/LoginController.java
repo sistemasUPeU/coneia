@@ -109,7 +109,7 @@ public class LoginController {
 					}
 					
 					datos.put("op", x);
-					datos.put("idp", personaMap.get("idp"));
+					datos.put("idp", personaMap.get("idpersona"));
 					datos.put("dni", personaMap.get("dni"));
 					datos.put("rol", personaMap.get("rol"));
 					datos.put("idrol", personaMap.get("idrol"));

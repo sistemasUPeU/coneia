@@ -2,16 +2,16 @@
 <%
 	HttpSession sesion = request.getSession();
 	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
-		response.sendRedirect(request.getContextPath()+"/");
+		response.sendRedirect(request.getContextPath() + "/");
 
 	} else {
 
-		if (Integer.parseInt(""+sesion.getAttribute("idrol")) == 5) {
-			response.sendRedirect(request.getContextPath()+"/admin/waiting");
+		if (Integer.parseInt("" + sesion.getAttribute("idrol")) == 5) {
+			response.sendRedirect(request.getContextPath() + "/admin/waiting");
 		} else {
-			if (Integer.parseInt(""+sesion.getAttribute("idrol")) == 7 ) {
-				response.sendRedirect(request.getContextPath()+"/admin/asistencia");
-			}else{
+			if (Integer.parseInt("" + sesion.getAttribute("idrol")) == 7) {
+				response.sendRedirect(request.getContextPath() + "/admin/asistencia");
+			} else {
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
@@ -25,6 +25,7 @@
 	href="<c:url value='/resources/img/favicon/favicon.ico'></c:url>">
 <!--Global Config-->
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="png" href="<c:url value='/resources/img/coneia.png'></c:url>">
 
 <!-- Global Styles-->
@@ -46,25 +47,47 @@
 <link href="<c:url value='/resources/css/style.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
 <script>
-	var gth_context_path = '${pageContext.request.contextPath}';
+	var coneia_context_path  = '${pageContext.request.contextPath}';
 </script>
+
+<style type="text/css">
+.input-field div.error {
+	position: relative;
+	top: -1rem;
+	left: 3rem;
+	font-size: 0.8rem;
+	color: #e11313;
+	-webkit-transform: translateY(0%);
+	-ms-transform: translateY(0%);
+	-o-transform: translateY(0%);
+	transform: translateY(0%);
+}
+
+.input-field label.active {
+	width: 100%;
+}
+
+#modal_changepass {
+	width: 30%;
+}
+
+@media only screen and (max-width: 600px) {
+	#modal_changepass {
+		width: 85%;
+	}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1100px) {
+	#modal_changepass {
+		width: 40%;
+	}
+}
+</style>
+
+
 </head>
 <body>
-<!-- 	<div class="preloader-background"> -->
-<!-- 		<div class="preloader-wrapper big active"> -->
-<!-- 			<div class="spinner-layer spinner-blue-only"> -->
-<!-- 				<div class="circle-clipper left"> -->
-<!-- 					<div class="circle"></div> -->
-<!-- 				</div> -->
-<!-- 				<div class="gap-patch"> -->
-<!-- 					<div class="circle"></div> -->
-<!-- 				</div> -->
-<!-- 				<div class="circle-clipper right"> -->
-<!-- 					<div class="circle"></div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<input type="hidden" value="${sessionScope.idp}" id="ip" />
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
@@ -160,7 +183,66 @@
 		</div>
 	</div>
 
+	<div id="modal_changepass" class="modal modal-fixed-footer"
+		style="height: 455px;">
+		<form class="formValidate" id="formValidate" method="post"
+			action="javascript: changePassword();">
+			<div class="modal-content modal-form" style="padding: 35px;">
+				<br>
+				<div style="text-align: center">
+					<h5>Cambio de contraseña</h5>
+				</div>
 
+				<br>
+				<div class="row margin hide">
+					<div class="input-field col s12">
+						<input class="hide" value="${sessionScope.idp}" id="idper"
+							name="idper" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="mdi-communication-vpn-key prefix large icon-demo"></i> <input
+							id="pass_new" name="pass_new" type="password" class="validate"
+							required data-error=".errorTxt3"> <label for="pass_new">Contraseña
+							nueva</label>
+						<div class="errorTxt3"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="mdi-communication-vpn-key prefix large icon-demo"></i> <input
+							id="pass_new_1" name="pass_new_1" type="password"
+							class="validate" required data-error=".errorTxt4"> <label
+							for="pass_new_1">Repetir contraseña nueva</label>
+						<div class="errorTxt4"></div>
+					</div>
+				</div>
+
+				<div style="text-align: center;">
+					<label id="mensaje" style="color: red" style="width: 100%"></label>
+				</div>
+
+			</div>
+
+
+			<div class="modal-footer">
+				<button href="#!"
+					class="btn modal-action waves-effect waves-green btn-flat submit "
+					id="cambiarPass" type="submit"
+					style="backgroun-color: rgba(45, 200, 70, 0.53);">Guardar
+					cambios</button>
+
+				<!-- 					<button class="btn  waves-light right submit" -->
+				<!-- 						type="submit" name="action"> -->
+				<!-- 						Submit <i class="mdi-content-send right"></i> -->
+				<!-- 					</button> -->
+
+			</div>
+		</form>
+	</div>
 	<div>
 		<%@include file="../../../jspf/footer.jspf"%>
 	</div>
@@ -170,14 +252,19 @@
 	<script
 		src="<c:url value='/resources/js/plugins/materialize.min.js'></c:url>"
 		type="text/javascript"></script>
+
+	<script
+		src="<c:url value='/resources/js/plugins/jquery-validation/jquery.validate.min.js'></c:url>"
+		type="text/javascript"></script>
 	<script
 		src="<c:url value='/resources/js/plugins/sweetalert/sweetalert.min.js'></c:url>"
 		type="text/javascript"></script>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		$(window).on("load", function() {
 			setTimeout(function() {
 				$('body').addClass('loaded');
 			}, 200);
+
 		})
 
 		$('.progress').fadeOut('fast');
@@ -202,15 +289,44 @@
 			// Stops event propagation
 
 			});
-			$.get("inscrito",null,function(data){
-				if(data>10){
-					$(".prog").css("display","none");
-					$(".asist").css("display","block");
-				}else{
-					$(".prog").css("display","block");
-					$(".asist").css("display","none");
-					}
-			})
+			$.get("inscrito", null, function(data) {
+				if (data > 10) {
+					$(".prog").css("display", "none");
+					$(".asist").css("display", "block");
+				} else {
+					$(".prog").css("display", "block");
+					$(".asist").css("display", "none");
+				}
+			});
+
+			$('#modal_changepass').modal({
+				dismissible : false, // Modal can be dismissed by clicking outside of the
+				// modal
+				opacity : .5, // Opacity of modal background
+				inDuration : 400, // Transition in duration
+				outDuration : 200, // Transition out duration
+				startingTop : '4%', // Starting top style attribute
+				endingTop : '10%', // Ending top style attribute
+				ready : function(modal, trigger) { // Callback for Modal open. Modal and
+					// trigger parameters available.
+				},
+				complete : function() {
+				} // Callback for Modal close
+			});
+
+			var idp = $("#ip").val();
+
+			$.get("checkpass", {
+				idpersona : idp
+			}, function(data) {
+				var data_con = JSON.parse(data);
+				var estadopass = data_con.estadopass;
+
+				if (estadopass == 1) {
+					//falta cambiar contrase;a
+					$("#modal_changepass").modal("open");
+				}
+			});
 
 		});
 		var url = window.location.href;
@@ -233,15 +349,15 @@
 			var link = "";
 			var rol = $("#rolcito").val();
 			if (rol == "administrador") {
-				link = gth_context_path + "/programaAdmin";
+				link = coneia_context_path  + "/programaAdmin";
 			} else {
-				link = gth_context_path + "/programa";
+				link = coneia_context_path  + "/programa";
 			}
 			location.href = link;
 		});
 
 		$(".principal").click(function() {
-			var link = gth_context_path + "/principal"
+			var link = coneia_context_path  + "/principal"
 
 			location.href = link;
 		})
@@ -250,9 +366,9 @@
 			var link = "";
 			var rol = $("#rolcito").val();
 			if (rol == "administrador") {
-				link = gth_context_path + "/asistenciaAdmin";
+				link = coneia_context_path  + "/asistenciaAdmin";
 			} else {
-				link = gth_context_path + "/asistencia";
+				link = coneia_context_path  + "/asistencia";
 			}
 			location.href = link;
 		})
@@ -261,7 +377,7 @@
 			$.post("logon", {
 				op : '2'
 			}, function() {
-				var link = gth_context_path + "/"
+				var link = coneia_context_path  + "/"
 
 				location.href = link;
 			});
@@ -273,7 +389,7 @@
 				$("#space").html(data);
 			});
 		})
-		
+
 		$(window).on("load", function() {
 			window.location.hash = "no-back-button";
 
@@ -282,12 +398,71 @@
 			window.onhashchange = function() {
 				window.location.hash = "";
 			}
-		})
+		});
+
+		function changePassword() {
+
+			var nueva = $("#pass_new_1").val();
+			var idpersona = $("#idper").val();
+
+			$.get("changepassword", {
+				pass_new_1 : nueva,
+				idper : idpersona,
+				estado_pass : 1
+			}, function(data) {
+
+				if (data == 1) {
+
+					$("#mensaje").text("Se cambió la contraseña")
+					setTimeout(function() {
+						location.href = coneia_context_path + "/principal";
+					}, 2000);
+
+				}
+			});
+		}
+		
+		$("#formValidate").validate({
+			rules : {
+
+				pass_new : {
+					required : true,
+					minlength : 5
+				},
+				pass_new_1 : {
+					required : true,
+					minlength : 5,
+					equalTo : "#pass_new"
+				},
+
+			},
+			//For custom messages
+			messages : {
+				pass_new : {
+					required : "Ingrese la contraseña",
+					minlength : "Ingrese al menos 5 caracteres"
+				},
+				pass_new_1 : {
+					required : "Ingrese la contraseña",
+					minlength : "Ingrese al menos 5 caracteres",
+					equalTo : "Las contraseñas no coinciden"
+				},
+			},
+			errorElement : 'div',
+			errorPlacement : function(error, element) {
+				var placement = $(element).data('error');
+				if (placement) {
+					$(placement).append(error)
+				} else {
+					error.insertAfter(element);
+				}
+			}
+		});
 	</script>
 </body>
 </html>
 <%
-			}
+	}
 		}
 	}
 %>
