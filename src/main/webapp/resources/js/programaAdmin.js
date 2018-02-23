@@ -382,7 +382,7 @@ function vitas(idtipo,fecha){
 	if(idtipo==4){
 		if(fecha=="2018-06-05"){
 			$("#modalvm").css("z-index","50000");
-			$("#modales").append('<div id="modalvm" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+			$("#modales").append('<div id="modalvm" class="modal"><div class="modal-content modal-form"><div class="row">'+
 					'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Nueva visita técnica</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="temavm" class="materialize-textarea" ></textarea>'+
 					'<label for="temavm" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba el nombre de la empresa o responsable" id="ponentevm" value=""/>'+
 					'<label for="ponentevm" class="active">Responsable: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stockvm" value=""/>'+
@@ -392,13 +392,14 @@ function vitas(idtipo,fecha){
 				
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
+					$("#modales").show();
 			        console.log(modal, trigger);
 			      },
-			      complete: function() { } // Callback for Modal close
+			      complete: function() { $("#modales").hide();} // Callback for Modal close
 			});
 		}else{
 			$("#modalvj").css("z-index","50000");
-			$("#modales").append('<div id="modalvj" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+			$("#modales").append('<div id="modalvj" class="modal"><div class="modal-content modal-form"><div class="row">'+
 					'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Nueva visita técnica</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="temavj" class="materialize-textarea" ></textarea>'+
 					'<label for="temavj" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba el nombre de la empresa o responsable" id="ponentevj" value=""/>'+
 					'<label for="lugarvj" class="active">Responsable: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stockvj" value=""/>'+
@@ -408,16 +409,17 @@ function vitas(idtipo,fecha){
 				
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
+					$("#modales").show();
 			        console.log(modal, trigger);
 			      },
-			      complete: function() { } // Callback for Modal close
+			      complete: function() { $("#modales").hide();} // Callback for Modal close
 			});
 		}
 		
 	}else{
 		if(fecha=="2018-06-05"){
 			$("#modaltm").css("z-index","50000");
-			$("#modales").append('<div id="modaltm" class="modal" >'+
+			$("#modales").append('<div id="modaltm" class="modal">'+
 					'<div class="modal-content modal-form">'+
 						'<div class="row">'+
 							'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Nuevo taller especializado</h2>'+
@@ -432,13 +434,14 @@ function vitas(idtipo,fecha){
 				
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
+					$("#modales").show();
 			        console.log(modal, trigger);
 			      },
-			      complete: function() { } // Callback for Modal close
+			      complete: function() { $("#modales").hide();} // Callback for Modal close
 			});
 		}else{
 			$("#modaltj").css("z-index","50000");
-			$("#modales").append('<div id="modaltj" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+			$("#modales").append('<div id="modaltj" class="modal"><div class="modal-content modal-form"><div class="row">'+
 					'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Nuevo taller especializado</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="tematj" class="materialize-textarea" ></textarea>'+
 					'<label for="tematj" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba el lugar" id="lugartj" value=""/>'+
 					'<label for="lugartj" class="active">Lugar: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stocktj" value=""/>'+
@@ -448,9 +451,10 @@ function vitas(idtipo,fecha){
 				
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
+					$("#modales").show();
 			        console.log(modal, trigger);
 			      },
-			      complete: function() { } // Callback for Modal close
+			      complete: function() {$("#modales").hide(); } // Callback for Modal close
 			});
 		}
 	}
@@ -459,7 +463,7 @@ function vitas(idtipo,fecha){
 
 function modales(tema,ponente,lugar,stock,idtaller,tipo){
 	$("#modal"+idtaller).css("z-index","500"+idtaller);
-	$("#modales").append('<div id="modal'+idtaller+'" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+	$("#modales").append('<div id="modal'+idtaller+'" class="modal"><div class="modal-content modal-form"><div class="row">'+
 			'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Actualizar cambios</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="tema'+idtaller+'" class="materialize-textarea" >'+tema+'</textarea>'+
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba el ponente" id="ponente'+idtaller+'" value="'+ponente+'"/>'+
 			'<label for="ponente'+idtaller+'" class="active">Ponente: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
@@ -470,15 +474,16 @@ function modales(tema,ponente,lugar,stock,idtaller,tipo){
 		
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","500"+idtaller);
+			$("#modales").show();
 	        console.log(modal, trigger);
 	      },
-	      complete: function() { } // Callback for Modal close
+	      complete: function() {$("#modales").hide(); } // Callback for Modal close
 	});
 }
 
 function conferencias(tema,ponente,lugar,idtaller,tipo){
 	$("#modal"+idtaller).css("z-index","500"+idtaller);
-	$("#modales").append('<div id="modal'+idtaller+'" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+	$("#modales").append('<div id="modal'+idtaller+'" class="modal"><div class="modal-content modal-form"><div class="row">'+
 			'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Actualizar cambios</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="tema'+idtaller+'" class="materialize-textarea" >'+tema+'</textarea>'+
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba el ponente" id="ponente'+idtaller+'" value="'+ponente+'"/>'+
 			'<label for="ponente'+idtaller+'" class="active">Ponente: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
@@ -488,15 +493,16 @@ function conferencias(tema,ponente,lugar,idtaller,tipo){
 		
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","600"+idtaller);
+			$("#modales").show();
 	        console.log(modal, trigger);
 	      },
-	      complete: function() { } // Callback for Modal close
+	      complete: function() { $("#modales").hide();} // Callback for Modal close
 	});
 }
 
 function actividades(tema,lugar,idtaller,tipo){
 	$("#modal"+idtaller).css("z-index","500"+idtaller);
-	$("#modales").append('<div id="modal'+idtaller+'" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+	$("#modales").append('<div id="modal'+idtaller+'" class="modal"><div class="modal-content modal-form"><div class="row">'+
 			'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Actualizar cambios</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="tema'+idtaller+'" class="materialize-textarea" >'+tema+'</textarea>'+
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
 			'<label for="lugar'+idtaller+'" class="active">Lugar: </label></div></div><input type="hidden" id="tipo'+idtaller+'" value="'+tipo+'"/>'+
@@ -505,15 +511,16 @@ function actividades(tema,lugar,idtaller,tipo){
 		
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","600"+idtaller);
+			$("#modales").show();
 	        console.log(modal, trigger);
 	      },
-	      complete: function() { } // Callback for Modal close
+	      complete: function() { $("#modales").hide();} // Callback for Modal close
 	});
 }
 
 function visitas(tema,ponente,stock,idtaller,tipo){
 	$("#modal"+idtaller).css("z-index","500"+idtaller);
-	$("#modales").append('<div id="modal'+idtaller+'" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+	$("#modales").append('<div id="modal'+idtaller+'" class="modal"><div class="modal-content modal-form"><div class="row">'+
 			'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Actualizar cambios</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="tema'+idtaller+'" class="materialize-textarea" >'+tema+'</textarea>'+
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba la entidad responsable" id="ponente'+idtaller+'" value="'+ponente+'"/>'+
 			'<label for="ponente'+idtaller+'" class="active">Ponente: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stock'+idtaller+'" value="'+stock+'"/>'+
@@ -523,14 +530,15 @@ function visitas(tema,ponente,stock,idtaller,tipo){
 		
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","500"+idtaller);
+			$("#modales").show();
 	        console.log(modal, trigger);
 	      },
-	      complete: function() {  } // Callback for Modal close
+	      complete: function() { $("#modales").hide(); } // Callback for Modal close
 	});
 }
 function talleres(tema,lugar,stock,idtaller,tipo){
 	$("#modal"+idtaller).css("z-index","500"+idtaller);
-	$("#modales").append('<div id="modal'+idtaller+'" class="modal" ><div class="modal-content modal-form"><div class="row">'+
+	$("#modales").append('<div id="modal'+idtaller+'" class="modal"><div class="modal-content modal-form"><div class="row">'+
 			'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Actualizar cambios</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="tema'+idtaller+'" class="materialize-textarea" >'+tema+'</textarea>'+
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
 			'<label for="lugar'+idtaller+'" class="active">Lugar: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stock'+idtaller+'" value="'+stock+'"/>'+
@@ -540,9 +548,10 @@ function talleres(tema,lugar,stock,idtaller,tipo){
 			
 			ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 		        modal.css("z-index","500"+idtaller);
+		        $("#modales").show();
 		        console.log(modal, trigger);
 		      },
-		      complete: function() { } // Callback for Modal close
+		      complete: function() {$("#modales").hide(); } // Callback for Modal close
 	});
 }
 

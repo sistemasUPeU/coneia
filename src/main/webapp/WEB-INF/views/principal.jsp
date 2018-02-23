@@ -33,6 +33,8 @@
 	rel="stylesheet" type="text/css" />
 <link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link
 	href="<c:url value='/resources/js/plugins/sweetalert/sweetalert.css'></c:url>"
 	rel="stylesheet" type="text/css" />
@@ -96,38 +98,56 @@
 	</div>
 	<input type="hidden" value="${sessionScope.rol}" id="rolcito" />
 	<div id="mobile-collapse-button" class="section" style="padding-top: 0">
-		<nav class="#000000 black">
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo"><img class=""
-				src="<c:url value="/resources/img/cones.png"/>"
-				style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i
-				class="mdi-navigation-menu"></i></a>
-			<ul class="right hide-on-med-and-down">
-				<li><a class="principal">Home</a></li>
-				<li class="prog"><a class="programa">Programa</a></li>
-				<li class="asist"><a class="asistencia">Asistencia</a></li>
-				<li><a class="dropdown-button" href="#!"
-					data-activates="dropdown1"><b>${sessionScope.nombre}
-							${sessionScope.apellidos} </b></a>
-					<ul id='dropdown1' class='dropdown-content'>
-						<li><a href="#!" class="salir">Salir</a></li>
-					</ul></li>
-			</ul>
-			<ul class="side-nav" id="mobile-demo">
-				<li><a class="dropdown-button" href="#!"
-					data-activates="dropdown2"><b>${sessionScope.nombre}
-							${sessionScope.apellidos}</b></a>
-					<ul id='dropdown2' class='dropdown-content '>
-						<li><a href="#!" class="salir">Salir</a></li>
-					</ul></li>
+		<header id="header" class="page-topbar">
+	<!-- start header nav-->
+		<nav class="navbar-color">
+			<div class="nav-wrapper grey darken-3">
+				<a href="<%=request.getContextPath()%>/" style="padding:1%; "
+								class="brand-logo darken-1 redirect"><img
+								src="<c:url value="/resources/img/cones.png"/>" alt="gth logo" style="height:30%;width: 125px; "></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i
+					class="mdi-navigation-menu"></i></a>
+				<ul class="right hide-on-med-and-down">
 
-				<li><a class="principal">Home</a></li>
-				<li class="prog"><a class="programa">Programa</a></li>
-				<li class="asist"><a class="asistencia">Asistencia</a></li>
-			</ul>
-		</div>
+					<li>
+						<div class="chip grey darken-1 white-text cgProfile" style="cursor: pointer;">
+						</div>
+					</li>
+					<li><a href="<%=request.getContextPath()%>/"
+						class="waves-effect waves-block waves-light tooltipped redirect"
+						data-position="bottom" data-delay="50" data-tooltip="Menú"><i
+							class="medium material-icons prefix">navigation</i></a></li>
+
+					<li><a 
+						class="waves-effect waves-block waves-light tooltipped salir"
+						data-position="bottom" data-delay="50"
+						data-tooltip="Cerrar Sesión"><i class="medium material-icons prefix">exit_to_app</i></a>
+					</li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="#!"
+						><b>${sessionScope.nombre}
+								${sessionScope.apellidos} </b></a>
+						</li>
+					
+					<li><a class="principal">Home</a></li>
+					<li><a href="#!" class="salir">Salir</a></li>
+
+				</ul>
+
+				<ul id="notifications-dropdown" class="dropdown-content">
+					<li>
+						<h5>
+							NOTIFICATIONS <span class="new badge">5</span>
+						</h5>
+					</li>
+					<li class="divider"></li>
+
+				</ul>
+			</div>
 		</nav>
+
+</header>
 	</div>
 	<div id="space"
 		style="position: relative; margin-top: 10%; margin-bottom: 10%">
@@ -244,7 +264,15 @@
 		</form>
 	</div>
 	<div>
-		<%@include file="../../../jspf/footer.jspf"%>
+		<div class="page-footer #00c853 green accent-4" style="padding: 0;float:left;width:100%;bottom:0;position:fixed" id="foot1">
+			<div class="footer-copyright">
+				<div class="container" style="color:white">
+					Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
+					Team</a> All rights reserved. <span class="right" id="foot2">Developed by <a
+				class="grey-text text-lighten-4">Alpha Team</a></span>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Javascript-->
 	<script src="<c:url value='/resources/js/jquery-3.2.1.min.js'></c:url>"
@@ -266,13 +294,27 @@
 			}, 200);
 
 		})
-
 		$('.progress').fadeOut('fast');
 		$('#loader-wrap').fadeOut('fast');
 		$('#loader-wrap1').fadeOut('fast');
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+		try{
+				
+				var nombre = "${sessionScope.nombre}";
+				var apellidos =  "${sessionScope.apellidos}";
+
+						var s='';
+						s +='<img src="<c:url value="/resources/img/user.png"/>" alt="Usuario">';
+						s +=nombre.toUpperCase()+", "+apellidos.toUpperCase();
+						$(".cgProfile").empty();
+						$(".cgProfile").append(s);
+
+			}catch(e){
+				console.error("error al listar info : "+e);
+			}
+			checkSize();
 			$(".button-collapse").sideNav();
 			$('.btn-message').click(function() {
 				swal("Here's a message!");
@@ -289,6 +331,25 @@
 			// Stops event propagation
 
 			});
+			$(window).on('resize', function() {
+				checkSize()
+			});
+
+			function checkSize() {
+				if ($(window).width() < 600) {
+					// your code here
+				
+					$("#foot1").addClass("center");
+					$("#foot2").addClass("center").removeClass("right");
+					$("#foot1").css("padding","5px");
+
+				} else {
+
+					$("#foot1").removeClass("center");
+					$("#foot2").removeClass("center").addClass("right");
+					$("#foot1").css("padding","15px");
+				}
+			}
 			$.get("inscrito", null, function(data) {
 				if (data > 10) {
 					$(".prog").css("display", "none");

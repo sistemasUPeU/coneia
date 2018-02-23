@@ -137,7 +137,7 @@ margin-left:30%;
 			</div>
 
 			<div class="row  #bdbdbd grey lighten-1"
-				style="height: auto; min-height: 1000px;" id="urusai">
+				style="height: auto; min-height: 1000px;margin-bottom:0" id="urusai";>
 				<div class="col s12 #ccff90 light-green accent-1" id="myHeader">
 					<ul class="tabs tabs-fixed-width #ccff90 light-green accent-1">
 						<li class="tab "><a id="one" class="#ccff90 "
@@ -885,7 +885,7 @@ margin-left:30%;
 
 
 	</div>
-	<div id="modales"></div>
+	<div id="modales" style="display:none"></div>
 	
 	
 	<%@include file="../../../jspf/footer.jspf"%>
@@ -927,7 +927,7 @@ margin-left:30%;
 			}
 		}
 	</script>
-	</script>
+
 
 
 
