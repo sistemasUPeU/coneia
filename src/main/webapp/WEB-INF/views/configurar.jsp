@@ -8,7 +8,7 @@
 <%@include file="../../../jspf/general.jspf"%>
 
 <style>
-	#modal_change_cost {
+#modal_change_cost {
 	width: 35%;
 }
 
@@ -23,7 +23,6 @@
 		width: 50%;
 	}
 }
-
 </style>
 
 </head>
@@ -55,7 +54,28 @@
 
 							</div>
 						</div>
-						<br> <br>
+						<br>
+						<div class="row">
+							<div class="col s12 center" id="t">
+
+								<div class="switch" style="padding: 10px">
+									<label style="font-size: 20px"> <input
+										type="checkbox" id="4" onclick="activar(this.id)"> <span
+										class="lever"></span>
+									</label>
+
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col s12 center" id="t0">
+								<label style="font-size: 20px"> Activación
+									del acceso a los talleres. </label>
+
+							</div>
+						</div>
+						<br>
 
 
 						<div class="card-panel">
@@ -198,71 +218,71 @@
 					</div>
 					<div id="modal_change_cost" class="modal modal-fixed-footer"
 						style="height: 465px;">
-						
-							<div class="modal-content modal-form" style="padding: 23px;">
-								<br>
-								<div style="text-align: center">
-									<h5>Cambiar precios</h5>
-								</div>
 
-								<br>
-								<div class="row margin hide">
-									<div class="input-field col s12">
-										<input class="hide" value="${sessionScope.idp}" id="idper"
-											name="idper" />
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="input-field col s12">
-
-
-
-										<i class="material-icons prefix">attach_money</i> <input
-											id="m_del" type="text" class="validate" name="m_del"
-											onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-											required> <label for="m_del">Delegación</label>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="input-field col s12">
-										<i class="material-icons prefix">attach_money</i> <input
-											id="m_pro" type="text" class="validate" name="m_pro"
-											onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-											required> <label for="m_pro">Profesional</label>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="input-field col s12">
-										<i class="material-icons prefix">attach_money</i> <input
-											id="m_alu" type="text" class="validate" name="m_alu"
-											onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-											required> <label for="m_alu">Alumno</label>
-									</div>
-								</div>
-
-								<div style="text-align: center;">
-									<label id="mensaje" style="color: red" style="width: 100%"></label>
-								</div>
-
+						<div class="modal-content modal-form" style="padding: 23px;">
+							<br>
+							<div style="text-align: center">
+								<h5>Cambiar precios</h5>
 							</div>
 
-
-							<div class="modal-footer">
-								<button href="#!"
-									class="btn modal-action waves-effect waves-green btn-flat "
-									id="saveCost" type="button"
-									style="backgroun-color: rgba(45, 200, 70, 0.53);">Guardar</button>
-								<button href="#!"
-									class="btn modal-action waves-effect waves-green btn-flat submit "
-									id="cancel" type="button"
-									style="backgroun-color: rgba(45, 200, 70, 0.53);">Cancelar
-									</button>
-
+							<br>
+							<div class="row margin hide">
+								<div class="input-field col s12">
+									<input class="hide" value="${sessionScope.idp}" id="idper"
+										name="idper" />
+								</div>
 							</div>
-						
+
+							<div class="row">
+								<div class="input-field col s12">
+
+
+
+									<i class="material-icons prefix">attach_money</i> <input
+										id="m_del" type="text" class="validate" name="m_del"
+										onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+										required> <label for="m_del">Delegación</label>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="input-field col s12">
+									<i class="material-icons prefix">attach_money</i> <input
+										id="m_pro" type="text" class="validate" name="m_pro"
+										onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+										required> <label for="m_pro">Profesional</label>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="input-field col s12">
+									<i class="material-icons prefix">attach_money</i> <input
+										id="m_alu" type="text" class="validate" name="m_alu"
+										onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+										required> <label for="m_alu">Alumno</label>
+								</div>
+							</div>
+
+							<div style="text-align: center;">
+								<label id="mensaje" style="color: red" style="width: 100%"></label>
+							</div>
+
+						</div>
+
+
+						<div class="modal-footer">
+							<button href="#!"
+								class="btn modal-action waves-effect waves-green btn-flat "
+								id="saveCost" type="button"
+								style="backgroun-color: rgba(45, 200, 70, 0.53);">Guardar</button>
+							<button href="#!"
+								class="btn modal-action waves-effect waves-green btn-flat submit "
+								id="cancel" type="button"
+								style="backgroun-color: rgba(45, 200, 70, 0.53);">Cancelar
+							</button>
+
+						</div>
+
 					</div>
 
 				</div>
@@ -298,17 +318,23 @@
 		})
 
 		$(window).on('resize', function() {
-			
+
 			checkSize()
 		});
 
 		function activar(valor) {
+
 			
-			var select = $("#" + valor).prop('checked');
+			if(valor!=4){
+				
 		
-			$("input:checkbox:not('#" + valor + "')").each(function() {
-				$(this).prop('checked', false);
-			})
+				var select = $("#" + valor).prop('checked');
+
+				$("input:checkbox:not('#" + valor + "'):not('#4')").each(function() {
+					$(this).prop('checked', false);
+				})
+			}
+		
 			// 			$("#switcher").on("change", function() {
 			// 				var status = $(this).prop('checked');
 
@@ -319,46 +345,118 @@
 			// 			});
 		};
 		var selector = 0;
+		var acg = 0;
 		function saveChanges() {
 			var selected = 0;
-			$("input:checkbox").each(function() {
+			$("input:checkbox:not('#4')").each(function() {
 				var status = $(this).prop('checked');
-				
+
 				if (status == true) {
-			
+
 					selected = 1;
 					selector = $(this).attr('id');
-					
 
 				}
 			});
 			if (selected == 1) {
-			
+
 				// 				$("#t" + selector + " ").parents('#t' + selector);
 				var idactivo = $("#idactivo").val();
+				
+				var activegeneral =$("#4").prop('checked').toString();
+				if(activegeneral=="true"){
+					console.log("hey 1");
+					acg = 1;
+					$.get("activeGeneral", {
+						opcion : acg
+					}, function(data) {
+						console.log(data);
+						if (data == 1) {
+							alertify.alert('Mensaje de alerta',
+									'Se han activado los talleres',
+									function() {
+										alertify.success('Ok');
+										$.get("activeSeason", {
+											ida : idactivo,
+											idp : selector
+										}, function(data) {
 
-				$.get("activeSeason", {
-					ida : idactivo,
-					idp : selector
-				}, function(data) {
-					
-					if (data == 1) {
-						alertify.alert('Mensaje de alerta',
-								'Los cambios se guardaron correctamente',
-								function() {
-									alertify.success('Ok');
+											if (data == 1) {
+												alertify.alert('Mensaje de alerta',
+														'Los cambios se guardaron correctamente',
+														function() {
+															alertify.success('Ok');
 
-								});
-						listarPrecios();
-					} else {
-						alertify.alert('Mensaje de alerta',
-								'Hubo un error al guardar las actualizaciones',
-								function() {
-									alertify.success('Ok');
+														});
+												listarPrecios();
+											} else {
+												alertify.alert('Mensaje de alerta',
+														'Hubo un error al guardar las actualizaciones',
+														function() {
+															alertify.success('Ok');
 
-								});
-					}
-				});
+														});
+											}
+										});
+									});
+							
+						} else {
+							alertify.alert('Mensaje de alerta',
+									'Hubo un error al activar los talleres',
+									function() {
+										alertify.success('Ok');
+
+									});
+						}
+					});
+				}else{
+					console.log("hey 0");
+					acg=0;
+					$.get("activeGeneral", {
+						opcion : acg
+					}, function(data) {
+						console.log(data);
+						if (data == 1) {
+							alertify.alert('Mensaje de alerta',
+									'Se han desactivado los talleres',
+									function() {
+										alertify.success('Ok');
+										$.get("activeSeason", {
+											ida : idactivo,
+											idp : selector
+										}, function(data) {
+
+											if (data == 1) {
+												alertify.alert('Mensaje de alerta',
+														'Los cambios se guardaron correctamente',
+														function() {
+															alertify.success('Ok');
+
+														});
+												listarPrecios();
+											} else {
+												alertify.alert('Mensaje de alerta',
+														'Hubo un error al guardar las actualizaciones',
+														function() {
+															alertify.success('Ok');
+
+														});
+											}
+										});
+									});
+							
+						} else {
+							alertify.alert('Mensaje de alerta',
+									'Hubo un error al activar los talleres',
+									function() {
+										alertify.success('Ok');
+
+									});
+						}
+					});
+				}
+
+				
 			} else {
 
 				alertify.alert('Mensaje de alerta',
@@ -368,8 +466,6 @@
 						});
 			}
 		}
-
-
 
 		function checkSize() {
 			if ($(window).width() <= 600) {
@@ -381,7 +477,7 @@
 				$(".header2").parent().addClass("center");
 				$(".header3").text("Temporada 3");
 				$(".header3").parent().addClass("center");
-				
+
 				$("#foot1").addClass("center");
 				$("#foot2").addClass("center").removeClass("right");
 
@@ -393,7 +489,7 @@
 				$(".header2").parent().addClass("left").removeClass("center");
 				$(".header3").text("Precios: Temporada 3");
 				$(".header3").parent().addClass("left").removeClass("center");
-				
+
 				$("#foot1").removeClass("center");
 				$("#foot2").removeClass("center").addClass("right");
 			}

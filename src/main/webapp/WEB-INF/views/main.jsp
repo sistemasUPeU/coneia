@@ -5,7 +5,6 @@
 
 		response.sendRedirect(request.getContextPath() + "/principal");
 
-
 	} else {
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -294,7 +293,6 @@ var gth_context_path = '<%=request.getContextPath()%>';
 
 		});
 
-
 		$(window).on('resize', function() {
 			checkSize()
 		});
@@ -302,42 +300,39 @@ var gth_context_path = '<%=request.getContextPath()%>';
 		function checkSize() {
 			if ($(window).width() < 600) {
 				// your code here
-			
+
 				$("#foot1").addClass("center");
 				$("#foot2").addClass("center").removeClass("right");
-				
 
 			} else {
 
 				$("#foot1").removeClass("center");
 				$("#foot2").removeClass("center").addClass("right");
-				
+
 			}
 		}
 
-
-
 		function checkvalid() {
-			
+
 			if ($("#user_email-error").hasClass("active").toString() == "true") {
-				
+
 				$("#user_email-error").css("margin-top", "60px")
 				$("#user_email-error").css("font-size", "10px;");
 				$("#user_email-error").css("color", "red");
 			} else {
-				
+
 				$("#user_email-error").css("margin-top", "35px")
 				$("#user_email-error").css("font-size", "7px;");
 				$("#user_email-error").css("color", "red");
 			}
 
 			if ($("#user_phone-error").hasClass("active").toString() == "true") {
-		
+
 				$("#user_phone-error").css("margin-top", "60px")
 				$("#user_phone-error").css("font-size", "12px;");
 				$("#user_phone-error").css("color", "red");
 			} else {
-				
+
 				$("#user_phone-error").css("margin-top", "35px")
 				$("#user_phone-error").css("font-size", "7px;");
 				$("#user_phone-error").css("color", "red");
@@ -355,13 +350,13 @@ var gth_context_path = '<%=request.getContextPath()%>';
 		})
 
 		function showChange() {
-			
+
 			$("#sign_in").hide().prop('required', false);
 			// 			$("#restore_password").removeClass("hide");
 			$("#restore_password").show();
 
 		}
-		function showChangeSign(){
+		function showChangeSign() {
 			$("#sign_in").show()
 			// 			$("#restore_password").removeClass("hide");
 			$("#restore_password").hide().prop('required', false);
@@ -427,10 +422,8 @@ var gth_context_path = '<%=request.getContextPath()%>';
 					Materialize.updateTextFields();
 					alertify.genericDialog($('#loginForm')[0]).set('selector',
 							'input[type="text"]');
-					
-					$("#msm")
-					.text(
-							"");
+
+					$("#msm").text("");
 				})
 
 		$(".talleres").click(function() {
@@ -492,7 +485,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 														// 				alert(data);
 														var login = JSON
 																.parse(data);
-														
+
 														if (login.op == 1) {
 															$("#msm").text("");
 															$("#msm")
@@ -501,7 +494,8 @@ var gth_context_path = '<%=request.getContextPath()%>';
 														} else {
 
 															if (login.op == 2) {
-																		//HA SIDO APROBADO
+																//HA SIDO APROBADO
+
 																var link = gth_context_path
 																		+ "/principal"
 																location.href = link;
@@ -512,17 +506,34 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																			+ "/principal"
 																	location.href = link;
 																} else {
-																	$("#msm")
-																			.text(
-																					"");
-																	$("#msm")
-																			.text(
 
-																			'El usuario o la contraseña son incorrectos');
-																	
-																	$("#user_dni").val("");
-																	$("#user_pass").val("");
-																	 Materialize.updateTextFields();
+																	if (login.op == 4) {//HA SIDO APROBADO PERO AUN NO EXISTE UNA ACTIVACION GENERAL
+																		var link = gth_context_path
+																				+ "/error"
+																		location.href = link;
+																	} else {
+																		$(
+																				"#msm")
+																				.text(
+																						"");
+																		$(
+																				"#msm")
+																				.text(
+
+																				'El usuario o la contraseña son incorrectos');
+
+																		$(
+																				"#user_dni")
+																				.val(
+																						"");
+																		$(
+																				"#user_pass")
+																				.val(
+																						"");
+																		Materialize
+																				.updateTextFields();
+																	}
+
 																}
 
 															}
@@ -551,7 +562,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 							if ($("#user_email").hasClass("valid").toString() == "true"
 									&& $("#user_phone").hasClass("valid")
 											.toString() == "true") {
-								
+
 								$('#loader-wrap').fadeIn('fast');
 								$('.progress').fadeIn('fast');
 								$
@@ -562,10 +573,10 @@ var gth_context_path = '<%=request.getContextPath()%>';
 													correo : email
 												},
 												function(data) {
-													
+
 													var converse = JSON
 															.parse(data);
-												
+
 													if (converse.res == 1) {
 														var idpersona = converse.idpersona;
 
@@ -595,9 +606,9 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																		},
 																		function(
 																				data) {
-																		
+
 																			if (data == 1) {
-																				
+
 																				$
 																						.get(
 																								"emailRestorePassword",
@@ -609,7 +620,6 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																								},
 																								function(
 																										data) {
-																									
 
 																									if (data == 1) {
 																										$(
@@ -672,7 +682,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 																		});
 
 													} else {
-														
+
 														$('.progress').delay(
 																200).fadeOut(
 																'fast');
@@ -692,7 +702,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 						});
 
 		$("#user_dni").keypress(function(e) {
-			
+
 			if (e.which == 13) {
 				$("#logon").click();
 			}

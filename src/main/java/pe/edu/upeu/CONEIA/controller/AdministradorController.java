@@ -531,6 +531,23 @@ public class AdministradorController {
 		return gs.toJson(update);
 	}
 	
+	
+	@RequestMapping("/activeGeneral")
+	public @ResponseBody String activeGeneral(HttpServletRequest request, HttpServletResponse response) {
+
+		int re = 0;
+		Gson g = new Gson();
+
+		int opcion = Integer.parseInt(request.getParameter("opcion"));
+
+		int update = 0;
+		update = confService.updateGeneral(opcion);
+
+		System.out.println(gs.toJson(update));
+		return gs.toJson(update);
+	}
+	
+	
 	@RequestMapping("/asistencia")
 	public String assistance(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
