@@ -15,7 +15,7 @@ $(document).ready(function() {
 		swipeable : false,
 		responsiveThreshold : 1920,
 		onShow : function(tab) {
-			// console.log(tab[0].id.split('-')[1]);
+		
 			var t = tab[0].id.split('-')[1];
 			$("#" + t).addClass("#ccff90 light-green accent-1")
 		}
@@ -33,10 +33,10 @@ $(document).ready(function() {
 
 	function handleOrientationChange(mediaquery) {
 		if (mediaquery.matches) {
-			console.log("mediaquery dentro de 600");
+			
 			$('b1').val("");
 		} else {
-			console.log("mediaquery fuera de 600");
+		
 		}
 	}
 	mediaquery.addListener(handleOrientationChange);
@@ -356,14 +356,13 @@ $(".confirmar").click(function(){
 	$("#alertyboton").addClass("btn waves-effect waves-light #2962ff blue accent-4");
 	$("#alertyboton2").addClass("btn waves-effect waves-light #bdbdbd grey lighten-1");
 	alertify.confirm('Inscripción de horario</span>', '¿Desea confirmar su asistencia a estas ponencias y talleres?', function(){
-		console.log("lunes1:"+lun1+"\n"+"lunes2:"+lun2+"\n"+"martes:"+mar+"\n"+"miercoles1:"+mier1+"\n"+"miercoles2:"+mier2+"\n"+"miercoles3:"
-				+mier3+"\n"+"miercoles4:"+mier4+"\n"+"jueves:"+jue+"\n"+"viernes1:"+vie1+"\n"+"viernes2:"+vie2);
+
 		array = lun1+","+lun2+","+mar+","+mier1+","+mier2+","+mier3+","+mier4+","+jue+","+vie1+","+vie2;
-		console.log(array);
+		
 		$.get("talleres",{op:1,array:array},function(data){
-			console.log(data);
+			
 			if(data==10){
-				console.log("Insertado");
+			
 				var link = coneia_context_path + "/principal";
 				$(".todo").css("display","none");
 				$(".loadin").css("display","block");
@@ -378,7 +377,7 @@ $(".confirmar").click(function(){
 });
 function vitas(idtipo,fecha){
 	 var horaI="06:30";horaF ="13:00";  horaI2="07:30";
-	 console.log("fecha: "+fecha);
+	 
 	if(idtipo==4){
 		if(fecha=="2018-06-05"){
 			$("#modalvm").css("z-index","50000");
@@ -393,7 +392,7 @@ function vitas(idtipo,fecha){
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
 					$("#modales").show();
-			        console.log(modal, trigger);
+			        
 			      },
 			      complete: function() { $("#modales").hide();} // Callback for Modal close
 			});
@@ -410,7 +409,7 @@ function vitas(idtipo,fecha){
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
 					$("#modales").show();
-			        console.log(modal, trigger);
+			      
 			      },
 			      complete: function() { $("#modales").hide();} // Callback for Modal close
 			});
@@ -435,7 +434,7 @@ function vitas(idtipo,fecha){
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
 					$("#modales").show();
-			        console.log(modal, trigger);
+			        
 			      },
 			      complete: function() { $("#modales").hide();} // Callback for Modal close
 			});
@@ -452,7 +451,7 @@ function vitas(idtipo,fecha){
 				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					modal.css("z-index","50000");
 					$("#modales").show();
-			        console.log(modal, trigger);
+			      
 			      },
 			      complete: function() {$("#modales").hide(); } // Callback for Modal close
 			});
@@ -475,7 +474,7 @@ function modales(tema,ponente,lugar,stock,idtaller,tipo){
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","500"+idtaller);
 			$("#modales").show();
-	        console.log(modal, trigger);
+	        
 	      },
 	      complete: function() {$("#modales").hide(); } // Callback for Modal close
 	});
@@ -494,7 +493,7 @@ function conferencias(tema,ponente,lugar,idtaller,tipo){
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","600"+idtaller);
 			$("#modales").show();
-	        console.log(modal, trigger);
+	       
 	      },
 	      complete: function() { $("#modales").hide();} // Callback for Modal close
 	});
@@ -512,7 +511,7 @@ function actividades(tema,lugar,idtaller,tipo){
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","600"+idtaller);
 			$("#modales").show();
-	        console.log(modal, trigger);
+	        
 	      },
 	      complete: function() { $("#modales").hide();} // Callback for Modal close
 	});
@@ -531,7 +530,7 @@ function visitas(tema,ponente,stock,idtaller,tipo){
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			modal.css("z-index","500"+idtaller);
 			$("#modales").show();
-	        console.log(modal, trigger);
+	       
 	      },
 	      complete: function() { $("#modales").hide(); } // Callback for Modal close
 	});
@@ -549,7 +548,7 @@ function talleres(tema,lugar,stock,idtaller,tipo){
 			ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 		        modal.css("z-index","500"+idtaller);
 		        $("#modales").show();
-		        console.log(modal, trigger);
+		      
 		      },
 		      complete: function() {$("#modales").hide(); } // Callback for Modal close
 	});
@@ -563,7 +562,7 @@ function update(id){
 	if(ponente ==undefined){ponente ="";}else{ponente =  $('#ponente'+id).val();}
 	if(lugar ==undefined){lugar="";}else{lugar =  $('#lugar'+id).val();}
 	var stock =  $('#stock'+id).val();
-	console.log(id+"\n"+idtipo+"\n"+tema+"\n"+ponente+"\n"+lugar+"\n"+stock);
+	
 	if(idtipo==1||idtipo==2||idtipo==4){
 		if(stock>=0){
 			
@@ -579,11 +578,11 @@ function update(id){
 				$('#modal'+id).modal('close');
 				$.get("customTaller",{op:13,tema:tema,ponente:ponente,lugar:lugar,stock:stock,idtaller:id,idtipo:idtipo},function(data){
 					if(data==1){
-						console.log("Actualizado");			
-						alertify.notify('Actualizando...', 'custom', 1, function(){console.log('dismissed');listarTodito();});
+								
+						alertify.notify('Actualizando...', 'custom', 1, function(){listarTodito();});
 						
 					}else{
-						console.log("No se ha actualizado");
+					
 						alertify.error('Error al intentar actualizar los datos');
 					}
 				});
@@ -594,7 +593,7 @@ function update(id){
 		}
 	}else{
 		if(idtipo==3){
-			console.log("Entonces es conferencia");
+			
 			$(".ajs-header").addClass("#82b1ff  blue accent-1");
 			var isOpen = alertify.confirm().isOpen(); 
 			 if(isOpen=true){
@@ -608,17 +607,17 @@ function update(id){
 				$('#modal'+id).modal('close');
 				$.get("customTaller",{op:13,tema:tema,ponente:ponente,lugar:lugar,stock:1,idtaller:id,idtipo:idtipo},function(data){
 					if(data==1){
-						console.log("Actualizado");			
-						alertify.notify('Actualizando...', 'custom', 1, function(){console.log('dismissed');listarTodito();});
+								
+						alertify.notify('Actualizando...', 'custom', 1, function(){listarTodito();});
 						
 					}else{
-						console.log("No se ha actualizado");
+						
 						alertify.error('Error al intentar actualizar los datos');
 					}
 				});
 			
 		}else{
-			console.log("Entonces es conferencia");
+			
 			$(".ajs-header").addClass("#82b1ff  blue accent-1");
 			var isOpen = alertify.confirm().isOpen(); 
 			 if(isOpen=true){
@@ -631,11 +630,11 @@ function update(id){
 				$('#modal'+id).modal('close');
 				$.get("customTaller",{op:13,tema:tema,ponente:"",lugar:lugar,stock:1,idtaller:id,idtipo:idtipo},function(data){
 					if(data==1){
-						console.log("Actualizado");			
-						alertify.notify('Actualizando...', 'custom', 1, function(){console.log('dismissed');listarTodito();});
+								
+						alertify.notify('Actualizando...', 'custom', 1, function(){listarTodito();});
 						
 					}else{
-						console.log("No se ha actualizado");
+					
 						alertify.error('Error al intentar actualizar los datos');
 					}
 				});
@@ -650,18 +649,18 @@ function update(id){
 
 function nuevoVitas(idtipo,horaI,horaF,fecha){
 	var tema="";ponente="";stock=0;
-	console.log(idtipo,horaI,horaF,fecha);
+	
 	if(idtipo==4){
 		if(fecha=="2018-06-05"){
-			tema = $("#temavm").val();ponente =$("#ponentevm").val();stock =$("#stockvm").val();console.log(idtipo,horaI,horaF,fecha,tema,ponente,stock);open();
+			tema = $("#temavm").val();ponente =$("#ponentevm").val();stock =$("#stockvm").val();open();
 			alertify.confirm('Confirmación de acción', '¿Está seguro(a) que desea confirmar este nuevo registro?', function(){
 				$('#modalvm').modal('close');
 				$.get("customTaller",{op:22,tema:tema,ponente:ponente,stock:stock,horaI:horaI,horaF:horaF,fecha:fecha,lugar:ponente,idtipo:idtipo},function(data){
 					if(data==1){
-						console.log("Se ha añadido un nuevo registro");			
-						alertify.notify('Cargando...', 'custom', 1, function(){console.log('dismissed');listarTodito();});
+							
+						alertify.notify('Cargando...', 'custom', 1, function(){listarTodito();});
 					}else{
-						console.log("No se ha actualizado");
+					
 						alertify.error('Error al intentar actualizar los datos');
 					}
 				});
@@ -669,15 +668,15 @@ function nuevoVitas(idtipo,horaI,horaF,fecha){
 		   , function(){ });
 			
 		}else{
-			tema = $("#temavj").val();ponente =$("#ponentevj").val();stock =$("#stockvj").val();console.log(idtipo,horaI,horaF,fecha,tema,ponente,stock);open();
+			tema = $("#temavj").val();ponente =$("#ponentevj").val();stock =$("#stockvj").val();open();
 			alertify.confirm('Confirmación de acción', '¿Está seguro(a) que desea confirmar este nuevo registro?', function(){
 				$('#modalvj').modal('close');
 				$.get("customTaller",{op:22,tema:tema,ponente:ponente,stock:stock,horaI:horaI,horaF:horaF,fecha:fecha,lugar:ponente,idtipo:idtipo},function(data){
 					if(data==1){
-						console.log("Se ha añadido un nuevo registro");			
-						alertify.notify('Cargando...', 'custom', 1, function(){console.log('dismissed');listarTodito();});
+								
+						alertify.notify('Cargando...', 'custom', 1, function(){listarTodito();});
 					}else{
-						console.log("No se ha actualizado");
+					
 						alertify.error('Error al intentar actualizar los datos');
 					}
 				});
@@ -686,30 +685,30 @@ function nuevoVitas(idtipo,horaI,horaF,fecha){
 		}
 	}else{
 		if(fecha=="2018-06-05"){
-			tema = $("#tematm").val();lugar =$("#lugartm").val();stock =$("#stocktm").val();console.log(idtipo,horaI,horaF,fecha,tema,lugar,stock);open();
+			tema = $("#tematm").val();lugar =$("#lugartm").val();stock =$("#stocktm").val();open();
 			alertify.confirm('Confirmación de acción', '¿Está seguro(a) que desea confirmar este nuevo registro?', function(){
 				$('#modaltm').modal('close');
 				$.get("customTaller",{op:22,tema:tema,ponente:lugar,stock:stock,horaI:horaI,horaF:horaF,fecha:fecha,lugar:lugar,idtipo:idtipo},function(data){
 					if(data==1){
-						console.log("Se ha añadido un nuevo registro");			
-						alertify.notify('Cargando...', 'custom', 1, function(){console.log('dismissed');listarTodito();});
+							
+						alertify.notify('Cargando...', 'custom', 1, function(){listarTodito();});
 					}else{
-						console.log("No se ha actualizado");
+						
 						alertify.error('Error al intentar actualizar los datos');
 					}
 				});
 			}
 		   , function(){ });
 		}else{
-			tema = $("#tematj").val();lugar =$("#lugartj").val();stock =$("#stocktj").val();console.log(idtipo,horaI,horaF,fecha,tema,lugar,stock);open();
+			tema = $("#tematj").val();lugar =$("#lugartj").val();stock =$("#stocktj").val();open();
 			alertify.confirm('Confirmación de acción', '¿Está seguro(a) que desea confirmar este nuevo registro?', function(){
 				$('#modaltj').modal('close');
 				$.get("customTaller",{op:22,tema:tema,ponente:lugar,stock:stock,horaI:horaI,horaF:horaF,fecha:fecha,lugar:lugar,idtipo:idtipo},function(data){
 					if(data==1){
-						console.log("Se ha añadido un nuevo registro");			
-						alertify.notify('Cargando...', 'custom', 2, function(){console.log('dismissed');listarTodito();});
+						
+						alertify.notify('Cargando...', 'custom', 2, function(){listarTodito();});
 					}else{
-						console.log("No se ha actualizado");
+					
 						alertify.error('Error al intentar actualizar los datos');
 					}
 				});
@@ -735,10 +734,10 @@ function eliminar(id){open();
 	alertify.confirm('Confirmación de acción', '¿Está seguro(a) que desea eliminar este registro?', function(){
 		$.get("customTaller",{op:23,id:id},function(data){
 			if(data==1){
-				console.log("Se ha eliminado el registro");			
-				alertify.notify('Eliminando...', 'custom', 1, function(){console.log('dismissed');listarTodito();});
+					
+				alertify.notify('Eliminando...', 'custom', 1, function(){listarTodito();});
 			}else{
-				console.log("No se ha actualizado");
+				
 				alertify.error('Error al intentar eliminar los datos');
 			}
 		});

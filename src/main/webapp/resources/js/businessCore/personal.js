@@ -27,7 +27,7 @@ function mostrar(){
 //		alert(data);
 		var s = "";
 		var lista = JSON.parse(data);
-		console.log(data);
+	
 		if (lista.length > 0) {
 			// alert("si hay datos amix");
 			for (var i = 0; i < lista.length; i++) {
@@ -101,7 +101,7 @@ function mostrar(){
 function crearModal(id) {
 
 	var id= id;
-	console.log(id);
+
 	
 	$('.modal').modal({
 		opacity : .5, // Opacity of modal background
@@ -116,12 +116,12 @@ function crearModal(id) {
 					function(objJson){
 						var r = "";
 						var liston = objJson;
-						console.log(objJson);
+					
 //						var arr = $.map(objJson, function(el) { return el });
 //						var found = arr.find(function(element) {
 //							   element==undefined;
 //							});
-//						console.log("Aqui esta el undefined: "+found); 
+ 
 						r+='<h4 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Actualizar STAFF</h4>'
 						r+='<div class="col s12">'
 						r+='<div class="input-field inline col s12">';
@@ -144,9 +144,9 @@ function crearModal(id) {
 						
 						$("#cant").empty().append(r);
 					});
-//			console.log("Aquí van las tablas chamo"+s);
+
 			modal.css("z-index","600"+cant);
-//	        console.log(modal, trigger);
+
 	      },
 	      complete: function() { } // Callback for Modal close
 	});
@@ -158,14 +158,14 @@ function update(id){
 	var dni = $("#dni").val();
 	var clave = $("#clave").val();
 	var celular = $("#celular").val();
-	console.log("id: "+id +"nombres: "+nombres+"apellidos: "+apellidos+"dni: "+dni+"clave: "+clave +"celular: "+celular);
+	
 	$.get(coneia_context_path + "/admin/customPersonal",{op:2,id:id,nombres:nombres,apellidos:apellidos,dni:dni,clave:clave,celular:celular},function(data){
 		if(data==1){
-			console.log("Se ha actualizado el registro");
+		
 			$('#modalon').modal('close');
-			alertify.notify('Actualizando...', 'custom', 1, function(){console.log('dismissed');mostrar();});
+			alertify.notify('Actualizando...', 'custom', 1, function(){mostrar();});
 		}else{
-			console.log("No se ha actualizado");
+			
 			alertify.error('Error al intentar eliminar los datos');
 		}
 	});
@@ -186,10 +186,10 @@ function eliminar(id){open();
 	alertify.confirm('Confirmación de acción', '¿Está seguro(a) que desea eliminar este registro?', function(){
 		$.get("customPersonal",{op:3,id:id},function(data){
 			if(data==1){
-				console.log("Se ha eliminado el registro");			
-				alertify.notify('Eliminando...', 'custom', 1, function(){console.log('dismissed');mostrar();});
+				
+				alertify.notify('Eliminando...', 'custom', 1, function(){mostrar();});
 			}else{
-				console.log("No se ha actualizado");
+				
 				alertify.error('Error al intentar eliminar los datos');
 			}
 		});
@@ -208,11 +208,8 @@ function nuevo(){
 		
 		ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 						var r = "";
-//						var arr = $.map(objJson, function(el) { return el });
-//						var found = arr.find(function(element) {
-//							   element==undefined;
-//							});
-//						console.log("Aqui esta el undefined: "+found); 
+
+//						
 						r+='<h4 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Nuevo personal</h4>'
 						r+='<div class="col s12">'
 						r+='<div class="input-field inline col s12">';
@@ -235,9 +232,9 @@ function nuevo(){
 						
 						$("#cant2").empty().append(r);
 				
-//			console.log("Aquí van las tablas chamo"+s);
+
 			modal.css("z-index","600"+cant);
-//	        console.log(modal, trigger);
+
 	      },
 	      complete: function() { } // Callback for Modal close
 	});
@@ -249,14 +246,14 @@ function guardar(){
 	var dni = $("#ndni").val();
 	var clave = $("#nclave").val();
 	var celular = $("#ncelular").val();
-	console.log("nombres: "+nombres+"apellidos: "+apellidos+"dni: "+dni+"clave: "+clave +"celular: "+celular);
+
 	$.get(coneia_context_path + "/admin/customPersonal",{op:5,nnombres:nombres,napellidos:apellidos,ndni:dni,nclave:clave,ncelular:celular},function(data){
 		if(data==1){
-			console.log("Se ha añadido un nuevo personal");
+		
 			$('#modalon2').modal('close');
 			mostrar();
 		}else{
-			console.log("No se ha añadido personal");
+		
 			alertify.error('Error al intentar agregar los datos');
 		}
 	});

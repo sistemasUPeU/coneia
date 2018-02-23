@@ -36,7 +36,7 @@ import pe.edu.upeu.CONEIA.daoImpl.InscripcionDaoImpl;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = "pe.edu.upeu.CONEIA")
-@EnableScheduling
+//@EnableScheduling
 
 public class AppConfig extends WebMvcConfigurerAdapter {
 

@@ -29,7 +29,7 @@ public class ScheduledTasks {
 //	  @Scheduled(fixedDelay=10000)
 //	  @Scheduled(cron="0 0 18 ? * Sun")
 //	  @Scheduled(cron="0 49 18 ? * Wed")
-	  @Scheduled(cron="0 06 19 * * ?")
+//	  @Scheduled(cron="0 06 19 * * ?")
 	  
 	    public void ejecutarCadaDiezSegs() throws ParseException {
 		
@@ -37,7 +37,7 @@ public class ScheduledTasks {
 		  String timeStamp =new SimpleDateFormat("ddMMyy").format(Calendar.getInstance().getTime());
 
 //	        LOG.info("Fixed Rate Task :: Execution Time - {}",  Thread.currentThread().getName() );
-		  Backupdbtosql(timeStamp);
+//		  Backupdbtosql(timeStamp);
 	    }  
 	  
 	  public static void Backupdbtosql(String fecha) {

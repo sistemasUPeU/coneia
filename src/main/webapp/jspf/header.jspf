@@ -70,7 +70,7 @@ $(document).ready(function(){
 				$(".cgProfile").append(s);
 
 	}catch(e){
-		console.error("error al listar info : "+e);
+		
 	}	
 	
 	$(".redirect").attr("href",coneia_context_path + "/admin/waiting");

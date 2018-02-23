@@ -368,7 +368,7 @@ function printContent(el){
 var mediaQueryList = window.matchMedia('print');
 mediaQueryList.addListener(function(mql) {
     if (mql.matches) {
-        console.log('before print dialog open');
+      
     } else {
     	link = gth_context_path + "/asistencia";
     	location.href=link;

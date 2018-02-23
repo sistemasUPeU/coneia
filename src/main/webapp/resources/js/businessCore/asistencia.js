@@ -33,7 +33,7 @@ $("#selected")
 			$(".muestra").hide(); 
 			  
 			
-//			console.log($("#selected").val());
+
 			if (cambio == "2018-06-04") {
 				tam=7;
 				
@@ -75,7 +75,7 @@ function listarTalleres(cambio,tam){
 					function(objJson) {
 						var s = "";
 						var lista = objJson;
-						console.log(objJson);
+						
 						if (lista.length > 0) {
 							// alert("si hay datos amix");
 							var temon = lista[0].tema;	
@@ -171,7 +171,7 @@ function listarTalleres(cambio,tam){
 					function(objJson) {
 						var s = "";
 						var lista = objJson;
-						console.log(objJson);
+					
 						if (lista.length > 0) {
 							// alert("si hay datos amix");
 							var temon = lista[0].tema;	
@@ -361,7 +361,7 @@ function crearModal(idd,cambio) {
 	$("#cant").empty().append(createTable4());
 
 	var id= idd; var cabio=cambio;
-	console.log(id);console.log(cabio);
+
 	var idit = 0; var tema="";var idd=0;var s ="";
 	var cant =id+countin;
 //	$("#modales").append('<div id="modal'+cant+'" class="modal" >'
@@ -387,11 +387,11 @@ function crearModal(idd,cambio) {
 					function(objJson){
 						var r = "";
 						var liston = objJson;
-						console.log(objJson);
+						
 						for (var j = 0; j < liston.length; j++) {
-//							console.log(liston[j].idit+" / "+ liston[j].idd+" / "+liston[j].tema);
+
 							var asistencia2 = liston[j].asistencias;
-							console.log(asistencia2);
+						
 							if(asistencia2 ==1){
 								clase3="#00c853 green accent-4";
 							}
@@ -404,9 +404,9 @@ function crearModal(idd,cambio) {
 						} 
 						$("#data2").empty().append(s);
 					});
-//			console.log("Aquí van las tablas chamo"+s);
+
 			modal.css("z-index","600"+cant);
-//	        console.log(modal, trigger);
+
 	      },
 	      complete: function() { } // Callback for Modal close
 	});
@@ -414,7 +414,7 @@ function crearModal(idd,cambio) {
 function actualizar(idd,cambio,idit){
 //	alert(idd+"/"+cambio+"/"+idit);
 	if(idit==0){
-		alertify.notify('Esta función no está habilitada por no estar dentro del horario del evento', 'custom', 4, function(){console.log('dismissed');});
+		alertify.notify('Esta función no está habilitada por no estar dentro del horario del evento', 'custom', 4, function(){});
 	}else{
 		$.getJSON(coneia_context_path + "/admin/customTaller",
 				{op:27,idit:idit},
@@ -422,7 +422,7 @@ function actualizar(idd,cambio,idit){
 					if(data==1){
 						listarTalleres(cambio);	
 					}else{
-						console.log("Error al actualizar");
+					
 					}
 				});
 	}
@@ -442,7 +442,7 @@ $(".final").click(function(){
 			function(objJson) {
 				var s = "";
 				var lista = objJson;
-				console.log(objJson);
+				
 				if (lista.length > 0) {
 					// alert("si hay datos amix");
 					var temon = lista[0].tema;	

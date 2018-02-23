@@ -1153,7 +1153,7 @@ body {
 						$(".cgProfile").append(s);
 
 			}catch(e){
-				console.error("error al listar info : "+e);
+				
 			}
 			checkSize();
 			$.get("inscrito",null,function(data){

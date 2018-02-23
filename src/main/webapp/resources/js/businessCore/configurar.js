@@ -29,7 +29,7 @@ function listarPrecios() {
 
 		$.each(con, function(index, obj) {
 			var estado = obj.estado;
-			console.log("activacion general " +obj.active );
+			
 			if(obj.active == 1){
 				$("#4").prop('checked', true);
 			}

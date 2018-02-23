@@ -108,7 +108,7 @@ $(document).ready(function() {
 		swipeable : false,
 		responsiveThreshold : 1920,
 		onShow : function(tab) {
-			// console.log(tab[0].id.split('-')[1]);
+		
 			var t = tab[0].id.split('-')[1];
 			$("#" + t).addClass("#ccff90 light-green accent-1")
 		}
@@ -323,10 +323,10 @@ $(document).ready(function() {
 
 	function handleOrientationChange(mediaquery) {
 		if (mediaquery.matches) {
-			console.log("mediaquery dentro de 600");
+	
 			$('b1').val("");
 		} else {
-			console.log("mediaquery fuera de 600");
+			
 		}
 	}
 	mediaquery.addListener(handleOrientationChange);
@@ -443,8 +443,8 @@ $(".b1").click(
 							'¿Desea confirmar su asistencia a esta ponencia?',
 							function() {
 								localStorage.setItem("insc1", 1);
-								console.log(localStorage.getItem("insc1")
-										+ " soy uno");
+							
+									
 								lunes1();
 								if (localStorage.getItem("contador")) {
 									localStorage.setItem("contador",
@@ -471,20 +471,19 @@ $(".confirmar").click(function(){
 	$("#alertyboton").addClass("btn waves-effect waves-light #2962ff blue accent-4");
 	$("#alertyboton2").addClass("btn waves-effect waves-light #bdbdbd grey lighten-1");
 	alertify.confirm('Inscripción de horario', '¿Desea confirmar su el horario?</br>Considere que una vez que confirme no podrá elegir de nuevo el horario', function(){
-		console.log("lunes1:"+lun1+"\n"+"lunes2:"+lun2+"\n"+"martes:"+mar+"\n"+"miercoles1:"+mier1+"\n"+"miercoles2:"+mier2+"\n"+"miercoles3:"
-				+mier3+"\n"+"miercoles4:"+mier4+"\n"+"jueves:"+jue+"\n"+"viernes1:"+vie1+"\n"+"viernes2:"+vie2);
+	
 		a = $("#a").val(); b = $("#b").val(); c = $("#c").val(); d = $("#d").val(); e = $("#e").val();
 		f = $("#f").val(); g = $("#g").val(); h = $("#h").val(); i = $("#i").val(); j = $("#j").val();
 		k = $("#k").val(); l = $("#l").val(); m = $("#m").val(); n = $("#n").val(); o = $("#o").val();
 		p = $("#p").val(); q = $("#q").val(); r = $("#r").val(); s = $("#s").val();
-		console.log(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s);
+
 		array = lun1+","+lun2+","+mar+","+mier1+","+mier2+","+mier3+","+mier4+","+jue+","+vie1+","+vie2+","+a+","+b+","+c+","+d+","+
 		e+","+f+","+g+","+h+","+j+","+k+","+l+","+m+","+n+","+o+","+p+","+r+","+s;
-		console.log(array);
+	
 		$.get("talleres",{op:1,array:array},function(data){
-			console.log(data);
+			
 			if(data>=27){
-				console.log("Insertado");
+				
 				var link = coneia_context_path + "/principal";
 				$(".todo").empty();
 				$(".loadin").css("display","block");
@@ -493,7 +492,7 @@ $(".confirmar").click(function(){
 					location.href = link;
 				}, 3000);
 			}else{
-				console.log("algo anda mal..")
+				
 			}
 		});
 	}

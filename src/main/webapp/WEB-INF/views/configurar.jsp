@@ -365,12 +365,12 @@
 				
 				var activegeneral =$("#4").prop('checked').toString();
 				if(activegeneral=="true"){
-					console.log("hey 1");
+					
 					acg = 1;
 					$.get("activeGeneral", {
 						opcion : acg
 					}, function(data) {
-						console.log(data);
+						
 						if (data == 1) {
 							alertify.alert('Mensaje de alerta',
 									'Se han activado los talleres',
@@ -410,12 +410,12 @@
 						}
 					});
 				}else{
-					console.log("hey 0");
+				
 					acg=0;
 					$.get("activeGeneral", {
 						opcion : acg
 					}, function(data) {
-						console.log(data);
+						
 						if (data == 1) {
 							alertify.alert('Mensaje de alerta',
 									'Se han desactivado los talleres',

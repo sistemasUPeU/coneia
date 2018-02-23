@@ -17,7 +17,7 @@
 	$(document).ready(function() {
 		idrol = $("#idrol").val();
 
-		console.log(dni);
+	
 		listPrivilegios();
 
 
@@ -33,15 +33,14 @@
 
 							function(objJson) {
 
-								console.log(objJson);
-								console.log(objJson.listaPrivilegios);
+							
 								var lista = objJson.listaPrivilegios;
 			
 								var s = '';
 								if (lista.length > 0) {
 									s += '<li class="li-hover"><p class="ultra-small margin more-text">MENÚ</p></li>';
 									for (var i = 0; i < lista.length; i++) {
-										console.log(lista[i].url);
+										
 
 										s += '<li class="no-padding">';
 										s += '<ul class="collapsible collapsible-accordion">';
@@ -95,7 +94,7 @@
 								}
 							});
 		} catch (e) {
-			console.error(e);
+			
 		}
 	};
 

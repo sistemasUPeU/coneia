@@ -694,7 +694,7 @@ thead tr{
 						$(".cgProfile").append(s);
 
 			}catch(e){
-				console.error("error al listar info : "+e);
+				
 			}
 			$(".button-collapse").sideNav();
 			$('.btn-message').click(function() {
@@ -836,7 +836,7 @@ thead tr{
 		var mediaQueryList = window.matchMedia('print');
 		mediaQueryList.addListener(function(mql) {
 		    if (mql.matches) {
-		        console.log('before print dialog open');
+		       
 		    } else {
 		        location.reload();
 		    }

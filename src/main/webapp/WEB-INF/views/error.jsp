@@ -97,7 +97,7 @@ var context_path = "<%=request.getContextPath()%>";
 			//       window.history.back();
 			var link = context_path;
 // 			context_path + "/#"
-console.log(link);
+
 			location.href = context_path;
 		
 		}

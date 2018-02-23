@@ -312,7 +312,7 @@
 						$(".cgProfile").append(s);
 
 			}catch(e){
-				console.error("error al listar info : "+e);
+				
 			}
 			checkSize();
 			$(".button-collapse").sideNav();
