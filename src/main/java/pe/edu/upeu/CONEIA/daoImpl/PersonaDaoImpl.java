@@ -9,6 +9,7 @@ import javax.persistence.ParameterMode;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import pe.edu.upeu.CONEIA.entity.DetallePrivilegio;
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
 import pe.edu.upeu.CONEIA.entity.Rol;
+import pe.edu.upeu.CONEIA.entity.Taller;
 @Repository
 public class PersonaDaoImpl implements PersonaDAO {
 
@@ -267,6 +269,105 @@ public class PersonaDaoImpl implements PersonaDAO {
 		x = 1;
 		System.out.println("casi final" + map);
 		return map;
+	}
+
+	@Override
+	public List<Map<String, Object>> listarPersonal() {
+		int x = 0;
+		List<Map<String,Object>> liston = new ArrayList<>();
+		Map<String, Object> map = null;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+			Query query = s.createQuery(
+					"select p from Persona p where p.rol=:rol");
+			Rol r = s.get(Rol.class, 7);
+			query.setParameter("rol", r);
+			@SuppressWarnings("unchecked")
+			List<Persona> lista = query.getResultList();
+			if(lista.size()!=0) {
+				for (int j = 0; j < lista.size(); j++) {
+					map = new HashMap<String, Object>();
+					map.put("op", 1);
+					map.put("idpersona", lista.get(j).getIdpersona());
+					map.put("nombre", lista.get(j).getNombre());
+					map.put("apellidos", lista.get(j).getApellidos());
+					map.put("dni", lista.get(j).getDni());
+					map.put("clave", lista.get(j).getPassword());
+					map.put("celular", lista.get(j).getCelular());
+					liston.add(map);
+				}
+			}else {
+				map = new HashMap<String, Object>();
+				map.put("op", 0);
+			}
+
+			x = 1;
+			
+		} catch (Exception e) {
+			System.out.println("Error al listar personal" +e);
+		}
+		
+		return liston;
+	}
+
+	@Override
+	public int actualizar(Persona p) {
+		int x=0;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+	    	s.update(p);	
+	    	x=1;
+		} catch (HibernateException e) {
+			System.out.println("Error al actualizar persona: "+e);
+		}
+		return x;
+	}
+
+	@Override
+	public int eliminar(int id) {
+		int x=0;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+	    	Persona p = s.get(Persona.class, id);
+	    	s.delete(p);;	
+	    	x=1;
+		} catch (HibernateException e) {
+			System.out.println("Error al eliminar persona: "+e);
+		}
+		return x;
+	}
+
+	@Override
+	public Map<String,Object> search(int id) {
+		Persona p =null;
+		Map<String,Object> map = null;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+			p = s.get(Persona.class, id);
+			map = new HashMap<>();
+			map.put("idpersona", p.getIdpersona());
+			map.put("nombres", p.getNombre());
+			map.put("apellidos", p.getApellidos());
+			map.put("dni", p.getDni());
+			map.put("clave", p.getPassword());
+			map.put("celular", p.getCelular());
+		} catch (Exception e) {
+			System.out.println("Error al buscar persona: " +e);
+		}
+		return map;
+	}
+
+	@Override
+	public int nuevaPersona(Persona p) {
+		int x=0;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+	    	s.save(p);	
+	    	x=1;
+		} catch (HibernateException e) {
+			System.out.println("Error al insertar persona: "+e);
+		}
+		return x;
 	}
 	
 	

@@ -74,9 +74,6 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 	    		value=1;
 	    		break;
 	    	case 1:
-	    		value=2;
-	    		break;
-	    	case 2:
 	    		value=0;
 	    		break;
 	    	}
@@ -111,13 +108,13 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 				String anio = fecha[2];String mes = fecha[1];String dia = fecha[0];
 				String fechon = anio+"-"+mes+"-"+dia;
 				long num = cuantos(v.getIdd());
-				long num2 = cuantos2(v.getIdd());
-				double suma = num+(num2)*2;
+//				long num2 = cuantos2(v.getIdd());
+				double suma = num;
 				if(suma==0) {
 					total = "0";
 					
 				}else {
-					double sumando = (suma/58)*100;
+					double sumando = (suma/27)*100;
 					total = df2.format(sumando);
 				}
 				Map<String,Object> mapita = mapon(v.getIdd(),time);
@@ -319,13 +316,13 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 			for(VistaReporteAsistencia v : lista) {
 				
 				long num = cuantos(v.getIdd());
-				long num2 = cuantos2(v.getIdd());
-				double suma = num+(num2)*2;
+//				long num2 = cuantos2(v.getIdd());
+				double suma = num;
 				if(suma==0) {
 					total = "0";
 					
 				}else {
-					double sumando = (suma/58)*100;
+					double sumando = (suma/27)*100;
 					total = df2.format(sumando);
 				}
 				map = new HashMap<>();

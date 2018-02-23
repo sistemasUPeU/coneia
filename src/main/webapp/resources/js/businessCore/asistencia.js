@@ -66,7 +66,8 @@ function listarTalleres(cambio,tam){
 	var anio = fake[0];var mes = fake[1]-1;var dia = fake[2];
 	var fechin = new Date(anio, mes, dia);
 	var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
+	var rol = "${sessionScope.idrol}";
+//	alert(idrol);
 		if ($(window).width() < 600) {
 			$.getJSON(
 					coneia_context_path + "/admin/customTaller",
@@ -84,9 +85,6 @@ function listarTalleres(cambio,tam){
 								var idit = lista[i].idit;
 								var asistencia = lista[i].asistencia;
 								if(asistencia ==1){
-									clase2="#00b0ff light-blue accent-3";
-								}
-								if(asistencia ==2){
 									clase2="#00c853 green accent-4";
 								}
 								if(asistencia ==0){
@@ -107,11 +105,20 @@ function listarTalleres(cambio,tam){
 								s += '<td style="width:20%">' + lista[i].dni
 										+ '</td>';
 								s += '<td style="width:40%">'
-								s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-								s += '	class="btn btn-floating waves-effect waves-light '+clase2+' accent-3" '
-								s += '	>'
-								s += '	<i class="material-icons right md-18">done_all</i>'
-								s+= '</a></div><div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
+									
+									if(idrol==5){
+										s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light '+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a></div>'
+										s+= '<div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
+									}
+								
+									if(idrol==7){
+										s += '	<a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light '+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a>'
+									}
+								
 								s+= 	'</td>';
 								s += '<td style="width:10%;color:white" class="'+clase+'"><b>'+porcentaje+' %</b></td>';
 								// s += '<td>' + p + '</td>';
@@ -133,7 +140,25 @@ function listarTalleres(cambio,tam){
 
 						$("#data-table-row-grouping1")
 						.dataTable(
+								{
+									"pageLength" : 2,
+									"bPaginate" : true,
+									"bLengthChange" : false,
+									"bFilter" : true,
+									"bInfo" : false,
+									"bAutoWidth" : true,
+									"select":true,
+									"language" : {
+										// "lengthMenu": "Display _MENU_ records per page",
+										"zeroRecords" : "Reporte vacío",
+										"info" : "Mostrando página _pag_ de _pags_",
+										"infoEmpty" : "Ningún alumno agregado"
+									// "infoFiltered": "(filtered from _MAX_ total records)"
+									}
 
+
+									
+								}
 								);
 
 					
@@ -159,9 +184,6 @@ function listarTalleres(cambio,tam){
 								var asistencia = lista[i].asistencia;
 								
 								if(asistencia ==1){
-									clase2="#00b0ff light-blue accent-3";
-								}
-								if(asistencia ==2){
 									clase2="#00c853 green accent-4";
 								}
 								if(asistencia ==0){
@@ -185,12 +207,19 @@ function listarTalleres(cambio,tam){
 								s += '<td style="width:20%">' + fechin.toLocaleDateString("es-ES", options)
 								+ '</td>';
 								s += '<td style="width:22%">'
-								s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-								s += '	class="cola btn-floating btn waves-effect waves-light '+clase2+' accent-3 "'
-								s += '	>'
-								s += '	<i class="material-icons right">done_all</i>'
-								s+= '</a></div><div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger " href="#modalon" " onclick="crearModal(\''+idd+'\',\''+cambio+'\')">'
-								s+= 	'<i class="material-icons md-18">border_color</i></a></div></div></td>';
+									if(idrol==5){
+										s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light '+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a></div>'
+										s+= '<div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
+									}
+								
+									if(idrol==7){
+										s += '	<a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light '+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a>'
+									}
+								s+= '</td>';
 								s += '<td style="width:10%;color:white" class="'+clase+'"><b>'+valor+' %</b></td>';
 								// s += '<td>' + p + '</td>';
 								s += '</tr>';
@@ -212,7 +241,7 @@ function listarTalleres(cambio,tam){
 						$("#data-table-row-grouping1")
 						.dataTable(
 								{
-									"pageLength" : 5,
+									"pageLength" : 2,
 									"bPaginate" : true,
 									"bLengthChange" : false,
 									"bFilter" : true,
@@ -364,9 +393,6 @@ function crearModal(idd,cambio) {
 							var asistencia2 = liston[j].asistencias;
 							console.log(asistencia2);
 							if(asistencia2 ==1){
-								clase3="#00b0ff light-blue accent-3";
-							}
-							if(asistencia2 ==2){
 								clase3="#00c853 green accent-4";
 							}
 							if(asistencia2 ==0){
@@ -429,9 +455,6 @@ $(".final").click(function(){
 						var asistencia = lista[i].asistencia;
 						
 						if(asistencia ==1){
-							clase2="#00b0ff light-blue accent-3";
-						}
-						if(asistencia ==2){
 							clase2="#00c853 green accent-4";
 						}
 						if(asistencia ==0){

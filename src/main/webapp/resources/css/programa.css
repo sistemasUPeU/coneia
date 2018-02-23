@@ -71,30 +71,10 @@ li a:before{
 	left:50%;
 }
 
-li a:hover:after{
-	content:'';
-	position:absolute;
-	bottom:0px;
-	left:50%;
-	background:lime;
-	height:3px;
-	width:50%;
-}
-
-li a:hover:before{
-	content:'';
-	position:absolute;
-	bottom:0px;
-	left:0px;
-	background:lime;
-	height:3px;
-	width:50%;
-}
-	
 	}
 
 @media screen and (min-device-width: 100px) and (max-device-width:
-	568px) {
+	600px) {
 	.nigga {
 		font-size: 12px;
 	}
@@ -104,6 +84,9 @@ li a:hover:before{
 	.collapsible-body {
 		font-size: 12px;
 		
+	}
+	h6{
+	font-size:10px
 	}
 	.btn{
 	text-overflow: ellipsis;
@@ -164,28 +147,8 @@ li a:hover:before{
 	text-align: center; /* Alineación del texto */
 }
 
-nav {
-    height: 100px;
-    line-height: 100px;
-}
 
-nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
-    height: 100px;
-    line-height: 100px;
-}
-
-nav .button-collapse i {
-    height: 100px;
-    line-height: 100px;
-}
-
-nav .brand-logo { 
-    font-size: 1.6rem; 
-}
 
 @media only screen and (min-width: 601px){
-    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-        height: 100px;
-        line-height: 100px;
-    }
+    
 }

@@ -38,12 +38,14 @@ import pe.edu.upeu.CONEIA.entity.Configuracion;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
+import pe.edu.upeu.CONEIA.entity.Rol;
 import pe.edu.upeu.CONEIA.entity.Taller;
 import pe.edu.upeu.CONEIA.entity.Tipo;
 import pe.edu.upeu.CONEIA.service.ConfiguracionService;
 import pe.edu.upeu.CONEIA.service.InscripcionService;
 import pe.edu.upeu.CONEIA.service.InscripcionTallerService;
 import pe.edu.upeu.CONEIA.service.MailService;
+import pe.edu.upeu.CONEIA.service.PersonaService;
 import pe.edu.upeu.CONEIA.service.TallerService;
 
 @Controller
@@ -58,6 +60,9 @@ public class AdministradorController {
 	@Autowired
 	private ConfiguracionService confService;
 
+	@Autowired
+	private PersonaService ps;
+	
 	@Autowired
 	public MailService ms;
 	
@@ -88,6 +93,12 @@ public class AdministradorController {
 	public String configurar(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		return "configurar";
+	}
+	
+	@RequestMapping("/personal")
+	public String personal(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		return "personal";
 	}
 	
 	@RequestMapping("/responsew")
@@ -556,6 +567,73 @@ public class AdministradorController {
 
 		return model;
 	}
+	
+	@RequestMapping("customPersonal")
+	protected void personalF(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, ParseException {
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		RequestDispatcher dispatcher;
+		int op = Integer.parseInt(request.getParameter("op"));
+		HttpSession session = request.getSession();
+		String url;
+		switch (op) {
+		case 1:// visitas MARTES
+			out.println(gson.toJson(ps.listarPersonal()));
+			break;
+		case 2:// talleres MARTES
+			int id = Integer.parseInt(request.getParameter("id"));
+			String nombres = request.getParameter("nombres");
+			String apellidos = request.getParameter("apellidos");
+			String dni = request.getParameter("dni");
+			String clave = request.getParameter("clave");
+			String celular = request.getParameter("celular");
+			Persona p = new Persona();
+			p.setIdpersona(id);p.setNombre(nombres);p.setApellidos(apellidos);p.setDni(dni);p.setDni(dni);p.setPassword(clave);p.setCelular(celular);
+			Rol r = new Rol();
+			r.setIdrol(7);
+			p.setRol(r);
+			if(ps.actualizar(p)==1) {
+				out.println(1);
+			}else {
+				out.println(0);
+			}
+			
+			break;
+		case 3:// visitas JUEVES
+			int ide = Integer.parseInt(request.getParameter("id"));
+			if(ps.eliminar(ide)==1) {
+				out.println(1);
+			}else {
+				out.println(0);
+			}
+			break;
+		case 4:// visitas JUEVES
+				int ids = Integer.parseInt(request.getParameter("id"));
+				out.println(gson.toJson(ps.search(ids)));
+				break;
+		case 5:
+			String nnombres = request.getParameter("nnombres");
+			String napellidos = request.getParameter("napellidos");
+			String ndni = request.getParameter("ndni");
+			String nclave = request.getParameter("nclave");
+			String ncelular = request.getParameter("ncelular");
+			Persona pe = new Persona();
+			pe.setNombre(nnombres);pe.setApellidos(napellidos);pe.setDni(ndni);pe.setDni(ndni);pe.setPassword(nclave);pe.setCelular(ncelular);
+			Rol ro = new Rol();
+			ro.setIdrol(7);
+			pe.setRol(ro);
+			if(ps.nuevaPersona(pe)==1) {
+				out.println(1);
+			}else {
+				out.println(0);
+			}
+			break;
+		
+		}
+
+	}
+
 	
 	@RequestMapping("customTaller")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

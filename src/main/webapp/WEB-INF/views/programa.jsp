@@ -60,35 +60,56 @@ body {
 	<div class="todo" >
 		<div id="mobile-collapse-button" class="section"
 			style="padding-top: 0">
-			<nav class="#000000 black">
-			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo"><img class=""
-					src="<c:url value="/resources/img/cones.png"/>"
-					style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a>
+			<header id="header" class="page-topbar">
+	<!-- start header nav-->
+		<nav class="navbar-color">
+			<div class="nav-wrapper grey darken-3">
+				<a href="<%=request.getContextPath()%>/" style="padding:1%; "
+								class="brand-logo darken-1 redirect"><img
+								src="<c:url value="/resources/img/cones.png"/>" alt="gth logo" style="height:30%;width: 125px; "></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i
 					class="mdi-navigation-menu"></i></a>
 				<ul class="right hide-on-med-and-down">
-					<li><a class="m principal">Home</a></li>
-					<li><a class="m dropdown-button" href="#!"
-						data-activates="dropdown1"><b>${sessionScope.nombre}
-								${sessionScope.apellidos}</b></a>
-						<ul id='dropdown1' class='dropdown-content'>
-							<li><a href="#!" class="salir">Salir</a></li>
-						</ul></li>
+
+					<li>
+						<div class="chip grey darken-1 white-text cgProfile" style="cursor: pointer;">
+						</div>
+					</li>
+					<li><a href="<%=request.getContextPath()%>/"
+						class="waves-effect waves-block waves-light tooltipped redirect"
+						data-position="bottom" data-delay="50" data-tooltip="Menú"><i
+							class="medium material-icons prefix">navigation</i></a></li>
+
+					<li><a 
+						class="waves-effect waves-block waves-light tooltipped salir"
+						data-position="bottom" data-delay="50"
+						data-tooltip="Cerrar Sesión"><i class="medium material-icons prefix">exit_to_app</i></a>
+					</li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
-					<li><a class="dropdown-button" href="#!"
-						data-activates="dropdown2"><b>${sessionScope.nombre}
+					<li><a href="#!"
+						><b>${sessionScope.nombre}
 								${sessionScope.apellidos} </b></a>
-						<ul id='dropdown2' class='dropdown-content '>
-							<li><a href="#!" class="salir">Salir</a></li>
-						</ul></li>
-
+						</li>
+					
 					<li><a class="principal">Home</a></li>
+					<li><a href="#!" class="salir">Salir</a></li>
+
+				</ul>
+
+				<ul id="notifications-dropdown" class="dropdown-content">
+					<li>
+						<h5>
+							NOTIFICATIONS <span class="new badge">5</span>
+						</h5>
+					</li>
+					<li class="divider"></li>
 
 				</ul>
 			</div>
-			</nav>
+		</nav>
+
+</header>
 
 		</div>
 		<div class="row center container">
@@ -118,7 +139,7 @@ body {
 
 
 		</div>
-		<div class="row  #304ffe indigo accent-4" style="height: auto;min-height:1000px;" id="urusai">
+		<div class="row #bdbdbd grey lighten-1" style="height: auto;min-height:1000px;margin-bottom:0" id="urusai">
 			<div class="col s12 #ccff90 light-green accent-1" id="myHeader">
 				<ul class="tabs  #ccff90 light-green accent-1">
 					<li class="tab "><a id="one" class="#ccff90 "
@@ -145,7 +166,7 @@ body {
 			</div>
 
 			<!-- D I A   L U N E S -->
-			<div id="swipe-1" class="col s12 #304ffe indigo accent-4"
+			<div id="swipe-1" class="col s12 #bdbdbd grey lighten-1"
 				style="height: auto; margin-bottom: 1em;">
 				<div class="row container">
 					<br /> <br />
@@ -355,7 +376,7 @@ body {
 			</div>
 
 			<!-- D  I  A     M  A  R  T  E  S -->
-			<div id="swipe-2" class="col s12 #304ffe indigo accent-4"
+			<div id="swipe-2" class="col s12 #bdbdbd grey lighten-1"
 				style="height: auto; margin-bottom: 2em">
 				<div class="container">
 					<br /> <br />
@@ -378,7 +399,7 @@ body {
 							</div>
 							<div class="collapsible-body">
 								<div class="row center">
-									<h6 style="color: grey; line-height: 30px;">
+									<h6 style="color: grey;">
 										Considere que si elige una <u>visita técnica</u> entonces
 										deberá asistir el <b>jueves</b> a un taller especializado; en
 										cambio, si elige un <u>taller especializado</u> entonces el <b>jueves</b>
@@ -520,7 +541,7 @@ body {
 			</div>
 
 			<!-- D  I  A     M  I  E  R  C  O  L  E  S -->
-			<div id="swipe-3" class="col s12 #304ffe indigo accent-4"
+			<div id="swipe-3" class="col s12 #bdbdbd grey lighten-1"
 				style="height: auto; margin-bottom: 2em">
 				<div class="container">
 					<br /> <br />
@@ -778,7 +799,7 @@ body {
 
 			</div>
 			<!-- D  I  A     J  U  E  V  E  S -->
-			<div id="swipe-4" class="col s12 #304ffe indigo accent-4"
+			<div id="swipe-4" class="col s12 #bdbdbd grey lighten-1"
 				style="height: auto; margin-bottom: 2em">
 				<div class="container">
 					<br /> <br />
@@ -939,7 +960,7 @@ body {
 			</div>
 
 			<!-- D  I  A    V  I  E  R  N  E  S -->
-			<div id="swipe-5" class="col s12 #304ffe indigo accent-4"
+			<div id="swipe-5" class="col s12 #bdbdbd grey lighten-1"
 				style="height: auto; margin-bottom: 2em">
 				<div class="container">
 					<br /> <br />
@@ -1078,21 +1099,20 @@ body {
 			</div>
 
 		</div>
-		<div class="row center confirmar"
+		<div class="row center confirmar #bdbdbd grey lighten-1"
 			style="display: none; margin-bottom: 1em; margin-top: 1em">
 			<button
 				class="btn btn-large #0091ea waves-effect waves-light btn light-blue accent-4">
 				Confirmar</button>
 		</div>
-		<div class="page-footer #00c853 green accent-4" style="padding: 0;float:left;width:100%;bottom:0">
-		<div class="footer-copyright">
-			<div class="row container">
-				Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
-					Team</a> All rights reserved. <span class="right ">Developed by
-					<a class="grey-text text-lighten-4">Alpha Team</a>
-				</span>
+		<div class="page-footer #00c853 green accent-4" style="padding: 0;float:left;width:100%;bottom:0" id="foot1">
+			<div class="footer-copyright">
+				<div class="container" style="color:white">
+					Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
+					Team</a> All rights reserved. <span class="right" id="foot2">Developed by <a
+				class="grey-text text-lighten-4">Alpha Team</a></span>
+				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 	<div class="row center loadin" style="margin-top: 20%; display: none">
@@ -1121,6 +1141,21 @@ body {
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			try{
+				
+				var nombre = "${sessionScope.nombre}";
+				var apellidos =  "${sessionScope.apellidos}";
+
+						var s='';
+						s +='<img src="<c:url value="/resources/img/user.png"/>" alt="Usuario">';
+						s +=nombre.toUpperCase()+", "+apellidos.toUpperCase();
+						$(".cgProfile").empty();
+						$(".cgProfile").append(s);
+
+			}catch(e){
+				console.error("error al listar info : "+e);
+			}
+			checkSize();
 			$.get("inscrito",null,function(data){
 				if(data>10){
 					var link = context_path + "/principal"
@@ -1148,6 +1183,25 @@ body {
 			// Stops event propagation
 			});
 		});
+		$(window).on('resize', function() {
+			checkSize()
+		});
+
+		function checkSize() {
+			if ($(window).width() < 600) {
+				// your code here
+			
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
+				$("#foot1").css("padding","5px");
+
+			} else {
+
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
+				$("#foot1").css("padding","15px");
+			}
+		}
 		var url = window.location.href;
 		var arr = url.split("/");
 		var context_path = arr[0] + "//" + arr[2] + "/CONEIA"

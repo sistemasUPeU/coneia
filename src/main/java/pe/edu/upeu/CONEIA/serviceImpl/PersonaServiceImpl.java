@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upeu.CONEIA.dao.PersonaDAO;
+import pe.edu.upeu.CONEIA.entity.Persona;
 import pe.edu.upeu.CONEIA.service.PersonaService;
 
 @Service("personaService")
@@ -52,6 +53,39 @@ public class PersonaServiceImpl implements PersonaService{
 	public Map<String, Object> validarCambio(String numero, String correo) {
 		// TODO Auto-generated method stub
 		return pd.validarCambio(numero, correo);
+	}
+
+	@Override
+	public List<Map<String, Object>> listarPersonal() {
+		// TODO Auto-generated method stub
+		return pd.listarPersonal();
+	}
+
+	@Override
+	@Transactional
+	public int actualizar(Persona p) {
+		// TODO Auto-generated method stub
+		return pd.actualizar(p);
+	}
+
+	@Override
+	@Transactional
+	public int eliminar(int id) {
+		// TODO Auto-generated method stub
+		return pd.eliminar(id);
+	}
+
+	@Override
+	public Map<String, Object> search(int id) {
+		// TODO Auto-generated method stub
+		return pd.search(id);
+	}
+
+	@Override
+	@Transactional
+	public int nuevaPersona(Persona p) {
+		// TODO Auto-generated method stub
+		return pd.nuevaPersona(p);
 	}
 
 }

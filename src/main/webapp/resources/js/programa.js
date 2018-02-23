@@ -479,14 +479,14 @@ $(".confirmar").click(function(){
 		p = $("#p").val(); q = $("#q").val(); r = $("#r").val(); s = $("#s").val();
 		console.log(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s);
 		array = lun1+","+lun2+","+mar+","+mier1+","+mier2+","+mier3+","+mier4+","+jue+","+vie1+","+vie2+","+a+","+b+","+c+","+d+","+
-		e+","+f+","+g+","+h+","+i+","+j+","+k+","+l+","+m+","+n+","+o+","+p+","+q+","+r+","+s;
+		e+","+f+","+g+","+h+","+j+","+k+","+l+","+m+","+n+","+o+","+p+","+r+","+s;
 		console.log(array);
 		$.get("talleres",{op:1,array:array},function(data){
 			console.log(data);
-			if(data>=29){
+			if(data>=27){
 				console.log("Insertado");
 				var link = coneia_context_path + "/principal";
-				$(".todo").css("display","none");
+				$(".todo").empty();
 				$(".loadin").css("display","block");
 				
 				setTimeout(function() {
