@@ -21,7 +21,7 @@
 	height: 120px;
 }
 #titulo2{
-	font-size: 40px;
+	font-size: 30px;
 }
 }
 

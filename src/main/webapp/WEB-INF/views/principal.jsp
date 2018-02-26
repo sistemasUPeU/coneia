@@ -236,7 +236,7 @@
 						<i class="mdi-communication-vpn-key prefix large icon-demo"></i> <input
 							id="pass_new_1" name="pass_new_1" type="password"
 							class="validate" required data-error=".errorTxt4"> <label
-							for="pass_new_1">Repetir contraseña nueva</label>
+							for="pass_new_1">Repetir contraseña</label>
 						<div class="errorTxt4"></div>
 					</div>
 				</div>
