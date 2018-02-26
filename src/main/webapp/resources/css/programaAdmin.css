@@ -75,6 +75,8 @@ li a:before{
 	left:50%;
 }
 
+
+
 li a:hover:after{
 	content:'';
 	position:absolute;
@@ -95,9 +97,47 @@ li a:hover:before{
 }
 	
 	}
+	
+	label {
+    font-size: 14px;
+	}
+	.fonto {
+	font-family: 'Crimson Text', serif;
+	font-size: 18px;
+	font-weight: bold;
+}
 
 @media screen and (min-device-width: 100px) and (max-device-width:
-	568px) {
+	650px) {
+	.fonto{
+	font-size: 14px;
+	}
+	.container .row {
+    margin-left: 0rem;
+    margin-right: 0rem;
+	}
+	.material-icons.md-18 {
+    font-size: 10px;
+	}
+	.material-icons.md-36 {
+    font-size: 24px;
+	}
+	.alertify .ajs-modal {
+    margin-top: 10%;
+    margin-left: 5%;
+}
+h4 {
+    font-size: 2rem;
+    line-height: 110%;
+    margin: 1.14rem 0 .912rem 0;
+}
+	html {
+    font-size: 10px;
+	}
+	label {
+    font-size: 10px;
+	}
+	
 	.nigga {
 		font-size: 12px;
 	}
@@ -105,9 +145,18 @@ li a:hover:before{
 		line-height: 2rem;
 	}
 	.collapsible-body {
-		font-size: 12px;
-		
+		font-size: 11px;
+		 padding-top:15px;
+    	padding-bottom: 12px;
+		padding-left: 0.1em;
+		padding-right:0.1em;
 	}
+	.modal-trigger,.red{
+		width:25px;
+		height:25px;
+		line-height: 10px;
+	}
+	
 	.btn{
 	text-overflow: ellipsis;
 	height:25px;

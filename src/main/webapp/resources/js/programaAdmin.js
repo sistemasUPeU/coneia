@@ -54,7 +54,7 @@ function listarTodito(){
 	$.get("customTaller", {op : 1}, function(data) {
 		var obj = JSON.parse(data);
 //		alert(obj[0].idtaller)
-		$(".visitaMartes").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".visitaMartes").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modalvm"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
@@ -72,7 +72,7 @@ function listarTodito(){
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresMartes").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".talleresMartes").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modaltm"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
@@ -94,7 +94,7 @@ function listarTodito(){
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".visitasJueves").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".visitasJueves").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label >'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modalvj"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
@@ -116,7 +116,7 @@ function listarTodito(){
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresJueves").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".talleresJueves").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modaltj"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
@@ -134,7 +134,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 5}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasLunes").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasLunes").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
 		$.each(obj,function(i,value){
 			$(".ponenciasLunes").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -147,7 +147,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 6}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasLunes2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasLunes2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
 		$.each(obj,function(i,value){
 			$(".ponenciasLunes2").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -160,7 +160,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 7}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles1").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles1").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles1").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -173,7 +173,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 8}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles2").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -186,7 +186,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 9}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles3").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles3").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles3").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -199,7 +199,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 10}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles4").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles4").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles4").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -212,7 +212,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 11}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasViernes1").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasViernes1").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
 		$.each(obj,function(i,value){
 			$(".ponenciasViernes1").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -225,7 +225,7 @@ function listarTodito(){
 	});
 	$.get("customTaller", {op : 12}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasViernes2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasViernes2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label><div class="divider"></div><br></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasViernes2").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
