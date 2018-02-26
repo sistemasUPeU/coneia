@@ -57,6 +57,7 @@
 	position:relative;
 }
 
+
 li a:after{
 	content:'';
 	width:0%;
@@ -72,9 +73,29 @@ li a:before{
 }
 
 	}
+	label {
+    font-size: 14px;
+	}
+	.side-nav{
+width:50%;
+font-size:12px;}
+.side-nav a {
+
+    font-size: 12px;}
 
 @media screen and (min-device-width: 100px) and (max-device-width:
 	600px) {
+	.apellidos{
+display:none}
+.side-nav{
+width:70%;
+font-size:8px;}
+.side-nav a {
+
+    font-size: 8px;}
+	label {
+    font-size: 10px;
+	}
 	.nigga {
 		font-size: 12px;
 	}
@@ -85,6 +106,36 @@ li a:before{
 		font-size: 12px;
 		
 	}
+	html{
+	font-size:10px;
+}
+.material-icons.md-36 {
+	font-size: 24px;
+}
+.collapsible-body {
+		font-size: 11px;
+		 padding-top:15px;
+    	padding-bottom: 12px;
+		padding-left: 0.1em;
+		padding-right:0.1em;
+	}
+#blink,#blink2,#blink3,#blink4,#blink5,#blink6,#blink7{
+	
+	font-size:10px;
+}
+.tabs .tab a {
+    
+    font-size: 10px;
+
+}
+[type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+   
+    padding-left: 25px;
+    
+}
+.ponenciasMiercoles1,.ponenciasMiercoles2{
+	font-size:9px;
+}
 	h6{
 	font-size:10px
 	}

@@ -25,8 +25,8 @@
 	
 @page {
 	size: A4;
-	margin-top: 2cm;
-	margin-bottom: 2cm;
+	margin-top: 1.5cm;
+	margin-bottom: 1cm;
 }
 .demo1 thead{
 background:#ECEFF1;
@@ -70,7 +70,7 @@ thead tr{
 </style>
 </head>
 <body>
-	<div class="row center aguja" id="aguja" style="margin: 0 10% 0 10%">
+	<div class="row center aguja" id="aguja" style="margin: 0 6% 0 6%">
 	
 
 					<br />
@@ -90,9 +90,9 @@ thead tr{
 						</div>
 					<div class="row center"><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; margin-left: 5%; float: left; width: 200px;height:30px;float:left"></img><b>Día lunes 04 de junio del 2018</b><img class=""
+									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:left"></img><b>Día lunes 04 de junio del 2018</b><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; margin-left: 5%; float: left; width: 200px;height:30px;float:right"></img></div>
+									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:right"></img></div>
 					<div class="row center">
 						<div class="col s2 desu">06:30:00 - 08:30:00</div>
 						<div class="col s10 desu"><b>Recepcion de delegaciones y entrega de materiales</b></div>
@@ -151,9 +151,9 @@ thead tr{
 					</div>
 					<div class="row center"><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; margin-left: 5%; float: left; width: 200px;height:30px;float:left"></img><b>Día martes 05 de junio del 2018</b><img class=""
+									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:left"></img><b>Día martes 05 de junio del 2018</b><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; margin-left: 5%; float: left; width: 200px;height:30px;float:right"></img></div>
+									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:right"></img></div>
 					<div class="row center">
 						<div class="col s2 desu"><c:out value="${assistance[2].horaI}" /> - <c:out value="${assistance[2].horaF}" /></div>
 						<div class="col s10 desu"><b><c:out value="${assistance[2].nombre}" /></b><br><c:out value="${assistance[2].ponente}" />
@@ -199,9 +199,9 @@ thead tr{
 					</div><br />
 					<div class="row center"><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; margin-left: 5%; float: left; width: 200px;height:30px;float:left"></img><b>Día miércoles 06 de junio del 2018</b><img class=""
+									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:left"></img><b>Día miércoles 06 de junio del 2018</b><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; float: left; width: 200px;height:30px;float:right"></img></div>
+									style="outline-color: none; float: left; width: 100px;height:30px;float:right"></img></div>
 					<div class="row center">
 						<div class="col s2 desu">06:30:00 - 08:00:00</div>
 						<div class="col s10 desu"><b>INGRESO</b></div>				
@@ -268,9 +268,9 @@ thead tr{
 					</div>
 					<div class="row center"><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; margin-left: 5%; float: left; width: 200px;height:30px;float:left"></img><b>Día jueves 07 de junio del 2018</b><img class=""
+									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:left"></img><b>Día jueves 07 de junio del 2018</b><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; float: left; width: 200px;height:30px;float:right"></img></div>
+									style="outline-color: none; float: left; width: 100px;height:30px;float:right"></img></div>
 					<div class="row center">
 						<div class="col s2 desu"><c:out value="${assistance[7].horaI}" /> - <c:out value="${assistance[7].horaF}" /></div>
 						<div class="col s10 desu"><b><c:out value="${assistance[7].nombre}" /></b><br><c:out value="${assistance[7].ponente}" />
@@ -309,9 +309,9 @@ thead tr{
 					</div>
 					<div class="row center"><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; margin-left: 5%; float: left; width: 200px;height:30px;float:left"></img><b>Día viernes 08 de junio del 2018</b><img class=""
+									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:left"></img><b>Día viernes 08 de junio del 2018</b><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
-									style="outline-color: none; float: left; width: 200px;height:30px;float:right"></img></div>
+									style="outline-color: none; float: left; width: 100px;height:30px;float:right"></img></div>
 					<div class="row center">
 						<div class="col s2 desu">06:30:00 - 08:00:00</div>
 						<div class="col s10 desu"><b>INGRESO</b></div>				

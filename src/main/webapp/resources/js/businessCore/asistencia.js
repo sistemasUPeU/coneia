@@ -120,7 +120,7 @@ function listarTalleres(cambio,tam){
 									}
 								
 								s+= 	'</td>';
-								s += '<td style="width:10%;color:white" class="'+clase+'"><b>'+porcentaje+' %</b></td>';
+								s += '<td style="width:5%;color:white" class="'+clase+'"><b>'+porcentaje+' %</b></td>';
 								// s += '<td>' + p + '</td>';
 								s += '</tr>';
 								
@@ -265,7 +265,9 @@ function listarTalleres(cambio,tam){
 
 					$(".buttons-pdf").addClass("btn waves-effect waves-light");
 					$(".buttons-excel").addClass("btn waves-effect waves-light");
-
+					$("#data-table-row-grouping1_filter").after(
+					"<div  id='hugme1' style='overflow-x:auto; clear: both;'></div>");
+					$("#data-table-row-grouping1").appendTo('#hugme1');
 					var table = $('#data-table-row-grouping1').DataTable();
 					table.rows( {selected:true} ).data();
 					});
@@ -301,7 +303,7 @@ function createTable3() {
 	d += "<thead>";
 	d += "<tr>";
 	// s += "<th class='hide' >N°</th>";
-	d += "<th>Nombres y Apellidos</th>";
+	d += "<th>Participante</th>";
 	d += "<th>Dni</th>";
 	d += "<th >Asistencia</th>";
 	d += "<th >% </th>";
@@ -553,6 +555,7 @@ $(".final").click(function(){
 			$(".buttons-pdf").addClass("btn waves-effect waves-light");
 			$(".buttons-excel").addClass("btn waves-effect waves-light");
 			$(".buttons-print").addClass("btn waves-effect waves-light");
+			
 
 			});
 
