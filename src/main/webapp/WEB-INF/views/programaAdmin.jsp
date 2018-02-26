@@ -92,6 +92,8 @@ margin-left:30%;
 }
 
 @media only screen and (max-width: 600px) {
+#urusai{
+padding-bottom:4rem;}
 .btn{padding:1px}
 .light-blue i{font-size: 1.9rem;}
 .modal-trigger i,.red i {
@@ -143,7 +145,7 @@ margin-left:30%;
 			</div>
 
 			<div class="row  #bdbdbd grey lighten-1"
-				style="height: auto; min-height: 1000px;margin-bottom:0" id="urusai";>
+				style="height: auto; min-height: 1000px;margin-bottom:0;" id="urusai">
 				<div class="col s12 #ccff90 light-green accent-1" id="myHeader">
 					<ul class="tabs tabs-fixed-width #ccff90 light-green accent-1">
 						<li class="tab "><a id="one" class="#ccff90 "
@@ -347,7 +349,7 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout" data-collapsible="accordion"
-							id="staggered-test2">
+							>
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">
@@ -459,7 +461,7 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout" data-collapsible="accordion"
-							id="staggered-test3">
+							>
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">
@@ -653,7 +655,7 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout" data-collapsible="accordion"
-							id="staggered-test4" style="z-index: 10">
+							 style="z-index: 10">
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">
@@ -763,7 +765,7 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout " data-collapsible="accordion"
-							id="staggered-test5" style="z-index: 10">
+							style="z-index: 10">
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">

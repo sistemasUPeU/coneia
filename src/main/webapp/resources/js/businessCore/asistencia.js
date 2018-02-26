@@ -209,14 +209,14 @@ function listarTalleres(cambio,tam){
 								s += '<td style="width:22%">'
 									if(idrol==5){
 										s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-										s += '	class="btn btn-floating waves-effect waves-light moe'+clase2+' accent-3">'
+										s += '	class="btn btn-floating waves-effect waves-light moe ' +clase2+' accent-3">'
 										s += '	<i class="material-icons right md-18">done_all</i></a></div>'
 										s+= '<div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
 									}
 								
 									if(idrol==7){
 										s += '	<a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-										s += '	class="btn btn-floating waves-effect waves-light moe'+clase2+' accent-3">'
+										s += '	class="btn btn-floating waves-effect waves-light moe '+clase2+' accent-3">'
 										s += '	<i class="material-icons right md-18">done_all</i></a>'
 									}
 								s+= '</td>';
