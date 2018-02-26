@@ -520,7 +520,7 @@ public class AdministradorController {
 		int update = 0;
 		update = confService.updateSeason(idactivo, idtoactive);
 
-		System.out.println(gs.toJson(update));
+//		System.out.println(gs.toJson(update));
 		return gs.toJson(update);
 	}
 	

@@ -78,6 +78,23 @@ label {
 }
 
 @media only screen and (max-width: 600px) {
+html {
+    font-size: 10px;
+	}
+	.chip {
+    height: auto;
+    font-size: 10px;
+    
+}
+.modal-trigger,.moe{
+		width:25px;
+		height:25px;
+		line-height: 10px;
+	}
+	
+	.modal-trigger i,.moe i{
+		font-size:1.6rem;
+		line-height:25px;	}
 #table{
 	margin-bottom:4em;
 }

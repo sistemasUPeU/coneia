@@ -81,6 +81,23 @@ label {
 }
 
 @media only screen and (max-width: 600px) {
+html {
+    font-size: 12px;
+	}
+.btn-floating.btn-large i {
+    line-height: 34px;
+}
+.btn-floating.btn-large{width:36px;height:36px}
+	
+	.modal-trigger, .red{
+		width:30px;
+		height:30px;
+		line-height: 25px;
+	}
+	
+	.modal-trigger i, .red i{
+		font-size:1.6rem;
+		line-height:30px;	}
 .achon{
 	font-size:22px;
 	font-weight:bold;
