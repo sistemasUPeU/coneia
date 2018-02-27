@@ -42,6 +42,7 @@ var coneia_context_path = "<%=request.getContextPath()%>";
 <style>
 .sticky {
 	position: fixed;
+	padding-top:16px;
 	top: 0;
 	width: 100%;
 	z-index: 100;
@@ -166,7 +167,7 @@ body {
 
 			<!-- D I A   L U N E S -->
 			<div id="swipe-1" class="col s12 #bdbdbd grey lighten-1"
-				style="height: auto; margin-bottom: 1em;">
+				style="height: auto; padding-bottom: 1em;">
 				
 					<br /> <br />
 					<ul class="collapsible popout" data-collapsible="accordion"
@@ -376,11 +377,11 @@ body {
 
 			<!-- D  I  A     M  A  R  T  E  S -->
 			<div id="swipe-2" class="col s12 #bdbdbd grey lighten-1"
-				style="height: auto; margin-bottom: 2em">
+				style="height: auto; padding-bottom: 2em">
 		
 					<br /> <br />
 					<ul class="collapsible popout" data-collapsible="accordion"
-						id="staggered-test2">
+						>
 						<li>
 							<div class="collapsible-header biselado">
 								<div class="row center">
@@ -541,11 +542,10 @@ body {
 
 			<!-- D  I  A     M  I  E  R  C  O  L  E  S -->
 			<div id="swipe-3" class="col s12 #bdbdbd grey lighten-1"
-				style="height: auto; margin-bottom: 2em">
+				style="height: auto; padding-bottom: 2em">
 	
 					<br /> <br />
-					<ul class="collapsible popout " data-collapsible="accordion"
-						id="staggered-test3">
+					<ul class="collapsible popout " data-collapsible="accordion">
 						<li>
 							<div class="collapsible-header">
 								<div class="row center">
@@ -799,11 +799,11 @@ body {
 			</div>
 			<!-- D  I  A     J  U  E  V  E  S -->
 			<div id="swipe-4" class="col s12 #bdbdbd grey lighten-1"
-				style="height: auto; margin-bottom: 2em">
+				style="height: auto; padding-bottom: 2em">
 				
 					<br /> <br />
 					<ul class="collapsible popout" data-collapsible="accordion"
-						id="staggered-test4" style="z-index: 10">
+						style="z-index: 10">
 						<li>
 							<div class="collapsible-header biselado">
 								<div class="row center">
@@ -960,11 +960,11 @@ body {
 
 			<!-- D  I  A    V  I  E  R  N  E  S -->
 			<div id="swipe-5" class="col s12 #bdbdbd grey lighten-1"
-				style="height: auto; margin-bottom: 2em">
+				style="height: auto; padding-bottom: 2em">
 			
 					<br /> <br />
 					<ul class="collapsible popout " data-collapsible="accordion"
-						id="staggered-test5" style="z-index: 10">
+						 style="z-index: 10">
 						<li>
 							<div class="collapsible-header">
 								<div class="row center">
@@ -1098,8 +1098,8 @@ body {
 			</div>
 
 		</div>
-		<div class="row center confirmar #bdbdbd grey lighten-1"
-			style="display: none; margin-bottom: 1em; margin-top: 1em">
+		<div class="row center confirmar scnd #bdbdbd grey lighten-1"
+			style="display: none; padding-bottom: 1em; padding-top: 1em">
 			<button
 				class="btn btn-large #0091ea waves-effect waves-light btn light-blue accent-4">
 				Confirmar</button>

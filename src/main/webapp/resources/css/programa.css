@@ -85,6 +85,20 @@ font-size:12px;}
 
 @media screen and (min-device-width: 100px) and (max-device-width:
 	600px) {
+	.tabs .tab {
+    
+    line-height: 36px;
+    height: 36px;
+    letter-spacing: .2px;
+   
+}
+.tabs {
+
+    height: 36px;
+
+}
+	.scnd{
+	margin-bottom:0}
 	.apellidos{
 display:none}
 .side-nav{
@@ -103,7 +117,7 @@ font-size:8px;}
 		line-height: 2rem;
 	}
 	.collapsible-body {
-		font-size: 12px;
+		font-size: 10px;
 		
 	}
 	html{
@@ -113,7 +127,7 @@ font-size:8px;}
 	font-size: 24px;
 }
 .collapsible-body {
-		font-size: 11px;
+		
 		 padding-top:15px;
     	padding-bottom: 12px;
 		padding-left: 0.1em;
