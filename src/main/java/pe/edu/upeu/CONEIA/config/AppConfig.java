@@ -16,6 +16,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -35,7 +36,7 @@ import pe.edu.upeu.CONEIA.daoImpl.InscripcionDaoImpl;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = "pe.edu.upeu.CONEIA")
-
+//@EnableScheduling
 
 public class AppConfig extends WebMvcConfigurerAdapter {
 

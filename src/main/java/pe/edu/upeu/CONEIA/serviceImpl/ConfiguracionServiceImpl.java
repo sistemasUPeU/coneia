@@ -38,6 +38,14 @@ public class ConfiguracionServiceImpl implements ConfiguracionService {
 		// TODO Auto-generated method stub
 		return cdao.updateCost(idc, dele, alu, pro);
 	}
+
+
+	@Override
+	@Transactional
+	public int updateGeneral(int opcion) {
+		// TODO Auto-generated method stub
+		return cdao.updateGeneral(opcion);
+	}
 	
 	
 

@@ -7,6 +7,29 @@
 <title>CONEIA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%@include file="../../../jspf/general.jspf"%>
+
+<style>
+#site-layout-example-top {
+	height: 60px;
+}
+#titulo2{
+	font-size: 90px;
+}
+
+@media only screen and (max-width: 600px) {
+	#site-layout-example-top {
+	height: 120px;
+}
+#titulo2{
+	font-size: 30px;
+}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1100px) {
+	
+}
+</style>
+
 <script>
 var context_path = "<%=request.getContextPath()%>";
 </script>
@@ -43,7 +66,7 @@ var context_path = "<%=request.getContextPath()%>";
 							<div id="site-layout-example-right" class="col s12 m12 l12"
 								style="height: auto;">
 								<div class="row center">
-									<h1 class="text-long-shadow col s12" style="font-size: 100px">EN CONSTRUCCIÓN</h1>
+									<h1 class="text-long-shadow col s12" id="titulo2" >EN CONSTRUCCIÓN</h1>
 								</div>
 								<div class="row center">
 									<p class="center white-text col s12">Página en construcción</p>
@@ -52,6 +75,9 @@ var context_path = "<%=request.getContextPath()%>";
 											class="btn waves-effect waves-light">Home Page</button>
 									<p></p>
 								</div>
+								<br>
+								<br>
+								
 							</div>
 						</div>
 					</div>
@@ -71,7 +97,7 @@ var context_path = "<%=request.getContextPath()%>";
 			//       window.history.back();
 			var link = context_path;
 // 			context_path + "/#"
-console.log(link);
+
 			location.href = context_path;
 		
 		}

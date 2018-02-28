@@ -19,17 +19,19 @@ public class Configuracion implements java.io.Serializable{
 		private Integer profesional;
 		private Integer alumno;
 		private Integer estado;
+		private Integer active;
 	
 
 		public Configuracion() {
 		}
 
-		public Configuracion(Integer idconfiguracion, Integer delegacion, Integer profesional, Integer alumno, Integer  estado) {
+		public Configuracion(Integer idconfiguracion, Integer delegacion, Integer profesional, Integer alumno, Integer  estado, Integer active) {
 			this.idconfiguracion = idconfiguracion;
 			this.delegacion = delegacion;
 			this.profesional = profesional;
 			this.alumno = alumno;
 			this.estado = estado;
+			this.active = active;
 		}
 
 		@Id
@@ -79,6 +81,15 @@ public class Configuracion implements java.io.Serializable{
 
 		public void setEstado(Integer estado) {
 			this.estado = estado;
+		}
+		
+		@Column(name = "active")
+		public Integer getActive() {
+			return this.active;
+		}
+
+		public void setActive(Integer active) {
+			this.active = active;
 		}
 
 		

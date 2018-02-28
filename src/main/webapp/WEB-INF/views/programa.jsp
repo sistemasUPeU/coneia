@@ -42,6 +42,7 @@ var coneia_context_path = "<%=request.getContextPath()%>";
 <style>
 .sticky {
 	position: fixed;
+	padding-top:16px;
 	top: 0;
 	width: 100%;
 	z-index: 100;
@@ -60,35 +61,55 @@ body {
 	<div class="todo" >
 		<div id="mobile-collapse-button" class="section"
 			style="padding-top: 0">
-			<nav class="#000000 black">
-			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo"><img class=""
-					src="<c:url value="/resources/img/cones.png"/>"
-					style="width: 300px; height: 35%; outline-color: none; margin-left: 5%"></img></a>
+			<header id="header" class="page-topbar">
+	<!-- start header nav-->
+		<nav class="navbar-color">
+			<div class="nav-wrapper grey darken-3">
+				<a href="<%=request.getContextPath()%>/" style="padding:1%; "
+								class="brand-logo darken-1 redirect"><img
+								src="<c:url value="/resources/img/cones.png"/>" alt="gth logo" style="height:30%;width: 125px; "></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i
 					class="mdi-navigation-menu"></i></a>
 				<ul class="right hide-on-med-and-down">
-					<li><a class="m principal">Home</a></li>
-					<li><a class="m dropdown-button" href="#!"
-						data-activates="dropdown1"><b>${sessionScope.nombre}
-								${sessionScope.apellidos}</b></a>
-						<ul id='dropdown1' class='dropdown-content'>
-							<li><a href="#!" class="salir">Salir</a></li>
-						</ul></li>
+
+					<li>
+						<div class="chip grey darken-1 white-text cgProfile" style="cursor: pointer;">
+						</div>
+					</li>
+					<li><a href="<%=request.getContextPath()%>/"
+						class="waves-effect waves-block waves-light tooltipped redirect"
+						data-position="bottom" data-delay="50" data-tooltip="Menú"><i
+							class="medium material-icons prefix">navigation</i></a></li>
+
+					<li><a 
+						class="waves-effect waves-block waves-light tooltipped salir"
+						data-position="bottom" data-delay="50"
+						data-tooltip="Cerrar Sesión"><i class="medium material-icons prefix">exit_to_app</i></a>
+					</li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
-					<li><a class="dropdown-button" href="#!"
-						data-activates="dropdown2"><b>${sessionScope.nombre}
-								${sessionScope.apellidos} </b></a>
-						<ul id='dropdown2' class='dropdown-content '>
-							<li><a href="#!" class="salir">Salir</a></li>
-						</ul></li>
+					<li><a href="#!" class="center"
+						><b style="font-size: 11px;">${sessionScope.nombre} <span class="apellidos"> ${sessionScope.apellidos}</span></b></a>
+						</li>
+					
+					<li><a style="font-size: 11px;" class="principal center">Home</a></li>
+					<li><a style="font-size: 11px;" href="#!" class="salir center">Salir</a></li>
 
-					<li><a class="principal">Home</a></li>
+				</ul>
+
+				<ul id="notifications-dropdown" class="dropdown-content">
+					<li>
+						<h5>
+							NOTIFICATIONS <span class="new badge">5</span>
+						</h5>
+					</li>
+					<li class="divider"></li>
 
 				</ul>
 			</div>
-			</nav>
+		</nav>
+
+</header>
 
 		</div>
 		<div class="row center container">
@@ -118,7 +139,7 @@ body {
 
 
 		</div>
-		<div class="row  #304ffe indigo accent-4" style="height: auto;min-height:1000px;" id="urusai">
+		<div class="row #bdbdbd grey lighten-1" style="height: auto;min-height:1000px;margin-bottom:0" id="urusai">
 			<div class="col s12 #ccff90 light-green accent-1" id="myHeader">
 				<ul class="tabs  #ccff90 light-green accent-1">
 					<li class="tab "><a id="one" class="#ccff90 "
@@ -145,9 +166,9 @@ body {
 			</div>
 
 			<!-- D I A   L U N E S -->
-			<div id="swipe-1" class="col s12 #304ffe indigo accent-4"
-				style="height: auto; margin-bottom: 1em;">
-				<div class="row container">
+			<div id="swipe-1" class="col s12 #bdbdbd grey lighten-1"
+				style="height: auto; padding-bottom: 1em;">
+				
 					<br /> <br />
 					<ul class="collapsible popout" data-collapsible="accordion"
 						style="z-index: 15">
@@ -158,8 +179,8 @@ body {
 										<i class="material-icons">rowing</i> Recepción de delegaciones
 										y entrega de materiales
 									</div>
-									<div class="col l4 m4 s11">06:30 - 08:30 am</div>
-									<div class="col l1 m1 s1 "></div>
+									<div class="col l4 m4 s9">06:30 - 08:30 am</div>
+									<div class="col l1 m1 s3 "></div>
 								</div>
 							</div>
 
@@ -171,8 +192,8 @@ body {
 										<i class="material-icons">highlight</i> Inauguración del
 										evento
 									</div>
-									<div class="col l4 m4 s11">08:30 - 10:30 am</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">08:30 - 10:30 am</div>
+									<div class="col l1 m1 s3 ">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 									<input type="hidden" id="a" value="<c:out value="${actividadesLunes[2].idtaller}" />"/>
@@ -189,8 +210,8 @@ body {
 										<i class="material-icons">mic</i> Ponencias paralelas <span
 											class="luz" id="blink">(Elegir opción)</span>
 									</div>
-									<div class="col l4 m4 s11">10:30 am - 12:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">10:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s3 ">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -211,8 +232,8 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">pan_tool</i> Panel
 									</div>
-									<div class="col l4 m4 s10">12:30 - 01:00 pm</div>
-									<div class="col l1 m1 s2 "></div>
+									<div class="col l4 m4 s9">12:30 - 01:00 pm</div>
+									<div class="col l1 m1 s3 "></div>
 
 								</div>
 							</div>
@@ -223,7 +244,7 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">alarm_on</i> Almuerzo
 									</div>
-									<div class="col l4 m4 s10">01:00 - 02:30 pm</div>
+									<div class="col l4 m4 s9">01:00 - 02:30 pm</div>
 
 								</div>
 							</div>
@@ -235,8 +256,8 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u>
 									</div>
-									<div class="col l4 m4 s10">02:30 - 04:00 pm</div>
-									<div class="col l1 m1 s2 ">
+									<div class="col l4 m4 s9">02:30 - 04:00 pm</div>
+									<div class="col l1 m1 s3 ">
 										<i class="material-icons i md-24">expand_more</i>
 									</div>
 									
@@ -270,8 +291,8 @@ body {
 										<i class="material-icons">hourglass_full</i> Intervalo
 										Ambiental - Cultural
 									</div>
-									<div class="col l4 m4 s10">04:00 - 04:30 pm</div>
-									<div class="col l1 m1 s2 "></div>
+									<div class="col l4 m4 s9">04:00 - 04:30 pm</div>
+									<div class="col l1 m1 s3 "></div>
 
 								</div>
 							</div>
@@ -283,8 +304,8 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u>
 									</div>
-									<div class="col l4 m4 s10">04:30 - 06:00 pm</div>
-									<div class="col l1 m1 s2 ">
+									<div class="col l4 m4 s9">04:30 - 06:00 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i md-24">expand_more</i>
 									</div>
 
@@ -316,9 +337,9 @@ body {
 										<i class="material-icons">format_shapes</i> Presentación de
 										delegaciones
 									</div>
-									<div class="col l4 m4 s10">06:00 - 07:00 pm</div>
+									<div class="col l4 m4 s9">06:00 - 07:00 pm</div>
 
-									<div class="col l1 m1 s2 ">
+									<div class="col l1 m1 s3">
 										<i class="material-icons i md-24">expand_more</i>
 									</div>
 								</div>
@@ -336,8 +357,8 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">brightness_3</i> NOCHE CULTURAL
 									</div>
-									<div class="col l4 m4 s10">07:30 - 09:30 pm</div>
-									<div class="col l1 m1 s2 ">
+									<div class="col l4 m4 s9">07:30 - 09:30 pm</div>
+									<div class="col l1 m1 s3 ">
 										<i class="material-icons i md-24">expand_more</i>
 									</div>
 								</div>
@@ -351,16 +372,16 @@ body {
 						</li>
 
 					</ul>
-				</div>
+				
 			</div>
 
 			<!-- D  I  A     M  A  R  T  E  S -->
-			<div id="swipe-2" class="col s12 #304ffe indigo accent-4"
-				style="height: auto; margin-bottom: 2em">
-				<div class="container">
+			<div id="swipe-2" class="col s12 #bdbdbd grey lighten-1"
+				style="height: auto; padding-bottom: 2em">
+		
 					<br /> <br />
 					<ul class="collapsible popout" data-collapsible="accordion"
-						id="staggered-test2">
+						>
 						<li>
 							<div class="collapsible-header biselado">
 								<div class="row center">
@@ -369,8 +390,8 @@ body {
 										visitas técnicas <span class="luz" id="blink2">(Elegir
 											opción)</span>
 									</div>
-									<div class="col l4 m4 s11">06:30 am - 12:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">06:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s3 ">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -378,7 +399,7 @@ body {
 							</div>
 							<div class="collapsible-body">
 								<div class="row center">
-									<h6 style="color: grey; line-height: 30px;">
+									<h6 style="color: grey;">
 										Considere que si elige una <u>visita técnica</u> entonces
 										deberá asistir el <b>jueves</b> a un taller especializado; en
 										cambio, si elige un <u>taller especializado</u> entonces el <b>jueves</b>
@@ -407,7 +428,7 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">alarm_on</i> Almuerzo
 									</div>
-									<div class="col l4 m4 s10">01:00 - 02:30 pm</div>
+									<div class="col l4 m4 s9">01:00 - 02:30 pm</div>
 
 								</div>
 							</div>
@@ -418,8 +439,8 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">layers_clear</i> <u>Concursos</u>
 									</div>
-									<div class="col l4 m4 s11">02:30 - 06:00 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">02:30 - 06:00 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -491,8 +512,8 @@ body {
 										<i class="material-icons">local_florist</i>Mi compromiso con
 										el medio ambiente
 									</div>
-									<div class="col l4 m4 s11">06:00 - 09:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">06:00 - 09:30 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 								</div>
@@ -516,24 +537,23 @@ body {
 						</li>
 
 					</ul>
-				</div>
+				
 			</div>
 
 			<!-- D  I  A     M  I  E  R  C  O  L  E  S -->
-			<div id="swipe-3" class="col s12 #304ffe indigo accent-4"
-				style="height: auto; margin-bottom: 2em">
-				<div class="container">
+			<div id="swipe-3" class="col s12 #bdbdbd grey lighten-1"
+				style="height: auto; padding-bottom: 2em">
+	
 					<br /> <br />
-					<ul class="collapsible popout " data-collapsible="accordion"
-						id="staggered-test3">
+					<ul class="collapsible popout " data-collapsible="accordion">
 						<li>
 							<div class="collapsible-header">
 								<div class="row center">
 									<div class="col l7 m7 s12">
 										<i class="material-icons">playlist_add_check</i> INGRESO
 									</div>
-									<div class="col l4 m4 s10">06:30 - 08:00 am</div>
-									<div class="col l1 m1 s1 "></div><input type="hidden" id="i" value="<c:out value="${actividadesMiercoles[3].idtaller}" />"/>
+									<div class="col l4 m4 s9">06:30 - 08:00 am</div>
+									<div class="col l1 m1 s3"></div><input type="hidden" id="i" value="<c:out value="${actividadesMiercoles[3].idtaller}" />"/>
 								</div>
 							</div>
 						</li>
@@ -544,8 +564,8 @@ body {
 										<i class="material-icons">mic</i> Ponencias paralelas <span
 											class="luz" id="blink4">(Elegir opción)</span>
 									</div>
-									<div class="col l4 m4 s11">08:00 - 10:00 am</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">08:00 - 10:00 am</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -566,8 +586,8 @@ body {
 										<i class="material-icons">nature</i> Intervalo Ambiental -
 										Cultural
 									</div>
-									<div class="col l4 m4 s11">10:00 - 10:30 am</div>
-									<div class="col l1 m1 s1 "></div>
+									<div class="col l4 m4 s9">10:00 - 10:30 am</div>
+									<div class="col l1 m1 s3"></div>
 
 								</div>
 							</div>
@@ -579,8 +599,8 @@ body {
 										<i class="material-icons">mic</i> Ponencias paralelas <span
 											class="luz" id="blink5">(Elegir opción)</span>
 									</div>
-									<div class="col l4 m4 s11">10:30 am - 12:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">10:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -600,8 +620,8 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">pan_tool</i> Panel
 									</div>
-									<div class="col l4 m4 s10">12:30 - 01:00 pm</div>
-									<div class="col l1 m1 s2 "></div>
+									<div class="col l4 m4 s9">12:30 - 01:00 pm</div>
+									<div class="col l1 m1 s3"></div>
 
 								</div>
 							</div>
@@ -612,7 +632,7 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">alarm_on</i> Almuerzo
 									</div>
-									<div class="col l4 m4 s10">01:00 - 02:00 pm</div>
+									<div class="col l4 m4 s9">01:00 - 02:00 pm</div>
 
 								</div>
 							</div>
@@ -624,8 +644,8 @@ body {
 										<i class="material-icons">blur_on</i>FERIA AMBIENTAL -
 										CONCURSO DE FOTOGRAFÍA
 									</div>
-									<div class="col l4 m4 s11">02:00 - 04:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">02:00 - 04:30 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -663,8 +683,8 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u>
 									</div>
-									<div class="col l4 m4 s11">04:30 - 06:00 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">04:30 - 06:00 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -698,8 +718,8 @@ body {
 										<i class="material-icons">nature</i> Intervalo Ambiental -
 										Cultural
 									</div>
-									<div class="col l4 m4 s11">06:00 - 06:30 pm</div>
-									<div class="col l1 m1 s1 "></div>
+									<div class="col l4 m4 s9">06:00 - 06:30 pm</div>
+									<div class="col l1 m1 s3"></div>
 
 								</div>
 							</div>
@@ -711,8 +731,8 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u>
 									</div>
-									<div class="col l4 m4 s11">06:30 - 08:00 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">06:30 - 08:00 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -746,8 +766,8 @@ body {
 										<i class="material-icons">nature</i> CONFRATERNIZACIÓN
 										AMBIENTAL
 									</div>
-									<div class="col l4 m4 s11">08:30 - 09:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">08:30 - 09:30 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 								</div>
@@ -774,16 +794,16 @@ body {
 						</li>
 
 					</ul>
-				</div>
+			
 
 			</div>
 			<!-- D  I  A     J  U  E  V  E  S -->
-			<div id="swipe-4" class="col s12 #304ffe indigo accent-4"
-				style="height: auto; margin-bottom: 2em">
-				<div class="container">
+			<div id="swipe-4" class="col s12 #bdbdbd grey lighten-1"
+				style="height: auto; padding-bottom: 2em">
+				
 					<br /> <br />
 					<ul class="collapsible popout" data-collapsible="accordion"
-						id="staggered-test4" style="z-index: 10">
+						style="z-index: 10">
 						<li>
 							<div class="collapsible-header biselado">
 								<div class="row center">
@@ -792,8 +812,8 @@ body {
 										Visitas técnicas <span class="luz" id="blink3">(Elegir
 											opción)</span>
 									</div>
-									<div class="col l4 m4 s11">06:30 am - 12:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">06:30 am - 12:30 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -827,7 +847,7 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">alarm_on</i> Almuerzo
 									</div>
-									<div class="col l4 m4 s10">12:30 - 02:00 pm</div>
+									<div class="col l4 m4 s9">12:30 - 02:00 pm</div>
 
 								</div>
 							</div>
@@ -839,8 +859,8 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u>
 									</div>
-									<div class="col l4 m4 s11">02:00 - 03:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">02:00 - 03:30 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -874,8 +894,8 @@ body {
 										<i class="material-icons">nature</i> Intervalo Ambiental -
 										Cultural
 									</div>
-									<div class="col l4 m4 s11">03:30 - 04:00 pm</div>
-									<div class="col l1 m1 s1 "></div>
+									<div class="col l4 m4 s9">03:30 - 04:00 pm</div>
+									<div class="col l1 m1 s3"></div>
 
 								</div>
 							</div>
@@ -887,8 +907,8 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u>
 									</div>
-									<div class="col l4 m4 s11">04:00 - 05:30 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">04:00 - 05:30 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -922,7 +942,7 @@ body {
 										<i class="material-icons">transfer_within_a_station</i> COPA
 										CONEIA
 									</div>
-									<div class="col l4 m4 s10">05:30 - 09:30 pm</div>
+									<div class="col l4 m4 s9">05:30 - 09:30 pm</div>
 
 								</div>
 							</div>
@@ -935,24 +955,24 @@ body {
 						</li>
 
 					</ul>
-				</div>
+				
 			</div>
 
 			<!-- D  I  A    V  I  E  R  N  E  S -->
-			<div id="swipe-5" class="col s12 #304ffe indigo accent-4"
-				style="height: auto; margin-bottom: 2em">
-				<div class="container">
+			<div id="swipe-5" class="col s12 #bdbdbd grey lighten-1"
+				style="height: auto; padding-bottom: 2em">
+			
 					<br /> <br />
 					<ul class="collapsible popout " data-collapsible="accordion"
-						id="staggered-test5" style="z-index: 10">
+						 style="z-index: 10">
 						<li>
 							<div class="collapsible-header">
 								<div class="row center">
 									<div class="col l7 m7 s12">
 										<i class="material-icons">playlist_add_check</i> INGRESO
 									</div>
-									<div class="col l4 m4 s11">06:30 - 08:00 am</div>
-									<div class="col l1 m1 s1 "></div>
+									<div class="col l4 m4 s9">06:30 - 08:00 am</div>
+									<div class="col l1 m1 s3"></div>
 								</div><input type="hidden" id="q" value="<c:out value="${actividadesViernes[2].idtaller}" />"/>
 							</div>
 						</li>
@@ -963,8 +983,8 @@ body {
 										<i class="material-icons">mic</i> Ponencias paralelas <span
 											class="luz" id="blink6">(Elegir opción)</span>
 									</div>
-									<div class="col l4 m4 s11">8:00 - 10:00 am</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">8:00 - 10:00 am</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -985,8 +1005,8 @@ body {
 										<i class="material-icons">hourglass_full</i> Intervalo
 										Ambiental - Cultural
 									</div>
-									<div class="col l4 m4 s11">10:00 - 10:30 am</div>
-									<div class="col l1 m1 s1 "></div>
+									<div class="col l4 m4 s9">10:00 - 10:30 am</div>
+									<div class="col l1 m1 s3"></div>
 
 								</div>
 							</div>
@@ -998,8 +1018,8 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u> - ELECCIÓN DE SEDE CONEIA 2019
 									</div>
-									<div class="col l4 m4 s11">10:30 am - 12:00 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">10:30 am - 12:00 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -1036,8 +1056,8 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">alarm_on</i> Almuerzo
 									</div>
-									<div class="col l4 m4 s11">12:00 - 02:00 pm</div>
-									<div class="col l1 m1 s1 "></div>
+									<div class="col l4 m4 s9">12:00 - 02:00 pm</div>
+									<div class="col l1 m1 s3"></div>
 								</div>
 							</div>
 						</li>
@@ -1047,8 +1067,8 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">audiotrack</i>CLAUSURA DEL EVENTO
 									</div>
-									<div class="col l4 m4 s11">02:00 - 05:00 pm</div>
-									<div class="col l1 m1 s1 ">
+									<div class="col l4 m4 s9">02:00 - 05:00 pm</div>
+									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
 
@@ -1074,25 +1094,24 @@ body {
 
 
 					</ul>
-				</div>
+				
 			</div>
 
 		</div>
-		<div class="row center confirmar"
-			style="display: none; margin-bottom: 1em; margin-top: 1em">
+		<div class="row center confirmar scnd #bdbdbd grey lighten-1"
+			style="display: none; padding-bottom: 1em; padding-top: 1em">
 			<button
 				class="btn btn-large #0091ea waves-effect waves-light btn light-blue accent-4">
 				Confirmar</button>
 		</div>
-		<div class="page-footer #00c853 green accent-4" style="padding: 0;float:left;width:100%;bottom:0">
-		<div class="footer-copyright">
-			<div class="row container">
-				Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
-					Team</a> All rights reserved. <span class="right ">Developed by
-					<a class="grey-text text-lighten-4">Alpha Team</a>
-				</span>
+		<div class="page-footer #00c853 green accent-4" style="padding: 0;float:left;width:100%;bottom:0" id="foot1">
+			<div class="footer-copyright">
+				<div class="container" style="color:white">
+					Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
+					Team</a> All rights reserved. <span class="right" id="foot2">Developed by <a
+				class="grey-text text-lighten-4">Alpha Team</a></span>
+				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 	<div class="row center loadin" style="margin-top: 20%; display: none">
@@ -1121,6 +1140,21 @@ body {
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			try{
+				
+				var nombre = "${sessionScope.nombre}";
+				var apellidos =  "${sessionScope.apellidos}";
+
+						var s='';
+						s +='<img src="<c:url value="/resources/img/user.png"/>" alt="Usuario">';
+						s +=nombre.toUpperCase()+", "+apellidos.toUpperCase();
+						$(".cgProfile").empty();
+						$(".cgProfile").append(s);
+
+			}catch(e){
+				
+			}
+			checkSize();
 			$.get("inscrito",null,function(data){
 				if(data>10){
 					var link = context_path + "/principal"
@@ -1148,6 +1182,25 @@ body {
 			// Stops event propagation
 			});
 		});
+		$(window).on('resize', function() {
+			checkSize()
+		});
+
+		function checkSize() {
+			if ($(window).width() < 600) {
+				// your code here
+			
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
+				$("#foot1").css("padding","5px");
+
+			} else {
+
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
+				$("#foot1").css("padding","15px");
+			}
+		}
 		var url = window.location.href;
 		var arr = url.split("/");
 		var context_path = arr[0] + "//" + arr[2] + "/CONEIA"

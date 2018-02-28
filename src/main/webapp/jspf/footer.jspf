@@ -2,13 +2,15 @@
 footer {
 	position: fixed; width: 100%; bottom: 0; z-index: 5; 
 }
+
+
 </style>
 
-<footer class="page-footer green accent-3">
+<footer class="page-footer green accent-3" id="foot1">
 	<div class="footer-copyright">
 		<div class="container">
 			Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
-				Team</a> All rights reserved. <span class="right">Developed by <a
+				Team</a> All rights reserved. <span class="right" id="foot2">Developed by <a
 				class="grey-text text-lighten-4">Alpha Team</a></span>
 		</div>
 	</div>

@@ -89,18 +89,18 @@ div.radio p {
 </head>
 <body>
 
-	<div class="container">
+
 		<div class=" grey-text text-darken-2">
 
 			<div class="row">
-				<div class="section col s12 m12 l12">
+				<div class="section col s12 m12 l12" id="div1">
 					<div class="section scrollspy">
 						<div class="row">
 
 
 							<!-- offset-l2 offset-m2 -->
-							<div class="container" style="width: 100%">
-								<div class="col l12 m12 s12 ">
+							<div class="container" style="width: 100%" id="div2">
+								<div class="col l12 m12 s12 " id="div3">
 									<div class="card">
 										<div class="card-content" style="height: 800px">
 											<ul class="stepper linear horizontal" id="feedbacker"
@@ -589,7 +589,7 @@ div.radio p {
 		</div>
 
 
-	</div>
+	
 	<script
 		src="<c:url value='/resources/js/businessCore/inscripcion.js'></c:url>"
 		type="text/javascript"></script>
@@ -608,15 +608,25 @@ div.radio p {
 		function checkSize() {
 			if ($(window).width() < 600) {
 				// your code here
-
+				$("#div1").css("padding", "0");
+				$("#div2").css("padding", "0");
+				$("#div3").css("padding", "0");
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
 				$(".boton button").removeClass('right');
+				
+			
 
 				$(".boton button").removeClass('left');
 				$(".boton button").addClass('center');
 				$("#modal1").css("width", "90%");
 
 			} else {
-
+				$("#div1").removeAttr( 'style' );
+				$("#div2").removeAttr( 'style' );
+				$("#div3").removeAttr( 'style' );
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
 				$("#cleaner").addClass('right');
 				$("#add").addClass('left');
 				$("#modal1").css("width", "70%");

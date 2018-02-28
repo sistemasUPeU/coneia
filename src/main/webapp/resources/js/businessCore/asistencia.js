@@ -33,7 +33,7 @@ $("#selected")
 			$(".muestra").hide(); 
 			  
 			
-//			console.log($("#selected").val());
+
 			if (cambio == "2018-06-04") {
 				tam=7;
 				
@@ -66,7 +66,8 @@ function listarTalleres(cambio,tam){
 	var anio = fake[0];var mes = fake[1]-1;var dia = fake[2];
 	var fechin = new Date(anio, mes, dia);
 	var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
+	var rol = "${sessionScope.idrol}";
+//	alert(idrol);
 		if ($(window).width() < 600) {
 			$.getJSON(
 					coneia_context_path + "/admin/customTaller",
@@ -74,7 +75,7 @@ function listarTalleres(cambio,tam){
 					function(objJson) {
 						var s = "";
 						var lista = objJson;
-						console.log(objJson);
+						
 						if (lista.length > 0) {
 							// alert("si hay datos amix");
 							var temon = lista[0].tema;	
@@ -84,9 +85,6 @@ function listarTalleres(cambio,tam){
 								var idit = lista[i].idit;
 								var asistencia = lista[i].asistencia;
 								if(asistencia ==1){
-									clase2="#00b0ff light-blue accent-3";
-								}
-								if(asistencia ==2){
 									clase2="#00c853 green accent-4";
 								}
 								if(asistencia ==0){
@@ -107,13 +105,22 @@ function listarTalleres(cambio,tam){
 								s += '<td style="width:20%">' + lista[i].dni
 										+ '</td>';
 								s += '<td style="width:40%">'
-								s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-								s += '	class="btn btn-floating waves-effect waves-light '+clase2+' accent-3" '
-								s += '	>'
-								s += '	<i class="material-icons right md-18">done_all</i>'
-								s+= '</a></div><div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
+									
+									if(idrol==5){
+										s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light moe '+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a></div>'
+										s+= '<div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
+									}
+								
+									if(idrol==7){
+										s += '	<a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light moe'+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a>'
+									}
+								
 								s+= 	'</td>';
-								s += '<td style="width:10%;color:white" class="'+clase+'"><b>'+porcentaje+' %</b></td>';
+								s += '<td style="width:5%;color:white" class="'+clase+'"><b>'+porcentaje+' %</b></td>';
 								// s += '<td>' + p + '</td>';
 								s += '</tr>';
 								
@@ -133,7 +140,25 @@ function listarTalleres(cambio,tam){
 
 						$("#data-table-row-grouping1")
 						.dataTable(
+								{
+									"pageLength" : 2,
+									"bPaginate" : true,
+									"bLengthChange" : false,
+									"bFilter" : true,
+									"bInfo" : false,
+									"bAutoWidth" : true,
+									"select":true,
+									"language" : {
+										// "lengthMenu": "Display _MENU_ records per page",
+										"zeroRecords" : "Reporte vacío",
+										"info" : "Mostrando página _pag_ de _pags_",
+										"infoEmpty" : "Ningún alumno agregado"
+									// "infoFiltered": "(filtered from _MAX_ total records)"
+									}
 
+
+									
+								}
 								);
 
 					
@@ -146,7 +171,7 @@ function listarTalleres(cambio,tam){
 					function(objJson) {
 						var s = "";
 						var lista = objJson;
-						console.log(objJson);
+					
 						if (lista.length > 0) {
 							// alert("si hay datos amix");
 							var temon = lista[0].tema;	
@@ -159,9 +184,6 @@ function listarTalleres(cambio,tam){
 								var asistencia = lista[i].asistencia;
 								
 								if(asistencia ==1){
-									clase2="#00b0ff light-blue accent-3";
-								}
-								if(asistencia ==2){
 									clase2="#00c853 green accent-4";
 								}
 								if(asistencia ==0){
@@ -185,12 +207,19 @@ function listarTalleres(cambio,tam){
 								s += '<td style="width:20%">' + fechin.toLocaleDateString("es-ES", options)
 								+ '</td>';
 								s += '<td style="width:22%">'
-								s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-								s += '	class="cola btn-floating btn waves-effect waves-light '+clase2+' accent-3 "'
-								s += '	>'
-								s += '	<i class="material-icons right">done_all</i>'
-								s+= '</a></div><div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger " href="#modalon" " onclick="crearModal(\''+idd+'\',\''+cambio+'\')">'
-								s+= 	'<i class="material-icons md-18">border_color</i></a></div></div></td>';
+									if(idrol==5){
+										s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light moe ' +clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a></div>'
+										s+= '<div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
+									}
+								
+									if(idrol==7){
+										s += '	<a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
+										s += '	class="btn btn-floating waves-effect waves-light moe '+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a>'
+									}
+								s+= '</td>';
 								s += '<td style="width:10%;color:white" class="'+clase+'"><b>'+valor+' %</b></td>';
 								// s += '<td>' + p + '</td>';
 								s += '</tr>';
@@ -212,7 +241,7 @@ function listarTalleres(cambio,tam){
 						$("#data-table-row-grouping1")
 						.dataTable(
 								{
-									"pageLength" : 5,
+									"pageLength" : 2,
 									"bPaginate" : true,
 									"bLengthChange" : false,
 									"bFilter" : true,
@@ -236,7 +265,9 @@ function listarTalleres(cambio,tam){
 
 					$(".buttons-pdf").addClass("btn waves-effect waves-light");
 					$(".buttons-excel").addClass("btn waves-effect waves-light");
-
+					$("#data-table-row-grouping1_filter").after(
+					"<div  id='hugme1' style='overflow-x:auto; clear: both;'></div>");
+					$("#data-table-row-grouping1").appendTo('#hugme1');
 					var table = $('#data-table-row-grouping1').DataTable();
 					table.rows( {selected:true} ).data();
 					});
@@ -272,7 +303,7 @@ function createTable3() {
 	d += "<thead>";
 	d += "<tr>";
 	// s += "<th class='hide' >N°</th>";
-	d += "<th>Nombres y Apellidos</th>";
+	d += "<th>Participante</th>";
 	d += "<th>Dni</th>";
 	d += "<th >Asistencia</th>";
 	d += "<th >% </th>";
@@ -332,7 +363,7 @@ function crearModal(idd,cambio) {
 	$("#cant").empty().append(createTable4());
 
 	var id= idd; var cabio=cambio;
-	console.log(id);console.log(cabio);
+
 	var idit = 0; var tema="";var idd=0;var s ="";
 	var cant =id+countin;
 //	$("#modales").append('<div id="modal'+cant+'" class="modal" >'
@@ -358,15 +389,12 @@ function crearModal(idd,cambio) {
 					function(objJson){
 						var r = "";
 						var liston = objJson;
-						console.log(objJson);
+						
 						for (var j = 0; j < liston.length; j++) {
-//							console.log(liston[j].idit+" / "+ liston[j].idd+" / "+liston[j].tema);
+
 							var asistencia2 = liston[j].asistencias;
-							console.log(asistencia2);
+						
 							if(asistencia2 ==1){
-								clase3="#00b0ff light-blue accent-3";
-							}
-							if(asistencia2 ==2){
 								clase3="#00c853 green accent-4";
 							}
 							if(asistencia2 ==0){
@@ -374,13 +402,13 @@ function crearModal(idd,cambio) {
 							}
 							 s+='<tr class="terraza"><td style="padding:5px 5px">';
 							 s+=liston[j].tema;
-							 s+='</td><td style="padding:5px 5px"><a class="btn chama btn-floating waves-effect waves-light '+clase3+'" onclick="actualizar(\''+id+'\',\''+cabio+'\',\''+liston[j].idit+'\')"><i class="material-icons right">done_all</i></a></td></tr>';
+							 s+='</td><td style="padding:5px 5px"><a class="btn chama btn-floating waves-effect waves-light moe '+clase3+'" onclick="actualizar(\''+id+'\',\''+cabio+'\',\''+liston[j].idit+'\')"><i class="material-icons right">done_all</i></a></td></tr>';
 						} 
 						$("#data2").empty().append(s);
 					});
-//			console.log("Aquí van las tablas chamo"+s);
+
 			modal.css("z-index","600"+cant);
-//	        console.log(modal, trigger);
+
 	      },
 	      complete: function() { } // Callback for Modal close
 	});
@@ -388,7 +416,7 @@ function crearModal(idd,cambio) {
 function actualizar(idd,cambio,idit){
 //	alert(idd+"/"+cambio+"/"+idit);
 	if(idit==0){
-		alertify.notify('Esta función no está habilitada por no estar dentro del horario del evento', 'custom', 4, function(){console.log('dismissed');});
+		alertify.notify('Esta función no está habilitada por no estar dentro del horario del evento', 'custom', 4, function(){});
 	}else{
 		$.getJSON(coneia_context_path + "/admin/customTaller",
 				{op:27,idit:idit},
@@ -396,7 +424,7 @@ function actualizar(idd,cambio,idit){
 					if(data==1){
 						listarTalleres(cambio);	
 					}else{
-						console.log("Error al actualizar");
+					
 					}
 				});
 	}
@@ -416,7 +444,7 @@ $(".final").click(function(){
 			function(objJson) {
 				var s = "";
 				var lista = objJson;
-				console.log(objJson);
+				
 				if (lista.length > 0) {
 					// alert("si hay datos amix");
 					var temon = lista[0].tema;	
@@ -429,9 +457,6 @@ $(".final").click(function(){
 						var asistencia = lista[i].asistencia;
 						
 						if(asistencia ==1){
-							clase2="#00b0ff light-blue accent-3";
-						}
-						if(asistencia ==2){
 							clase2="#00c853 green accent-4";
 						}
 						if(asistencia ==0){
@@ -530,6 +555,7 @@ $(".final").click(function(){
 			$(".buttons-pdf").addClass("btn waves-effect waves-light");
 			$(".buttons-excel").addClass("btn waves-effect waves-light");
 			$(".buttons-print").addClass("btn waves-effect waves-light");
+			
 
 			});
 

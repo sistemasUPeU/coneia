@@ -74,9 +74,6 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 	    		value=1;
 	    		break;
 	    	case 1:
-	    		value=2;
-	    		break;
-	    	case 2:
 	    		value=0;
 	    		break;
 	    	}
@@ -102,22 +99,44 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 			DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);			
 			String date = null;
 			Query query = s.createQuery(
-					"from VistaPersonaTaller v where v.fecha='" +time+"'");
+					"from VistaPersonaTaller v where v.fecha='"+time+"'");
 			int idit=0; int asistencia=0;
 			lista = query.getResultList();
 			for(VistaPersonaTaller v : lista) {
-				date=dfDateMedium.format(v.getFecha());
-				String[] fecha = date.split("/");
-				String anio = fecha[2];String mes = fecha[1];String dia = fecha[0];
-				String fechon = anio+"-"+mes+"-"+dia;
+//				date=dfDateMedium.format(v.getFecha());
+				date = v.getFecha().toString();
+				System.out.println(date);
+				String[] fecha = date.split("-");
+//				String anio = fecha[2];String mes = fecha[1];
+				String dia = fecha[0];
+				String fechon="";
+				switch(dia) {
+				case "04":
+					fechon="lunes";
+				break;
+				case "05":
+					fechon="martes";
+					break;
+				case "06":
+					fechon="miercoles";
+					break;
+				case "07":
+					fechon="jueves";
+					break;
+				case "08":
+					fechon="viernes";
+					break;
+				}
+//				String fechon = anio+"-"+mes+"-"+dia;
+				
 				long num = cuantos(v.getIdd());
-				long num2 = cuantos2(v.getIdd());
-				double suma = num+(num2)*2;
+//				long num2 = cuantos2(v.getIdd());
+				double suma = num;
 				if(suma==0) {
 					total = "0";
 					
 				}else {
-					double sumando = (suma/58)*100;
+					double sumando = (suma/27)*100;
 					total = df2.format(sumando);
 				}
 				Map<String,Object> mapita = mapon(v.getIdd(),time);
@@ -319,13 +338,13 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 			for(VistaReporteAsistencia v : lista) {
 				
 				long num = cuantos(v.getIdd());
-				long num2 = cuantos2(v.getIdd());
-				double suma = num+(num2)*2;
+//				long num2 = cuantos2(v.getIdd());
+				double suma = num;
 				if(suma==0) {
 					total = "0";
 					
 				}else {
-					double sumando = (suma/58)*100;
+					double sumando = (suma/27)*100;
 					total = df2.format(sumando);
 				}
 				map = new HashMap<>();

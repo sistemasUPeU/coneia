@@ -59,6 +59,7 @@ public class ConfiguracionDaoImpl implements ConfiguracionDAO {
 				map.put("profesional", c.getProfesional());
 				map.put("alumno", c.getAlumno());
 				map.put("estado", c.getEstado());
+				map.put("active", c.getActive());
 
 				System.out.println(map);
 				config.add(map);
@@ -68,7 +69,7 @@ public class ConfiguracionDaoImpl implements ConfiguracionDAO {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Error getting emails, dao impl " + e);
+			System.out.println("Error getting precios, dao impl " + e);
 		} finally {
 
 		}
@@ -113,5 +114,23 @@ public class ConfiguracionDaoImpl implements ConfiguracionDAO {
 		System.out.println("casi final");
 		return x;
 	}
+	
+	public int updateGeneral(int opcion) {
+		// TODO Auto-generated method stub
+
+		int x = 0;
+		Session s = sessionFactory.getCurrentSession();
+
+		StoredProcedureQuery querys2 = s.createStoredProcedureQuery("generalActivation")
+				.registerStoredProcedureParameter("opcion", Integer.class, ParameterMode.IN)
+				.setParameter("opcion", opcion);
+
+		querys2.execute();
+
+		x = 1;
+		System.out.println("casi final");
+		return x;
+	}
+	
 
 }

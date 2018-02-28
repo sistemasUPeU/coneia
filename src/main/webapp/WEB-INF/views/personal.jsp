@@ -1,17 +1,19 @@
 <%
 	HttpSession sesion = request.getSession();
 	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
-		response.sendRedirect(request.getContextPath() + "/");
+		response.sendRedirect("/CONEIA/");
 
 	} else {
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Personal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%@include file="../../../jspf/general.jspf"%>
 <link href="<c:url value='/resources/css/alertify.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
@@ -27,6 +29,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cinzel"
 	rel="stylesheet">
+</head>
 <style>
 div.container {
 	max-width: 1200px
@@ -79,22 +82,26 @@ label {
 
 @media only screen and (max-width: 600px) {
 html {
-    font-size: 10px;
+    font-size: 12px;
 	}
-	.chip {
-    height: auto;
-    font-size: 10px;
-    
+.btn-floating.btn-large i {
+    line-height: 34px;
 }
-.modal-trigger,.moe{
-		width:25px;
-		height:25px;
-		line-height: 10px;
+.btn-floating.btn-large{width:36px;height:36px}
+	
+	.modal-trigger, .red{
+		width:30px;
+		height:30px;
+		line-height: 25px;
 	}
 	
-	.modal-trigger i,.moe i{
+	.modal-trigger i, .red i{
 		font-size:1.6rem;
-		line-height:25px;	}
+		line-height:30px;	}
+.achon{
+	font-size:22px;
+	font-weight:bold;
+}
 #table{
 	margin-bottom:4em;
 }
@@ -134,10 +141,8 @@ html {
 	}
 }
 </style>
-
-</head>
 <body>
-	<%@include file="../../../jspf/header.jspf"%>
+		<%@include file="../../../jspf/header.jspf"%>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
@@ -150,49 +155,12 @@ html {
 			<section id="content">
 
 
-				<div class="section">
-					<div class="container special_row" style="margin-top: 1%;padding-bottom:1px">
-						<div class="row">
-							<div class="input-field col s12">
-								<i class="material-icons prefix">assignment</i> <select
-									id="selected" required>
-									<option value="0" disabled selected>Seleccione una opción</option>
-									<option value="2018-06-04">LUNES</option>
-									<option value="2018-06-05">MARTES</option>
-									<option value="2018-06-06">MIÉRCOLES</option>
-									<option value="2018-06-07">JUEVES</option>
-									<option value="2018-06-08">VIERNES</option>
-
-								</select> <label>Día del evento</label>
-							</div>
-						</div>
-
-					</div>
-					<div class="row muestra" style="width: 95%" style="padding:1px">
-								<div class="chip col l3 s5 left" style="height: auto;margin-bottom: 1em;align-self: left">
-								
-    								<a class="btn-floating fa waves-effect waves-light #ff9100 red accent-3 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="No Asistió" ><i class="material-icons" style="font-size: 20px">done_all</i></a>
-							
-							
-<!-- 									<a class="btn-floating fa waves-effect waves-light #00b0ff light-blue accent-3 accent-3 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Entrada" ><i class="material-icons" style="font-size: 20px">done_all</i></a>    -->
-							
-								
-    								<a class="btn-floating fa waves-effect waves-light #00c853 green accent-4 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Entrada y Salida"><i class="material-icons" style="font-size: 20px">done_all</i></a>
-								
-								</div>
-								
-
-								
-								
-							
-							
-					</div>
+				<div class="section">					
+					<h2 class="center achon" style="font-family: 'Cinzel', serif;">Staff Coneia</h2>
 					
-					<div class="col l9 m9 s12 temon" style="margin-left: 5%"></div>
-
 					<div id="table-datatables">
 						<div id="cuerpo" class="container">
-							
+							 <a class="btn-floating btn-large waves-effect waves-light #00e676 green accent-3 right modal-trigger" onclick="nuevo()" href="#modalon2"><i class="material-icons">person_add</i></a>
 							
 							<div id="table" class="row"></div>
 
@@ -201,21 +169,24 @@ html {
 						</div>
 
 					</div>
-					
-					<div class="row muestra2"  style=" display:none;margin-top: 1em">
-						<div class="col l6 s4 " style="margin-left: 1em">
-							<a href="#" class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 final">Reporte final <i class="material-icons right" style="font-size: 20px">account_balance_wallet</i></a>
-						</div>
-					</div>
+
 					<div id="modalon" class="modal">
 						<div class="modal-content ">
 							<div class="row">
-								<h2 class="center achon" style="font-family: 'Cinzel', serif;"></h2>
-								<div id="table-datatables">
-									<div class="container" style="width: 95%">
+								<div class="container" style="width: 95%">
 										<div id="cant"></div>
-									</div>
 								</div>
+	
+							</div>
+						</div>
+					</div>
+					<div id="modalon2" class="modal">
+						<div class="modal-content ">
+							<div class="row">
+								<div class="container" style="width: 95%">
+									<div id="cant2"></div>
+								</div>
+							
 							</div>
 						</div>
 					</div>
@@ -229,28 +200,7 @@ html {
 
 
 			</section>
-			<div class="row reporte" style="width: 90%;display: none;padding-top:2em">
 			
-					<div class="col s12" style="margin-bottom: 1em"><span id="fecha"
-						style="font-family: 'Lobster Two', cursive;font-size:25px;"></span></div>
-					<div id="table-datatables">
-						<div id="cuerpo" class="container" style="width: 95%;">
-							
-							
-							<div id="table2" class="row" ></div>
-
-
-
-						</div>
-
-					</div>
-					
-					<div class="row muestra2" >
-						<div class="col l6 s4 " style="margin-left: 1em">
-							<a href="" class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 ">volver <i class="material-icons right" style="font-size: 20px">account_balance_wallet</i></a>
-						</div>
-					</div>
-			</div>
 		</div>
 
 	</div>
@@ -265,34 +215,6 @@ html {
 		$('.progress').fadeOut('fast');
 		$('#loader-wrap').fadeOut('fast');
 		$('#loader-wrap1').fadeOut('fast');
-		
-		$(document).ready(function() {
-			
-			checkSize();
-
-		});
-
-
-		$(window).on('resize', function() {
-			checkSize()
-		});
-
-		function checkSize() {
-			if ($(window).width() < 600) {
-				// your code here
-			
-				$("#foot1").addClass("center");
-				$("#foot2").addClass("center").removeClass("right");
-				
-
-			} else {
-
-				$("#foot1").removeClass("center");
-				$("#foot2").removeClass("center").addClass("right");
-				
-			}
-		}
-
 	</script>
 
 	<script
@@ -332,10 +254,8 @@ html {
 		src="<c:url value='https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js'></c:url>"
 		type="text/javascript"></script>
 	<script
-		src="<c:url value='/resources/js/businessCore/asistencia.js'></c:url>"
+		src="<c:url value='/resources/js/businessCore/personal.js'></c:url>"
 		type="text/javascript"></script>
-
-
 </body>
 </html>
 <%

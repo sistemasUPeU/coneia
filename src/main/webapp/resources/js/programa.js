@@ -108,7 +108,7 @@ $(document).ready(function() {
 		swipeable : false,
 		responsiveThreshold : 1920,
 		onShow : function(tab) {
-			// console.log(tab[0].id.split('-')[1]);
+		
 			var t = tab[0].id.split('-')[1];
 			$("#" + t).addClass("#ccff90 light-green accent-1")
 		}
@@ -118,7 +118,7 @@ $(document).ready(function() {
 	}, function(data) {
 		var obj = JSON.parse(data);
 //		alert(obj[0].idtaller)
-		$(".visitaMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".visitaMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			$(".visitaMartes").append('<div class="col s12"><div class="row">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -134,7 +134,7 @@ $(document).ready(function() {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".talleresMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			if(typeof obj[i].lugar==="undefined" ||obj[i].lugar===""){
@@ -153,7 +153,7 @@ $(document).ready(function() {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".visitasJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".visitasJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			if(typeof obj[i].lugar==="undefined" ||obj[i].lugar===""){
@@ -172,7 +172,7 @@ $(document).ready(function() {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".talleresJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			if(typeof obj[i].lugar==="undefined" ||obj[i].lugar===""){
@@ -189,7 +189,7 @@ $(document).ready(function() {
 		op : 5
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasLunes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasLunes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasLunes").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -201,7 +201,7 @@ $(document).ready(function() {
 		op : 6
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasLunes2").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasLunes2").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasLunes2").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -213,7 +213,7 @@ $(document).ready(function() {
 		op : 7
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles1").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles1").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label >'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles1").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -225,7 +225,7 @@ $(document).ready(function() {
 		op : 8
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles2").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles2").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles2").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -237,7 +237,7 @@ $(document).ready(function() {
 		op : 9
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles3").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles3").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles3").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -249,7 +249,7 @@ $(document).ready(function() {
 		op : 10
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasMiercoles4").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasMiercoles4").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasMiercoles4").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -261,7 +261,7 @@ $(document).ready(function() {
 		op : 11
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasViernes1").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasViernes1").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasViernes1").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -273,7 +273,7 @@ $(document).ready(function() {
 		op : 12
 	}, function(data) {
 		var obj = JSON.parse(data);
-		$(".ponenciasViernes2").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label style="font-size:14px">'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".ponenciasViernes2").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'<div class="row center choose1">Elija una de las tres ponencias a las que asistirá</div></label></div>');
 		$.each(obj,function(i,value){
 			$(".ponenciasViernes2").append('<div class="col s4"><div class="row center">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -323,10 +323,10 @@ $(document).ready(function() {
 
 	function handleOrientationChange(mediaquery) {
 		if (mediaquery.matches) {
-			console.log("mediaquery dentro de 600");
+	
 			$('b1').val("");
 		} else {
-			console.log("mediaquery fuera de 600");
+			
 		}
 	}
 	mediaquery.addListener(handleOrientationChange);
@@ -443,8 +443,8 @@ $(".b1").click(
 							'¿Desea confirmar su asistencia a esta ponencia?',
 							function() {
 								localStorage.setItem("insc1", 1);
-								console.log(localStorage.getItem("insc1")
-										+ " soy uno");
+							
+									
 								lunes1();
 								if (localStorage.getItem("contador")) {
 									localStorage.setItem("contador",
@@ -471,29 +471,28 @@ $(".confirmar").click(function(){
 	$("#alertyboton").addClass("btn waves-effect waves-light #2962ff blue accent-4");
 	$("#alertyboton2").addClass("btn waves-effect waves-light #bdbdbd grey lighten-1");
 	alertify.confirm('Inscripción de horario', '¿Desea confirmar su el horario?</br>Considere que una vez que confirme no podrá elegir de nuevo el horario', function(){
-		console.log("lunes1:"+lun1+"\n"+"lunes2:"+lun2+"\n"+"martes:"+mar+"\n"+"miercoles1:"+mier1+"\n"+"miercoles2:"+mier2+"\n"+"miercoles3:"
-				+mier3+"\n"+"miercoles4:"+mier4+"\n"+"jueves:"+jue+"\n"+"viernes1:"+vie1+"\n"+"viernes2:"+vie2);
+	
 		a = $("#a").val(); b = $("#b").val(); c = $("#c").val(); d = $("#d").val(); e = $("#e").val();
 		f = $("#f").val(); g = $("#g").val(); h = $("#h").val(); i = $("#i").val(); j = $("#j").val();
 		k = $("#k").val(); l = $("#l").val(); m = $("#m").val(); n = $("#n").val(); o = $("#o").val();
 		p = $("#p").val(); q = $("#q").val(); r = $("#r").val(); s = $("#s").val();
-		console.log(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s);
+
 		array = lun1+","+lun2+","+mar+","+mier1+","+mier2+","+mier3+","+mier4+","+jue+","+vie1+","+vie2+","+a+","+b+","+c+","+d+","+
-		e+","+f+","+g+","+h+","+i+","+j+","+k+","+l+","+m+","+n+","+o+","+p+","+q+","+r+","+s;
-		console.log(array);
+		e+","+f+","+g+","+h+","+j+","+k+","+l+","+m+","+n+","+o+","+p+","+r+","+s;
+	
 		$.get("talleres",{op:1,array:array},function(data){
-			console.log(data);
-			if(data>=29){
-				console.log("Insertado");
+			
+			if(data>=27){
+				
 				var link = coneia_context_path + "/principal";
-				$(".todo").css("display","none");
+				$(".todo").empty();
 				$(".loadin").css("display","block");
 				
 				setTimeout(function() {
 					location.href = link;
 				}, 3000);
 			}else{
-				console.log("algo anda mal..")
+				
 			}
 		});
 	}

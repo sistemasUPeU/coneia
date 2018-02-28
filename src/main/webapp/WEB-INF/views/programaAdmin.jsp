@@ -86,16 +86,24 @@ margin-left:30%;
 	transform: rotate(180deg);
 }
 
-.fonto {
-	font-family: 'Crimson Text', serif;
-	font-size: 18px;
-	font-weight: bold;
-}
+
 @media only screen and (max-width: 995px) {
 	.modal{margin-left:10%;}.alertify .ajs-modal{ margin-top:10%;margin-left:15%; }
 }
 
 @media only screen and (max-width: 600px) {
+#urusai{
+padding-bottom:4rem;}
+.btn{padding:1px}
+.light-blue i{font-size: 1.9rem;}
+.modal-trigger i,.red i {
+    width: inherit;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 24px;
+}
 	.special_row {
 		width: 90%;
 		padding: 0px;
@@ -137,7 +145,7 @@ margin-left:30%;
 			</div>
 
 			<div class="row  #bdbdbd grey lighten-1"
-				style="height: auto; min-height: 1000px;" id="urusai">
+				style="height: auto; min-height: 1000px;margin-bottom:0;" id="urusai">
 				<div class="col s12 #ccff90 light-green accent-1" id="myHeader">
 					<ul class="tabs tabs-fixed-width #ccff90 light-green accent-1">
 						<li class="tab "><a id="one" class="#ccff90 "
@@ -178,7 +186,7 @@ margin-left:30%;
 											<i class="material-icons">rowing</i> Recepción de
 											delegaciones y entrega de materiales
 										</div>
-										<div class="col l5 m4 s11">06:30 - 08:30 am</div>
+										<div class="col l5 m4 s9">06:30 - 08:30 am</div>
 									
 									</div>
 								</div>
@@ -191,8 +199,8 @@ margin-left:30%;
 											<i class="material-icons">highlight</i> Inauguración del
 											evento
 										</div>
-										<div class="col l4 m4 s11">08:30 - 10:30 am</div>
-										<div class="col l1 m1 s2 ">
+										<div class="col l4 m4 s9">08:30 - 10:30 am</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -208,8 +216,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">mic</i> Ponencias paralelas
 										</div>
-										<div class="col l4 m4 s11">10:30 am - 12:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">10:30 am - 12:30 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -226,8 +234,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">pan_tool</i> Panel
 										</div>
-										<div class="col l4 m4 s11">12:30 - 01:00 pm</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">12:30 - 01:00 pm</div>
+										<div class="col l1 m1 s3 "></div>
 
 									</div>
 								</div>
@@ -238,7 +246,7 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">alarm_on</i> Almuerzo
 										</div>
-										<div class="col l4 m4 s11">01:00 - 02:30 pm</div>
+										<div class="col l4 m4 s9">01:00 - 02:30 pm</div>
 
 									</div>
 								</div>
@@ -250,9 +258,9 @@ margin-left:30%;
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s11">03:00 - 04:00 pm</div>
-										<div class="col l1 m1 s1 ">
-											<i class="material-icons i md-24 right">expand_more</i>
+										<div class="col l4 m4 s9">03:00 - 04:00 pm</div>
+										<div class="col l1 m1 s3 ">
+											<i class="material-icons i  right">expand_more</i>
 										</div>
 
 									</div>
@@ -271,7 +279,7 @@ margin-left:30%;
 											<i class="material-icons ">hourglass_full</i> Intervalo
 											Ambiental - Cultural
 										</div>
-										<div class="col l4 m4 s11">04:00 - 04:30 pm</div>
+										<div class="col l4 m4 s9">04:00 - 04:30 pm</div>
 								
 									</div>
 								</div>
@@ -283,9 +291,9 @@ margin-left:30%;
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s10">04:30 - 06:00 pm</div>
-										<div class="col l1 m1 s2 ">
-											<i class="material-icons i md-24 right">expand_more</i>
+										<div class="col l4 m4 s9">04:30 - 06:00 pm</div>
+										<div class="col l1 m1 s3 ">
+											<i class="material-icons i right">expand_more</i>
 										</div>
 
 									</div>
@@ -303,10 +311,10 @@ margin-left:30%;
 											<i class="material-icons">format_shapes</i> Presentación de
 											delegaciones
 										</div>
-										<div class="col l4 m4 s10">06:00 - 07:00 pm</div>
+										<div class="col l4 m4 s9">06:00 - 07:00 pm</div>
 
-										<div class="col l1 m1 s2 ">
-											<i class="material-icons i md-24 right">expand_more</i>
+										<div class="col l1 m1 s3 ">
+											<i class="material-icons i  right">expand_more</i>
 										</div>
 									</div>
 								</div>
@@ -320,9 +328,9 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">brightness_3</i> NOCHE CULTURAL
 										</div>
-										<div class="col l4 m4 s10">07:30 - 09:30 pm</div>
-										<div class="col l1 m1 s2 ">
-											<i class="material-icons i md-24 right">expand_more</i>
+										<div class="col l4 m4 s9">07:30 - 09:30 pm</div>
+										<div class="col l1 m1 s3 ">
+											<i class="material-icons i  right">expand_more</i>
 										</div>
 									</div>
 								</div>
@@ -341,7 +349,7 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout" data-collapsible="accordion"
-							id="staggered-test2">
+							>
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">
@@ -349,8 +357,8 @@ margin-left:30%;
 											<i class="material-icons">style</i> Talleres especializados y
 											visitas técnicas
 										</div>
-										<div class="col l4 m4 s11">06:30 am - 12:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">06:30 am - 12:30 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -372,7 +380,7 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">alarm_on</i> Almuerzo
 										</div>
-										<div class="col l4 m4 s10">01:00 - 02:30 pm</div>
+										<div class="col l4 m4 s9">01:00 - 02:30 pm</div>
 
 									</div>
 								</div>
@@ -383,8 +391,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">layers_clear</i> <u>Concursos</u>
 										</div>
-										<div class="col l4 m4 s11">02:30 - 06:00 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">02:30 - 06:00 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -426,8 +434,8 @@ margin-left:30%;
 											<i class="material-icons">local_florist</i>Mi compromiso con
 											el medio ambiente
 										</div>
-										<div class="col l4 m4 s11">06:00 - 09:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">06:00 - 09:30 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 									</div>
@@ -453,15 +461,15 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout" data-collapsible="accordion"
-							id="staggered-test3">
+							>
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">
 										<div class="col l7 m7 s12">
 											<i class="material-icons">playlist_add_check</i> INGRESO
 										</div>
-										<div class="col l4 m4 s10">06:30 - 08:00 am</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">06:30 - 08:00 am</div>
+										<div class="col l1 m1 s3 "></div>
 									</div>
 								</div>
 							</li>
@@ -471,8 +479,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">mic</i> Ponencias paralelas 
 										</div>
-										<div class="col l4 m4 s11">08:00 - 10:00 am</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">08:00 - 10:00 am</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -490,8 +498,8 @@ margin-left:30%;
 											<i class="material-icons">nature</i> Intervalo Ambiental -
 											Cultural
 										</div>
-										<div class="col l4 m4 s11">10:00 - 10:30 am</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">10:00 - 10:30 am</div>
+										<div class="col l1 m1 s3 "></div>
 
 									</div>
 								</div>
@@ -502,8 +510,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">mic</i> Ponencias paralelas 
 										</div>
-										<div class="col l4 m4 s11">10:30 am - 12:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">10:30 am - 12:30 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -520,8 +528,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">pan_tool</i> Panel
 										</div>
-										<div class="col l4 m4 s10">12:30 - 01:00 pm</div>
-										<div class="col l1 m1 s2 "></div>
+										<div class="col l4 m4 s9">12:30 - 01:00 pm</div>
+										<div class="col l1 m1 s3 "></div>
 
 									</div>
 								</div>
@@ -532,7 +540,7 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">alarm_on</i> Almuerzo
 										</div>
-										<div class="col l4 m4 s10">01:00 - 02:00 pm</div>
+										<div class="col l4 m4 s9">01:00 - 02:00 pm</div>
 
 									</div>
 								</div>
@@ -544,8 +552,8 @@ margin-left:30%;
 											<i class="material-icons">blur_on</i>FERIA AMBIENTAL -
 											CONCURSO DE FOTOGRAFÍA
 										</div>
-										<div class="col l4 m4 s11">02:00 - 03:00 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">02:00 - 03:00 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -569,8 +577,8 @@ margin-left:30%;
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s11">04:00 - 05:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">04:00 - 05:30 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -587,8 +595,8 @@ margin-left:30%;
 											<i class="material-icons">nature</i> Intervalo Ambiental -
 											Cultural
 										</div>
-										<div class="col l4 m4 s11">06:00 - 06:30 pm</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">06:00 - 06:30 pm</div>
+										<div class="col l1 m1 s3 "></div>
 
 									</div>
 								</div>
@@ -600,8 +608,8 @@ margin-left:30%;
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s11">06:30 - 08:00 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">06:30 - 08:00 pm</div>
+										<div class="col l1 m1 s3">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -618,8 +626,8 @@ margin-left:30%;
 											<i class="material-icons">nature</i> CONFRATERNIZACIÓN
 											AMBIENTAL
 										</div>
-										<div class="col l4 m4 s11">08:30 - 09:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">08:30 - 09:30 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 									</div>
@@ -647,7 +655,7 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout" data-collapsible="accordion"
-							id="staggered-test4" style="z-index: 10">
+							 style="z-index: 10">
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">
@@ -655,8 +663,8 @@ margin-left:30%;
 											<i class="material-icons">style</i> Talleres especializados -
 											Visitas técnicas 
 										</div>
-										<div class="col l4 m4 s11">06:30 am - 12:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">06:30 am - 12:30 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -675,7 +683,7 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">alarm_on</i> Almuerzo
 										</div>
-										<div class="col l4 m4 s10">12:30 - 02:00 pm</div>
+										<div class="col l4 m4 s9">12:30 - 02:00 pm</div>
 
 									</div>
 								</div>
@@ -687,8 +695,8 @@ margin-left:30%;
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s11">02:00 - 03:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">02:00 - 03:30 pm</div>
+										<div class="col l1 m1 s3">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -705,8 +713,8 @@ margin-left:30%;
 											<i class="material-icons">nature</i> Intervalo Ambiental -
 											Cultural
 										</div>
-										<div class="col l4 m4 s11">03:30 - 04:00 pm</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">03:30 - 04:00 pm</div>
+										<div class="col l1 m1 s3 "></div>
 
 									</div>
 								</div>
@@ -718,8 +726,8 @@ margin-left:30%;
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s11">04:00 - 05:30 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">04:00 - 05:30 pm</div>
+										<div class="col l1 m1 s3">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -736,7 +744,7 @@ margin-left:30%;
 											<i class="material-icons">transfer_within_a_station</i> COPA
 											CONEIA
 										</div>
-										<div class="col l4 m4 s10">05:30 - 09:30 pm</div>
+										<div class="col l4 m4 s9">05:30 - 09:30 pm</div>
 
 									</div>
 								</div>
@@ -757,15 +765,15 @@ margin-left:30%;
 					<div class="container">
 						<br /> <br />
 						<ul class="collapsible popout " data-collapsible="accordion"
-							id="staggered-test5" style="z-index: 10">
+							style="z-index: 10">
 							<li>
 								<div class="collapsible-header bananin">
 									<div class="row center">
 										<div class="col l7 m7 s12">
 											<i class="material-icons">playlist_add_check</i> INGRESO
 										</div>
-										<div class="col l4 m4 s11">06:30 - 08:00 am</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">06:30 - 08:00 am</div>
+										<div class="col l1 m1 s3 "></div>
 									</div>
 								</div>
 							</li>
@@ -775,8 +783,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">mic</i> Ponencias paralelas 
 											</div>
-										<div class="col l4 m4 s11">8:00 - 10:00 am</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">8:00 - 10:00 am</div>
+										<div class="col l1 m1 s3">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -794,8 +802,8 @@ margin-left:30%;
 											<i class="material-icons">hourglass_full</i> Intervalo
 											Ambiental - Cultural
 										</div>
-										<div class="col l4 m4 s11">10:00 - 10:30 am</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">10:00 - 10:30 am</div>
+										<div class="col l1 m1 s3 "></div>
 
 									</div>
 								</div>
@@ -807,8 +815,8 @@ margin-left:30%;
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u> - ELECCIÓN DE SEDE CONEIA 2019
 										</div>
-										<div class="col l4 m4 s11">10:30 am - 12:00 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">10:30 am - 12:00 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -831,8 +839,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">alarm_on</i> Almuerzo
 										</div>
-										<div class="col l4 m4 s11">12:00 - 02:00 pm</div>
-										<div class="col l1 m1 s1 "></div>
+										<div class="col l4 m4 s9">12:00 - 02:00 pm</div>
+										<div class="col l1 m1 s3"></div>
 									</div>
 								</div>
 							</li>
@@ -842,8 +850,8 @@ margin-left:30%;
 										<div class="col l7 m7 s12">
 											<i class="material-icons">audiotrack</i>CLAUSURA DEL EVENTO
 										</div>
-										<div class="col l4 m4 s11">02:00 - 05:00 pm</div>
-										<div class="col l1 m1 s1 ">
+										<div class="col l4 m4 s9">02:00 - 05:00 pm</div>
+										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
 
@@ -885,7 +893,7 @@ margin-left:30%;
 
 
 	</div>
-	<div id="modales"></div>
+	<div id="modales" style="display:none"></div>
 	
 	
 	<%@include file="../../../jspf/footer.jspf"%>
@@ -900,7 +908,34 @@ margin-left:30%;
 		$('.progress').fadeOut('fast');
 		$('#loader-wrap').fadeOut('fast');
 		$('#loader-wrap1').fadeOut('fast');
+		
+		$(document).ready(function() {
+
+			checkSize();
+
+		});
+		
+		$(window).on('resize', function() {
+			checkSize()
+		});
+
+		function checkSize() {
+			if ($(window).width() < 600) {
+				// your code here
+			
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
+				
+
+			} else {
+
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
+				
+			}
+		}
 	</script>
+
 
 
 

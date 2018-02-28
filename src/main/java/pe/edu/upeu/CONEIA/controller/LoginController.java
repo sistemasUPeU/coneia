@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
+import pe.edu.upeu.CONEIA.service.ConfiguracionService;
 import pe.edu.upeu.CONEIA.service.MailService;
 import pe.edu.upeu.CONEIA.service.PersonaService;
 
@@ -37,6 +38,9 @@ public class LoginController {
 	Map<String, Object> personaReset = null;
 	@Autowired
 	private PersonaService ps;
+	
+	@Autowired
+	private ConfiguracionService cs;
 	
 	@Autowired
 	public MailService ms;
@@ -75,16 +79,26 @@ public class LoginController {
 						}else {
 						System.out.println("estado de inscripcion " +personaMap.get("estadoinscripcion"));
 						System.out.println(Integer.parseInt(personaMap.get("estadoinscripcion").toString()));
-//						
-						session.setAttribute("idp", personaMap.get("idpersona"));
-						session.setAttribute("dni", personaMap.get("dni"));
-						session.setAttribute("nombre", personaMap.get("nombre"));
-						session.setAttribute("apellidos", personaMap.get("apellidos"));
-						session.setAttribute("rol", personaMap.get("rol"));
-						session.setAttribute("idrol", personaMap.get("idrol"));
-						session.setAttribute("inscripcion", personaMap.get("inscripcion"));
+						List<Map<String, Object>> queryactive = null;
+						queryactive = cs.getPrecios();
+						System.out.println("activacion general " +queryactive.get(0).get("active").toString());
+						int active = Integer.parseInt(queryactive.get(0).get("active").toString());
 						
-						x = 2;//ha sido aprobado
+						if(active==1) {
+							session.setAttribute("idp", personaMap.get("idpersona"));
+							session.setAttribute("dni", personaMap.get("dni"));
+							session.setAttribute("nombre", personaMap.get("nombre"));
+							session.setAttribute("apellidos", personaMap.get("apellidos"));
+							session.setAttribute("rol", personaMap.get("rol"));
+							session.setAttribute("idrol", personaMap.get("idrol"));
+							session.setAttribute("inscripcion", personaMap.get("inscripcion"));
+							x = 2;//ha sido aprobado
+						}else {
+							x = 4; //ha sido aprobado pero no hay una activacion general;
+						}
+
+						
+						
 						}
 						
 					}else{
@@ -109,7 +123,7 @@ public class LoginController {
 					}
 					
 					datos.put("op", x);
-					datos.put("idp", personaMap.get("idp"));
+					datos.put("idp", personaMap.get("idpersona"));
 					datos.put("dni", personaMap.get("dni"));
 					datos.put("rol", personaMap.get("rol"));
 					datos.put("idrol", personaMap.get("idrol"));
@@ -265,6 +279,27 @@ public class LoginController {
 		return gson.toJson(respuesta);
 	}
 	
+	
+	@RequestMapping(value = "/queryactive")
+	public void queryactive(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+//		String newa =  request.getParameter("pass_new");
+		String nueva = request.getParameter("pass_new_1");
+		int idper = Integer.parseInt(request.getParameter("idper"));
+		int estado = Integer.parseInt(request.getParameter("estado_pass"));
+		int respuesta = 0;
+		System.out.println(" " + nueva + " " + idper);
+		Map<String, Object> datos = new HashMap<>();
+//		estadoPass = ps.checkpass(idp);
+		respuesta = ps.updatePassword(idper, nueva,estado);
+		
+		System.out.println("respuesta change password"+respuesta);
+	
+		out.println(gson.toJson(respuesta));
+		
+//		response.sendRedirect(request.getContextPath()+"/principal");
+		
+	}
 	
 	
 }

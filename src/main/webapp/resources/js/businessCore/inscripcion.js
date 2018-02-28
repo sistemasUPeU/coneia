@@ -35,7 +35,7 @@ function getPrecios(){
 
 		});
 		
-		console.log("precios " +precio_delegacion + " , " + precio_alumno + " , "+precio_profesional);
+		
 
 	})
 }
@@ -647,8 +647,7 @@ $("#accept")
 															},
 															function(response,
 																	status) {
-																console
-																		.log(response);
+															
 																if (response != 0) {
 																	datosUploadFile
 																			.append(
@@ -668,9 +667,7 @@ $("#accept")
 
 																				success : function(
 																						data) {
-																					console
-																							.log("success>"
-																									+ data);
+																					
 
 																					if (data == 1) {
 																						alertify
@@ -704,10 +701,7 @@ $("#accept")
 																				},
 																				error : function(
 																						e) {
-																					console
-																							.log(
-																									"No sube ",
-																									e);
+																					
 																					alertify
 																							.alert(
 																									'Error',

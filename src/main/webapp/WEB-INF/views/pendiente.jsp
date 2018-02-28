@@ -121,7 +121,7 @@ div.container {
 										</div>
 
 										<div class="col s12 m12 l4" id="picture">
-										
+
 											<img class="materialboxed" style="width: 90%; height: 380px;"
 												src="<c:url value="/resources/files/voucher56.jpg"/>"
 												alt="sample"
@@ -221,7 +221,7 @@ div.container {
 										</div>
 
 										<div class="col s12 m12 l4" id="picture_del">
-										
+
 											<img class="materialboxed" style="width: 90%; height: 380px;"
 												src="<c:url value="/resources/files/voucher56.jpg"/>"
 												alt="sample"
@@ -296,7 +296,7 @@ div.container {
 				</div>
 			</section>
 		</div>
-	
+
 	</div>
 	<%@include file="../../../jspf/footer.jspf"%>
 	<!-- chartist -->
@@ -326,8 +326,32 @@ div.container {
 			setTimeout(function() {
 				$('body').addClass('loaded');
 			}, 200);
-		})
 
+		})
+		$(document).ready(function() {
+
+			checkSize();
+
+		});
+
+		$(window).on('resize', function() {
+			checkSize()
+		});
+
+		function checkSize() {
+			if ($(window).width() < 600) {
+				// your code here
+
+				$("#foot1").addClass("center");
+				$("#foot2").addClass("center").removeClass("right");
+
+			} else {
+
+				$("#foot1").removeClass("center");
+				$("#foot2").removeClass("center").addClass("right");
+
+			}
+		}
 		$('.progress').fadeOut('fast');
 		$('#loader-wrap').fadeOut('fast');
 		$('#loader-wrap1').fadeOut('fast');

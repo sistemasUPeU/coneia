@@ -29,6 +29,11 @@ function listarPrecios() {
 
 		$.each(con, function(index, obj) {
 			var estado = obj.estado;
+			
+			if(obj.active == 1){
+				$("#4").prop('checked', true);
+			}
+			
 			if (estado == 1) {
 				$("#" + obj.idc).prop('checked', true);
 				$("#idactivo").val(obj.idc);

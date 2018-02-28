@@ -9,25 +9,7 @@ $(document).ready(function() {
 	// Close upon selecting a date,
 	});
 
-	// var $input = $('.datepicker').pickadate()
 
-	// Use the picker object directly.
-	// var picker = $input.pickadate('picker');
-
-	// Using arrays formatted as [YEAR, MONTH, DATE].
-	// picker.set('select', [ 2015, 3, 20 ])
-
-	// Using JavaScript Date objects.
-	// picker.set('select', new Date(2015, 3, 30))
-
-	// Using positive integers as UNIX timestamps.
-	// picker.set('select', 1429970887654)
-
-	// Using a string along with the parsing format (defaults to `format`
-	// option).
-	// picker.set('select', '', {
-	// format : 'yyyy-mm-dd'
-	// })
 	showTable();
 
 });
