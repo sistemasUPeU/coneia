@@ -99,14 +99,36 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 			DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);			
 			String date = null;
 			Query query = s.createQuery(
-					"from VistaPersonaTaller v where v.fecha='" +time+"'");
+					"from VistaPersonaTaller v where v.fecha='"+time+"'");
 			int idit=0; int asistencia=0;
 			lista = query.getResultList();
 			for(VistaPersonaTaller v : lista) {
-				date=dfDateMedium.format(v.getFecha());
+//				date=dfDateMedium.format(v.getFecha());
+				date = v.getFecha().toString();
+				System.out.println(date);
 				String[] fecha = date.split("-");
-				String anio = fecha[2];String mes = fecha[1];String dia = fecha[0];
-				String fechon = anio+"-"+mes+"-"+dia;
+//				String anio = fecha[2];String mes = fecha[1];
+				String dia = fecha[0];
+				String fechon="";
+				switch(dia) {
+				case "04":
+					fechon="lunes";
+				break;
+				case "05":
+					fechon="martes";
+					break;
+				case "06":
+					fechon="miercoles";
+					break;
+				case "07":
+					fechon="jueves";
+					break;
+				case "08":
+					fechon="viernes";
+					break;
+				}
+//				String fechon = anio+"-"+mes+"-"+dia;
+				
 				long num = cuantos(v.getIdd());
 //				long num2 = cuantos2(v.getIdd());
 				double suma = num;

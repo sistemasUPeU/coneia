@@ -46,12 +46,7 @@
 <script>
 	var gth_context_path = '${pageContext.request.contextPath}';
 </script>
-<style media="scren">
-	#teachon{
-	padding-bottom:0px;
-	font-size:10px;
-}
-</style>
+
 <style type="text/css" media="print">
 @page {
 	size: A4 landscape;
@@ -95,8 +90,46 @@ thead tr{
 	margin:0;
 }
 </style>
+<style>
+tr{
+font-size:12px;}
+td, th {
+    padding: 1px 5px;
+   
+}
+	#teachon{
+	padding-bottom:0px;
+	font-size:10px;
+}
+.side-nav{
+width:50%;
+font-size:12px;}
+.side-nav a {
+
+    font-size: 12px;}
+@media only screen and (max-width: 600px) {
+.apellidos{
+display:none}
+.side-nav{
+width:70%;
+font-size:8px;}
+.side-nav a {
+
+    font-size: 8px;}
+html {
+    font-size: 11px;
+}
+	#modal_changepass {
+		width: 85%;
+	}
+	.letrinha{
+	font-size:20px;
+	}
+}
+
+</style>
 </head>
-<body>
+<body >
 
 	<input type="hidden" value="${sessionScope.rol}" id="rolcito" />
 	<div id="mobile-collapse-button" class="section" style="padding-top: 0">
@@ -128,8 +161,7 @@ thead tr{
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
 					<li><a href="#!"
-						><b>${sessionScope.nombre}
-								${sessionScope.apellidos} </b></a>
+						><b>${sessionScope.nombre} <span class="apellidos"> ${sessionScope.apellidos}</span></b></a>
 						</li>
 					
 					<li><a class="principal">Home</a></li>
@@ -728,7 +760,7 @@ thead tr{
 		});
 
 		function checkSize() {
-			if ($(window).width() < 900) {
+			if ($(window).width() < 800) {
 				// your code here
 				if ($(window).width() < 670) {
 					$("#foot1").addClass("center");
