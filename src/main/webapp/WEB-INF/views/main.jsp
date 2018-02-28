@@ -84,7 +84,7 @@ var gth_context_path = '<%=request.getContextPath()%>';
 }
 </style>
 </head>
-<body>
+<body style="    background-color: white;">
 
 	<!-- 	<div id="mobile-collapse-button" class="section" -->
 	<!-- 		style="padding-top: 0; padding-bottom: 0"> -->
