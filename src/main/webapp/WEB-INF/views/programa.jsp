@@ -88,12 +88,12 @@ body {
 					</li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
-					<li><a href="#!"
-						><b>${sessionScope.nombre} <span class="apellidos"> ${sessionScope.apellidos}</span></b></a>
+					<li><a href="#!" class="center"
+						><b style="font-size: 11px;">${sessionScope.nombre} <span class="apellidos"> ${sessionScope.apellidos}</span></b></a>
 						</li>
 					
-					<li><a class="principal">Home</a></li>
-					<li><a href="#!" class="salir">Salir</a></li>
+					<li><a style="font-size: 11px;" class="principal center">Home</a></li>
+					<li><a style="font-size: 11px;" href="#!" class="salir center">Salir</a></li>
 
 				</ul>
 

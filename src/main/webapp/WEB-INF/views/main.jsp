@@ -707,6 +707,12 @@ var gth_context_path = '<%=request.getContextPath()%>';
 				$("#logon").click();
 			}
 		});
+		$("#user_pass").keypress(function(e) {
+
+			if (e.which == 13) {
+				$("#logon").click();
+			}
+		});
 
 		alertify.genericDialog
 				|| alertify.dialog('genericDialog', function() {
