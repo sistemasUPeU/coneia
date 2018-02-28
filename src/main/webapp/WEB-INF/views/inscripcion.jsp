@@ -271,7 +271,7 @@ div.radio p {
 																		<div class="col s12 m3 l3 center">
 																			<div class="switch" style="padding: 26px">
 																				<label style="font-size: 18px"><input
-																					type="checkbox" id="switcher"> <span
+																					type="checkbox" id="switcher" name="sw"> <span
 																					class="lever"></span> Delegado </label>
 																			</div>
 																		</div>

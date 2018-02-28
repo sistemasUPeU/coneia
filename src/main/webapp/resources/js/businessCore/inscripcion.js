@@ -1290,7 +1290,7 @@ function listarReporteMedium() {
 						responsive : {
 							details : false
 						},
-						"pageLength" : 8,
+						"pageLength" : 6,
 						"bPaginate" : true,
 						"bLengthChange" : false,
 						"bFilter" : true,
