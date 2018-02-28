@@ -225,7 +225,7 @@
 					<div class="input-field col s12">
 						<i class="mdi-communication-vpn-key prefix large icon-demo"></i> <input
 							id="pass_new" name="pass_new" type="password" class="validate"
-							required data-error=".errorTxt3"> <label for="pass_new">Contraseña
+							 data-error=".errorTxt3"> <label for="pass_new">Contraseña
 							nueva</label>
 						<div class="errorTxt3"></div>
 					</div>
@@ -235,7 +235,7 @@
 					<div class="input-field col s12">
 						<i class="mdi-communication-vpn-key prefix large icon-demo"></i> <input
 							id="pass_new_1" name="pass_new_1" type="password"
-							class="validate" required data-error=".errorTxt4"> <label
+							class="validate" data-error=".errorTxt4"> <label
 							for="pass_new_1">Repetir contraseña</label>
 						<div class="errorTxt4"></div>
 					</div>
