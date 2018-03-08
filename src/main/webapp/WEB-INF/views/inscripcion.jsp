@@ -93,16 +93,16 @@ div.radio p {
 		<div class=" grey-text text-darken-2">
 
 			<div class="row">
-				<div class="section col s12 m12 l12" id="div1">
+				<div class="section col s12 m12 l12" id="div1" style="padding:0px">
 					<div class="section scrollspy">
 						<div class="row">
 
 
 							<!-- offset-l2 offset-m2 -->
 							<div class="container" style="width: 100%" id="div2">
-								<div class="col l12 m12 s12 " id="div3">
-									<div class="card">
-										<div class="card-content" style="height: 800px">
+								<div class="col l12 m12 s12 " id="div3" style="padding:0px">
+									<div class="card" style="    box-shadow: 0 0 0 0;">
+										<div class="card-content" style="height: 800px; padding: 8px;">
 											<ul class="stepper linear horizontal" id="feedbacker"
 												style="height: 770px;">
 
@@ -271,7 +271,7 @@ div.radio p {
 																		<div class="col s12 m3 l3 center">
 																			<div class="switch" style="padding: 26px">
 																				<label style="font-size: 18px"><input
-																					type="checkbox" id="switcher"> <span
+																					type="checkbox" id="switcher" name="sw"> <span
 																					class="lever"></span> Delegado </label>
 																			</div>
 																		</div>

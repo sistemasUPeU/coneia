@@ -1114,7 +1114,7 @@ function listarReporte() {
 						responsive : {
 							details : false
 						},
-						"pageLength" : 5,
+						"pageLength" : 4,
 						"bPaginate" : true,
 						"bLengthChange" : false,
 						"bFilter" : true,
