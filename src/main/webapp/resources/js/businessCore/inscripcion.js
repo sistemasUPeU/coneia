@@ -640,7 +640,7 @@ $("#accept")
 											// var da =
 											// JSON.parse(arrayProperties);
 											$
-													.get(
+													.post(
 															"subscribe/createEnrollment",
 															{
 																op : data
@@ -1114,7 +1114,7 @@ function listarReporte() {
 						responsive : {
 							details : false
 						},
-						"pageLength" : 8,
+						"pageLength" : 5,
 						"bPaginate" : true,
 						"bLengthChange" : false,
 						"bFilter" : true,
@@ -1198,7 +1198,7 @@ function listarReporteMini() {
 						responsive : {
 							details : false
 						},
-						"pageLength" : 4,
+						"pageLength" : 3,
 						"bPaginate" : true,
 						"bLengthChange" : false,
 						"bFilter" : true,
@@ -1290,7 +1290,7 @@ function listarReporteMedium() {
 						responsive : {
 							details : false
 						},
-						"pageLength" : 8,
+						"pageLength" : 5,
 						"bPaginate" : true,
 						"bLengthChange" : false,
 						"bFilter" : true,
