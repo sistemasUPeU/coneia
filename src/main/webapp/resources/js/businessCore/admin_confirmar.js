@@ -11,13 +11,11 @@ var idinscripcion = 0;
 var arrayProperties = new Array();
 var back = 0;
 function confirmarModal(id) {
-	
 
 	idinscripcion = id;
 	for (var i = 0; i < tipo.length; i++) {
 		if (tipo[i].idinscripcion == idinscripcion) {
 
-			
 			var m = "";
 			m += '	<p class="card-title grey-text text-darken-4">'
 
@@ -111,7 +109,6 @@ $('#modal3').modal({
 	ready : function(modal, trigger) { // Callback for Modal open. Modal and
 		// trigger parameters available.
 
-
 	},
 	complete : function() {
 
@@ -129,7 +126,6 @@ $('#modal4').modal({
 	ready : function(modal, trigger) { // Callback for Modal open. Modal and
 		// trigger parameters available.
 
-
 	},
 	complete : function() {
 
@@ -139,12 +135,12 @@ $('#modal4').modal({
 
 $("#get_selected").change(function() {
 	change = $("#get_selected").val();
-	
+
 	if (change == 1) {
-		
+
 		listar();
 	} else {
-		
+
 		listarDelegacion();
 
 	}
@@ -156,9 +152,8 @@ function listar() {
 			.get(
 					coneia_context_path + "/admin/responsew",
 					function(data) {
-						
+
 						tipo = JSON.parse(data);
-						
 
 						var h = "";
 						var rounds = 0
@@ -168,9 +163,7 @@ function listar() {
 							rounds = tipo.length;
 						}
 
-					
 						for (var i = 0; i < rounds; i++) {
-						
 
 							h += '<div class="col s12 m6 l4">'
 							h += '	<div id="profile-card" class="card">'
@@ -181,25 +174,41 @@ function listar() {
 									+ '/resources/images/user-profile-bg.jpg"'
 							h += '		alt="user background">'
 							h += '	</div>'
-							h += '	<div class="card-content">'
-							h += '		<img style="top: 60px;"'
-							h += '			src="' + coneia_context_path
-									+ '/resources/images/avatar.jpg" alt=""'
-							h += '			class="circle responsive-img activator card-profile-image">'
+							h += '	<div class="card-content" style="    padding-bottom: 0px;">'
+							h += '	<a class="btn-floating btn-large btn-move-up waves-effect waves-light red darken-4 left"'
+							h += '		id="'
+									+ tipo[i].idinscripcion
+									+ '" onclick="deleteInscripcion(this.id,1)">'
+							h += '		<i class="material-icons prefix">delete_forever</i>'
+
+							h += '	</a>'
+							// h += ' <img style="top: 60px;"'
+							// h += ' src="' + coneia_context_path
+							// + '/resources/images/avatar.jpg" alt=""'
+							// h += ' class="circle responsive-img activator
+							// card-profile-image">'
 							h += '	<a class="btn-floating btn-large btn-move-up waves-effect waves-light darken-2 right modal-trigger"'
 							h += '		id="'
 									+ tipo[i].idinscripcion
-									+ '" onclick="confirmarModal(this.id)" href="#modal3">'
+									+ '" onclick="confirmarModal(this.id)" href="#modal3" style="right: 5px;">'
 							h += '		<i class="material-icons prefix">mode_edit</i>'
 
 							h += '	</a>'
-							h += '<p class="row">'
-							h += '	<span'
-							h += '		class="card-title activator grey-text text-darken-4 left">'
-									+ tipo[i].nombre
-							h += '		</span> <span class="right" style="line-height: 30px;">'
-							h += tipo[i].fecha + '</span>'
-							h += '	</p>'
+
+							h += '<span class="card-title center" style="font-size:15px; padding-top:15px; margin: 0;"><b>'
+									+ tipo[i].nombre + '</b></span>'
+							h += '	<p  class="center"style="line-height: 30px; font-size: 15px; margin: 0;">'
+							h += tipo[i].fecha + '<p>'
+
+							// h += '<div class="row">'
+							// h += ' <p class="left" style ="font-size: 15px;"'
+							// h += ' class="card-title activator grey-text
+							// text-darken-4 left"><b>'
+							// + tipo[i].nombre
+							// h += ' </b></p> <p class="right"
+							// style="line-height: 30px; font-size: 15px;">'
+							// h += tipo[i].fecha + '</p>'
+							// h += ' </div>'
 							h += '</div>'
 							h += '</div>'
 							h += '</div>'
@@ -207,9 +216,61 @@ function listar() {
 
 						$("#pizarra").html(h);
 
-		
-
 					});
+}
+
+function deleteInscripcion(id, opcion) {
+
+	
+	alertify
+			.confirm(
+					'Confirmación',
+					'¿Está seguro(a) de eliminar esta inscripción?',
+					function() {
+						alertify.success('Ok');
+						$
+								.get(
+										coneia_context_path
+												+ "/admin/deleteins",
+										{
+											id : id
+										},
+										function(data) {
+											
+
+											if (data == 1) {
+												alertify
+														.alert(
+																'Excelente',
+																'La inscripción se eliminó',
+																function() {
+																	alertify
+																			.success('Ok');
+
+																});
+
+												if (opcion == 1) {
+													listar();
+												} else {
+													listarDelegacion();
+												}
+											} else {
+												alertify
+														.alert(
+																'Error',
+																'Ocurrió un problema al intentar eliminar la inscripción',
+																function() {
+																	alertify
+																			.success('Ok');
+
+																});
+											}
+
+										});
+					}, function() {
+						alertify.error('Cancel')
+					});
+
 }
 
 function listarDelegacion() {
@@ -218,18 +279,17 @@ function listarDelegacion() {
 			.get(
 					coneia_context_path + "/admin/resdelegacion",
 					function(data) {
-						
+
 						tipodel = JSON.parse(data);
-						
+
 						var idins = 0;
-					
+
 						var arrayid = [];
 
 						var arrayfecha = [];
-						
+
 						for (var i = 0; i < tipodel.length; i++) {
-							
-						
+
 							// array.push(i);
 							if (i == 0) {
 								idins = tipodel[i].idinscripcion;
@@ -253,7 +313,7 @@ function listarDelegacion() {
 						} else {
 							rounds1 = arrayid.length;
 						}
-				
+
 						for (var i = 0; i < rounds1; i++) {
 
 							h += '<div class="col s12 m6 l4">'
@@ -264,26 +324,36 @@ function listarDelegacion() {
 							h += '		src="' + coneia_context_path
 									+ '/resources/images/user-bg.jpg"'
 							h += '		alt="user background">'
+
 							h += '	</div>'
-							h += '	<div class="card-content">'
-							h += '		<img style="top: 60px;"'
-							h += '			src="' + coneia_context_path
-									+ '/resources/images/avatar.jpg" alt=""'
-							h += '			class="circle responsive-img activator card-profile-image">'
+
+							h += '	<div class="card-content" style="    padding-bottom: 0px;">'
+
+							h += '	<a class="btn-floating btn-large btn-move-up waves-effect waves-light red darken-4 left"'
+							h += '		id="'
+									+ arrayid[i]
+									+ '" onclick="deleteInscripcion(this.id,2)" >'
+							h += '		<i class="material-icons prefix">delete_forever</i>'
+
+							h += '	</a>'
+
+							// h += ' <img style="top: 60px;"'
+							// h += ' src="' + coneia_context_path
+							// + '/resources/images/avatar.jpg" alt=""'
+							// h += ' class="circle responsive-img activator
+							// card-profile-image">'
 							h += '	<a class="btn-floating btn-large btn-move-up waves-effect waves-light green accent-3 right modal-trigger"'
 							h += '		id="'
 									+ arrayid[i]
-									+ '" onclick="confirmarModalDelegacion(this.id)" href="#modal4">'
+									+ '" onclick="confirmarModalDelegacion(this.id)" href="#modal4" style="right: 5px;">'
 							h += '		<i class="material-icons prefix">mode_edit</i>'
 
 							h += '	</a>'
-							h += '<p class="row">'
-							h += '	<span'
-							h += '		class="card-title activator grey-text text-darken-4 left">Delegacion Nº '
-									+ arrayid[i]
-							h += '		</span> <span class="right" style="line-height: 30px;">'
-							h += arrayfecha[i] + '</span>'
-							h += '	</p>'
+							h += '<span class="card-title center" style="font-size:18px; padding-top:15px; margin: 0;"><b>Del. Nº '
+									+ arrayid[i] + '</b></span>'
+							h += '	<p  class="center"style="line-height: 30px; font-size: 15px; margin: 0;">'
+							h += arrayfecha[i] + '<p>'
+							// h += ' </div>'
 							h += '</div>'
 							h += '</div>'
 							h += '</div>'
@@ -322,7 +392,6 @@ function confirmarModalDelegacion(id) {
 
 			arrayProperties.push(properties);
 
-		
 		}
 	}
 
@@ -354,21 +423,18 @@ $("#enviarConfirmacion").click(
 			$("#trueway").addClass("hide");
 			back = 1;
 			var mensaje = "";
-		
-//			mostrando loader
+
+			// mostrando loader
 			$('#loader-wrap').fadeIn('fast');
 			$('.progress').fadeIn('fast');
-	
-			
-		
+
 			$.get(coneia_context_path + "/admin/getemails", {
 				op : 1,
 				idinscripcion : idinscripcion,
 				sms : mensaje,
 				opcion : 1
 			}, function(data, status) {
-								
-				
+
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
 					$('#loader-wrap').delay(1000).fadeOut('fast');
@@ -399,7 +465,7 @@ $("#enviarObservacion").click(
 			back = 1;
 			var mensaje = $("#message").val();
 			$("#falseway").addClass("hide");
-			
+
 			$('#loader-wrap').fadeIn('fast');
 			$('.progress').fadeIn('fast');
 
@@ -409,7 +475,7 @@ $("#enviarObservacion").click(
 				sms : mensaje,
 				opcion : 1
 			}, function(data, status) {
-				
+
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
 					$('#loader-wrap').delay(1000).fadeOut('fast');
@@ -426,7 +492,6 @@ $("#enviarObservacion").click(
 				}
 			})
 
-	
 		});
 
 function actualizarEstadoInscripcion(idinscripcion, estado) {
@@ -435,7 +500,7 @@ function actualizarEstadoInscripcion(idinscripcion, estado) {
 		idinscripcion : idinscripcion,
 		estado : estado
 	}, function(data, status) {
-		
+
 		if (data == '1') {
 
 			alertify.alert('Alert Title', 'Inscripcion aprobada', function() {
@@ -552,7 +617,6 @@ function showTable() {
 							//            
 							// //discount
 							var size = arrayProperties.length;
-						
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -574,10 +638,8 @@ function showTable() {
 								return intVal(a) + intVal(b);
 							}, 0);
 
-						
 							$('tr:eq(0) td:eq(0)', api.table().footer()).html(
 									"S/. " + total + ".00");
-							
 
 						}
 					});
@@ -589,17 +651,16 @@ function showTable() {
 	$("#div_message_del label").addClass("active");
 	$("#modal4").modal('open');
 
-	
 	$("#trueway_del").removeClass('hide');
 
-	$( "#data-table-row-grouping1_filter" ).after( "<div  id='hugme' style='overflow-x:auto; clear: both;'></div>" );
-	$( "#data-table-row-grouping1" ).appendTo('#hugme');
+	$("#data-table-row-grouping1_filter").after(
+			"<div  id='hugme' style='overflow-x:auto; clear: both;'></div>");
+	$("#data-table-row-grouping1").appendTo('#hugme');
 	// $('#data-table-row-grouping1').DataTable( );
 
 };
 
 function createTable2() {
-
 
 	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered' >";
 	d += "<thead>";
@@ -652,17 +713,17 @@ $("#enviarConfirmacion_del").click(
 			$("#trueway_del").addClass("hide");
 			back = 2;
 			var mensaje = "";
-			
+
 			$('#loader-wrap1').fadeIn('fast');
 			$('.progress').fadeIn('fast');
-		
+
 			$.get(coneia_context_path + "/admin/getemails", {
 				op : 1,
 				idinscripcion : idinscripcion,
 				sms : mensaje,
 				opcion : 2
 			}, function(data, status) {
-				
+
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
 					$('#loader-wrap1').delay(1000).fadeOut('fast');
@@ -671,7 +732,6 @@ $("#enviarConfirmacion_del").click(
 							function() {
 								alertify.success('Ok');
 								$("#modal4").modal('close');
-							
 
 								actualizarEstadoInscripcion(idinscripcion, 1);
 
@@ -686,7 +746,6 @@ $("#enviarConfirmacion_del").click(
 				}
 			})
 
-			
 		});
 
 $("#enviarObservacion_del").click(
@@ -703,7 +762,7 @@ $("#enviarObservacion_del").click(
 				sms : mensaje,
 				opcion : 2
 			}, function(data, status) {
-				
+
 				if (data == '1') {
 					$('.progress').delay(1000).fadeOut('fast');
 					$('#loader-wrap1').delay(1000).fadeOut('fast');
@@ -712,12 +771,11 @@ $("#enviarObservacion_del").click(
 							function() {
 								alertify.success('Ok');
 								$("#modal4").modal('close');
-							
+
 								actualizarEstadoInscripcion(idinscripcion, 2);
 
 							});
 				}
 			})
 
-		
 		});

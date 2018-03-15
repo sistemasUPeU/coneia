@@ -1,5 +1,6 @@
 package pe.edu.upeu.CONEIA.service;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -18,4 +19,6 @@ public interface InscripcionService {
 	public List<DetalleInscripcion> Delegacion(String fecha);
 	public List<DetalleInscripcion> AceptadosDelegacion();
 	public List<DetalleInscripcion> AprobadosPersonal();
+	
+	public int delete(int id) throws ParseException;
 }

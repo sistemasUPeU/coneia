@@ -144,6 +144,19 @@ public class AdministradorController {
 		return gs.toJson(peopleWaitingPersonal);
 	}
 
+	@RequestMapping("/deleteins")
+	public @ResponseBody String deleteins(HttpServletRequest request, HttpServletResponse response) throws ParseException {
+
+		int id = Integer.parseInt(request.getParameter("id"));
+		int res = insService.delete(id);
+System.out.println(res);
+		return gs.toJson(res);
+	}
+	
+	
+	
+	
+	
 	@RequestMapping("/resdelegacion")
 	public @ResponseBody String resdelegacion(HttpServletRequest request, HttpServletResponse response) {
 

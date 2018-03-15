@@ -1,5 +1,6 @@
 package pe.edu.upeu.CONEIA.serviceImpl;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -104,6 +105,15 @@ public class InscripcionServiceImpl implements InscripcionService {
 		return idao.AprobadosPersonal();
 
 	}
+
+	@Override
+	@Transactional
+	public int delete(int id) throws ParseException {
+		// TODO Auto-generated method stub
+		return idao.delete(id);
+	}
+	
+	
 
 
 }

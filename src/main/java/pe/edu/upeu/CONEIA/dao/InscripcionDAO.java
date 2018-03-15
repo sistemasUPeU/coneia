@@ -1,5 +1,6 @@
 package pe.edu.upeu.CONEIA.dao;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -19,5 +20,5 @@ public interface InscripcionDAO {
 	public List<DetalleInscripcion> AceptadosDelegacion();
 	public List<DetalleInscripcion> AprobadosPersonal();
 	
-
+	public int delete(int id) throws ParseException;
 }

@@ -1,5 +1,6 @@
 package pe.edu.upeu.CONEIA.daoImpl;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
 import pe.edu.upeu.CONEIA.entity.Rol;
+import pe.edu.upeu.CONEIA.entity.Taller;
 import pe.edu.upeu.CONEIA.entity.VistaDetalleInscripcion;
 import pe.edu.upeu.CONEIA.util.HibernateUtils;
 
@@ -56,7 +58,6 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 	public InscripcionDaoImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
 
 	public int create(Object obj, String str) {
 
@@ -196,7 +197,31 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 		return x;
 	}
 
-	
+	public int delete(int id) throws ParseException {
+		// TODO Auto-generated method stub
+		System.out.println("id de inscripcion" + id);
+		int x = 0;
+		Date date = new Date();
+		
+		//Caso 2: obtener la fecha y salida por pantalla con formato:
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println("Fecha: "+dateFormat.format(date));
+		String fecha = dateFormat.format(date);
+		 Date today = dateFormat.parse(fecha);
+		try {
+			Session s = sessionFactory.getCurrentSession();
+	    	Inscripcion t = s.get(Inscripcion.class, id);
+	    	t.setEstado(3);
+	    	t.setFechaUpdate(today);
+	    	
+	    	s.update(t);	
+	    	x=1;
+		} catch (HibernateException e) {
+			System.out.println("Error al eliminar inscripcion: "+e);
+		}
+		return x;
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<DetalleInscripcion> PendientesPersonales() {
 		// TODO Auto-generated method stub
@@ -453,12 +478,5 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 
 		return lista10;
 	}
-	
-	
-	
-
-	
-	
-	
 
 }
