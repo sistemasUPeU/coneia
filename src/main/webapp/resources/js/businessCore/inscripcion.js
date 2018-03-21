@@ -1010,12 +1010,13 @@ function listarCard() {
 
 				c += '<div class="col s12 m3 l3">'
 
-				c += '		<div id="card-alert" class="card cyan darken-1">'
-				c += '		<div class="card-content white-text" style="height: 66px;">'
-				c += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 21px;">'
-				c += arrayProperties[p].apellido + ', '
-						+ arrayProperties[p].nombre + '</span>'
 				
+				c += '		<div id="card-alert" class="card cyan darken-1">'
+				c += '		<div class="card-content white-text" style="height: 66px; padding: 0px;">'
+				c += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 60px;   text-align: center;">'
+				c += arrayProperties[p].apellido + ', ' + arrayProperties[p].nombre
+						
+						
 				c += '		</div>'
 				c += '		<div class="card-action cyan lighten-5">'
 				c += '			<div class="row">'

@@ -55,7 +55,7 @@ public class ScheduledTasks {
 				/* NOTE: Creating Database Constraints */
 				String dbName = "appconeia_db";
 				String dbUser = "appconeia";
-				String dbPass = "GjHc8qAjdBCOepE5";
+				String dbPass = "cOpu2Vm9qZGtphRg";
 
 				/* NOTE: Creating Path Constraints for folder saving */
 				/* NOTE: Here the backup folder is created for saving inside it */
