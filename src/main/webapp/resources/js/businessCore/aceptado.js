@@ -303,7 +303,17 @@ function verVoucher(url) {
 	u += 'alt="sample"'
 	u += 'data-caption="Esc para volver" >'
 
-	$("#vervoucher").html(u);
+		var b = "";
+	b="<embed src='" + coneia_context_path + '/admin/viewdoc?nombre=' + url + "' width='500' height='375' type='application/pdf'>"
+		
+
+	var tipo = url.split(".")[1];
+	if (tipo=="pdf"){
+		$("#vervoucher").html(b);
+	}else{
+		$("#vervoucher").html(u);
+	}
+	
 	$('.materialboxed').materialbox();
 	$("#modal8").modal('open');
 	

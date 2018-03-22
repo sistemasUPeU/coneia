@@ -105,7 +105,7 @@ div.container {
 
 
 									<div class="row">
-										<div class="col s12 m12 l8">
+										<div class="col s12 m12 l6">
 											<div class="col s12 m6 l6" id="column1"></div>
 											<div class="col s12 m6 l6" id="column2"></div>
 											<div class="row">
@@ -120,12 +120,12 @@ div.container {
 											</div>
 										</div>
 
-										<div class="col s12 m12 l4" id="picture">
+										<div class="col s12 m12 l6" id="picture">
 
-											<img class="materialboxed" style="width: 90%; height: 380px;"
-												src="<c:url value="/resources/files/voucher56.jpg"/>"
-												alt="sample"
-												data-caption="A picture of some deer and tons of trees">
+<!-- 											<img class="materialboxed" style="width: 90%; height: 380px;" -->
+<%-- 												src="<c:url value="/resources/files/voucher56.jpg"/>" --%>
+<!-- 												alt="sample" -->
+<!-- 												data-caption="A picture of some deer and tons of trees"> -->
 
 
 
@@ -196,7 +196,7 @@ div.container {
 
 
 									<div class="row">
-										<div class="col s12 m12 l8">
+										<div class="col s12 m12 l7">
 											<div class="col s12" id="column1d">
 												<div id="table-datatables">
 													<div id="cuerpo" class="container">
@@ -220,12 +220,12 @@ div.container {
 											</div>
 										</div>
 
-										<div class="col s12 m12 l4" id="picture_del">
+										<div class="col s12 m12 l5" id="picture_del">
 
-											<img class="materialboxed" style="width: 90%; height: 380px;"
-												src="<c:url value="/resources/files/voucher56.jpg"/>"
-												alt="sample"
-												data-caption="A picture of some deer and tons of trees">
+<!-- 											<img class="materialboxed" style="width: 90%; height: 380px;" -->
+<%-- 												src="<c:url value="/resources/files/voucher56.jpg"/>" --%>
+<!-- 												alt="sample" -->
+<!-- 												data-caption="A picture of some deer and tons of trees"> -->
 
 										</div>
 

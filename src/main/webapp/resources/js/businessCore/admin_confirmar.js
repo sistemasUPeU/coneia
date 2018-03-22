@@ -77,15 +77,28 @@ function confirmarModal(id) {
 
 			var u = "";
 			// u += '<div id="img_open" class="material-placeholder">'
-			u += '<img class="materialboxed" '
-			u += '	style="width: 100%; height: 330px; "'
+			u += '<div class="container" style="width:80%"><img class="materialboxed" '
+			u += '	style=" height: 330px; "'
 			u += 'src="' + coneia_context_path + '/resources/files/'
 					+ tipo[i].url + '" '
 
 			u += 'alt="sample"'
-			u += 'data-caption="Esc para volver" >'
+			u += 'data-caption="Esc para volver" ></div>'
+				
+				
+				var b = "";
+			b="<embed src='" + coneia_context_path + '/admin/viewdoc?nombre=' + tipo[i].url + "' style='width: 100%; height: 330px; ' type='application/pdf'>"
+				
 
-			$("#picture").html(u);
+			var tipofile = tipo[i].url.split(".")[1];
+			if (tipofile=="pdf"){
+				$("#picture").html(b);
+			}else{
+				$("#picture").html(u);
+			}
+				
+
+			
 			$('.materialboxed').materialbox();
 		}
 
@@ -552,13 +565,19 @@ function showTable() {
 						+ arrayProperties[i].idinscripcion);
 
 		u = "";
-		u += '<img class="materialboxed" '
-		u += '	style="width: 90%; height: 380px; "'
+		u += '<div class="container" style="width:80%"><img class="materialboxed" '
+		u += '	style="height: 380px; "'
 		u += 'src="' + coneia_context_path + '/resources/files/'
 				+ arrayProperties[i].url + '" '
 		u += 'alt="sample"'
-		u += 'data-caption="Esc para volver" >'
+		u += 'data-caption="Esc para volver" ></div>'
 
+			
+			var c = "";
+		c="<embed src='" + coneia_context_path + '/admin/viewdoc?nombre=' + arrayProperties[i].url + "' style='width: 100%; height: 540px; ' type='application/pdf'>"
+			
+
+					
 		a += "<tr><td  >";
 		a += cont;
 		a += "</td>";
@@ -644,7 +663,13 @@ function showTable() {
 						}
 					});
 
-	$("#picture_del").html(u);
+	
+	var tipod = arrayProperties[i].url.split(".")[1];
+	if (tipod=="pdf"){
+		$("#picture_del").html(c);
+	}else{
+		$("#picture_del").html(u);
+	}
 	$('.materialboxed').materialbox();
 	$("#message_del").val("");
 	$("#message_del").prop('disabled', true);
