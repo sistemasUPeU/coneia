@@ -78,13 +78,13 @@
 						</div>
 
 						<div id="modal8" class="modal modal-fixed-footer"
-							style="width: 50%; height: 100%;">
+							style="width: 65%; height: 100%;">
 
 							<div class="modal-content modal-form">
 
 
 
-								<div class="container" id="vervoucher" style="width: 70%"></div>
+								<div class="container" id="vervoucher" style="width: 75%"></div>
 								
 								<br>
 							</div>

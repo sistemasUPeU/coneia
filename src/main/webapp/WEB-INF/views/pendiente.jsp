@@ -28,12 +28,12 @@ div.container {
 }
 
 #modal3 {
-	width: 60%;
+	width: 78%;
 	height: 60%;
 }
 
 #modal4 {
-	width: 85%;
+	width: 87%;
 	height: 100%;
 }
 

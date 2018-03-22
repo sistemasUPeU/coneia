@@ -304,7 +304,7 @@ function verVoucher(url) {
 	u += 'data-caption="Esc para volver" >'
 
 		var b = "";
-	b="<embed src='" + coneia_context_path + '/admin/viewdoc?nombre=' + url + "' width='500' height='375' type='application/pdf'>"
+	b="<embed src='" + coneia_context_path + '/admin/viewdoc?nombre=' + url + "' style='width:100%; height:500px' type='application/pdf'>"
 		
 
 	var tipo = url.split(".")[1];
