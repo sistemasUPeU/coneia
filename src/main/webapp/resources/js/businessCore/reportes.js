@@ -440,7 +440,7 @@ function showTable(target) {
 };
 
 function createTable2() {
-	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered' >";
+	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered'>";
 	d += "<thead>";
 	d += "<tr>";
 	d += "<th>Nro</th>";

@@ -95,6 +95,8 @@ public class LoginController {
 							x = 2;//ha sido aprobado
 						}else {
 							x = 4; //ha sido aprobado pero no hay una activacion general;
+							session.setAttribute("nombre", personaMap.get("nombre"));
+							session.setAttribute("apellidos", personaMap.get("apellidos"));
 						}
 
 						
