@@ -52,7 +52,8 @@
 								<div class="input-field col s12 m4 l4">
 									<i class="material-icons prefix"> call_split</i> <select
 										id="selected" required>
-										<option value="0" disabled selected>Seleccione una opción</option>
+										<option value="0" disabled selected>Seleccione una
+											opción</option>
 										<option value="1">Inscripción personal</option>
 										<option value="2">Inscripción por delegación</option>
 
@@ -62,10 +63,15 @@
 									<i class="material-icons prefix">explore</i> <select id="set"
 										required disabled>
 
-
-
 									</select> <label>Personalizar</label>
 								</div>
+
+<!-- 								<div class="input-field col s12 m3 l3" style="z-index: 2;"> -->
+<!-- 									<i class="material-icons prefix">extension</i> <input -->
+<!-- 										type="text" id="univ" name="univ" -->
+<!-- 										class="validate autocomplete univ" required> -->
+<!-- 									<label for="univ">Universidad</label> -->
+<!-- 								</div> -->
 							</div>
 							<br>
 							<div class="row">
@@ -135,12 +141,7 @@
 	<script
 		src="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></c:url>"
 		type="text/javascript"></script>
-	<script
-		src="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js'></c:url>"
-		type="text/javascript"></script>
-	<script
-		src="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js'></c:url>"
-		type="text/javascript"></script>
+
 	<script
 		src="<c:url value='https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js'></c:url>"
 		type="text/javascript"></script>
@@ -155,7 +156,7 @@
 			checkSize();
 
 		});
-		
+
 		$(window).on('resize', function() {
 			checkSize()
 		});
@@ -163,16 +164,15 @@
 		function checkSize() {
 			if ($(window).width() < 600) {
 				// your code here
-			
+
 				$("#foot1").addClass("center");
 				$("#foot2").addClass("center").removeClass("right");
-				
 
 			} else {
 
 				$("#foot1").removeClass("center");
 				$("#foot2").removeClass("center").addClass("right");
-				
+
 			}
 		}
 	</script>

@@ -11,6 +11,150 @@ $(document).ready(function() {
 
 
 	showTable();
+	
+	$('input.univ').autocomplete({
+		data : {
+			"Universidad Nacional Mayor de San Marcos" : null,
+			"Universidad Nacional de Ingeniería" : null,
+			"Universidad Nacional Agraria La Molina" : null,
+			"Universidad Nacional Federico Villarreal" : null,
+			"Universidad Nacional del Callao" : null,
+			"Universidad Nacional de Educación Enrique Guzmán y Valle" : null,
+			"Universidad Nacional José Faustino Sánchez Carrión" : null,
+			"Pontificia Universidad Católica del Perú" : null,
+			"Universidad del Pacífico" : null,
+			"Universidad de Lima" : null,
+			"Universidad de San Martín de Porres" : null,
+			"Universidad Femenina del Sagrado Corazón" : null,
+			"Universidad Inca Garcilaso de la Vega" : null,
+			"Universidad Ricardo Palma" : null,
+			"Universidad Peruana Unión" : null,
+			"Universidad Marcelino Champagnat" : null,
+			"Universidad Peruana de Ciencias Aplicadas" : null,
+			"Universidad San Ignacio de Loyola" : null,
+			"Universidad Alas Peruanas" : null,
+			"Universidad Norbert Wiener" : null,
+			"Asociación Universidad Privada San Juan Bautista" : null,
+			"Universidad Tecnológica del Perú" : null,
+			"Universidad Católica Sedes Sapientiae" : null,
+			"Universidad Científica del Sur" : null,
+			"Universidad Peruana de Ciencia e Informática" : null,
+			"Universidad Antonio Ruiz de Montoya" : null,
+			"Universidad ESAN" : null,
+			"Universidad Las Américas" : null,
+			"Universidad Privada Telesup" : null,
+			"Facultad de Teología Pontificia y Civil de Lima" : null,
+			"Universidad Nacional Tecnológica del Cono Sur de Lima" : null,
+			"Universidad Nacional de Cañete" : null,
+			"Universidad Nacional de Barranca" : null,
+			"Universidad Privada Sergio Bernales" : null,
+			"Universidad Peruana Simón Bolívar" : null,
+			"Universidad de Ciencias y Humanidades" : null,
+			"Universidad Peruana de Integración Global" : null,
+			"Universidad Autónoma del Perú" : null,
+			"Universidad Privada Arzobispo Loayza" : null,
+			"Universidad Le Cordon Bleu" : null,
+			"Universidad Jaime Bausate y Meza" : null,
+			"Universidad de Ciencias y Artes de América Latina" : null,
+			"Universidad Peruana de Arte Orval" : null,
+			"Universidad Peruana de Investigación y Negocios" : null,
+			"Universidad San Andrés" : null,
+			"Universidad Interamericana para el Desarrollo" : null,
+			"Universidad Juan Pablo II" : null,
+			"Universidad de Ingeniería y Tecnología" : null,
+			"Universidad María Auxiliadora" : null,
+			"Universidad Santo Domingo de Guzmán" : null,
+			"Universidad Privada Peruano Alemana" : null,
+			"Universidad Nacional Santiago Antúnez de Mayolo" : null,
+			"Universidad Nacional del Santa" : null,
+			"Universidad Católica Los Ángeles de Chimbote" : null,
+			"Universidad San Pedro" : null,
+			"Universidad Nacional de Cajamarca" : null,
+			"Universidad Privada Antonio Guillermo Urrelo" : null,
+			"Universidad Nacional de Jaén" : null,
+			"Universidad Nacional Autónoma de Chota" : null,
+			"Universidad Nacional de Trujillo" : null,
+			"Universidad Privada Antenor Orrego" : null,
+			"Universidad César Vallejo" : null,
+			"Universidad Privada del Norte" : null,
+			"Universidad Católica de Trujillo Benedicto XVI" : null,
+			"Universidad Privada de Trujillo" : null,
+			"Universidad Privada Leonardo Da Vinci" : null,
+			"Universidad Nacional Pedro Ruiz Gallo" : null,
+			"Universidad Particular de Chiclayo" : null,
+			"Universidad Católica Santo Toribio de Mogrovejo" : null,
+			"Universidad Señor de Sipán" : null,
+			"Universidad Privada Juan Mejía Baca" : null,
+			"Universidad de Lambayeque" : null,
+			"Universidad Nacional de Piura" : null,
+			"Universidad de Piura" : null,
+			"Universidad Nacional de Frontera" : null,
+			"Universidad Nacional de Tumbes" : null,
+			"Universidad Nacional Micaela Bastidas de Apurímac" : null,
+			"Universidad Tecnológica de los Andes" : null,
+			"Universidad Nacional José María Arguedas" : null,
+			"Universidad Nacional de San Agustín" : null,
+			"Universidad Católica de Santa María" : null,
+			"Universidad Católica San Pablo" : null,
+			"Universidad Ciencias de la Salud" : null,
+			"Universidad Autónoma San Francisco" : null,
+			"Universidad La Salle" : null,
+			"Universidad Privada Autónoma del Sur" : null,
+			"Universidad Nacional de San Cristóbal de Huamanga" : null,
+			"Universidad de Ayacucho Federico Froebel" : null,
+			"Universidad Nacional de San Antonio Abad del Cusco" : null,
+			"Universidad Andina del Cusco" : null,
+			"Universidad Peruana Austral del Cusco" : null,
+			"Universidad Privada Líder Peruana" : null,
+			"Universidad Global del Cusco" : null,
+			"Universidad José Carlos Mariátegui" : null,
+			"Universidad Nacional de Moquegua" : null,
+			"Universidad Nacional del Altiplano" : null,
+			"Universidad Andina Néstor Cáceres Velásquez" : null,
+			"Universidad Nacional de Juliaca" : null,
+			"Universidad Privada San Carlos" : null,
+			"Universidad Nacional Jorge Basadre Grohmann" : null,
+			"Universidad Privada de Tacna" : null,
+			"Universidad Latinoamericana CIMA" : null,
+			"Universidad Nacional de Huancavelica" : null,
+			"Universidad para el Desarrollo Andino" : null,
+			"Universidad Nacional Hermilio Valdizán" : null,
+			"Universidad de Huánuco" : null,
+			"Universidad Nacional San Luis Gonzaga de Ica" : null,
+			"Universidad Privada de Ica" : null,
+			"Universidad Privada Ada A. Byron" : null,
+			"Universidad Nacional del Centro del Perú" : null,
+			"Universidad Peruana Los Andes" : null,
+			"Universidad Continental" : null,
+			"Universidad Peruana del Centro" : null,
+			"Universidad Privada de Huancayo Franklin Roosevelt" : null,
+			"Universidad Santo Tomás de Aquino de Ciencia e Integración" : null,
+			"Universidad Nacional Daniel Alcides Carrión" : null,
+			"Universidad Nacional Toribio Rodríguez de Mendoza de Amazonas" : null,
+			"Universidad de la Amazonia Mario Peláez Bazán" : null,
+			"Universidad Nacional de la Amazonia Peruana" : null,
+			"Universidad Científica del Perú" : null,
+			"Universidad Peruana del Oriente" : null,
+			"Universidad Privada de la Selva Peruana" : null,
+			"Universidad Nacional Amazónica de Madre de Dios" : null,
+			"Universidad Nacional Agraria de la Selva" : null,
+			"Universidad Nacional de San Martín" : null,
+			"Universidad Nacional de Ucayali" : null,
+			"Universidad Nacional Intercultural de la Amazonia" : null,
+			"Universidad Privada de Pucallpa" : null
+
+		},
+		limit : 3, // The max amount of results that can be shown at once.
+		// Default: Infinity.
+		onAutocomplete : function(val) {
+
+		},
+		minLength : 0, // The minimum length of
+	// the input for the
+	// autocomplete
+	// to start. Default: 1.
+	});
+	
 
 });
 
@@ -92,9 +236,12 @@ function buscar(e) {
 	filtro = $("#set").val();
 
 	fecha = $("#fecha").val();
+	uni = $("#uni").val();
 
-	if (fecha != "" && cambio != "" && filtro != "" && filtro != null) {
+	
+	if (cambio != "" && filtro != "" && filtro != null) {
 
+		
 		$.get(coneia_context_path + "/admin/tables", {
 			op : cambio,
 			fecha : fecha
@@ -364,24 +511,64 @@ function showTable(target) {
 	$("#table").append(createTable2());
 	$("#data1").empty();
 	$("#data1").append(a);
+	var d = new Date();
 
+	var month = d.getMonth()+1;
+	var day = d.getDate();
+
+	var current_date = ((''+day).length<2 ? '0' : '') + day + ' / ' +
+	    ((''+month).length<2 ? '0' : '') + month + ' / ' + d.getFullYear();
+
+	var tipo_n= $( "#selected option:selected" ).text();
+	var personalizar_n = $( "#set option:selected" ).text();
 	$("#data-table-row-grouping1")
 			.dataTable(
 
 					{
 						dom : 'Bfrtip',
 						// buttons : [ 'copy', 'csv', 'excel', 'pdf', 'print' ],
-						buttons : [ 'excel' ],
+//						buttons : [ 'excel' ],
 						buttons : [ {
-							extend : 'excel',
+							extend : 'excelHtml5',
 							text : 'Exportar a excel',
 							exportOptions : {
 								modifier : {
 									page : 'all'
 								}
 							},
-							messageTop : 'Reporte de inscripciones confirmadas CONEIA 2018 - '
-									+ fecha
+							messageTop : 'Reporte de inscripciones confirmadas CONEIA 2018',
+								
+								    header:false,
+								    customize: function ( xlsx ) {
+								        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+								       
+								   
+								        //Bold Header Row
+								        $('row[r=3] c', sheet).attr( 's', '2' );
+								        $('row[r=4] c', sheet).attr( 's', '2' );
+								        $('row[r=5] c', sheet).attr( 's', '2' );
+								        $('row[r=7] c', sheet).attr( 's', '2' );
+								        //Make You Input Cells Bold Too
+								        $('c[r=A1]', sheet).attr( 's', '51' );
+								        $('c[r=A2]', sheet).attr( 's', '51' );
+								    },
+								    customizeData: function(data){
+								        //We want the first line so we disabled the header above. Let's add in our descriptions. Then we're going to add them to the top of the body and do the bolding ourselves with the customize function.
+								        var desc = [
+								        	['',''],
+								        	['Especificación',personalizar_n],
+								            ['Tipo de inscripcion',tipo_n],
+								            ['Fecha de descarga',current_date]
+								        	
+								        ];
+								        data.body.unshift(data.header);
+								        for (var i = 0; i < desc.length; i++) {
+								            data.body.unshift(desc[i]);
+								        };
+								    }
+									
+									
+									
 						} ],
 						"pageLength" : 10,
 						"bPaginate" : true,

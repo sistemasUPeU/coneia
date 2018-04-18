@@ -11,14 +11,14 @@ $(document).ready(function() {
 	autocomplete();
 	$("#switcher").prop('checked', true);
 	$("#mensaje_info").show();
-	
+
 	getPrecios();
 });
 
-var precio_delegacion=0;
-var precio_alumno=0;
-var precio_profesional=0;
-function getPrecios(){
+var precio_delegacion = 0;
+var precio_alumno = 0;
+var precio_profesional = 0;
+function getPrecios() {
 	$.get("admin/getPrecios", function(data) {
 
 		con = JSON.parse(data);
@@ -26,16 +26,13 @@ function getPrecios(){
 		$.each(con, function(index, obj) {
 			var estado = obj.estado;
 			if (estado == 1) {
-				
-				precio_delegacion=obj.delegacion;
-				precio_alumno=obj.alumno;
-				precio_profesional=obj.profesional;
-			} 
 
+				precio_delegacion = obj.delegacion;
+				precio_alumno = obj.alumno;
+				precio_profesional = obj.profesional;
+			}
 
 		});
-		
-		
 
 	})
 }
@@ -44,7 +41,7 @@ $(window).on('resize', function() {
 	check()
 });
 
-// function to catch the dashboard´s width when it changes  - works on Chrome
+// function to catch the dashboard´s width when it changes - works on Chrome
 function check() {
 	if ($(window).width() < 600) {
 		listarReporteMini();
@@ -60,9 +57,9 @@ function check() {
 
 $("#switcher").on("change", function() {
 	var status = $(this).prop('checked');
-	
+
 	if (status == false) {
-		
+
 		$("#switcher").prop('checked', true);
 	}
 });
@@ -258,20 +255,20 @@ drEvent.on('dropify.afterClear', function(event, element) {
 // function to catch the change on select input (profesional - estudiante)
 $("#select").change(function() {
 	change = $("#select").val();
-	
+
 	if (change == 2) {
 		$("#div_uni").addClass("hide");
 		$("#div_bus").removeClass("hide");
 		$("#importe_profesional").val('170')
-//		costo_inscripcion = $("#importe_profesional").val(); // 170 soles
+		// costo_inscripcion = $("#importe_profesional").val(); // 170 soles
 		costo_inscripcion = precio_profesional;
-		
+
 		$(".select-dropdown").attr("name", "nombrecillo");
 	} else {
 		$("#div_bus").addClass("hide");
 		$("#div_uni").removeClass("hide");
 		$("#importe_alumno").val('140');
-//		costo_inscripcion = $("#importe_alumno").val(); // 140 soles
+		// costo_inscripcion = $("#importe_alumno").val(); // 140 soles
 		costo_inscripcion = precio_alumno;
 		$(".select-dropdown").attr("name", "nombrecillo");
 	}
@@ -297,7 +294,6 @@ $("#select").change(function() {
 
 	});
 	$("#personal input.validate").each(function() {
-		
 
 		$(this).removeClass("validate invalid valid").addClass("validate");
 
@@ -311,7 +307,6 @@ $("input[name=group1]")
 		.click(
 				function() {
 					opcion = $(this).val();
-					
 
 					if (opcion == 1) {
 						$("#table-datatables").hide();
@@ -322,9 +317,10 @@ $("input[name=group1]")
 						$("#personal").hide();
 						$("#table-datatables").show();
 						$("#ml_importe").val('130');
-//						costo_inscripcion = $("#ml_importe").val(); // delegacion 130 soles
-						
-						costo_inscripcion=precio_delegacion;
+						// costo_inscripcion = $("#ml_importe").val(); //
+						// delegacion 130 soles
+
+						costo_inscripcion = precio_delegacion;
 						// --
 						// delegacion
 						var $toastContent = $('<span class="center">La delegación debe estar conformada por 10 alumnos como mínimo.</span>')
@@ -348,7 +344,7 @@ $(".enrollment").click(function() {
 var contador = 1
 function insertarPersona() {
 	if (opcion == 1) {
-		
+
 		if (contador == 1) {
 			if (change == 2) {
 				var nombre = $("#name").val().toUpperCase();
@@ -383,8 +379,6 @@ function insertarPersona() {
 
 			arrayProperties.push(properties);
 
-		
-
 			if ($(window).width() < 600) {
 				listarReporteMini();
 			} else {
@@ -398,11 +392,10 @@ function insertarPersona() {
 
 			contador++
 		} else {
-			
+
 		}
 
 	} else {
-		
 
 	}
 };
@@ -412,16 +405,14 @@ function validateFirstStep() {
 	var validation = true;
 	if ($('.step').first().find('input[type="radio"]:checked').length === 0) {
 		validation = false;
-	
 
 	} else {
-		
 
 		if (arrayProperties.length === 0) {
 			if (opcion == 1) {
-				
+
 				if ($("#select").val() == null) {
-					
+
 					validation = false;
 				} else {
 					validation = true;
@@ -437,18 +428,14 @@ function validateFirstStep() {
 			}
 		} else {
 			if (opcion == 1) {
-				
 
 			} else {
-		
 
 				if (arrayProperties.length >= 10) {
 					alertify.confirm('Confirmación',
 							'¿Seguro(a) que no desea agregar a alguien mas?',
 							function() {
 								alertify.success('Ok');
-
-							
 
 								if ($(window).width() < 600) {
 									listarReporteMini();
@@ -463,7 +450,7 @@ function validateFirstStep() {
 
 							}, function() {
 								alertify.error('Cancel')
-								
+
 								$('.stepper').prevStep();
 
 							});
@@ -498,15 +485,12 @@ $("#backFirst").click(function() {
 
 function nextStepFirstHandler() {
 
-
 	if (validateFirstStep()) {
 		insertarPersona();
-		
 
 		$('.stepper').nextStep();
 	} else {
 		// $('.stepper').getStep($('.stepper').getActiveStep()).destroyFeedback();
-		
 
 		$('.stepper').destroyFeedback();
 		// $('#first').removeClass('active').addClass('wrong');
@@ -517,9 +501,8 @@ function nextStepFirstHandler() {
 var open_modal = 0;
 var contador_dele = 1;
 function acceptHandlerModal() {
-	
-	if (open_modal == 0) {
 
+	if (open_modal == 0) {
 
 		var nombre = $("#ml_name").val().toUpperCase();
 		var apellido = $("#ml_last_name").val().toUpperCase();
@@ -548,7 +531,6 @@ function acceptHandlerModal() {
 
 		arrayProperties.push(properties);
 		var data = JSON.stringify(arrayProperties)
-	
 
 		contador_dele++;
 
@@ -575,8 +557,6 @@ function acceptHandlerModal() {
 
 		arrayProperties[pos].correo = correomod;
 
-	
-
 		$("#modal2").modal("close");
 
 		listarCard();
@@ -589,7 +569,6 @@ function acceptHandlerModal() {
 		$('.stepper').destroyFeedback();
 		$('.stepper').getStep($('.stepper').getActiveStep()).removeClass(
 				'wrong');
-		
 
 		crearCard();
 
@@ -599,7 +578,7 @@ function acceptHandlerModal() {
 		$('.stepper').destroyFeedback();
 		$('.stepper').getStep($('.stepper').getActiveStep()).removeClass(
 				'wrong');
-	
+
 	}
 }
 
@@ -615,18 +594,15 @@ $("#accept")
 		.click(
 				function(e) {
 					e.preventDefault();
-					
 
 					var file = $("#file-input").val();
 
 					var form = $('#lastStepForm')[0];
-
+					var voucher = $("#voucher").val();
 					// Create an FormData object
 					var datosUploadFile = new FormData(form);
 
-			
-
-					if (file != "") {
+					if (file != "" && voucher != "") {
 
 						alertify
 								.confirm(
@@ -634,7 +610,7 @@ $("#accept")
 										'Esta seguro(a) de subir este archivo?',
 										function() {
 											alertify.success('Ok');
-											
+
 											var data = JSON
 													.stringify(arrayProperties);
 											// var da =
@@ -647,7 +623,7 @@ $("#accept")
 															},
 															function(response,
 																	status) {
-															
+
 																if (response != 0) {
 																	datosUploadFile
 																			.append(
@@ -667,7 +643,6 @@ $("#accept")
 
 																				success : function(
 																						data) {
-																					
 
 																					if (data == 1) {
 																						alertify
@@ -701,7 +676,7 @@ $("#accept")
 																				},
 																				error : function(
 																						e) {
-																					
+
 																					alertify
 																							.alert(
 																									'Error',
@@ -745,11 +720,14 @@ $("#accept")
 										});
 
 					} else {
-						alertify.alert('Error', 'Suba un documento por favor',
-								function() {
-									alertify.success('Ok');
+						alertify
+								.alert(
+										'Error',
+										'Suba un documento o complete el numero de operación por favor',
+										function() {
+											alertify.success('Ok');
 
-								})
+										})
 					}
 
 				})
@@ -760,7 +738,7 @@ function listar() {
 	var cont = 1;
 
 	for ( var i in arrayProperties) {
-	
+
 		s += "<tr><td  >";
 		s += cont;
 		s += "</td>";
@@ -833,7 +811,7 @@ var run = 0;
 function crearCard() {
 
 	if (cont == move) {
-	
+
 		var h = "";
 		h += '<div class="row" id="dash_' + contadiv + '">'
 		h += '</div>'
@@ -842,11 +820,10 @@ function crearCard() {
 		var esconder = contadiv - 1;
 
 		var m = move - 1;
-		
+
 		var b = "";
 
 		for (m; m < arrayProperties.length; m++) {
-	
 
 			b += '<div class="col s12 m6 l3">'
 
@@ -894,24 +871,23 @@ function crearCard() {
 		move = cont + 8;
 		contadiv++;
 		cont++;
-	
+
 		$('#pagination-long').html('');
 		var last = contadiv - 1;
-		$('#pagination-long').materializePagination(
-				{
-					align : 'center',
-					lastPage : last,
-					firstPage : 1,
-					useUrlParameter : false,
-					onClickCallback : function(requestedPage) {
-						
-						var back = requestedPage - 1
-						var forward = requestedPage + 1
-						$("#dash_" + back).hide();
-						$("#dash_" + forward).hide();
-						$("#dash_" + requestedPage).show();
-					}
-				});
+		$('#pagination-long').materializePagination({
+			align : 'center',
+			lastPage : last,
+			firstPage : 1,
+			useUrlParameter : false,
+			onClickCallback : function(requestedPage) {
+
+				var back = requestedPage - 1
+				var forward = requestedPage + 1
+				$("#dash_" + back).hide();
+				$("#dash_" + forward).hide();
+				$("#dash_" + requestedPage).show();
+			}
+		});
 
 	} else {
 
@@ -919,7 +895,6 @@ function crearCard() {
 		var p = move - 9;
 		// var run = 1;
 		for (p; p < arrayProperties.length; p++) {
-			
 
 			c += '<div class="col s12 m3 l3">'
 
@@ -971,14 +946,14 @@ function crearCard() {
 
 	} else {
 		for (var j = 0; j < contadiv - 2; j++) {
-		
+
 			$(".pagination.center-align li:last-child").click()
 		}
 	}
 
 	// $("#ui-alert").html(b);
 }
-//function to list the card-group
+// function to list the card-group
 function listarCard() {
 	var size = arrayProperties.length
 	var exitdiv = contadiv - 1;
@@ -987,7 +962,7 @@ function listarCard() {
 	var p = 0;
 	var c = "";
 	for (var k = 0; k < exitdiv; k++) {
-	
+
 		c = "";
 		if (k == 0) {
 			limite = p + 8;
@@ -998,25 +973,21 @@ function listarCard() {
 
 		for (p; p < size; p++) {
 
-
 			if (p == limite) {
-			
+
 				var mos = k + 1;
-			
 
 				break;
 			} else {
-			
 
 				c += '<div class="col s12 m3 l3">'
 
-				
 				c += '		<div id="card-alert" class="card cyan darken-1">'
 				c += '		<div class="card-content white-text" style="height: 66px; padding: 0px;">'
 				c += '			<span class="card-title white-text" style="font-size: 17px; font-weight: bold;  line-height: 60px;   text-align: center;">'
-				c += arrayProperties[p].apellido + ', ' + arrayProperties[p].nombre
-						
-						
+				c += arrayProperties[p].apellido + ', '
+						+ arrayProperties[p].nombre
+
 				c += '		</div>'
 				c += '		<div class="card-action cyan lighten-5">'
 				c += '			<div class="row">'
@@ -1051,7 +1022,7 @@ function listarCard() {
 			run++;
 		}
 		var mos = k + 1;
-	
+
 		$("#dash_" + mos).html('');
 		$("#dash_" + mos).html(c);
 
@@ -1111,7 +1082,7 @@ function listarReporte() {
 			.dataTable(
 
 					{
-						
+
 						responsive : {
 							details : false
 						},
@@ -1134,9 +1105,7 @@ function listarReporte() {
 								display) {
 							var api = this.api(), data;
 
-							
 							var size = arrayProperties.length;
-							
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -1170,7 +1139,7 @@ function listarReporteMini() {
 	var a = "";
 	var cont = 1;
 	for ( var i in arrayProperties) {
-		
+
 		a += "<tr><td  >";
 
 		a += arrayProperties[i].nombre;
@@ -1195,7 +1164,7 @@ function listarReporteMini() {
 			.dataTable(
 
 					{
-						
+
 						responsive : {
 							details : false
 						},
@@ -1221,7 +1190,6 @@ function listarReporteMini() {
 							//
 							// //discount
 							var size = arrayProperties.length;
-							
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -1256,7 +1224,7 @@ function listarReporteMedium() {
 	var a = "";
 	var cont = 1;
 	for ( var i in arrayProperties) {
-		
+
 		a += "<tr><td  >";
 		a += cont;
 		a += "</td>";
@@ -1313,7 +1281,6 @@ function listarReporteMedium() {
 							//
 							// //discount
 							var size = arrayProperties.length;
-							
 
 							// Remove the formatting to get integer data for
 							// summation
@@ -1464,8 +1431,6 @@ function createModal(id, nombre) {
 
 };
 
-
-
 jQuery.validator.setDefaults({
 	debug : true,
 	success : "valid"
@@ -1501,7 +1466,6 @@ $('#modal1').modal(
 				// Modal and
 				// trigger parameters available.
 
-
 			},
 			complete : function() {
 
@@ -1513,7 +1477,6 @@ $('#modal1').modal(
 					$("#modal1 label").each(function() {
 
 						// $(this).removeClass("modal abierto");
-					
 
 						if (breaking % 2 == 0) {
 
@@ -1529,7 +1492,6 @@ $('#modal1').modal(
 
 					$(".modal-form input.validate").each(
 							function() {
-							
 
 								$(this).removeClass("validate invalid valid")
 										.addClass("validate");
@@ -1549,14 +1511,13 @@ $('#modal1').modal(
 					var size = $(".modal-form label").length;
 
 					$("#modal1 label").each(function() {
-					
+
 						$(this).removeClass("active");
-						
+
 					});
 
 					$(".modal-form input.validate").each(
 							function() {
-							
 
 								$(this).removeClass("validate invalid valid")
 										.addClass("validate");
@@ -1584,7 +1545,7 @@ $("#modal_confirm").click(function() {
 });
 
 $("#second-header").click(function(e) {
-	
+
 	e.stopPropagation();
 
 });
@@ -1652,7 +1613,6 @@ function modificar(id) {
 
 		$(this).addClass("active");
 
-		
 	});
 }
 
@@ -1667,7 +1627,6 @@ $('#modal2').modal({
 	endingTop : '10%', // Ending top style attribute
 	ready : function(modal, trigger) { // Callback for Modal open. Modal and
 		// trigger parameters available.
-
 
 	},
 	complete : function() {
@@ -1689,7 +1648,6 @@ $("#modal_edit_change").click(function() {
 
 		$(this).addClass("active");
 
-		
 	});
 
 	$("#modal2 input.validate").each(function() {
@@ -1716,6 +1674,5 @@ $("#cleaner").click(
 					}, function() {
 						alertify.error('Cancel')
 
-						
 					});
 		})

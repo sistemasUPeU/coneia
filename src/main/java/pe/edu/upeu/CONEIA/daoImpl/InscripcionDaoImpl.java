@@ -362,23 +362,34 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 		// TODO Auto-generated method stub
 		System.out.println("dao imp personal");
 		Date fechain = null;
-		try {
-			fechain = cambiarFecha(fecha);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		System.out.println("fecha" + fechain);
+	
+	
+		System.out.println("fecha" + fecha);
 		List<DetalleInscripcion> lista5 = new ArrayList<>();
 		Session s = sessionFactory.getCurrentSession();
 
 		try {
 
-			Query query = s.createQuery(
-					"select d from DetalleInscripcion d join fetch d.persona a join fetch d.inscripcion b join fetch VistaDetalleInscripcion c on c.idinscripcion = b.idinscripcion where c.cuenta = 1 and b.estado = 1 and b.fecha = :fecha");
-			query.setParameter("fecha", fechain);
+			if(fecha.isEmpty()) {
+				Query query = s.createQuery(
+						"select d from DetalleInscripcion d join fetch d.persona a join fetch d.inscripcion b join fetch VistaDetalleInscripcion c on c.idinscripcion = b.idinscripcion where c.cuenta = 1 and b.estado = 1 ");
 
-			lista5 = query.getResultList();
+				lista5 = query.getResultList();
+			}else {
+				try {
+					fechain = cambiarFecha(fecha);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				Query query = s.createQuery(
+						"select d from DetalleInscripcion d join fetch d.persona a join fetch d.inscripcion b join fetch VistaDetalleInscripcion c on c.idinscripcion = b.idinscripcion where c.cuenta = 1 and b.estado = 1 and b.fecha = :fecha");
+				query.setParameter("fecha", fechain);
+
+				lista5 = query.getResultList();
+			}
+		
 
 			System.out.println("dao impl lista personal> " + lista5);
 
@@ -397,22 +408,35 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 		// TODO Auto-generated method stub
 		System.out.println("dao imp delegacion");
 		Date fechainside = null;
-		try {
-			fechainside = cambiarFecha(fecha);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+	
+
 		List<DetalleInscripcion> lista8 = new ArrayList<>();
 		Session s = sessionFactory.getCurrentSession();
 
 		try {
+			
+			
+			if(fecha.isEmpty()) {
+				Query query = s.createQuery(
+						"select d from DetalleInscripcion d join fetch d.persona a join fetch  d.inscripcion b join fetch VistaDetalleInscripcion c on c.idinscripcion = b.idinscripcion where c.cuenta != 1 and b.estado = 1");
+		
 
-			Query query = s.createQuery(
-					"select d from DetalleInscripcion d join fetch d.persona a join fetch  d.inscripcion b join fetch VistaDetalleInscripcion c on c.idinscripcion = b.idinscripcion where c.cuenta != 1 and b.estado = 1 and b.fecha = :fecha");
-			query.setParameter("fecha", fechainside);
+				lista8 = query.getResultList();
+			}else {
+				try {
+					fechainside = cambiarFecha(fecha);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Query query = s.createQuery(
+						"select d from DetalleInscripcion d join fetch d.persona a join fetch  d.inscripcion b join fetch VistaDetalleInscripcion c on c.idinscripcion = b.idinscripcion where c.cuenta != 1 and b.estado = 1 and b.fecha = :fecha");
+				query.setParameter("fecha", fechainside);
 
-			lista8 = query.getResultList();
+				lista8 = query.getResultList();
+			}
+
+		
 
 			System.out.println("dao impl lista delegacion> " + lista8);
 
