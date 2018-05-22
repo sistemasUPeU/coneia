@@ -14,6 +14,7 @@ function comprobar(){
 		$(".confirmar").css("display","none");
 	}
 }
+
 $(document).ready(function() {
 	$(".ajs-ok").attr("id","alertyboton");
 	$.get("inscrito",null,function(data){
@@ -32,12 +33,14 @@ $(document).ready(function() {
 //	}else{
 //		alert('JONAAAAAS');
 //	}
-	$("input[type=radio][name='lu1']").click(function(){
-		alert("JONAAAAAAS");
+	$('input[type=radio][name=lu1]').change(function(){
+		 console.logg("it's checked"); 
 	});
-	
+//	
 	
 	$('input[type=radio][name=grupo1]').change(function() {
+		$("#two").removeClass("#00e676 green accent-3");
+		$("#two").addClass("#ccff90");
 		if(this.value=="vt1"){
 			//visitas martes
 			$('input[type=radio][name=group1]').prop("disabled",false);
@@ -48,9 +51,30 @@ $(document).ready(function() {
 			$('input[type=radio][name=group4]').prop("disabled",false);
 			$('input[type=radio][name=group3]').prop("checked",false);
 			if(m2==true){
-				m2=false; 
-				counter--;
+				if(j1==true){
+					counter=counter-2;
+					j1=false;
+					m2=false;
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+				}else{
+					counter--;
+					m2=false; 
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+				}
 				aumentarProgreso();
+			}else{
+				if(j1==true){
+					counter--;
+					j1=false;
+					console.log("jejee "+m2+j1);
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+					aumentarProgreso();
+				}
 			}
 			comprobar();
 		}else{
@@ -63,9 +87,30 @@ $(document).ready(function() {
 			$('input[type=radio][name=group4]').prop("disabled",true);
 			$('input[type=radio][name=group4]').prop("checked",false);
 			if(m1==true){
-				m1=false; 
-				counter--;
+				if(j2==true){
+					counter=counter-2;
+					j2=false;
+					m1=false; 
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+				}else{
+					counter--;
+					m1=false; 
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+				}
 				aumentarProgreso();
+			}else{
+				if(j2==true){
+					counter--;
+					j2=false;
+					console.log("jejee "+m1+j2);
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+					aumentarProgreso();
+				}
 			}	
 			comprobar();
 		}
@@ -82,9 +127,32 @@ $(document).ready(function() {
 			$('input[type=radio][name=group1]').prop("checked",false);
 			//tm2 (talleres jueves)
 			if(j2==true){
-				j2=false; 
-				counter--;
+				if(m1==true){
+					counter=counter-2;
+					m1=false;
+					j2=false; 
+					console.log(m1,j2);
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+				}else{
+					counter--;
+					j2=false; 
+					console.log(m1,j2);
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+				}
 				aumentarProgreso();
+			}else{
+				if(m1==true){
+					counter--;
+					m1=false;
+					console.log("jejee"+m1,j2);
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+					aumentarProgreso();
+				}
 			}
 			comprobar();
 		}else{
@@ -96,9 +164,32 @@ $(document).ready(function() {
 			$('input[type=radio][name=group2]').prop("disabled",true);
 			$('input[type=radio][name=group2]').prop("checked",false);
 			if(j1==true){
-				j1=false; 
-				counter--;
+				if(m2==true){
+					counter=counter-2;
+					m2=false;
+					j1=false; 
+					console.log(m2,j1);
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+				}else{
+					counter--;
+					j1=false; 
+					console.log(m2,j1);
+					$("#four").removeClass("#00e676 green accent-3");
+					$("#four").addClass("#ccff90");
+				}
 				aumentarProgreso();
+			}else{
+				if(m2==true){
+					counter--;
+					m2=false;
+					console.log("jejee"+m1,j2);
+					$("#two").removeClass("#00e676 green accent-3");
+					$("#two").addClass("#ccff90");
+					aumentarProgreso();
+				}
 			}
 			comprobar();
 		}
@@ -118,7 +209,7 @@ $(document).ready(function() {
 	}, function(data) {
 		var obj = JSON.parse(data);
 //		alert(obj[0].idtaller)
-		$(".visitaMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".visitaMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '7:30 AM' +' a '+ '1:00 PM' +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			$(".visitaMartes").append('<div class="col s12"><div class="row">'+(i+1)+'. Tema: <b>'+obj[i].tema
@@ -134,7 +225,7 @@ $(document).ready(function() {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".talleresMartes").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '6:30 AM' +' a '+ '1:00 PM' +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			if(typeof obj[i].lugar==="undefined" ||obj[i].lugar===""){
@@ -142,8 +233,8 @@ $(document).ready(function() {
 			}else{
 				place=obj[i].lugar;
 			}
-			$(".talleresMartes").append('<div class="col s12"><div class="row">'+(i+1)+'. Tema: <b>'+obj[i].tema
-					+'</b></div><div class="row">Lugar: '+place+'</div><div class="row">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
+			$(".talleresMartes").append('<div class="col s12"><div class="row">'+(i+1)+'. Lugar: <b>'+obj[i].tema
+					+'</b></div><div class="row">Requisitos: '+place+'</div><div class="row">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
 					'<div class="row"><input class="with-gap" name="group2" type="radio" id="'+obj[i].idtaller+'" onclick="martes2('+obj[i].idtaller+')" disabled><label for="'+obj[i].idtaller+'" style="font-weight:bold">Asistiré</label></div></br></div>');
 		});		
 	});
@@ -153,7 +244,7 @@ $(document).ready(function() {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".visitasJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".visitasJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '7:30 AM' +' a '+ '1:00 PM' +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			if(typeof obj[i].lugar==="undefined" ||obj[i].lugar===""){
@@ -162,7 +253,7 @@ $(document).ready(function() {
 				place=obj[i].lugar;
 			}
 			$(".visitasJueves").append('<div class="col s12"><div class="row">'+(i+1)+'. Tema: <b>'+obj[i].tema
-					+'</b></div><div class="row">Lugar: '+place+'</div><div class="row">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
+					+'</b></div><div class="row">Responsable: '+obj[i].ponente+'</div><div class="row">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
 					'<div class="row"><input class="with-gap" name="group3" type="radio" id="'+obj[i].idtaller+'" onclick="jueves1('+obj[i].idtaller+')" value="'+obj[i].idtaller+'" disabled><label for="'+obj[i].idtaller+'" style="font-weight:bold">Asistiré</label></div></br></div>');
 		});		
 	});
@@ -172,7 +263,7 @@ $(document).ready(function() {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +'</label></div>');
+		$(".talleresJueves").append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '6:30 AM' +' a '+ '1:00 PM' +'</label></div>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			if(typeof obj[i].lugar==="undefined" ||obj[i].lugar===""){
@@ -180,8 +271,8 @@ $(document).ready(function() {
 			}else{
 				place=obj[i].lugar;
 			}
-			$(".talleresJueves").append('<div class="col s12"><div class="row">'+(i+1)+'. Tema: <b>'+obj[i].tema
-					+'</b></div><div class="row">Lugar: '+place+'</div><div class="row">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
+			$(".talleresJueves").append('<div class="col s12"><div class="row">'+(i+1)+'. Lugar: <b>'+obj[i].tema
+					+'</b></div><div class="row">Requisitos: '+place+'</div><div class="row">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
 					'<div class="row"><input class="with-gap" name="group4" type="radio" id="'+obj[i].idtaller+'" onclick="jueves2('+obj[i].idtaller+')" value="'+obj[i].idtaller+'"><label for="'+obj[i].idtaller+'" style="font-weight:bold">Asistiré</label></div></br></div>');
 		});		
 	});
@@ -339,7 +430,6 @@ $(document).ready(function() {
 });
 
 function aumentarProgreso() {
-
 		progreso = (counter/ 10) * 100;
 		$(".determinate").css("width", progreso + "%");
 		$("#progreso").html("");
@@ -347,7 +437,6 @@ function aumentarProgreso() {
 				"<span style='color:grey'><b>"
 						+ [ counter]
 						+ " de 10</b></span>");
-
 }
 
 function lunes1(valor) {
@@ -356,6 +445,10 @@ function lunes1(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();lun1=valor;
+	if(l1==true&&l2==true){
+		$("#one").removeClass("#ccff90");
+		$("#one").addClass("#00e676 green accent-3");
+	}
 }
 
 function lunes2(valor) {
@@ -364,6 +457,11 @@ function lunes2(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();lun2=valor;
+	if(l1==true&&l2==true){
+		$("#one").removeClass("#ccff90");
+		$("#one").addClass("#00e676 green accent-3");
+
+	}
 }
 function martes1(valor) {
 	if(m1==false){
@@ -371,6 +469,10 @@ function martes1(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();mar=valor;
+	if(m1==true){
+		$("#two").removeClass("#ccff90");
+		$("#two").addClass("#00e676 green accent-3");
+	}
 }
 function martes2(valor) {
 	if(m2==false){
@@ -378,6 +480,10 @@ function martes2(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();mar=valor;
+	if(m2==true){
+		$("#two").removeClass("#ccff90");
+		$("#two").addClass("#00e676 green accent-3");
+	}
 }
 function miercoles1(valor) {
 	if(mi1==false){
@@ -385,6 +491,10 @@ function miercoles1(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();mier1=valor;
+	if(mi1==true&&mi2==true&&mi3==true&&mi4==true){
+		$("#three").removeClass("#ccff90");
+		$("#three").addClass("#00e676 green accent-3");
+	}
 }
 function miercoles2(valor) {
 	if(mi2==false){
@@ -392,6 +502,10 @@ function miercoles2(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();mier2=valor;
+	if(mi1==true&&mi2==true&&mi3==true&&mi4==true){
+		$("#three").removeClass("#ccff90");
+		$("#three").addClass("#00e676 green accent-3");
+	}
 }
 function miercoles3(valor) {
 	if(mi3==false){
@@ -399,6 +513,10 @@ function miercoles3(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();mier3=valor;
+	if(mi1==true&&mi2==true&&mi3==true&&mi4==true){
+		$("#three").removeClass("#ccff90");
+		$("#three").addClass("#00e676 green accent-3");
+	}
 }
 function miercoles4(valor) {
 	if(mi4==false){
@@ -406,6 +524,10 @@ function miercoles4(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();mier4=valor;
+	if(mi1==true&&mi2==true&&mi3==true&&mi4==true){
+		$("#three").removeClass("#ccff90");
+		$("#three").addClass("#00e676 green accent-3");
+	}
 }
 function jueves1(valor) {
 	if(j1==false){
@@ -413,6 +535,10 @@ function jueves1(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();jue=valor;
+	if(j1==true){
+		$("#four").removeClass("#ccff90");
+		$("#four").addClass("#00e676 green accent-3");
+	}
 }
 function jueves2(valor) {
 	if(j2==false){
@@ -420,6 +546,10 @@ function jueves2(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();jue=valor;
+	if(j2==true){
+		$("#four").removeClass("#ccff90");
+		$("#four").addClass("#00e676 green accent-3");
+	}
 }
 function viernes1(valor) {
 	if(v1==false){
@@ -427,6 +557,10 @@ function viernes1(valor) {
 		counter++;
 		aumentarProgreso();
 	}comprobar();vie1=valor;
+	if(v1==true&&v2==true){
+		$("#five").removeClass("#ccff90");
+		$("#five").addClass("#00e676 green accent-3");
+	}
 }
 function viernes2(valor) {
 	if(v2==false){
@@ -435,6 +569,10 @@ function viernes2(valor) {
 		aumentarProgreso();
 	}
 	comprobar();vie2=valor;
+	if(v1==true&&v2==true){
+		$("#five").removeClass("#ccff90");
+		$("#five").addClass("#00e676 green accent-3");
+	}
 }
 $(".b1").click(
 		function() {
@@ -478,22 +616,26 @@ $(".confirmar").click(function(){
 		p = $("#p").val(); q = $("#q").val(); r = $("#r").val(); s = $("#s").val();
 
 		array = lun1+","+lun2+","+mar+","+mier1+","+mier2+","+mier3+","+mier4+","+jue+","+vie1+","+vie2+","+a+","+b+","+c+","+d+","+
-		e+","+f+","+g+","+h+","+j+","+k+","+l+","+m+","+n+","+o+","+p+","+r+","+s;
+		e+","+f+","+g+","+h+","+j+","+k+","+l+","+n+","+o+","+p+","+r+","+s;
+		console.log(array);
 	
+		alertify.notify('Guardando información...', 'custom', 3, function(){
 		$.get("talleres",{op:1,array:array},function(data){
 			
-			if(data>=27){
-				
-				var link = coneia_context_path + "/principal";
-				$(".todo").empty();
-				$(".loadin").css("display","block");
-				
-				setTimeout(function() {
+			if(data>=26){
+					var link = coneia_context_path + "/principal";
+					$(".todo").empty();
+					$(".loadin").css("display","block");
 					location.href = link;
-				}, 3000);
+				
+				
+//				setTimeout(function() {
+//					location.href = link;
+//				}, 3000);
 			}else{
 				
 			}
+			});
 		});
 	}
    , function(){ });

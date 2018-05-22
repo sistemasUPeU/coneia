@@ -274,24 +274,24 @@ html {
 				<tr>
 					<td class="firsto">10:00 - 10:30</td>
 					<td class="#7cb342 light-green darken-1">Intervalo Ambiental - Cultural</td>
-					<td colspan="2" class="#7cb342 light-green darken-1">Intervalo Ambiental - Cultural</td>
-				</tr>
+					<td colspan="2" rowspan="2" class="#7cb342 light-green darken-1">Panel - Intervalo Cultural</td>
 				<tr>
 					<td class="firsto">10:30 - 11:00</td>
 					<td rowspan="2" class="#ffc400 amber accent-3">
 					<b><c:out value="${assistance[0].nombre}" /></b><br><c:out value="${assistance[0].ponente}" /><br>Lugar: <c:out value="${assistance[0].lugar}" /></td>
 					<td rowspan="2" class="#ffc400 amber accent-3"><b><c:out value="${assistance[4].nombre}" /></b><br><c:out value="${assistance[4].ponente}" /><br>Lugar: <c:out value="${assistance[4].lugar}" /></td>
-					<td rowspan="3"  class="#ef5350 red lighten-1">
-						<div ><b><c:out value="${conferenciaViernes[0].tema}" /></b><br>Lugar: <c:out value="${conferenciaViernes[0].lugar}" /></div>
-						
-					</td >
+					
+				</tr>
+				<tr>
+					<td class="firsto">11:00 - 11:30</td>
 					<td rowspan="3" class="#69f0ae green accent-2">
 						<div><b><c:out value="${actividadesViernes[0].tema}" /></b><br>Lugar: <c:out value="${actividadesViernes[0].lugar}" /></div>	
 					
 					</td>
-				</tr>
-				<tr>
-					<td class="firsto">11:00 - 11:30</td>
+					<td rowspan="3"  class="#ef5350 red lighten-1">
+						<div ><b><c:out value="${conferenciaViernes[0].tema}" /></b><br>Lugar: <c:out value="${conferenciaViernes[0].lugar}" /></div>
+						
+					</td >
 				</tr>
 				<tr>
 					<td class="firsto">11:30 - 12:00</td>
@@ -299,13 +299,12 @@ html {
 					<td rowspan="2" class="#ffc400 amber accent-3"><b><c:out value="${assistance[5].nombre}" /></b><br><c:out value="${assistance[5].ponente}" /><br>Lugar: <c:out value="${assistance[5].lugar}" /></td>
 				</tr>
 				<tr>
-					<td class="firsto">12:00 - 12:30</td>
-					<td rowspan="4" class="#b2ff59 light-green accent-2" colspan="2">ALMUERZO</td>
-				</tr>
+					<td class="firsto">12:00 - 12:30</td></tr>
 				<tr>
 					<td class="firsto">12:30 - 13:00</td>
 					<td class="#ffcdd2 red lighten-4">Panel</td>
 					<td class="#ffcdd2 red lighten-4">Panel</td>
+					<td rowspan="3" class="#b2ff59 light-green accent-2" colspan="2">ALMUERZO</td>
 				</tr>
 				<tr>
 					<td class="firsto">13:00 - 13:30</td>
@@ -380,7 +379,7 @@ html {
 				</tr>
 				<tr>
 					<td class="firsto">20:00 - 20:30</td>
-					<td rowspan="3" class="#69f0ae green accent-2"><b><c:out value="${actividadesMiercoles[2].tema}" /></b><br>Lugar: <c:out value="${actividadesMiercoles[2].lugar}" /></td>
+					<td rowspan="3" ></td>
 				</tr>
 				<tr>
 					<td class="firsto">20:30 - 21:00</td>
@@ -541,7 +540,7 @@ html {
 					</div>
 					<div class="row center">
 						<div class="col s2 desu">10:00:00 - 10:30:00</div>
-						<div class="col s10 desu">Intervalo Ambientaol - Cultural</div>
+						<div class="col s10 desu">Intervalo Ambiental - Cultural</div>
 				
 					</div>
 					<div class="row center">
@@ -585,10 +584,10 @@ html {
 						<div class="col s10 desu"><b><c:out value="${conferenciaMiercoles[1].tema}" /></b><br><c:out value="${conferenciaMiercoles[1].ponente}" /><br>Lugar: <c:out value="${conferenciaMiercoles[1].lugar}" /></div>
 				
 					</div>
-					<div class="row center">
-						<div class="col s2 desu"><c:out value="${actividadesMiercoles[2].horaI}" /> - <c:out value="${actividadesMiercoles[2].horaF}" /></div>
-						<div class="col s10 desu"><b><c:out value="${actividadesMiercoles[2].tema}" /></b><br>Lugar: <c:out value="${actividadesMiercoles[2].lugar}" /></div>				
-					</div>
+<!-- 					<div class="row center"> -->
+<%-- 						<div class="col s2 desu"><c:out value="${actividadesMiercoles[2].horaI}" /> - <c:out value="${actividadesMiercoles[2].horaF}" /></div> --%>
+<%-- 						<div class="col s10 desu"><b><c:out value="${actividadesMiercoles[2].tema}" /></b><br>Lugar: <c:out value="${actividadesMiercoles[2].lugar}" /></div>				 --%>
+<!-- 					</div> -->
 							</div>
 						</li>
 						<li>
@@ -658,8 +657,8 @@ html {
 				
 					</div>
 					<div class="row center">
-						<div class="col s2 desu">10:00:00 - 10:30:00</div>
-						<div class="col s10 desu">Intervalo Ambientaol - Cultural</div>
+						<div class="col s2 desu">10:00:00 - 11:00:00</div>
+						<div class="col s10 desu">Panel Intervalo - Cultural</div>
 					</div>
 					<div class="row center">
 						<div class="col s2 desu"><c:out value="${conferenciaViernes[0].horaI}" /> - <c:out value="${conferenciaViernes[0].horaF}" /></div>
@@ -668,7 +667,7 @@ html {
 						</div>
 					</div>	
 					<div class="row center">
-						<div class="col s2 desu">12:00:00 - 14:00:00</div>
+						<div class="col s2 desu">12:30:00 - 14:00:00</div>
 						<div class="col s10 desu">ALMUERZO</div>
 					</div>	
 					<div class="row center">

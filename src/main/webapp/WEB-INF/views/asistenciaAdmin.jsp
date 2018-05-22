@@ -1,3 +1,4 @@
+
 <%
 	HttpSession sesion = request.getSession();
 	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
@@ -62,49 +63,54 @@ label {
 	border-color: #31708f;
 	z-index: 999999
 }
-.muestra2{
+
+.muestra2 {
 	margin-left: 35%;
 }
-.fa{
-	width: 35px;height: 35px;margin-right:1em;
+
+.fa {
+	width: 35px;
+	height: 35px;
+	margin-right: 1em;
 }
-#cuerpo{
-	width:85%;
+
+#cuerpo {
+	width: 85%;
 }
+
 @media only screen and (max-width: 900px) {
-	#cuerpo{
-	width:95%;
+	#cuerpo {
+		width: 95%;
 	}
 }
 
 @media only screen and (max-width: 600px) {
-html {
-    font-size: 10px;
+	html {
+		font-size: 10px;
 	}
 	.chip {
-    height: auto;
-    font-size: 10px;
-    
-}
-.modal-trigger,.moe{
-		width:25px;
-		height:25px;
+		height: auto;
+		font-size: 10px;
+	}
+	.modal-trigger, .moe {
+		width: 25px;
+		height: 25px;
 		line-height: 10px;
 	}
-	
-	.modal-trigger i,.moe i{
-		font-size:1.6rem;
-		line-height:25px;	}
-#table{
-	margin-bottom:4em;
-}
-.muestra2{
-	margin-bottom:4em;
-	margin-left: 30%;
-}
-	.fa{
-		width:15px;
-		height:15px;
+	.modal-trigger i, .moe i {
+		font-size: 1.6rem;
+		line-height: 25px;
+	}
+	#table {
+		margin-bottom: 4em;
+	}
+	.muestra2 {
+		margin-bottom: 4em;
+		margin-left: 30%;
+	}
+	.fa {
+		width: 15px;
+		height: 15px;
 	}
 	.terraza {
 		font-size: 12px;
@@ -151,7 +157,8 @@ html {
 
 
 				<div class="section">
-					<div class="container special_row" style="margin-top: 1%;padding-bottom:1px">
+					<div class="container special_row"
+						style="margin-top: 1%; padding-bottom: 1px">
 						<div class="row">
 							<div class="input-field col s12">
 								<i class="material-icons prefix">assignment</i> <select
@@ -169,31 +176,54 @@ html {
 
 					</div>
 					<div class="row muestra" style="width: 95%" style="padding:1px">
-								<div class="chip col l3 s5 left" style="height: auto;margin-bottom: 1em;align-self: left">
-								
-    								<a class="btn-floating fa waves-effect waves-light #ff9100 red accent-3 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="No Asistió" ><i class="material-icons" style="font-size: 20px">done_all</i></a>
-							
-							
-<!-- 									<a class="btn-floating fa waves-effect waves-light #00b0ff light-blue accent-3 accent-3 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Entrada" ><i class="material-icons" style="font-size: 20px">done_all</i></a>    -->
-							
-								
-    								<a class="btn-floating fa waves-effect waves-light #00c853 green accent-4 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Entrada y Salida"><i class="material-icons" style="font-size: 20px">done_all</i></a>
-								
-								</div>
-								
+						<div class="chip col l3 s5 left"
+							style="height: auto; margin-bottom: 1em; align-self: left">
 
-								
-								
-							
-							
+							<a
+								class="btn-floating fa waves-effect waves-light #ff9100 red accent-3 tooltipped"
+								href="#" data-position="bottom" data-delay="50"
+								data-tooltip="No Asistió"><i class="material-icons"
+								style="font-size: 20px">done_all</i></a>
+
+
+							<!-- 									<a class="btn-floating fa waves-effect waves-light #00b0ff light-blue accent-3 accent-3 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Entrada" ><i class="material-icons" style="font-size: 20px">done_all</i></a>    -->
+
+
+							<a
+								class="btn-floating fa waves-effect waves-light #00c853 green accent-4 tooltipped"
+								href="#" data-position="bottom" data-delay="50"
+								data-tooltip="Entrada y Salida"><i class="material-icons"
+								style="font-size: 20px">done_all</i></a>
+
+						</div>
+
+
+
+
+
+
 					</div>
-					
-					<div class="col l9 m9 s12 temon" style="margin-left: 5%"></div>
 
+					<div class="col l9 m9 s12 temon" style="margin-left: 5%"></div>
+					<div id="buscador" style="display: none">
+						<div class="center">
+							
+									<div class="row">
+										<div class="input-field col s12 m6">
+											<i class="material-icons prefix">search</i> <input
+												id="search_box" type="text" class="validate"> <label
+												for="search_box">Busque por dni</label>
+										</div>
+
+									</div>
+								
+						</div>
+
+					</div>
 					<div id="table-datatables">
 						<div id="cuerpo" class="container">
-							
-							
+
+
 							<div id="table" class="row"></div>
 
 
@@ -201,10 +231,13 @@ html {
 						</div>
 
 					</div>
-					
-					<div class="row muestra2"  style=" display:none;margin-top: 1em">
+
+					<div class="row muestra2" style="display: none; margin-top: 1em">
 						<div class="col l6 s4 " style="margin-left: 1em">
-							<a href="#" class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 final">Reporte final <i class="material-icons right" style="font-size: 20px">account_balance_wallet</i></a>
+							<a href="#"
+								class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 final">Reporte
+								final <i class="material-icons right" style="font-size: 20px">account_balance_wallet</i>
+							</a>
 						</div>
 					</div>
 					<div id="modalon" class="modal">
@@ -229,27 +262,33 @@ html {
 
 
 			</section>
-			<div class="row reporte" style="width: 90%;display: none;padding-top:2em">
-			
-					<div class="col s12" style="margin-bottom: 1em"><span id="fecha"
-						style="font-family: 'Lobster Two', cursive;font-size:25px;"></span></div>
-					<div id="table-datatables">
-						<div id="cuerpo" class="container" style="width: 95%;">
-							
-							
-							<div id="table2" class="row" ></div>
+			<div class="row reporte"
+				style="width: 90%; display: none; padding-top: 2em">
+
+				<div class="col s12" style="margin-bottom: 1em">
+					<span id="fecha"
+						style="font-family: 'Lobster Two', cursive; font-size: 25px;"></span>
+				</div>
+				<div id="table-datatables">
+					<div id="cuerpo" class="container" style="width: 95%;">
 
 
+						<div id="table2" class="row"></div>
 
-						</div>
+
 
 					</div>
-					
-					<div class="row muestra2" >
-						<div class="col l6 s4 " style="margin-left: 1em">
-							<a href="" class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 ">volver <i class="material-icons right" style="font-size: 20px">account_balance_wallet</i></a>
-						</div>
+
+				</div>
+
+				<div class="row muestra2">
+					<div class="col l6 s4 " style="margin-left: 1em">
+						<a href=""
+							class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 ">volver
+							<i class="material-icons right" style="font-size: 20px">account_balance_wallet</i>
+						</a>
 					</div>
+				</div>
 			</div>
 		</div>
 
@@ -265,13 +304,12 @@ html {
 		$('.progress').fadeOut('fast');
 		$('#loader-wrap').fadeOut('fast');
 		$('#loader-wrap1').fadeOut('fast');
-		
+
 		$(document).ready(function() {
-			
+
 			checkSize();
 
 		});
-
 
 		$(window).on('resize', function() {
 			checkSize()
@@ -280,19 +318,17 @@ html {
 		function checkSize() {
 			if ($(window).width() < 600) {
 				// your code here
-			
+
 				$("#foot1").addClass("center");
 				$("#foot2").addClass("center").removeClass("right");
-				
 
 			} else {
 
 				$("#foot1").removeClass("center");
 				$("#foot2").removeClass("center").addClass("right");
-				
+
 			}
 		}
-
 	</script>
 
 	<script
@@ -316,7 +352,7 @@ html {
 	<script
 		src="<c:url value='https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js'></c:url>"
 		type="text/javascript"></script>
-		<script
+	<script
 		src="<c:url value='https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js'></c:url>"
 		type="text/javascript"></script>
 	<script

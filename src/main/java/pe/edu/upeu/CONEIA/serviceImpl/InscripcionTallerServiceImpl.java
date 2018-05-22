@@ -33,9 +33,9 @@ public class InscripcionTallerServiceImpl implements InscripcionTallerService{
 	}
 
 	@Override
-	public List<Map<String, Object>> showVistaPersonaTaller(String time) {
+	public List<Map<String, Object>> showVistaPersonaTaller(String time,String dni) {
 		// TODO Auto-generated method stub
-		return itd.showVistaPersonaTaller(time);
+		return itd.showVistaPersonaTaller(time,dni);
 	}
 
 	@Override

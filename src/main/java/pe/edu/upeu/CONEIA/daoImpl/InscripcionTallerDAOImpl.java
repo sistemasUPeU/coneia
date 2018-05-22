@@ -17,7 +17,7 @@ import javax.persistence.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
+import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -88,7 +88,7 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 	}
 
 	@Override
-	public List<Map<String, Object>> showVistaPersonaTaller(String time){
+	public List<Map<String, Object>> showVistaPersonaTaller(String time,String dni){
 		String total="";
 		List<VistaPersonaTaller> lista = new ArrayList<>();
 		List<Map<String,Object>> liston =  new ArrayList<>();
@@ -99,8 +99,10 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 			DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);			
 			String date = null;
 			Query query = s.createQuery(
-					"from VistaPersonaTaller v where v.fecha='"+time+"'");
+					"from VistaPersonaTaller v where v.fecha='"+time+"' and v.dni like concat('%',:dni,'%')");
+			query.setParameter("dni", dni);
 			int idit=0; int asistencia=0;
+						  
 			lista = query.getResultList();
 			for(VistaPersonaTaller v : lista) {
 //				date=dfDateMedium.format(v.getFecha());
@@ -177,9 +179,7 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 			Session s = sessionFactory.getCurrentSession();
 			Query query = s.createQuery(
 					"from VistaAsistencia v where v.idd=:idd and v.fecha=:fecha order by v.hora asc" );
-			query.setParameter("idd", idd);query.setParameter("fecha", fechon);
-			
-			
+			query.setParameter("idd", idd);query.setParameter("fecha", fechon);						
 			lista = query.getResultList();
 			for(VistaAsistencia v : lista) {		
 				map = new HashMap<>();			
@@ -249,8 +249,11 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date fechon = formatter.parse(fecha);
 		Calendar cal = Calendar.getInstance();
+		Calendar calen = Calendar.getInstance();
 		DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		String hora = sdf.format(cal.getTime());
+		calen.add(Calendar.MINUTE, 15);
+		String hora2 = sdf.format(calen.getTime());
 //		String limite1 = "06:30:00";
 //		String limite2 = "21:30:00";
         Date date = sdf.parse(hora);
@@ -264,12 +267,13 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
         
         
         System.out.println("time:" +hora);
+        System.out.println("time2:" +hora2);
         System.out.println(fechon);
 		try {
 			Session s = sessionFactory.getCurrentSession();
 				Query query = s.createQuery(
 
-						"select v from VistaAsistencia v where v.idd=:idd and v.fecha=:fecha and v.hora<='"+hora+"' and fin>='"+hora+"'");
+						"select v from VistaAsistencia v where v.idd=:idd and v.fecha=:fecha and v.hora<='"+hora2+"' and v.fin>='"+hora2+"'");
 				query.setParameter("idd",idd);
 //				query.setParameter("fin",time);
 				query.setParameter("fecha", fechon); 
@@ -293,13 +297,13 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 							tema="Ponencias Paralelas";
 							break;
 						case 2:
-							tema="Talleres especializados";
+							tema="Visitas técnicas";
 							break;
 						case 3:
 							tema="Conferencia Magistral";
 							break;
 						case 4:
-							tema="Visitas técnicas";
+							tema="Talleres especializados";
 							break;
 						case 5:
 							tema = v.getTema();

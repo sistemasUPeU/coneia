@@ -54,7 +54,7 @@ function listarTodito(){
 	$.get("customTaller", {op : 1}, function(data) {
 		var obj = JSON.parse(data);
 //		alert(obj[0].idtaller)
-		$(".visitaMartes").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".visitaMartes").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '7:30 AM' +' a '+ '1:00 PM' +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modalvm"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
@@ -72,7 +72,7 @@ function listarTodito(){
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresMartes").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".talleresMartes").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '6:30 AM' +' a '+ '1:00 PM' +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modaltm"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
@@ -81,8 +81,8 @@ function listarTodito(){
 			}else{
 				place=obj[i].lugar;
 			}
-			$(".talleresMartes").append('<div class="col s12"><div class="row">'+(i+1)+'. Tema: <b>'+obj[i].tema
-					+'</b></div><div class="row">Lugar: '+place+'</div><div class="row"  style="padding-bottom:0.5em">Vacantes: <span style="color:green;"><b>'+obj[i].stock+'</b></span></div>'+
+			$(".talleresMartes").append('<div class="col s12"><div class="row">'+(i+1)+'. Lugar: <b>'+obj[i].tema
+					+'</b></div><div class="row">Requisitos: '+place+'</div><div class="row"  style="padding-bottom:0.5em">Vacantes: <span style="color:green;"><b>'+obj[i].stock+'</b></span></div>'+
 					'<div class="row"><div class="col s6" style="padding-left:10%"><a class="btn-floating orange modal-trigger" data-target="modal'+obj[i].idtaller+'"><i class="large material-icons">mode_edit</i></a></div>'+
 					'<div class="col s6" style="padding-right:10%"><button class="waves-effect btn-floating red"  onclick="eliminar('+obj[i].idtaller+')"><i class="large material-icons">delete_forever</i></button></div></div><br>');
 			var tema = obj[i].tema;var stock = obj[i].stock;var idtaller=obj[i].idtaller; var idtipo = obj[i].idtipo;
@@ -94,7 +94,7 @@ function listarTodito(){
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".visitasJueves").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label >'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".visitasJueves").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label >'+ '7:30 AM' +' a '+ '1:00 PM' +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modalvj"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
@@ -116,15 +116,15 @@ function listarTodito(){
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
-		$(".talleresJueves").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
+		$(".talleresJueves").empty().append('<div class="row center fonto">Visitas técnicas</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '6:30 AM' +' a '+ '1:00 PM' +
 				'</label></div><br><div class="row center"><a class="btn-floating waves-effect waves-light green modal-trigger"  data-target="modaltj"><i class="material-icons">add</i></a></div></br><div class="divider"></div></br>');
 		$.each(obj,function(i,value){
 //			alert(obj[i].idtaller)
 			if(typeof obj[i].lugar==="undefined" ||obj[i].lugar===""){
 				place="";
 			}else{place=obj[i].lugar;}
-			$(".talleresJueves").append('<div class="col s12"><div class="row">'+(i+1)+'. Tema: <b>'+obj[i].tema
-					+'</b></div><div class="row">Lugar: '+place+'</div><div class="row" style="padding-bottom:0.5em">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
+			$(".talleresJueves").append('<div class="col s12"><div class="row">'+(i+1)+'. Lugar: <b>'+obj[i].tema
+					+'</b></div><div class="row">Requisitos: '+place+'</div><div class="row" style="padding-bottom:0.5em">Vacantes: <span style="color:green"><b>'+obj[i].stock+'</b></span></div>'+
 					'<div class="row"><div class="col s6" style="padding-left:10%"><a class="btn-floating orange modal-trigger" data-target="modal'+obj[i].idtaller+'"><i class="large material-icons">mode_edit</i></a></div>'+
 					'<div class="col s6" style="padding-right:10%"><button class="waves-effect btn-floating red"  onclick="eliminar('+obj[i].idtaller+')"><i class="large material-icons">delete_forever</i></button></div></div></br>');
 			var tema = obj[i].tema;var stock = obj[i].stock;var idtaller=obj[i].idtaller; var idtipo = obj[i].idtipo;

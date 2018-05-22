@@ -798,7 +798,8 @@ System.out.println(res);
 			break;
 		case 25:
 			String fech = request.getParameter("fecha");
-			out.println(gson.toJson(its.showVistaPersonaTaller(fech)));
+			String dni = request.getParameter("dni");
+			out.println(gson.toJson(its.showVistaPersonaTaller(fech,dni)));
 			break;
 		case 26:
 			int idd = Integer.parseInt(request.getParameter("idd"));
@@ -811,6 +812,10 @@ System.out.println(res);
 			break;
 		case 28:
 			out.println(gson.toJson(its.reporteAsistencia()));
+			break;
+		case 29:
+			String idrol = session.getAttribute("idrol").toString();
+			out.println(idrol);
 			break;
 		}
 

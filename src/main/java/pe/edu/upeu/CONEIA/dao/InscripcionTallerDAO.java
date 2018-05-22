@@ -9,7 +9,7 @@ import pe.edu.upeu.CONEIA.entity.InscripcionTaller;
 public interface InscripcionTallerDAO {
 	public int create(InscripcionTaller t,int idd,int idt);
 	public int actualizarAsistencia(int idit);
-	public List<Map<String,Object>> showVistaPersonaTaller(String time);
+	public List<Map<String,Object>> showVistaPersonaTaller(String time,String dni);
 	public List<Map<String,Object>> showVistaAsistencia(int idd,String time) throws ParseException;
 	public long cuantos(int idd);
 	public long cuantos2(int idd);

@@ -10,7 +10,6 @@ function createTable(){
 	// s += "<th class='hide' >N°</th>";
 	d += "<th>Nombres y Apellidos</th>";
 	d += "<th>Dni</th>";
-	d += "<th >Clave</th>";
 	d += "<th >Celular</th>";
 	d += "<th >Operaciones</th>";
 	d += "</tr>";
@@ -42,8 +41,6 @@ function mostrar(){
 						+ '</td>';
 				s += '<td style="width:15%">' + lista[i].dni
 						+ '</td>';
-				s += '<td style="width:15%">' + lista[i].clave
-				+ '</td>';
 				s += '<td style="width:20%">' + lista[i].celular
 				+ '</td>';
 				s += '<td style="width:22%">'
@@ -87,9 +84,6 @@ function mostrar(){
 						"infoEmpty" : "Ningún alumno agregado"
 					// "infoFiltered": "(filtered from _MAX_ total records)"
 					}
-
-
-					
 				});
 		$("#data-table-row-grouping1_filter").after(
 		"<div  id='hugme1' style='overflow-x:auto; clear: both;'></div>");
@@ -134,8 +128,11 @@ function crearModal(id) {
 						r+='<input type="text" maxlength="8" placeholder="Escriba el dni" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" id="dni" value="'+( (liston.dni==undefined) ? "": liston.dni)+'"/>';
 						r+='<label for="dni" class="active">DNI: </label></div></div>';
 						r+='<div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">lock_outline</i>';
-						r+='<input type="text" placeholder="Escriba la clave" id="clave" value="'+( (liston.clave==undefined) ? "": liston.clave)+'"/>';
+						r+='<input type="password" placeholder="Escriba la clave" id="clave" value="'+( (liston.clave==undefined) ? "": liston.clave)+'"/>';
 						r+='<label for="clave" class="active">Clave: </label></div></div>';
+						r+='<div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">lock_outline</i>';
+						r+='<input type="password" placeholder="Vuelva a escribir la clave" id="clave2" value="'+( (liston.clave==undefined) ? "": liston.clave)+'"/>';
+						r+='<label for="clave2" class="active">Clave: </label></div></div>';
 						r+='<div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">local_phone</i>';
 						r+='<input type="text" placeholder="Escriba el celular" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" id="celular" value="'+( (liston.celular==undefined) ? "": liston.celular)+'" maxlength="9"/>';
 						r+='<label for="celular" class="active">Celular: </label></div></div>';
@@ -222,13 +219,16 @@ function nuevo(){
 						r+='<input type="text" placeholder="Escriba el dni" id="ndni" maxlength="8" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>';
 						r+='<label for="ndni" class="active">DNI: </label></div></div>';
 						r+='<div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">lock_outline</i>';
-						r+='<input type="text" placeholder="Escriba la clave" id="nclave"/>';
+						r+='<input type="password" placeholder="Escriba la clave" id="nclave"/>';
 						r+='<label for="nclave" class="active">Clave: </label></div></div>';
+						r+='<div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">lock_outline</i>';
+						r+='<input type="password" placeholder="Vuelve a escribir la clave" id="nclave2"/>';
+						r+='<label for="nclave2" class="active">Clave: </label></div></div>';
 						r+='<div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">local_phone</i>';
 						r+='<input type="text" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Escriba el celular" id="ncelular" maxlength="9"/>';
 						r+='<label for="ncelular" class="active">Celular: </label></div></div>';
 						r+='<input type="hidden" id="idpersona" />';
-						r+='</div><div class="modal-footer inline"><a class=" waves-effect waves-light btn #0277bd light-blue darken-3" onclick="guardar()" style="width:30%"><i class="material-icons">save</i></a> <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cerrar</a></div></div></div></div></br></div>';
+						r+='</div><div class="modal-footer inline" style="padding-bottom:1em"><a class=" waves-effect waves-light btn #0277bd light-blue darken-3" onclick="guardar()" style="width:30%"><i class="material-icons">save</i></a> <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cerrar</a></div></div></div></div></br></div>';
 						
 						$("#cant2").empty().append(r);
 				
@@ -245,16 +245,24 @@ function guardar(){
 	var apellidos = $("#napellidos").val();
 	var dni = $("#ndni").val();
 	var clave = $("#nclave").val();
+	var clave2 = $("#nclave2").val();
 	var celular = $("#ncelular").val();
-
-	$.get(coneia_context_path + "/admin/customPersonal",{op:5,nnombres:nombres,napellidos:apellidos,ndni:dni,nclave:clave,ncelular:celular},function(data){
-		if(data==1){
-		
-			$('#modalon2').modal('close');
-			mostrar();
+	if(nombres!=""||apellidos!=""||dni!=""||clave!=""||celular!=""){
+		if(clave==clave2){
+			$.get(coneia_context_path + "/admin/customPersonal",{op:5,nnombres:nombres,napellidos:apellidos,ndni:dni,nclave:clave,ncelular:celular},function(data){
+				if(data==1){
+					$('#modalon2').modal('close');
+					mostrar();
+				}else{
+					alertify.error('Error al intentar agregar los datos');
+				}
+			});
 		}else{
-		
-			alertify.error('Error al intentar agregar los datos');
+			alertify.error('La contraseña debe coincidir');
 		}
-	});
+		
+	}else{
+		alertify.error('Ingrese todos los campos por favor');
+	}
+	
 }

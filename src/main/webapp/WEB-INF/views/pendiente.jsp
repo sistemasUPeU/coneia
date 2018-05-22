@@ -5,6 +5,9 @@
 		response.sendRedirect(request.getContextPath() + "/");
 
 	} else {
+		if(Integer.parseInt(sesion.getAttribute("idrol").toString()) == 7){
+			response.sendRedirect(request.getContextPath() + "/admin/asistencia");
+		}else{
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -361,5 +364,6 @@ div.container {
 </body>
 </html>
 <%
+		}
 	}
 %>

@@ -258,7 +258,7 @@ padding-bottom:4rem;}
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s9">03:00 - 04:00 pm</div>
+										<div class="col l4 m4 s9">02:30 - 04:00 pm</div>
 										<div class="col l1 m1 s3 ">
 											<i class="material-icons i  right">expand_more</i>
 										</div>
@@ -328,7 +328,7 @@ padding-bottom:4rem;}
 										<div class="col l7 m7 s12">
 											<i class="material-icons">brightness_3</i> NOCHE CULTURAL
 										</div>
-										<div class="col l4 m4 s9">07:30 - 09:30 pm</div>
+										<div class="col l4 m4 s9">07:00 - 09:30 pm</div>
 										<div class="col l1 m1 s3 ">
 											<i class="material-icons i  right">expand_more</i>
 										</div>
@@ -552,7 +552,7 @@ padding-bottom:4rem;}
 											<i class="material-icons">blur_on</i>FERIA AMBIENTAL -
 											CONCURSO DE FOTOGRAFÍA
 										</div>
-										<div class="col l4 m4 s9">02:00 - 03:00 pm</div>
+										<div class="col l4 m4 s9">02:00 - 04:30 pm</div>
 										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
@@ -577,7 +577,7 @@ padding-bottom:4rem;}
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u>
 										</div>
-										<div class="col l4 m4 s9">04:00 - 05:30 pm</div>
+										<div class="col l4 m4 s9">04:30 - 06:00 pm</div>
 										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
@@ -617,31 +617,6 @@ padding-bottom:4rem;}
 								</div>
 								<div class="collapsible-body">
 									<div class="row center conf4"></div>
-								</div>
-							</li>
-							<li>
-								<div class="collapsible-header bananin">
-									<div class="row center">
-										<div class="col l7 m7 s12">
-											<i class="material-icons">nature</i> CONFRATERNIZACIÓN
-											AMBIENTAL
-										</div>
-										<div class="col l4 m4 s9">08:30 - 09:30 pm</div>
-										<div class="col l1 m1 s3 ">
-											<i class="material-icons i right">expand_more</i>
-										</div>
-									</div>
-								</div>
-								<div class="collapsible-body">
-									<div class="row center">
-
-										<div class="col s3"></div>
-										<div class="col s6">
-											<div class="row center act10"></div>
-										</div>
-										<div class="col s3"></div>
-									</div>
-
 								</div>
 							</li>
 
@@ -799,10 +774,9 @@ padding-bottom:4rem;}
 								<div class="collapsible-header bananin">
 									<div class="row center">
 										<div class="col l7 m7 s12">
-											<i class="material-icons">hourglass_full</i> Intervalo
-											Ambiental - Cultural
+											<i class="material-icons">hourglass_full</i> Panel - Intervalo - Cultural
 										</div>
-										<div class="col l4 m4 s9">10:00 - 10:30 am</div>
+										<div class="col l4 m4 s9">10:00 - 11:00 am</div>
 										<div class="col l1 m1 s3 "></div>
 
 									</div>
@@ -815,7 +789,7 @@ padding-bottom:4rem;}
 											<i class="material-icons">nature_people</i> <u>Conferencia
 												magistral</u> - ELECCIÓN DE SEDE CONEIA 2019
 										</div>
-										<div class="col l4 m4 s9">10:30 am - 12:00 pm</div>
+										<div class="col l4 m4 s9">11:00 am - 12:30 pm</div>
 										<div class="col l1 m1 s3 ">
 											<i class="material-icons i right">expand_more</i>
 										</div>
@@ -839,7 +813,7 @@ padding-bottom:4rem;}
 										<div class="col l7 m7 s12">
 											<i class="material-icons">alarm_on</i> Almuerzo
 										</div>
-										<div class="col l4 m4 s9">12:00 - 02:00 pm</div>
+										<div class="col l4 m4 s9">12:30 - 02:00 pm</div>
 										<div class="col l1 m1 s3"></div>
 									</div>
 								</div>

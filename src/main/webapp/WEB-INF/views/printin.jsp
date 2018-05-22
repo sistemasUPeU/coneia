@@ -262,10 +262,10 @@ thead tr{
 						<div class="col s10 desu"><b><c:out value="${conferenciaMiercoles[1].tema}" /></b><br><c:out value="${conferenciaMiercoles[1].ponente}" /><br>Lugar: <c:out value="${conferenciaMiercoles[1].lugar}" /></div>
 				
 					</div>
-					<div class="row center">
-						<div class="col s2 desu"><c:out value="${actividadesMiercoles[2].horaI}" /> - <c:out value="${actividadesMiercoles[2].horaF}" /></div>
-						<div class="col s10 desu"><b><c:out value="${actividadesMiercoles[2].tema}" /></b><br>Lugar: <c:out value="${actividadesMiercoles[2].lugar}" /></div>				
-					</div>
+<!-- 					<div class="row center"> -->
+<%-- 						<div class="col s2 desu"><c:out value="${actividadesMiercoles[2].horaI}" /> - <c:out value="${actividadesMiercoles[2].horaF}" /></div> --%>
+<%-- 						<div class="col s10 desu"><b><c:out value="${actividadesMiercoles[2].tema}" /></b><br>Lugar: <c:out value="${actividadesMiercoles[2].lugar}" /></div>				 --%>
+<!-- 					</div> -->
 					<div class="row center"><img class=""
 									src="<c:url value="/resources/img/vintage.jpg"/>"
 									style="outline-color: none; margin-left: 5%; float: left; width: 100px;height:30px;float:left"></img><b>Día jueves 07 de junio del 2018</b><img class=""
@@ -327,8 +327,8 @@ thead tr{
 				
 					</div>
 					<div class="row center">
-						<div class="col s2 desu">10:00:00 - 10:30:00</div>
-						<div class="col s10 desu">Intervalo Ambientaol - Cultural</div>
+						<div class="col s2 desu">10:00:00 - 11:00:00</div>
+						<div class="col s10 desu">Panel Intervalo - Cultural</div>
 					</div>
 					<div class="row center">
 						<div class="col s2 desu"><c:out value="${conferenciaViernes[0].horaI}" /> - <c:out value="${conferenciaViernes[0].horaF}" /></div>
@@ -337,7 +337,7 @@ thead tr{
 						</div>
 					</div>	
 					<div class="row center">
-						<div class="col s2 desu">12:00:00 - 14:00:00</div>
+						<div class="col s2 desu">12:30:00 - 14:00:00</div>
 						<div class="col s10 desu">ALMUERZO</div>
 					</div>	
 					<div class="row center">

@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	$('select').material_select();
 
 	// $(".datepicker").pickadate({
@@ -14,54 +13,109 @@ $(document).ready(function() {
 	// Close upon selecting a date,
 	});
 
-	
+	$('#search_box').keyup(function(e){
+        var searchStr = $(this).val();
+        if((searchStr).length)
+        {
+//        	console.log(searchStr);
+        	var data = sessionStorage.getItem('cambio');
+//			console.log(data);
+        	switch (e.keyCode) {
+            case 8:  
+            case 9:  // Tab
+            case 13: // Enter
+            case 37: // Left
+            case 38: // Up
+            case 39: // Right
+            case 40: // Down
+            break;
 
+            default:
+
+            	listarTalleres(data,searchStr);	
+        }
+			
+        }
+        else
+        {
+        	if ($(window).width() < 600) {
+        		var table = $('#data-table-row-grouping3').DataTable();
+           	 
+            	table
+            	    .clear()
+            	    .draw();
+        	}else{
+        		var table2 = $('#data-table-row-grouping2').DataTable();
+              	 
+            	table2
+            	    .clear()
+            	    .draw();
+        	}
+        	
+        }
+    });
 });
+
+
 
 var cambio="";var tam=0;
 $("#selected")
 .change(
 		function() {
 			cambio = $("#selected").val();
+			$("#buscador").css("display","block");
 			if ($(window).width() < 600) {
 				$("#table").css("margin-bottom","4em");
 				$(".muestra2").hide();
 			}else{
-				$(".muestra2").show();
+				$.get(coneia_context_path + "/admin/customTaller",{op:29},function(data){
+					var rol = data;
+					if(rol==7){
+						$(".muestra2").hide();
+					}else{
+						$(".muestra2").show();
+					}
+				})
+				
 			}
 			
 			$(".muestra").hide(); 
-			  
-			
 
 			if (cambio == "2018-06-04") {
 				tam=7;
-				
-				listarTalleres(cambio);	
-				
+				sessionStorage.setItem('cambio', cambio);
+				var data = localStorage.getItem('cambio');
 				// listar();
 			} 
 			if (cambio == "2018-06-05") {
 				tam=4;
-				listarTalleres(cambio);	
+				sessionStorage.setItem('cambio', cambio);
+				var data = localStorage.getItem('cambio');
+
 			} 
 			if (cambio == "2018-06-06") {
 				tam=9;
-				listarTalleres(cambio);	
+				sessionStorage.setItem('cambio', cambio);
+				var data = localStorage.getItem('cambio');
+
 			} 
 			if (cambio == "2018-06-07") {
 				tam=4;
-				listarTalleres(cambio);	
+				sessionStorage.setItem('cambio', cambio);
+				var data = localStorage.getItem('cambio');
+
 			} 
 			if (cambio == "2018-06-08") {
 				tam=5;
-				listarTalleres(cambio);	
+				sessionStorage.setItem('cambio', cambio);
+				var data = localStorage.getItem('cambio');
 			} 
 			
 
 		});
 
-function listarTalleres(cambio,tam){
+
+function listarTalleres(cambio,dni){
 	var fake = cambio.split("-");var clase="";var clase2="";
 	var anio = fake[0];var mes = fake[1]-1;var dia = fake[2];
 	var fechin = new Date(anio, mes, dia);
@@ -71,7 +125,7 @@ function listarTalleres(cambio,tam){
 		if ($(window).width() < 600) {
 			$.getJSON(
 					coneia_context_path + "/admin/customTaller",
-					{op:25,fecha:cambio},
+					{op:25,fecha:cambio,dni:dni},
 					function(objJson) {
 						var s = "";
 						var lista = objJson;
@@ -108,15 +162,15 @@ function listarTalleres(cambio,tam){
 									
 									if(idrol==5){
 										s += '	<div class ="row"><div class="col s6"><a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-										s += '	class="btn btn-floating waves-effect waves-light moe '+clase2+' accent-3">'
+										s += '	class="btn btn-floating waves-effect red waves-light moe '+clase2+' accent-3">'
 										s += '	<i class="material-icons right md-18">done_all</i></a></div>'
 										s+= '<div class="col s6"><a class="btn-floating waves-effect waves-light #ff9100 orange accent-3 modal-trigger" href="#modalon" onclick="crearModal(\''+idd+'\',\''+cambio+'\')"><i class="material-icons">border_color</i></a></div></div>'
 									}
 								
 									if(idrol==7){
 										s += '	<a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
-										s += '	class="btn btn-floating waves-effect waves-light moe'+clase2+' accent-3">'
-										s += '	<i class="material-icons right md-18">done_all</i></a>'
+										s += '	class="btn btn-floating waves-effect red waves-light moe'+clase2+' accent-3">'
+										s += '	<i class="material-icons right md-18">done_all</i></a>';
 									}
 								
 								s+= 	'</td>';
@@ -138,13 +192,14 @@ function listarTalleres(cambio,tam){
 						$("#data1").append(s);
 						
 
-						$("#data-table-row-grouping1")
+						$("#data-table-row-grouping3")
 						.dataTable(
 								{
-									"pageLength" : 2,
+									"pageLength" : 3,
 									"bPaginate" : true,
 									"bLengthChange" : false,
-									"bFilter" : true,
+									"ordering": false,
+									"bFilter" : false,
 									"bInfo" : false,
 									"bAutoWidth" : true,
 									"select":true,
@@ -167,7 +222,7 @@ function listarTalleres(cambio,tam){
 		}else{
 			$.getJSON(
 					coneia_context_path + "/admin/customTaller",
-					{op:25,fecha:cambio},
+					{op:25,fecha:cambio,dni:dni},
 					function(objJson) {
 						var s = "";
 						var lista = objJson;
@@ -217,7 +272,7 @@ function listarTalleres(cambio,tam){
 									if(idrol==7){
 										s += '	<a onclick="actualizar(\''+idd+'\',\''+cambio+'\',\''+idit+'\')"'
 										s += '	class="btn btn-floating waves-effect waves-light moe '+clase2+' accent-3">'
-										s += '	<i class="material-icons right md-18">done_all</i></a>'
+										s += '	<i class="material-icons right md-18">done_all</i></a>';
 									}
 								s+= '</td>';
 								s += '<td style="width:10%;color:white" class="'+clase+'"><b>'+valor+' %</b></td>';
@@ -238,13 +293,14 @@ function listarTalleres(cambio,tam){
 						$("#data1").append(s);
 						
 
-						$("#data-table-row-grouping1")
+						$("#data-table-row-grouping2")
 						.dataTable(
 								{
-									"pageLength" : 2,
+									"pageLength" : 3,
 									"bPaginate" : true,
 									"bLengthChange" : false,
-									"bFilter" : true,
+									"ordering": false,
+									"bFilter" : false,
 									"bInfo" : false,
 									"bAutoWidth" : true,
 									"select":true,
@@ -265,10 +321,10 @@ function listarTalleres(cambio,tam){
 
 					$(".buttons-pdf").addClass("btn waves-effect waves-light");
 					$(".buttons-excel").addClass("btn waves-effect waves-light");
-					$("#data-table-row-grouping1_filter").after(
+					$("#data-table-row-grouping2_filter").after(
 					"<div  id='hugme1' style='overflow-x:auto; clear: both;'></div>");
-					$("#data-table-row-grouping1").appendTo('#hugme1');
-					var table = $('#data-table-row-grouping1').DataTable();
+					$("#data-table-row-grouping2").appendTo('#hugme1');
+					var table = $('#data-table-row-grouping2').DataTable();
 					table.rows( {selected:true} ).data();
 					});
 		}
@@ -280,7 +336,7 @@ function listarTalleres(cambio,tam){
 }
 
 function createTable2() {
-	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered' >";
+	var d = "<table id='data-table-row-grouping2' class='bordered highlight centered' >";
 	d += "<thead>";
 	d += "<tr>";
 	d += "<th>Nro</th>";
@@ -299,7 +355,7 @@ function createTable2() {
 
 };
 function createTable3() {
-	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered' >";
+	var d = "<table id='data-table-row-grouping3' class='bordered highlight centered' >";
 	d += "<thead>";
 	d += "<tr>";
 	// s += "<th class='hide' >N°</th>";
@@ -316,7 +372,7 @@ function createTable3() {
 
 };
 function createTable4() {
-	var d = "<table id='data-table-row-grouping1' class='bordered highlight centered' >";
+	var d = "<table id='data-table-row-grouping4' class='bordered highlight centered' >";
 	d += "<thead>";
 	d += "<tr>";
 	d += "<th>Tema</th>";
@@ -533,6 +589,7 @@ $(".final").click(function(){
 							"pageLength" : 10,
 							"bPaginate" : true,
 							"bLengthChange" : false,
+							"ordering": false,
 							"bFilter" : true,
 							"bInfo" : false,
 							"bAutoWidth" : true,

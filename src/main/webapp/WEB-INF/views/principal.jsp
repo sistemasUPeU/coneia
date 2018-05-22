@@ -44,6 +44,8 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="<c:url value='/resources/css/notie.min.css'></c:url>"
+	rel="stylesheet" type="text/css" />
 <link rel="stylesheet"
 	href="<c:url value='resources/css/custom/principal.css'/>" />
 <link href="<c:url value='/resources/css/style.min.css'></c:url>"
@@ -173,6 +175,7 @@ html {
 		style="position: relative; margin-top: 10%; margin-bottom: 10%">
 		<div class="row center">
 			<div class="col s12 prog ">
+				
 				<div class="row">
 					<h6>Aquí se encuentra la programación del evento CONEIA 2018 y
 						además usted podrá elegir los talleres, ponencias o conferencias a
@@ -196,6 +199,7 @@ html {
 
 					</div>
 				</div>
+				
 			</div>
 			<div class="col s12 asist">
 				<div class="row">
@@ -307,6 +311,9 @@ html {
 	<script
 		src="<c:url value='/resources/js/plugins/sweetalert/sweetalert.min.js'></c:url>"
 		type="text/javascript"></script>
+		<script
+		src="<c:url value='/resources/js/notie.min.js'></c:url>"
+		type="text/javascript"></script>
 	<script type="text/javascript">
 		$(window).on("load", function() {
 			setTimeout(function() {
@@ -320,6 +327,8 @@ html {
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
+
 		try{
 				
 				var nombre = "${sessionScope.nombre}";
@@ -372,9 +381,21 @@ html {
 			}
 			$.get("inscrito", null, function(data) {
 				if (data > 10) {
+					notie.alert({ text: ' Se ha inscrito a los talleres y ponencias satisfactoriamente :) , puede ver e imprimir su cronograma haciendo click en "Asistencia"' })
 					$(".prog").css("display", "none");
 					$(".asist").css("display", "block");
 				} else {
+// 					notie.confirm({ text: 'Estimado participante, tenga en cuenta que debe inscribirse a los talleres y ponencias en las que asistirá para que pueda visualizar su cronograma y se le considere su asistencia' }, function() {			
+// 					      notie.alert({ text: 'Okay, jeez...' })
+// 					})
+					 notie.force({
+  					 		type: 3,
+  					 		text: 'Estimado participante, tenga en cuenta que debe inscribirse a los talleres y ponencias en las que asistirá para que pueda visualizar su cronograma y se le considere su asistencia',
+  					 		buttonText: 'OK',
+  					 		callback: function () {
+    				 		notie.alert({ type: 3, text: 'Elija la opción "Programación" para la elección de su horario' })
+  						}
+					})
 					$(".prog").css("display", "block");
 					$(".asist").css("display", "none");
 				}

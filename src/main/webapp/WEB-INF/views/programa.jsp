@@ -30,6 +30,8 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster+Two"
 	rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link href="<c:url value='/resources/css/programa.css'></c:url>"
 	rel="stylesheet" type="text/css" />
 <script>
@@ -40,6 +42,12 @@ var coneia_context_path = "<%=request.getContextPath()%>";
 	}
 </script>
 <style>
+.ajs-message.ajs-custom {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #31708f;
+	z-index: 999999
+}
 .sticky {
 	position: fixed;
 	padding-top:16px;
@@ -54,6 +62,7 @@ html {
 body {
   min-height: 100%;
 }
+
 </style>
 </head>
 <body >
@@ -357,7 +366,7 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">brightness_3</i> NOCHE CULTURAL
 									</div>
-									<div class="col l4 m4 s9">07:30 - 09:30 pm</div>
+									<div class="col l4 m4 s9">07:00 - 09:30 pm</div>
 									<div class="col l1 m1 s3 ">
 										<i class="material-icons i md-24">expand_more</i>
 									</div>
@@ -390,7 +399,7 @@ body {
 										visitas técnicas <span class="luz" id="blink2">(Elegir
 											opción)</span>
 									</div>
-									<div class="col l4 m4 s9">06:30 am - 12:30 pm</div>
+									<div class="col l4 m4 s9">06:30 am - 01:00 pm</div>
 									<div class="col l1 m1 s3 ">
 										<i class="material-icons i right">expand_more</i>
 									</div>
@@ -408,10 +417,10 @@ body {
 								</div>
 								<div class="row">
 									<input class="with-gap col s6" name="grupo1" type="radio"
-										value="vt1" id="vt1" checked /> <label for="vt1">Visitas
-										técnicas</label> <input class="with-gap col s6" name="grupo1"
-										type="radio" id="tm1" value="tm1" /> <label for="tm1">Talleres
-										especializados</label>
+										value="vt1" id="vt1" checked /> <label for="vt1">Talleres
+										especializados</label> <input class="with-gap col s6" name="grupo1"
+										type="radio" id="tm1" value="tm1" /> <label for="tm1">Visitas
+										técnicas</label>
 								</div>
 								<div class="row ">
 									<div class="col s6 visitaMartes"></div>
@@ -759,40 +768,6 @@ body {
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="collapsible-header">
-								<div class="row center">
-									<div class="col l7 m7 s12">
-										<i class="material-icons">nature</i> CONFRATERNIZACIÓN
-										AMBIENTAL
-									</div>
-									<div class="col l4 m4 s9">08:30 - 09:30 pm</div>
-									<div class="col l1 m1 s3">
-										<i class="material-icons i right">expand_more</i>
-									</div>
-								</div>
-							</div>
-							<div class="collapsible-body">
-								<div class="row center">
-
-									<div class="col s3"></div>
-									<div class="col s6">
-
-										<div class="row">
-											Tema: <b><c:out value="${actividadesMiercoles[2].tema }"></c:out></b>
-										</div>
-										<div class="row">
-											Lugar:
-											<c:out value="${actividadesMiercoles[2].lugar}" />
-										</div>
-										<input type="hidden" id="m" value="<c:out value="${actividadesMiercoles[2].idtaller}" />"/>
-									</div>
-									<div class="col s3"></div>
-								</div>
-
-							</div>
-						</li>
-
 					</ul>
 			
 
@@ -812,7 +787,7 @@ body {
 										Visitas técnicas <span class="luz" id="blink3">(Elegir
 											opción)</span>
 									</div>
-									<div class="col l4 m4 s9">06:30 am - 12:30 pm</div>
+									<div class="col l4 m4 s9">06:30 am - 01:00 pm</div>
 									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
@@ -830,10 +805,10 @@ body {
 								</div>
 								<div class="row">
 									<input class="with-gap col s6" name="grupo2" type="radio"
-										id="vt2" value="vt2" /> <label for="vt2">Visitas
-										técnicas</label> <input class="with-gap col s6" name="grupo2"
-										type="radio" id="tm2" checked /> <label for="tm2" value="tm2">Talleres
-										especializados</label>
+										id="vt2" value="vt2" /> <label for="vt2">Talleres
+										especializados</label> <input class="with-gap col s6" name="grupo2"
+										type="radio" id="tm2" checked /> <label for="tm2" value="tm2">Visitas
+										técnicas</label>
 								</div>
 								<div class="row ">
 									<div class="col s6 visitasJueves"></div>
@@ -1005,7 +980,7 @@ body {
 										<i class="material-icons">hourglass_full</i> Intervalo
 										Ambiental - Cultural
 									</div>
-									<div class="col l4 m4 s9">10:00 - 10:30 am</div>
+									<div class="col l4 m4 s9">10:00 - 11:00 am</div>
 									<div class="col l1 m1 s3"></div>
 
 								</div>
@@ -1018,7 +993,7 @@ body {
 										<i class="material-icons">nature_people</i> <u>Conferencia
 											magistral</u> - ELECCIÓN DE SEDE CONEIA 2019
 									</div>
-									<div class="col l4 m4 s9">10:30 am - 12:00 pm</div>
+									<div class="col l4 m4 s9">11:00 am - 12:30 pm</div>
 									<div class="col l1 m1 s3">
 										<i class="material-icons i right">expand_more</i>
 									</div>
@@ -1056,7 +1031,7 @@ body {
 									<div class="col l7 m7 s12">
 										<i class="material-icons">alarm_on</i> Almuerzo
 									</div>
-									<div class="col l4 m4 s9">12:00 - 02:00 pm</div>
+									<div class="col l4 m4 s9">12:30 - 02:00 pm</div>
 									<div class="col l1 m1 s3"></div>
 								</div>
 							</div>

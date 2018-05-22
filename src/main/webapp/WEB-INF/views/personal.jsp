@@ -158,7 +158,7 @@ html {
 				<div class="section">					
 					<h2 class="center achon" style="font-family: 'Cinzel', serif;">Staff Coneia</h2>
 					
-					<div id="table-datatables">
+					<div id="table-datatables" style="margin-bottom:4em">
 						<div id="cuerpo" class="container">
 							 <a class="btn-floating btn-large waves-effect waves-light #00e676 green accent-3 right modal-trigger" onclick="nuevo()" href="#modalon2"><i class="material-icons">person_add</i></a>
 							
@@ -170,10 +170,10 @@ html {
 
 					</div>
 
-					<div id="modalon" class="modal">
-						<div class="modal-content ">
+					<div id="modalon" class="modal" >
+						<div class="modal-content " >
 							<div class="row">
-								<div class="container" style="width: 95%">
+								<div class="container" style="width: 95%;">
 										<div id="cant"></div>
 								</div>
 	
