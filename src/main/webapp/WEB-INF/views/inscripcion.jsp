@@ -166,7 +166,7 @@ div.radio p {
 																</div>
 																<div class="input-field col s12 m6 l6">
 																	<i class="material-icons prefix">email</i> <input
-																		id="email" name="email" type="email" class="validate"
+																		id="email" name="email" type="text" class="validate" pattern=".+@.+"
 																		required disabled> <label for="email">Correo</label>
 																</div>
 
@@ -300,7 +300,7 @@ div.radio p {
 																	<div class="row">
 																		<div class="input-field col s12 m6 l6">
 																			<i class="material-icons prefix">email</i> <input
-																				id="ml_email" name="ml_email" type="email"
+																				id="ml_email" name="ml_email" type="text" pattern=".+@.+"
 																				class="validate" required> <label
 																				for="ml_email">Correo</label>
 																		</div>
@@ -388,7 +388,7 @@ div.radio p {
 																	<div class="row">
 																		<div class="input-field col s12 m6 l6">
 																			<i class="material-icons prefix">email</i> <input
-																				id="ml1_email" name="ml1_email" type="email"
+																				id="ml1_email" name="ml1_email" type="text" pattern=".+@.+"
 																				class="validate" required> <label
 																				for="ml1_email">Correo</label>
 																		</div>

@@ -41,6 +41,135 @@ $(window).on('resize', function() {
 	check()
 });
 
+//$("#email").click(function(){
+//	$("#email").trigger("change");
+//	Materialize.updateTextFields();
+//
+//	})
+//	$("#ml_email").click(function(){
+//	$("#ml_email").trigger("change");
+//	Materialize.updateTextFields();
+//
+//	})
+//	$("#ml1_email").click(function(){
+//	$("#ml1_email").trigger("change");
+//	Materialize.updateTextFields();
+//
+//	})
+
+//
+//$("#email")
+//		.keyup(
+//				function() {
+//
+//					$.validator.addMethod('pattern', function(value, element) {
+//						console.log(element);
+//						return this.optional(element)
+//						// || value.length >= 6
+//						// && /\d/.test(value)
+//						// || /[a-z]/i.test(value)
+//						|| /.+@.+/.test(value);
+//					}, 'Enter a valid email please.')
+//
+//					$("#forme")
+//							.validate(
+//									{
+//
+//										rules : {
+//											field : {
+//												required : true
+//											},
+//											email : {
+//												required : true,
+//												email : false,
+//												pattern : true
+//											}
+//										},
+//										messages : {
+//											email : {
+//												required : "We need your email address to contact you",
+//												email : "Your email address must be in the format of name@domain.com"
+//
+//											}
+//										}
+//									});
+//				})
+//				
+//$("#ml_email")
+//		.keyup(
+//				function() {
+//
+//					$.validator.addMethod('pattern', function(value, element) {
+//						console.log(element);
+//						return this.optional(element)
+//						// || value.length >= 6
+//						// && /\d/.test(value)
+//						// || /[a-z]/i.test(value)
+//						|| /.+@.+/.test(value);
+//					}, 'Enter a valid email please.')
+//
+//					$("#forme2")
+//							.validate(
+//									{
+//
+//										rules : {
+//											field : {
+//												required : true
+//											},
+//											email : {
+//												required : true,
+//												email : false,
+//												pattern : true
+//											}
+//										},
+//										messages : {
+//											email : {
+//												required : "We need your email address to contact you",
+//												email : "Your email address must be in the format of name@domain.com"
+//
+//											}
+//										}
+//									});
+//				})
+//				
+//				
+//$("#ml1_email")
+//		.keyup(
+//				function() {
+//
+//					$.validator.addMethod('pattern', function(value, element) {
+//						console.log(element);
+//						return this.optional(element)
+//						// || value.length >= 6
+//						// && /\d/.test(value)
+//						// || /[a-z]/i.test(value)
+//						|| /.+@.+/.test(value);
+//					}, 'Enter a valid email please.')
+//
+//					$("#forme3")
+//							.validate(
+//									{
+//
+//										rules : {
+//											field : {
+//												required : true
+//											},
+//											email : {
+//												required : true,
+//												email : false,
+//												pattern : true
+//											}
+//										},
+//										messages : {
+//											email : {
+//												required : "We need your email address to contact you",
+//												email : "Your email address must be in the format of name@domain.com"
+//
+//											}
+//										}
+//									});
+//				})
+
 // function to catch the dashboard´s width when it changes - works on Chrome
 function check() {
 	if ($(window).width() < 600) {
@@ -1433,7 +1562,7 @@ function createModal(id, nombre) {
 
 jQuery.validator.setDefaults({
 	debug : true,
-	success : "valid"
+	
 });
 
 $("#formValidate").validate({

@@ -81,8 +81,20 @@ public class LoginController {
 						System.out.println(Integer.parseInt(personaMap.get("estadoinscripcion").toString()));
 						List<Map<String, Object>> queryactive = null;
 						queryactive = cs.getPrecios();
-						System.out.println("activacion general " +queryactive.get(0).get("active").toString());
-						int active = Integer.parseInt(queryactive.get(0).get("active").toString());
+						int value=0;
+						int active=0;
+						for (int i = 0; i < queryactive.size(); i++) {
+							value=Integer.parseInt(queryactive.get(i).get("active").toString());
+							System.out.println("activacion general " +value);
+							if(value==1) {
+								active=1;
+								break;
+							}else {
+								active=0;
+							}
+						}
+						
+						
 						
 						if(active==1) {
 							session.setAttribute("idp", personaMap.get("idpersona"));
