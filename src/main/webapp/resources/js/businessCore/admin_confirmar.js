@@ -498,8 +498,8 @@ $("#enviarObservacion").click(
 								alertify.success('Ok');
 								$("#modal3").modal('close');
 								$(".lean-overlay").css("opacity", "0");
-								actualizarEstadoInscripcion(idinscripcion, 2);
-
+//								actualizarEstadoInscripcion(idinscripcion, 2);
+								delIns(idinscripcion,1);
 							});
 
 				}
@@ -797,10 +797,64 @@ $("#enviarObservacion_del").click(
 								alertify.success('Ok');
 								$("#modal4").modal('close');
 
-								actualizarEstadoInscripcion(idinscripcion, 2);
+//								actualizarEstadoInscripcion(idinscripcion, 2);
+								delIns(idinscripcion,2);
 
 							});
 				}
 			})
 
 		});
+
+
+//tipo: 1-personal/2-delegación 
+function delIns(id, tipo) {
+
+	
+
+						$
+								.get(
+										coneia_context_path
+												+ "/admin/deleteins",
+										{
+											id : id
+										},
+										function(data) {
+											
+
+											if (data == 1) {
+												
+																							
+												alertify
+														.alert(
+																'Excelente',
+																'La inscripción se observó satisfactoriamente',
+																function() {
+																	alertify
+																			.success('Ok');
+																	if (tipo == 1) {
+																		listar();
+																	} else {
+																		listarDelegacion();
+																	}
+
+																});
+
+												
+											} else {
+												alertify
+														.alert(
+																'Error',
+																'Ocurrió un problema despues de enviar el email',
+																function() {
+																	alertify
+																			.success('Ok');
+
+																});
+											}
+
+										});
+
+}
+
+

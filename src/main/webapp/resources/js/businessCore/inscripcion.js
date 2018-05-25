@@ -561,30 +561,79 @@ function validateFirstStep() {
 			} else {
 
 				if (arrayProperties.length >= 10) {
-					alertify.confirm('Confirmación',
-							'¿Seguro(a) que no desea agregar a alguien mas?',
-							function() {
-								alertify.success('Ok');
+					
+					
+					var array=[];
+					for(i=0;i<arrayProperties.length;i++){
+						
+						var idni=arrayProperties[i]['dni'];
+						array.push(idni);
+					}
+					var indices = [];
+					for(i=0;i<arrayProperties.length;i++){
+						
+						var element=arrayProperties[i]['dni'];
+						var idx = array.indexOf(element);
+						while (idx != -1) {
+						  indices.push(idx);
+						  idx = array.indexOf(element, idx + 1);
+						}
+						
+					
+						if(indices.length>1){
+							
+							break;
+						}else{
+							indices = [];
+						}
+					}
+					
+					
+					if(indices.length > 1){
+						alertify
+						.alert(
+								'Error',
+								'Asegúrese de no repetir el dni, por favor',
+								function() {
+									alertify
+											.success('Ok');
+									
+									$('.stepper').prevStep();
+										
+								})
+									
+						
+					}else{
+						alertify.confirm('Confirmación',
+								'¿Seguro(a) que no desea agregar a alguien mas?',
+								function() {
+									alertify.success('Ok');
 
-								if ($(window).width() < 600) {
-									listarReporteMini();
-								} else {
-									if ($(window).width() < 990) {
-										listarReporteMedium();
+									if ($(window).width() < 600) {
+										listarReporteMini();
 									} else {
-										listarReporte();
+										if ($(window).width() < 990) {
+											listarReporteMedium();
+										} else {
+											listarReporte();
+										}
+
 									}
 
-								}
+								}, function() {
+									alertify.error('Cancel')
 
-							}, function() {
-								alertify.error('Cancel')
+									$('.stepper').prevStep();
 
-								$('.stepper').prevStep();
-
-							});
-					costo_inscripcion = 130;
-					validation = true;
+								});
+//						costo_inscripcion = 130;
+						validation = true;
+					}
+					
+					
+					
+					
+					
 				} else {
 					alertify
 							.alert(
@@ -742,9 +791,9 @@ $("#accept")
 
 											var data = JSON
 													.stringify(arrayProperties);
-											// var da =
-											// JSON.parse(arrayProperties);
-											$
+										
+											
+													$
 													.post(
 															"subscribe/createEnrollment",
 															{
@@ -840,7 +889,18 @@ $("#accept")
 
 																					})
 																}
-															})
+															});
+												
+												
+											
+											
+											
+											
+											
+											// [0, 2, 4]
+											// var da =
+											// JSON.parse(arrayProperties);
+											
 
 											// ------------------------------
 

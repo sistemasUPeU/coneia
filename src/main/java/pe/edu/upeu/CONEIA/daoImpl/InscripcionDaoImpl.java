@@ -59,6 +59,32 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	public int validardni(String dni) {
+		int x=0;
+		Session s = sessionFactory.getCurrentSession();
+		List<Persona> lista = new ArrayList<>();
+		try {
+
+			Query query = s.createQuery(
+					"select d from Persona d where d.dni=:dni");
+			query.setParameter("idinscripcion", dni);
+			lista = query.getResultList();
+
+			// System.out.println(query.getResultList());
+			System.out.println("dao impl validar dni> " + lista);
+			if(lista!=null) {
+				x=1;
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error lista pendientes personales, dao impl " + e);
+		}
+		return x;
+	};
+	
 	public int create(Object obj, String str) {
 
 		// TODO Auto-generated method stub
@@ -210,11 +236,18 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 		 Date today = dateFormat.parse(fecha);
 		try {
 			Session s = sessionFactory.getCurrentSession();
-	    	Inscripcion t = s.get(Inscripcion.class, id);
-	    	t.setEstado(3);
-	    	t.setFechaUpdate(today);
+			
+			StoredProcedureQuery querys3 = s.createStoredProcedureQuery("deleteInscripcion")
+					.registerStoredProcedureParameter("idins", Integer.class, ParameterMode.IN)
+					.setParameter("idins", id);
+			
+			querys3.execute();
+			System.out.println("Se elimino la inscripcion "+id);
+//	    	Inscripcion t = s.get(Inscripcion.class, id);
+//	    	t.setEstado(3);
+//	    	t.setFechaUpdate(today);
 	    	
-	    	s.update(t);	
+//	    	s.update(t);	
 	    	x=1;
 		} catch (HibernateException e) {
 			System.out.println("Error al eliminar inscripcion: "+e);

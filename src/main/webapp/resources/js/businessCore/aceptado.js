@@ -36,8 +36,7 @@ $("#change").change(function() {
 		consultar(cambio);
 		
 	} else {
-		
-	
+			
 		consultar(cambio);
 
 	}
