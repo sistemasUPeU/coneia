@@ -68,4 +68,10 @@ public class InscripcionTallerServiceImpl implements InscripcionTallerService{
 		return itd.reporteAsistencia();
 	}
 
+	@Override
+	public List<Map<String, Object>> impresiones(int idt) {
+		// TODO Auto-generated method stub
+		return itd.impresiones(idt);
+	}
+
 }

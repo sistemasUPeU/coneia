@@ -289,6 +289,14 @@ System.out.println(res);
 		return "reporte";
 	}
 
+	@RequestMapping("impresiones")
+	public ModelAndView Impresiones(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+
+		model.setViewName("impresiones");
+
+		return model;
+	}
 	@RequestMapping("/tables")
 	public @ResponseBody String tables(HttpServletRequest request, HttpServletResponse response) {
 
@@ -817,6 +825,26 @@ System.out.println(res);
 			String idrol = session.getAttribute("idrol").toString();
 			out.println(idrol);
 			break;
+		case 30:// visitas MARTES 1
+			out.println(gson.toJson(td.findTalleres3(4, "2018-06-05")));
+			break;
+		case 31:// talleres MARTES 2
+			out.println(gson.toJson(td.findTalleres3(2, "2018-06-05")));
+			break; 
+		case 32:// visitas JUEVES 3 
+			out.println(gson.toJson(td.findTalleres3(4, "2018-06-07")));
+			break;
+		case 33:// talleres JUEVES 4
+			out.println(gson.toJson(td.findTalleres3(2, "2018-06-07")));
+			break;
+		case 34: //IMPRESIONES
+			int idt = Integer.parseInt(request.getParameter("idt"));
+			if(its.impresiones(idt).isEmpty()) {
+				out.println(0);
+			}else {
+				out.println(gson.toJson(its.impresiones(idt)));
+			}
+			
 		}
 
 	}

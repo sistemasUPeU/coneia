@@ -1,7 +1,7 @@
 
 <%
 	HttpSession sesion = request.getSession();
-	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null) {
+	if (sesion.getAttribute("dni") == null || sesion.getAttribute("rol") == null || Integer.parseInt(sesion.getAttribute("idrol").toString()) != 5) {
 		response.sendRedirect(request.getContextPath() + "/");
 
 	} else {
@@ -153,121 +153,16 @@ label {
 	<div id="main">
 		<div class="wrapper">
 			<%@include file="../../../jspf/aside_left.jspf"%>
-			<section id="content">
-
-
-				<div class="section">
-					<div class="container special_row"
-						style="margin-top: 1%; padding-bottom: 1px">
-						<div class="row">
-							<div class="input-field col s12">
-								<i class="material-icons prefix">assignment</i> <select
-									id="selected" required>
-									<option value="0" disabled selected>Seleccione una opción</option>
-									<option value="2018-06-04">LUNES</option>
-									<option value="2018-06-05">MARTES</option>
-									<option value="2018-06-06">MIÉRCOLES</option>
-									<option value="2018-06-07">JUEVES</option>
-									<option value="2018-06-08">VIERNES</option>
-
-								</select> <label>Día del evento</label>
-							</div>
-						</div>
-
-					</div>
-					<div class="row muestra" style="width: 95%" style="padding:1px">
-						<div class="chip col l3 s5 left"
-							style="height: auto; margin-bottom: 1em; align-self: left">
-
-							<a
-								class="btn-floating fa waves-effect waves-light #ff9100 red accent-3 tooltipped"
-								href="#" data-position="bottom" data-delay="50"
-								data-tooltip="No Asistió"><i class="material-icons"
-								style="font-size: 20px">done_all</i></a>
-
-
-							<!-- 									<a class="btn-floating fa waves-effect waves-light #00b0ff light-blue accent-3 accent-3 tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Entrada" ><i class="material-icons" style="font-size: 20px">done_all</i></a>    -->
-
-
-							<a
-								class="btn-floating fa waves-effect waves-light #00c853 green accent-4 tooltipped"
-								href="#" data-position="bottom" data-delay="50"
-								data-tooltip="Entrada y Salida"><i class="material-icons"
-								style="font-size: 20px">done_all</i></a>
-
-						</div>
-
-
-
-
-
-
-					</div>
-
-					<div class="col l9 m9 s12 temon" style="margin-left: 5%"></div>
-					<div id="buscador" style="display: none">
-						<div class="center">
-							
-									<div class="row">
-										<div class="input-field col s12 m6">
-											<i class="material-icons prefix">search</i> <input
-												id="search_box" type="text" class="validate"> <label
-												for="search_box">Busque por dni</label>
-										</div>
-
-									</div>
-								
-						</div>
-
-					</div>
-					<div id="table-datatables">
-						<div id="cuerpo" class="container">
-
-
-							<div id="table" class="row"></div>
-
-
-
-						</div>
-
-					</div>
-
-					<div class="row muestra2" style="display: none; margin-top: 1em;">
-						<div class="col l6 s4 " style="margin-left: 1em">
-							<a href="#"
-								class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 final">Reporte
-								final <i class="material-icons right" style="font-size: 20px">account_balance_wallet</i>
-							</a>
-						</div>
-					</div>
-					<div id="modalon" class="modal">
-						<div class="modal-content ">
-							<div class="row">
-								<h2 class="center achon" style="font-family: 'Cinzel', serif;"></h2>
-								<div id="table-datatables">
-									<div class="container" style="width: 95%">
-										<div id="cant"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-
-
-
-
-
-
-			</section>
 			<div class="row reporte"
-				style="width: 90%; display: none; padding-top: 2em">
+				style="width: 90%;  padding-top: 2em">
 
 				<div class="col s12" style="margin-bottom: 1em">
 					<span id="fecha"
 						style="font-family: 'Lobster Two', cursive; font-size: 25px;"></span>
+				</div>
+				<div class="col s12" style="margin-bottom: 1em">
+					<span id="temon"
+						style="font-family: 'Cinzel', cursive; font-size: 25px;"></span>
 				</div>
 				<div id="table-datatables">
 					<div id="cuerpo" class="container" style="width: 95%;">
@@ -283,8 +178,8 @@ label {
 
 				<div class="row muestra2" style="margin-bottom:4em">
 					<div class="col l6 s4 " style="margin-left: 1em">
-						<a href=""
-							class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 ">volver
+						<a 
+							class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 comeBack">volver
 							<i class="material-icons right" style="font-size: 20px">account_balance_wallet</i>
 						</a>
 					</div>
@@ -367,9 +262,163 @@ label {
 	<script
 		src="<c:url value='https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js'></c:url>"
 		type="text/javascript"></script>
-	<script
-		src="<c:url value='/resources/js/businessCore/asistencia.js'></c:url>"
-		type="text/javascript"></script>
+	<script>
+		$(document).ready(function(){
+			var fechin = new Date();var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+			$("#fecha").empty().append(fechin.toLocaleDateString("es-ES", options));
+			
+			var item = localStorage.getItem("idtaller");
+			console.log("este es el taller: "+item);
+			
+			$.getJSON(
+					coneia_context_path + "/admin/customTaller",
+					{op:34,idt:item},
+					function(objJson) {
+						var s = "";
+						var lista = objJson;
+						console.log(lista);
+						if(lista==0){
+							console.log(lista);
+						}else{
+						if (lista.length > 0) {
+							// alert("si hay datos amix");
+							var temon = lista[0].tema;	
+							$("#temon").empty().append(temon);
+							for (var i = 0; i < lista.length; i++) {
+								var a = parseInt(i) + 1;
+								var asistencia = lista[i].asistencia;
+								
+								if(asistencia ==1){
+									clase2="#00c853 green accent-4";
+								}
+								if(asistencia ==0){
+									clase2="red";
+								}
+								var valor = lista[i].porcentaje;
+								if(parseInt(valor)>=80){
+									clase = "##33691e light-green darken-4";
+									certi="Completo"
+								}else{
+									if(parseInt(valor)>=50){
+										clase = "#006064 cyan darken-4";
+										certi="Mitad";
+									}else{
+										clase = "#424242 grey darken-3";
+										certi="Ausente"
+										
+									}
+									
+								}
+								s += '<tr>';
+								s += '<td style="width:3%">'
+										+a
+										+ '</td>';
+								s += '<td style="width:25%">'
+										+ lista[i].nombres + " " +lista[i].apellidos
+										+ '</td>';
+								s += '<td style="width:15%">' + lista[i].dni
+										+ '</td>';
+								s += '<td style="width:20%">' + lista[i].correo
+								+ '</td>';
+								s += '<td style="width:15%">' + lista[i].celular
+								+ '</td>';
+								s += '<td style="width:12%" ><b>'+valor+' %</b></td>';
+								s += '<td style="width:10%;color:white" class="'+clase+'">' + certi
+								+ '</td>';
+								// s += '<td>' + p + '</td>';
+								s += '</tr>';
+								
+							}
+
+						} else {
+							//alert("no hay datos");
+							s += "";
+						}
+						$("#table2").empty();
+
+						$("#table2").append(createTable());
+
+						$("#data1").empty();
+						$("#data1").append(s);
+						console.log(lista[0].tema);
+
+						$("#data-table-row-grouping5")
+						.dataTable(
+								{
+									dom : 'Bfrtip',
+									buttons : [ 'copy', 'csv', 'excel', 'pdf', 'print' ],
+									buttons : [ 'excel' ],
+									buttons : [ {
+										extend : 'excel',
+										text : 'EXCEL',
+										messageTop: lista[0].tema
+										
+									}, {
+										extend : 'pdf',
+										text : 'pdf',
+										messageTop: lista[0].tema
+									}, {
+										extend : 'print',
+										text : 'Imprimir',
+										messageTop: lista[0].tema
+									}],
+									
+									"pageLength" : 10,
+									"bPaginate" : true,
+									"bLengthChange" : false,
+									"ordering": false,
+									"bFilter" : true,
+									"bInfo" : false,
+									"bAutoWidth" : true,
+									"select":true,
+									"language" : {
+										// "lengthMenu": "Display _MENU_ records per page",
+										"zeroRecords" : "Reporte vacío",
+										"info" : "Mostrando página _pag_ de _pags_",
+										"infoEmpty" : "Ningún alumno agregado"
+									// "infoFiltered": "(filtered from _MAX_ total records)"
+									}
+
+
+									
+								}
+								
+						
+						);
+
+					$(".buttons-pdf").addClass("btn waves-effect waves-light");
+					$(".buttons-excel").addClass("btn waves-effect waves-light");
+					$(".buttons-print").addClass("btn waves-effect waves-light");
+						}
+				});
+					
+		});
+	
+		function createTable() {
+			var d = "<table id='data-table-row-grouping5' class='bordered highlight centered' >";
+			d += "<thead>";
+			d += "<tr>";
+			d += "<th>Nro</th>";
+			// s += "<th class='hide' >N°</th>";
+			d += "<th>Nombres y Apellidos</th>";
+			d += "<th>Dni</th>";
+			d += "<th>Correo</th>";
+			d += "<th> Celular </th>";
+			d += "<th>Asistencia</th>";
+			d += "<th>% de Asistencias</th>";
+			d += "</tr>";
+			d += "</thead>";
+
+			d += "<tbody id='data1'></tbody>";
+			d += "</table>";
+			return d;
+
+		};
+		$(".comeBack").click(function(){
+			link = coneia_context_path  + "/admin/programaAdmin";
+			location.href=link;
+		});
+	</script>
 
 
 </body>

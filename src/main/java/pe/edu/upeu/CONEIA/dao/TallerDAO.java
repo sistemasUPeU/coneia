@@ -15,4 +15,6 @@ public interface TallerDAO {
 	public List<Map<String,Object>> readAll();
 	public List<Map<String,Object>> findTalleres(int idtipo, String fecha) throws ParseException;
 	public List<Map<String,Object>> findTalleres2(int idtipo, String fecha,String hora) throws ParseException;
+	public List<Map<String,Object>> findTalleres3(int idtipo, String fecha) throws ParseException;
+	public List<Map<String,Object>> findTalleres4(int idtipo, String fecha,String hora) throws ParseException;
 }

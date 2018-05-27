@@ -51,7 +51,7 @@ $(document).ready(function() {
 });
 
 function listarTodito(){
-	$.get("customTaller", {op : 1}, function(data) {
+	$.get("customTaller", {op : 30}, function(data) {
 		var obj = JSON.parse(data);
 //		alert(obj[0].idtaller)
 		$(".visitaMartes").empty().append('<div class="row center fonto">Talleres especializados</div><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ '7:30 AM' +' a '+ '1:00 PM' +
@@ -68,7 +68,7 @@ function listarTodito(){
 		if(nvm==0){vitas(idtipo,fecha)};nvm++;
 	});
 
-	$.get("customTaller", {op : 2}, function(data) {
+	$.get("customTaller", {op : 31}, function(data) {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
@@ -90,7 +90,7 @@ function listarTodito(){
 		});	tem++;var idtipo=2;fecha="2018-06-05";
 		if(ntm==0){vitas(idtipo,fecha)};ntm++;
 	});
-	$.get("customTaller", {op : 3}, function(data) {
+	$.get("customTaller", {op : 32}, function(data) {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
@@ -112,7 +112,7 @@ function listarTodito(){
 		});	vtj++;var idtipo=4;fecha="2018-06-07";
 		if(nvj==0){vitas(idtipo,fecha)};nvj++;
 	});
-	$.get("customTaller", {op : 4}, function(data) {
+	$.get("customTaller", {op : 33}, function(data) {
 		var obj = JSON.parse(data);
 		var place="";
 //		alert(obj[0].idtaller)
@@ -468,6 +468,7 @@ function modales(tema,ponente,lugar,stock,idtaller,tipo){
 			'<label for="ponente'+idtaller+'" class="active">Ponente: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
 			'<label for="lugar'+idtaller+'" class="active">Lugar: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stock'+idtaller+'" value="'+stock+'"/>'+
 			'<label for="stock'+idtaller+'" class="active">Stock: </label></div></div></div><input type="hidden" id="tipo'+idtaller+'" value="'+tipo+'"/>'+
+			'<a class="btn waves-effect waves-light  #1a237e indigo darken-4" onclick=(reporteTaller('+idtaller+'));>REPORTE <i class="large material-icons">print</i></a>'+
 			'</div><div class="modal-footer inline"><a class=" waves-effect waves-light btn #0277bd light-blue darken-3" onclick="update('+idtaller+')" style="width:30%"><i class="material-icons">sync</i></a> <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cerrar</a></div></div></div></div></br></div>');
 	$('.modal').modal({
 		
@@ -480,6 +481,13 @@ function modales(tema,ponente,lugar,stock,idtaller,tipo){
 	});
 }
 
+function reporteTaller(idt){
+	localStorage.setItem("idtaller",idt);
+	var item = localStorage.getItem("idtaller",idt);
+	console.log("este es el taller: "+item);
+	link = coneia_context_path  + "/admin/impresiones";
+	location.href=link;
+}
 function conferencias(tema,ponente,lugar,idtaller,tipo){
 	$("#modal"+idtaller).css("z-index","500"+idtaller);
 	$("#modales").append('<div id="modal'+idtaller+'" class="modal"><div class="modal-content modal-form"><div class="row">'+
@@ -487,6 +495,7 @@ function conferencias(tema,ponente,lugar,idtaller,tipo){
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba el ponente" id="ponente'+idtaller+'" value="'+ponente+'"/>'+
 			'<label for="ponente'+idtaller+'" class="active">Ponente: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
 			'<label for="lugar'+idtaller+'" class="active">Lugar: </label></div></div><input type="hidden" id="tipo'+idtaller+'" value="'+tipo+'"/>'+
+			'<a class="btn waves-effect waves-light  #1a237e indigo darken-4" onclick=(reporteTaller('+idtaller+'));>REPORTE <i class="large material-icons">print</i></a>'+
 			'</div><div class="modal-footer inline"><a class=" waves-effect waves-light btn #0277bd light-blue darken-3" onclick="update('+idtaller+')" style="width:30%"><i class="material-icons">sync</i></a> <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cerrar</a></div></div></div></div></br></div>');
 	$('.modal').modal({
 		
@@ -505,6 +514,7 @@ function actividades(tema,lugar,idtaller,tipo){
 			'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Actualizar cambios</h2><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_balance</i><textarea type="text" placeholder="Escriba el tema" id="tema'+idtaller+'" class="materialize-textarea" >'+tema+'</textarea>'+
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
 			'<label for="lugar'+idtaller+'" class="active">Lugar: </label></div></div><input type="hidden" id="tipo'+idtaller+'" value="'+tipo+'"/>'+
+			'<a class="btn waves-effect waves-light  #1a237e indigo darken-4" onclick=(reporteTaller('+idtaller+'));>REPORTE <i class="large material-icons">print</i></a>'+
 			'</div><div class="modal-footer inline"><a class=" waves-effect waves-light btn #0277bd light-blue darken-3" onclick="update('+idtaller+')" style="width:30%"><i class="material-icons">sync</i></a> <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cerrar</a></div></div></div></div></br></div>');
 	$('.modal').modal({
 		
@@ -524,6 +534,7 @@ function visitas(tema,ponente,stock,idtaller,tipo){
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">account_circle</i><input type="text" placeholder="Escriba la entidad responsable" id="ponente'+idtaller+'" value="'+ponente+'"/>'+
 			'<label for="ponente'+idtaller+'" class="active">Ponente: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stock'+idtaller+'" value="'+stock+'"/>'+
 			'<label for="stock'+idtaller+'" class="active">Stock: </label></div></div></div><input type="hidden" id="tipo'+idtaller+'" value="'+tipo+'"/>'+
+			'<a class="btn waves-effect waves-light  #1a237e indigo darken-4" onclick=(reporteTaller('+idtaller+'));>REPORTE <i class="large material-icons">print</i></a>'+
 			'</div><div class="modal-footer inline"><a class=" waves-effect waves-light btn #0277bd light-blue darken-3" onclick="update('+idtaller+')" style="width:30%"><i class="material-icons">sync</i></a> <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cerrar</a></div></div></div></div></br></div>');
 	$('.modal').modal({
 		
@@ -542,6 +553,7 @@ function talleres(tema,lugar,stock,idtaller,tipo){
 			'<label for="tema'+idtaller+'" class="active">Tema: </label></div></div><div class="col s12"><div class="input-field inline col s12"><i class="material-icons prefix">event_seat</i><input type="text" placeholder="Escriba el lugar" id="lugar'+idtaller+'" value="'+lugar+'"/>'+
 			'<label for="lugar'+idtaller+'" class="active">Lugar: </label></div></div><div class="col s12"><div class="input-field inline col s6"><i class="material-icons prefix">mode_edit</i><input type="number" min="0" placeholder="Escriba el stock" id="stock'+idtaller+'" value="'+stock+'"/>'+
 			'<label for="stock'+idtaller+'" class="active">Stock: </label></div></div></div><input type="hidden" id="tipo'+idtaller+'" value="'+tipo+'"/>'+
+			'<a class="btn waves-effect waves-light  #1a237e indigo darken-4" onclick=(reporteTaller('+idtaller+'));>REPORTE <i class="large material-icons">print</i></a>'+
 			'</div><div class="modal-footer inline"><a class=" waves-effect waves-light btn #0277bd light-blue darken-3" onclick="update('+idtaller+')" style="width:30%"><i class="material-icons">sync</i></a> <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cerrar</a></div></div></div></div></br></div>');
 	$('.modal').modal({
 			
