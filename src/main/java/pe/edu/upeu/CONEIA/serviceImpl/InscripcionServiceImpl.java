@@ -112,6 +112,10 @@ public class InscripcionServiceImpl implements InscripcionService {
 		// TODO Auto-generated method stub
 		return idao.delete(id);
 	}
+	@Override
+	public int validardni(String dni) {
+		return idao.validardni(dni);
+	};
 	
 	
 

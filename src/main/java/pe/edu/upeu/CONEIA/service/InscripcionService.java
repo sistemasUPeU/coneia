@@ -19,6 +19,6 @@ public interface InscripcionService {
 	public List<DetalleInscripcion> Delegacion(String fecha);
 	public List<DetalleInscripcion> AceptadosDelegacion();
 	public List<DetalleInscripcion> AprobadosPersonal();
-	
+	public int validardni(String dni);
 	public int delete(int id) throws ParseException;
 }

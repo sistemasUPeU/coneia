@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.ParameterMode;
+import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -32,6 +35,7 @@ import com.google.gson.JsonParser;
 
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
 import pe.edu.upeu.CONEIA.entity.Persona;
+import pe.edu.upeu.CONEIA.entity.Rol;
 import pe.edu.upeu.CONEIA.service.DetalleInscripcionService;
 import pe.edu.upeu.CONEIA.service.InscripcionService;
 
@@ -49,6 +53,44 @@ public class InscripcionController {
 	private DetalleInscripcionService detalleService;
 
 
+	@RequestMapping("/validate")
+	public @ResponseBody String validate(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("entro a validate");
+		Gson g = new Gson();
+
+		String data =  request.getParameter("opcion");
+		System.out.println("controller string" + data);
+		
+		int respuesta = 0;
+		JsonParser parser = new JsonParser();
+
+		// Obtain Array
+		JsonArray gsonArr = parser.parse(data).getAsJsonArray();
+		System.out.println(gsonArr);
+		System.out.println("size " + gsonArr.size());
+		int cont = 0;
+
+		for (JsonElement obje : gsonArr) {
+
+			// Object of array
+			JsonObject gsonObj = obje.getAsJsonObject();
+			System.out.println("gsonObj> " + gsonObj);
+			// Primitives elements of object
+
+			String nombre = gsonObj.get("nombre").getAsString();
+			String dni = gsonObj.get("dni").getAsString();
+			System.out.println(nombre+", "+dni);
+			// Object Constructor
+			respuesta = insService.validardni(dni);
+			//
+			if(respuesta!=0) {
+				System.out.println("respuesta controller validar dni: " + dni +" , "+respuesta);
+				break;
+			}
+		}
+		return g.toJson(respuesta);
+	}
+	
 
 	@RequestMapping("/createEnrollment")
 	public @ResponseBody String CreateEnrollment(HttpServletRequest request, HttpServletResponse response) {
@@ -64,7 +106,9 @@ public class InscripcionController {
 			System.out.println("controller obj" + datos);
 			System.out.println("controller string" + data);
 			
-
+			
+			
+			
 			answer = insService.create("", data);
 			System.out.println("answer controller" + answer);
 
