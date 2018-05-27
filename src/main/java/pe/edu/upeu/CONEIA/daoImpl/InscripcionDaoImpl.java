@@ -69,18 +69,20 @@ public class InscripcionDaoImpl implements InscripcionDAO {
 
 			Query query = s.createQuery(
 					"select d from Persona d where d.dni=:dni");
-			query.setParameter("idinscripcion", dni);
+			query.setParameter("dni", dni);
 			lista = query.getResultList();
 
 			// System.out.println(query.getResultList());
-			System.out.println("dao impl validar dni> " + lista);
-			if(lista!=null) {
-				x=1;
+			System.out.println("dao impl validar dni> " + lista + ", dni: " + dni+", lista estado" + lista.isEmpty());
+			if(!lista.isEmpty()) {
+				x=Integer.parseInt(dni);//existe un usuario con tal dni
+				System.out.println("existe un usuario con tal dni> " + dni);
 			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Error lista pendientes personales, dao impl " + e);
+			System.out.println("Error validar dni " + e);
+			
 		}
 		return x;
 	};

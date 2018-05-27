@@ -34,141 +34,146 @@ function getPrecios() {
 
 		});
 
-	})
+	});
 }
 
 $(window).on('resize', function() {
 	check()
 });
 
-//$("#email").click(function(){
-//	$("#email").trigger("change");
-//	Materialize.updateTextFields();
+var cont = 1;
+var contadiv = 1;
+var move = 1;
+var run = 0;
+
+// $("#email").click(function(){
+// $("#email").trigger("change");
+// Materialize.updateTextFields();
 //
-//	})
-//	$("#ml_email").click(function(){
-//	$("#ml_email").trigger("change");
-//	Materialize.updateTextFields();
+// })
+// $("#ml_email").click(function(){
+// $("#ml_email").trigger("change");
+// Materialize.updateTextFields();
 //
-//	})
-//	$("#ml1_email").click(function(){
-//	$("#ml1_email").trigger("change");
-//	Materialize.updateTextFields();
+// })
+// $("#ml1_email").click(function(){
+// $("#ml1_email").trigger("change");
+// Materialize.updateTextFields();
 //
-//	})
+// })
 
 //
-//$("#email")
-//		.keyup(
-//				function() {
+// $("#email")
+// .keyup(
+// function() {
 //
-//					$.validator.addMethod('pattern', function(value, element) {
-//						console.log(element);
-//						return this.optional(element)
-//						// || value.length >= 6
-//						// && /\d/.test(value)
-//						// || /[a-z]/i.test(value)
-//						|| /.+@.+/.test(value);
-//					}, 'Enter a valid email please.')
+// $.validator.addMethod('pattern', function(value, element) {
+// console.log(element);
+// return this.optional(element)
+// // || value.length >= 6
+// // && /\d/.test(value)
+// // || /[a-z]/i.test(value)
+// || /.+@.+/.test(value);
+// }, 'Enter a valid email please.')
 //
-//					$("#forme")
-//							.validate(
-//									{
+// $("#forme")
+// .validate(
+// {
 //
-//										rules : {
-//											field : {
-//												required : true
-//											},
-//											email : {
-//												required : true,
-//												email : false,
-//												pattern : true
-//											}
-//										},
-//										messages : {
-//											email : {
-//												required : "We need your email address to contact you",
-//												email : "Your email address must be in the format of name@domain.com"
+// rules : {
+// field : {
+// required : true
+// },
+// email : {
+// required : true,
+// email : false,
+// pattern : true
+// }
+// },
+// messages : {
+// email : {
+// required : "We need your email address to contact you",
+// email : "Your email address must be in the format of name@domain.com"
 //
-//											}
-//										}
-//									});
-//				})
+// }
+// }
+// });
+// })
 //				
-//$("#ml_email")
-//		.keyup(
-//				function() {
+// $("#ml_email")
+// .keyup(
+// function() {
 //
-//					$.validator.addMethod('pattern', function(value, element) {
-//						console.log(element);
-//						return this.optional(element)
-//						// || value.length >= 6
-//						// && /\d/.test(value)
-//						// || /[a-z]/i.test(value)
-//						|| /.+@.+/.test(value);
-//					}, 'Enter a valid email please.')
+// $.validator.addMethod('pattern', function(value, element) {
+// console.log(element);
+// return this.optional(element)
+// // || value.length >= 6
+// // && /\d/.test(value)
+// // || /[a-z]/i.test(value)
+// || /.+@.+/.test(value);
+// }, 'Enter a valid email please.')
 //
-//					$("#forme2")
-//							.validate(
-//									{
+// $("#forme2")
+// .validate(
+// {
 //
-//										rules : {
-//											field : {
-//												required : true
-//											},
-//											email : {
-//												required : true,
-//												email : false,
-//												pattern : true
-//											}
-//										},
-//										messages : {
-//											email : {
-//												required : "We need your email address to contact you",
-//												email : "Your email address must be in the format of name@domain.com"
+// rules : {
+// field : {
+// required : true
+// },
+// email : {
+// required : true,
+// email : false,
+// pattern : true
+// }
+// },
+// messages : {
+// email : {
+// required : "We need your email address to contact you",
+// email : "Your email address must be in the format of name@domain.com"
 //
-//											}
-//										}
-//									});
-//				})
+// }
+// }
+// });
+// })
 //				
 //				
-//$("#ml1_email")
-//		.keyup(
-//				function() {
+// $("#ml1_email")
+// .keyup(
+// function() {
 //
-//					$.validator.addMethod('pattern', function(value, element) {
-//						console.log(element);
-//						return this.optional(element)
-//						// || value.length >= 6
-//						// && /\d/.test(value)
-//						// || /[a-z]/i.test(value)
-//						|| /.+@.+/.test(value);
-//					}, 'Enter a valid email please.')
+// $.validator.addMethod('pattern', function(value, element) {
+// console.log(element);
+// return this.optional(element)
+// // || value.length >= 6
+// // && /\d/.test(value)
+// // || /[a-z]/i.test(value)
+// || /.+@.+/.test(value);
+// }, 'Enter a valid email please.')
 //
-//					$("#forme3")
-//							.validate(
-//									{
+// $("#forme3")
+// .validate(
+// {
 //
-//										rules : {
-//											field : {
-//												required : true
-//											},
-//											email : {
-//												required : true,
-//												email : false,
-//												pattern : true
-//											}
-//										},
-//										messages : {
-//											email : {
-//												required : "We need your email address to contact you",
-//												email : "Your email address must be in the format of name@domain.com"
+// rules : {
+// field : {
+// required : true
+// },
+// email : {
+// required : true,
+// email : false,
+// pattern : true
+// }
+// },
+// messages : {
+// email : {
+// required : "We need your email address to contact you",
+// email : "Your email address must be in the format of name@domain.com"
 //
-//											}
-//										}
-//									});
-//				})
+// }
+// }
+// });
+// })
 
 // function to catch the dashboard´s width when it changes - works on Chrome
 function check() {
@@ -431,33 +436,104 @@ $("#select").change(function() {
 	$(".select-dropdown").attr("name", "nombrecillo");
 
 });
+var previous = 0;
+$("input[name=group1]").click(
+		function() {
 
-$("input[name=group1]")
-		.click(
-				function() {
-					opcion = $(this).val();
+			previous = opcion;
 
-					if (opcion == 1) {
-						$("#table-datatables").hide();
-						$("#personal").show();
-						Materialize.Toast.removeAll();
-						// getIdEnrollment();
-					} else {
-						$("#personal").hide();
-						$("#table-datatables").show();
-						$("#ml_importe").val('130');
-						// costo_inscripcion = $("#ml_importe").val(); //
-						// delegacion 130 soles
+			opcion = $(this).val();
 
-						costo_inscripcion = precio_delegacion;
-						// --
-						// delegacion
-						var $toastContent = $('<span class="center">La delegación debe estar conformada por 10 alumnos como mínimo.</span>')
 
-						Materialize.toast($toastContent, 4000);
-						// getIdDetailEnrollment();
-					}
-				});
+			if ((previous != opcion) && (previous != 0)) {
+				alertify.confirm('Confirmación',
+						'Los datos se perderán si cambia de vista', function() {
+							alertify.success('Ok');
+							showdiv();
+
+						}, function() {
+							alertify.error('Cancel')
+							showdiv();
+
+						});
+			} else {
+				showdiv();
+			}
+
+		});
+
+function choseCleaner() {
+	if (previous == 1) {
+		clearFormPersonal();
+	} else if (previous == 2) {
+	
+		arrayProperties = new Array();
+		$("#pagination-long").html("");
+		$("#ui-alert").html("");
+		// crearCard();
+		cont = 1;
+		move = 1;
+		contadiv = 1;
+	}
+}
+
+function showdiv() {
+	if (opcion == 1) {
+		choseCleaner();
+		$("#table-datatables").hide();
+		$("#personal").show();
+		Materialize.Toast.removeAll();
+
+		// getIdEnrollment();
+	} else {
+		choseCleaner();
+		$("#personal").hide();
+		$("#table-datatables").show();
+		$("#ml_importe").val('130');
+		// costo_inscripcion = $("#ml_importe").val(); //
+		// delegacion 130 soles
+
+		costo_inscripcion = precio_delegacion;
+		// --
+		// delegacion
+		var $toastContent = $('<span class="center">La delegación debe estar conformada por 10 alumnos como mínimo.</span>')
+
+		Materialize.toast($toastContent, 4000);
+		// getIdDetailEnrollment();
+	}
+}
+
+function clearFormPersonal() {
+	$("#select option:eq(0)").prop('selected', true);
+	 $('#select').material_select();
+	$("#personal input").not($("#personal input").first()).each(function() {
+		$(this).attr("disabled",true);
+		$(this).not($("#personal input").first()).val("");
+		
+	})
+//	$("#first-step").click();
+	var breaki = 1
+	$("#personal label").not(".hide label").each(function() {
+
+		if (breaki % 2 == 0) {
+
+			$(this).remove();
+
+			// return true;
+		} else {
+			$(this).removeClass("active");
+
+		}
+		breaki++;
+
+	});
+	$("#personal input.validate").each(function() {
+
+		$(this).removeClass("validate invalid valid").addClass("validate");
+
+	});
+	$('.stepper').getStep($('.stepper').getActiveStep()).removeClass('wrong');
+}
 
 var arrayProperties = new Array();
 
@@ -472,8 +548,9 @@ $(".enrollment").click(function() {
 
 var contador = 1
 function insertarPersona() {
-	if (opcion == 1) {
 
+	if (opcion == 1) {
+		arrayProperties = new Array();
 		if (contador == 1) {
 			if (change == 2) {
 				var nombre = $("#name").val().toUpperCase();
@@ -536,7 +613,7 @@ function validateFirstStep() {
 		validation = false;
 
 	} else {
-
+	
 		if (arrayProperties.length === 0) {
 			if (opcion == 1) {
 
@@ -555,98 +632,71 @@ function validateFirstStep() {
 				validation = false;
 
 			}
+		}
+
+		
+		if (Number(opcion) == 1) {
+			
+			
 		} else {
-			if (opcion == 1) {
+		
+		
+			if (arrayProperties.length >= 10) {
+
+				var element = null;
+				var array = [];
+				for (i = 0; i < arrayProperties.length; i++) {
+
+					var idni = arrayProperties[i]['dni'];
+					array.push(idni);
+				}
+				var indices = [];
+				for (i = 0; i < arrayProperties.length; i++) {
+
+					element = arrayProperties[i]['dni'];
+					var idx = array.indexOf(element);
+					while (idx != -1) {
+						indices.push(idx);
+						idx = array.indexOf(element, idx + 1);
+					}
+
+					if (indices.length > 1) {
+
+						break;
+					} else {
+						indices = [];
+					}
+				}
+
+				if (indices.length > 1) {
+					alertify.alert('Error',
+							'Hemos encontrado un dni repetido: ' + element
+									+ ', por favor verifíquelo.', function() {
+								alertify.success('Ok');
+
+								// $('.stepper').prevStep();
+
+							});
+
+					validation = false;
+				} else {
+
+					// costo_inscripcion = 130;
+					validation = true;
+				}
 
 			} else {
-
-				if (arrayProperties.length >= 10) {
-					
-					
-					var array=[];
-					for(i=0;i<arrayProperties.length;i++){
-						
-						var idni=arrayProperties[i]['dni'];
-						array.push(idni);
-					}
-					var indices = [];
-					for(i=0;i<arrayProperties.length;i++){
-						
-						var element=arrayProperties[i]['dni'];
-						var idx = array.indexOf(element);
-						while (idx != -1) {
-						  indices.push(idx);
-						  idx = array.indexOf(element, idx + 1);
-						}
-						
-					
-						if(indices.length>1){
-							
-							break;
-						}else{
-							indices = [];
-						}
-					}
-					
-					
-					if(indices.length > 1){
-						alertify
+				alertify
 						.alert(
-								'Error',
-								'Asegúrese de no repetir el dni, por favor',
-								function() {
-									alertify
-											.success('Ok');
-									
-									$('.stepper').prevStep();
-										
-								})
-									
-						
-					}else{
-						alertify.confirm('Confirmación',
-								'¿Seguro(a) que no desea agregar a alguien mas?',
+								'Alerta',
+								'Para formar una delegación, esta debe ser conformada por 10 alumnos como mínimo',
 								function() {
 									alertify.success('Ok');
 
-									if ($(window).width() < 600) {
-										listarReporteMini();
-									} else {
-										if ($(window).width() < 990) {
-											listarReporteMedium();
-										} else {
-											listarReporte();
-										}
-
-									}
-
-								}, function() {
-									alertify.error('Cancel')
-
-									$('.stepper').prevStep();
-
-								});
-//						costo_inscripcion = 130;
-						validation = true;
-					}
-					
-					
-					
-					
-					
-				} else {
-					alertify
-							.alert(
-									'Alerta',
-									'Para formar una delegación, esta debe ser conformada por 10 alumnos como mínimo',
-									function() {
-										alertify.success('Ok');
-
-									})
-					validation = false;
-				}
-
+								})
+				validation = false;
 			}
+
 		}
 
 	}
@@ -666,7 +716,74 @@ function nextStepFirstHandler() {
 	if (validateFirstStep()) {
 		insertarPersona();
 
-		$('.stepper').nextStep();
+		var arraydata1 = JSON.stringify(arrayProperties);
+		
+		$
+				.get(
+						"subscribe/validate",
+						{
+							opcion : arraydata1
+						},
+						function(data) {
+
+						
+							if (data != 0) {
+								alertify
+										.alert(
+												'Error',
+												'El dni '
+														+ data
+														+ ' ya se encuentra registrado, por favor ingrese otro.',
+												function() {
+													alertify.success('Ok');
+													$('.stepper')
+															.destroyFeedback();
+													if (opcion == 1) {
+														console
+																.log("reseteando");
+														arrayProperties = new Array();
+														contador = 1;
+													}
+
+												});
+
+							} else {
+								if(opcion==2){
+									alertify
+									.confirm(
+											'Confirmación',
+											'¿Seguro(a) que no desea agregar a alguien mas?',
+											function() {
+												alertify.success('Ok');
+												$('.stepper').nextStep();
+												if ($(window).width() < 600) {
+													listarReporteMini();
+												} else {
+													if ($(window).width() < 990) {
+														listarReporteMedium();
+													} else {
+														listarReporte();
+													}
+
+												}
+
+											}, function() {
+												alertify.error('Cancel')
+												$('.stepper')
+														.destroyFeedback();
+//												$('.stepper').prevStep();
+
+											});
+								}else{
+									$('.stepper').nextStep();
+//									$('.stepper')
+//									.destroyFeedback();
+								}
+
+							}
+
+						});
+
 	} else {
 		// $('.stepper').getStep($('.stepper').getActiveStep()).destroyFeedback();
 
@@ -791,9 +908,8 @@ $("#accept")
 
 											var data = JSON
 													.stringify(arrayProperties);
-										
-											
-													$
+
+											$
 													.post(
 															"subscribe/createEnrollment",
 															{
@@ -890,17 +1006,10 @@ $("#accept")
 																					})
 																}
 															});
-												
-												
-											
-											
-											
-											
-											
+
 											// [0, 2, 4]
 											// var da =
 											// JSON.parse(arrayProperties);
-											
 
 											// ------------------------------
 
@@ -993,10 +1102,6 @@ function listar() {
 
 };
 
-var cont = 1;
-var contadiv = 1;
-var move = 1;
-var run = 0;
 function crearCard() {
 
 	if (cont == move) {
@@ -1622,7 +1727,7 @@ function createModal(id, nombre) {
 
 jQuery.validator.setDefaults({
 	debug : true,
-	
+
 });
 
 $("#formValidate").validate({
