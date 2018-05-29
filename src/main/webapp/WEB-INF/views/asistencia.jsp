@@ -279,7 +279,7 @@ html {
 					<td class="firsto">10:30 - 11:00</td>
 					<td rowspan="2" class="#ffc400 amber accent-3">
 					<b><c:out value="${assistance[0].nombre}" /></b><br><c:out value="${assistance[0].ponente}" /><br>Lugar: <c:out value="${assistance[0].lugar}" /></td>
-					<td rowspan="2" class="#ffc400 amber accent-3"><b><c:out value="${assistance[4].nombre}" /></b><br><c:out value="${assistance[4].ponente}" /><br>Lugar: <c:out value="${assistance[4].lugar}" /></td>
+					<td rowspan="2" class="#ffc400 amber accent-3"><b><c:out value="${assistance[5].nombre}" /></b><br><c:out value="${assistance[5].ponente}" /><br>Lugar: <c:out value="${assistance[5].lugar}" /></td>
 					
 				</tr>
 				<tr>
@@ -296,7 +296,7 @@ html {
 				<tr>
 					<td class="firsto">11:30 - 12:00</td>
 					<td rowspan="2" class="#ffc400 amber accent-3"><b><c:out value="${assistance[1].nombre}" /></b><br><c:out value="${assistance[1].ponente}" /><br>Lugar: <c:out value="${assistance[1].lugar}" /></td>
-					<td rowspan="2" class="#ffc400 amber accent-3"><b><c:out value="${assistance[5].nombre}" /></b><br><c:out value="${assistance[5].ponente}" /><br>Lugar: <c:out value="${assistance[5].lugar}" /></td>
+					<td rowspan="2" class="#ffc400 amber accent-3"><b><c:out value="${assistance[6].nombre}" /></b><br><c:out value="${assistance[6].ponente}" /><br>Lugar: <c:out value="${assistance[6].lugar}" /></td>
 				</tr>
 				<tr>
 					<td class="firsto">12:00 - 12:30</td></tr>
