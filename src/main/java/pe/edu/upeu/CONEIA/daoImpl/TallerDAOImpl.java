@@ -53,8 +53,7 @@ public class TallerDAOImpl implements TallerDAO{
 		try {
 			Session s = sessionFactory.getCurrentSession();
 	    	Taller t = s.get(Taller.class, id);
-	    	t.setEstado(0);
-	    	s.update(t);	
+	    	s.delete(t);
 	    	x=1;
 		} catch (HibernateException e) {
 			System.out.println("Error al eliminar taller: "+e);
@@ -200,6 +199,77 @@ public class TallerDAOImpl implements TallerDAO{
 		try {
 			Session s = sessionFactory.getCurrentSession();
 			Query query = s.createNamedQuery("TalleresPersonalizado2");
+			Tipo t = s.get(Tipo.class, idtipo);
+			query.setParameter("tipo", t);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = formatter.parse(fecha);
+			SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm");
+			Date hour = formatter2.parse(hora);
+			query.setParameter("fecha", date);
+			query.setParameter("horaInicio", hour);
+			List<Taller> lista = query.getResultList();
+			liston = new ArrayList<>();
+		for(int i=0;i<lista.size();i++) {
+			objeto = new HashMap<>();
+			objeto.put("idtaller", lista.get(i).getIdtaller());
+			objeto.put("idtipo", lista.get(i).getTipo().getIdtipo());
+			objeto.put("tema", lista.get(i).getNombre());
+			objeto.put("ponente", lista.get(i).getPonente());
+			objeto.put("lugar", lista.get(i).getDescripcion());
+			objeto.put("fecha", lista.get(i).getFecha());
+			objeto.put("horaI", lista.get(i).getHoraInicio());
+			objeto.put("horaF", lista.get(i).getHoraFin());
+			objeto.put("stock", lista.get(i).getNroVacantes());
+			liston.add(objeto);
+		}
+		} catch (HibernateException e) {
+			System.out.println("Error findtalleres2 "+e);
+		}
+		
+		return  liston;
+	}
+
+	@Override
+	public List<Map<String, Object>> findTalleres3(int idtipo, String fecha) throws ParseException {
+		Map<String,Object> objeto = null;
+		List<Map<String,Object>> liston = null;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+			Query query = s.createNamedQuery("TalleresPersonalizado3");
+			Tipo t = s.get(Tipo.class, idtipo);
+			query.setParameter("tipo", t);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = formatter.parse(fecha);
+			query.setParameter("fecha", date);
+			List<Taller> lista = query.getResultList();
+			liston = new ArrayList<>();
+			for(int i=0;i<lista.size();i++) {
+				objeto = new HashMap<>();
+				objeto.put("idtaller", lista.get(i).getIdtaller());
+				objeto.put("idtipo", lista.get(i).getTipo().getIdtipo());
+				objeto.put("tema", lista.get(i).getNombre());
+				objeto.put("ponente", lista.get(i).getPonente());
+				objeto.put("lugar", lista.get(i).getDescripcion());
+				objeto.put("fecha", lista.get(i).getFecha());
+				objeto.put("horaI", lista.get(i).getHoraInicio());
+				objeto.put("horaF", lista.get(i).getHoraFin());
+				objeto.put("stock", lista.get(i).getNroVacantes());
+				liston.add(objeto);
+		}
+		} catch (HibernateException e) {
+			System.out.println("Error findtalleres "+e);
+		}
+		
+		return  liston;
+	}
+
+	@Override
+	public List<Map<String, Object>> findTalleres4(int idtipo, String fecha, String hora) throws ParseException {
+		Map<String,Object> objeto = null;
+		List<Map<String,Object>> liston = null;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+			Query query = s.createNamedQuery("TalleresPersonalizado4");
 			Tipo t = s.get(Tipo.class, idtipo);
 			query.setParameter("tipo", t);
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

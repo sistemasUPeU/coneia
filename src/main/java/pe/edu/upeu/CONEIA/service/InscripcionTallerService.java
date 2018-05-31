@@ -15,4 +15,5 @@ public interface InscripcionTallerService {
 	public long cuantos2(int idd);
 	public Map<String,Object> mapon (int idd,String fecha) throws ParseException;
 	public List<Map<String,Object>> reporteAsistencia();
+	public List<Map<String, Object>> impresiones(int idt);
 }

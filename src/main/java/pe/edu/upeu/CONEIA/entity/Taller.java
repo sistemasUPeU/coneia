@@ -28,7 +28,9 @@ import javax.persistence.TemporalType;
 @NamedQuery(name="Talleres", query="FROM Taller t where t.horaInicio  = :horaInicio and t.fecha=:fecha"),
 @NamedQuery(name="Stock", query="FROM Taller t where t.idtaller  = :idtaller"),
 @NamedQuery(name="TalleresPersonalizado", query="FROM Taller t where t.tipo  =:tipo and fecha=:fecha and t.estado=1"),
-@NamedQuery(name="TalleresPersonalizado2", query="FROM Taller t where t.tipo  =:tipo and fecha=:fecha and horaInicio=:horaInicio and t.estado=1")})
+@NamedQuery(name="TalleresPersonalizado2", query="FROM Taller t where t.tipo  =:tipo and fecha=:fecha and horaInicio=:horaInicio and t.estado=1"),
+@NamedQuery(name="TalleresPersonalizado3", query="FROM Taller t where t.tipo  =:tipo and fecha=:fecha"),
+@NamedQuery(name="TalleresPersonalizado4", query="FROM Taller t where t.tipo  =:tipo and fecha=:fecha and horaInicio=:horaInicio")})
 public class Taller implements java.io.Serializable {
 
 	private Integer idtaller;

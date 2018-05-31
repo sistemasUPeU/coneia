@@ -65,5 +65,17 @@ public class TallerServiceImpl implements TallerService{
 		// TODO Auto-generated method stub
 		return td.findTalleres2(idtipo, fecha, hora);
 	}
+
+	@Override
+	public List<Map<String, Object>> findTalleres3(int idtipo, String fecha) throws ParseException {
+		// TODO Auto-generated method stub
+		return td.findTalleres3(idtipo, fecha);
+	}
+
+	@Override
+	public List<Map<String, Object>> findTalleres4(int idtipo, String fecha, String hora) throws ParseException {
+		// TODO Auto-generated method stub
+		return td.findTalleres4(idtipo, fecha, hora);
+	}
 	
 }

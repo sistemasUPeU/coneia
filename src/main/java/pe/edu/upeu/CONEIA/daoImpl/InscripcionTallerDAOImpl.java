@@ -1,5 +1,7 @@
 package pe.edu.upeu.CONEIA.daoImpl;
 
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -12,7 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.ParameterMode;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -20,6 +24,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.google.gson.Gson;
 
 import pe.edu.upeu.CONEIA.dao.InscripcionTallerDAO;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
@@ -36,6 +42,7 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public Gson gs = new Gson();
 
 	public InscripcionTallerDAOImpl() {
 	
@@ -364,6 +371,59 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 		} catch (HibernateException e) {
 			System.out.println("Error reporte de asistencias "+e);
 		}
+		
+		return liston;
+	}
+
+	@Override
+	public List<Map<String, Object>> impresiones(int idt) {
+		String total="";
+		List<Map<String,Object>> liston = new ArrayList<>();
+		Map<String,Object> map = null;
+		try {
+			Session s = sessionFactory.getCurrentSession();
+//			StoredProcedureQuery query = s.createStoredProcedureQuery("printWorkshop")
+//					.registerStoredProcedureParameter("idt", Integer.class, ParameterMode.IN)
+//					.setParameter("idt", idt);
+			String q = "SELECT p.nombre as nombres,p.apellidos as apellidos,p.dni as dni,p.correo as correo,p.celular as celular,t.nombre as tema,it.asistencia as asistencia ,it.iddetalle_inscripcion as idd from persona p \r\n" + 
+					"LEFT JOIN detalle_inscripcion di ON p.idpersona=di.idpersona\r\n" + 
+					"LEFT JOIN inscripcion_taller it ON di.iddetalle_inscripcion=it.iddetalle_inscripcion\r\n" + 
+					"LEFT JOIN taller t ON it.idtaller=t.idtaller\r\n" + 
+					"WHERE it.idtaller=?";
+			Query query = s.createNativeQuery(q);
+			query.setParameter(1, idt);
+
+//			Query query = s.createQuery("call printWorkshop(:idt)");
+//			query.setParameter("idt", idt);
+			List<Object[]> resultado = query.getResultList();
+			for(Object[] lista :resultado){
+				long num = cuantos(Integer.parseInt(lista[7].toString()));
+//				long num2 = cuantos2(v.getIdd());
+				double suma = num;
+				if(suma==0) {
+					total = "0";
+					
+				}else {
+					double sumando = (suma/27)*100;
+					total = df2.format(sumando);
+				}
+				
+				map = new HashMap<>();
+				map.put("nombres", lista[0]);
+				map.put("apellidos", lista[1]);
+				map.put("dni", lista[2]);
+				map.put("correo", lista[3]);
+				map.put("celular", lista[4]);
+				map.put("tema", lista[5]);
+				map.put("asistencia", lista[6]);
+				map.put("porcentaje", total);
+				liston.add(map);
+			}
+//			System.out.println(gs.toJson(resultado));
+		} catch (Exception e) {
+			System.out.println("Error impresiones "+e);
+		}
+		
 		
 		return liston;
 	}

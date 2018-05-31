@@ -386,7 +386,7 @@ function createTable4() {
 
 };
 function createTable5() {
-	var d = "<table id='data-table-row-grouping2' class='bordered highlight centered' >";
+	var d = "<table id='data-table-row-grouping5' class='bordered highlight centered' >";
 	d += "<thead>";
 	d += "<tr>";
 	d += "<th>Nro</th>";
@@ -566,7 +566,7 @@ $(".final").click(function(){
 				$("#data3").append(s);
 				
 
-				$("#data-table-row-grouping2")
+				$("#data-table-row-grouping5")
 				.dataTable(
 						{
 							dom : 'Bfrtip',
