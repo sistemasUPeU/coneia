@@ -841,10 +841,34 @@ System.out.println(res);
 			int idt = Integer.parseInt(request.getParameter("idt"));
 			if(its.impresiones(idt).isEmpty()) {
 				out.println(0);
+				break;
 			}else {
 				out.println(gson.toJson(its.impresiones(idt)));
+				break;
 			}
-			
+		case 35:// ponencia LUNES 1
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-04", "10:30")));
+			break;
+		case 36:// ponencia LUNES 2
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-04", "11:30")));
+			break;
+		case 37:// ponencia MIERCOLES 1
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-06", "08:00")));
+			break;
+		case 38:// ponencia MIERCOLES 2
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-06", "09:00")));
+			break;
+		case 39:// ponencia MIERCOLES 3
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-06", "10:30")));
+			break;
+		case 40:// ponencia MIERCOLES 4
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-06", "11:30")));
+			break;
+		case 41:// ponencia VIERNES 1
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-08", "08:00")));
+			break;
+		case 42:// ponencia VIERNES 2
+			out.println(gson.toJson(td.findTalleres4(1, "2018-06-08", "09:00")));
 		}
 
 	}

@@ -9,7 +9,7 @@ footer {
 <footer class="page-footer green accent-3" id="foot1">
 	<div class="footer-copyright">
 		<div class="container">
-			Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
+			Copyright © 2018 <a class="grey-text text-lighten-4" target="_blank">Alpha
 				Team</a> All rights reserved. <span class="right" id="foot2">Developed by <a
 				class="grey-text text-lighten-4">Alpha Team</a></span>
 		</div>
