@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('select').material_select();
-
+	
 	// $(".datepicker").pickadate({
 	// selectMonths : !0,
 	// selectYears : 15
@@ -15,44 +15,63 @@ $(document).ready(function() {
 
 	$('#search_box').keyup(function(e){
         var searchStr = $(this).val();
-        if((searchStr).length)
-        {
-//        	console.log(searchStr);
-        	var data = sessionStorage.getItem('cambio');
-//			console.log(data);
-        	switch (e.keyCode) {
-            case 8:  
-            case 9:  // Tab
-            case 13: // Enter
-            case 37: // Left
-            case 38: // Up
-            case 39: // Right
-            case 40: // Down
-            break;
-
-            default:
-
-            	listarTalleres(data,searchStr);	
+        var data = localStorage.getItem('cambio');
+        var table = $("#data-table-row-grouping2")
+		.dataTable();
+        var table2 = $("#data-table-row-grouping3")
+		.dataTable();
+//        var table = $("#data-table-row-grouping2")
+//		.dataTable();
+        
+        if ($(window).width() < 600) {
+        	if((searchStr).length)
+            {
+            	table2.show().
+    			fnFilter(searchStr);
+            }else{
+            	if($('#search_box').val()==""){
+            		table2.hide();
+            	}else{
+            		table2.
+        			fnFilter(searchStr);
+            	}
+            	
+            }
+        }else{
+        	if((searchStr).length)
+            {
+            	table.show().
+    			fnFilter(searchStr);
+//            	listarTalleres(data,searchStr);
+            	 
+////            	console.log(searchStr);
+//            	var data = sessionStorage.getItem('cambio');
+////    			console.log(data);
+//            	switch (e.keyCode) {
+//                case 8:  table.fnFilter(searchStr);	
+//                case 9:  // Tab
+//                case 13: // Enter
+//                case 37: // Left
+//                case 38: // Up
+//                case 39: // Right
+//                case 40: // Down
+//                break;
+    //
+//                default:
+//                	table.fnFilter(searchStr);
+//                		
+//            }
+//    			
+            }else{
+            	if($('#search_box').val()==""){
+            		table.hide();
+            	}else{
+            		table.
+        			fnFilter(searchStr);
+            	}
+            }
         }
-			
-        }
-        else
-        {
-        	if ($(window).width() < 600) {
-        		var table = $('#data-table-row-grouping3').DataTable();
-           	 
-            	table
-            	    .clear()
-            	    .draw();
-        	}else{
-        		var table2 = $('#data-table-row-grouping2').DataTable();
-              	 
-            	table2
-            	    .clear()
-            	    .draw();
-        	}
-        	
-        }
+        
     });
 });
 
@@ -83,39 +102,40 @@ $("#selected")
 
 			if (cambio == "2018-06-04") {
 				tam=7;
-				sessionStorage.setItem('cambio', cambio);
+				localStorage.setItem('cambio', cambio);
 				var data = localStorage.getItem('cambio');
-				// listar();
+				listarTalleres(cambio);
 			} 
 			if (cambio == "2018-06-05") {
 				tam=4;
-				sessionStorage.setItem('cambio', cambio);
+				localStorage.setItem('cambio', cambio);
 				var data = localStorage.getItem('cambio');
-
+				listarTalleres(cambio);
 			} 
 			if (cambio == "2018-06-06") {
 				tam=9;
-				sessionStorage.setItem('cambio', cambio);
+				localStorage.setItem('cambio', cambio);
 				var data = localStorage.getItem('cambio');
-
+				listarTalleres(cambio);
 			} 
 			if (cambio == "2018-06-07") {
 				tam=4;
-				sessionStorage.setItem('cambio', cambio);
+				localStorage.setItem('cambio', cambio);
 				var data = localStorage.getItem('cambio');
-
+				listarTalleres(cambio);
 			} 
 			if (cambio == "2018-06-08") {
 				tam=5;
-				sessionStorage.setItem('cambio', cambio);
+				localStorage.setItem('cambio', cambio);
 				var data = localStorage.getItem('cambio');
+				listarTalleres(cambio);
 			} 
 			
 
 		});
 
 
-function listarTalleres(cambio,dni){
+function listarTalleres(cambio){
 	var fake = cambio.split("-");var clase="";var clase2="";
 	var anio = fake[0];var mes = fake[1]-1;var dia = fake[2];
 	var fechin = new Date(anio, mes, dia);
@@ -125,13 +145,15 @@ function listarTalleres(cambio,dni){
 		if ($(window).width() < 600) {
 			$.getJSON(
 					coneia_context_path + "/admin/customTaller",
-					{op:25,fecha:cambio,dni:dni},
+					{op:25,fecha:cambio},
 					function(objJson) {
 						var s = "";
 						var lista = objJson;
 						
 						if (lista.length > 0) {
 							// alert("si hay datos amix");
+							
+							
 							var temon = lista[0].tema;	
 							$(".temon").empty().append('<div class="chip"><span>'+temon+'<span></div>')
 							for (var i = 0; i < lista.length; i++) {
@@ -185,21 +207,21 @@ function listarTalleres(cambio,dni){
 							s += "";
 						}
 						$("#table").empty();
-
+							
 						$("#table").append(createTable3());
-
+						
 						$("#data1").empty();
 						$("#data1").append(s);
 						
 
 						$("#data-table-row-grouping3")
-						.dataTable(
+						.hide().dataTable(
 								{
 									"pageLength" : 3,
 									"bPaginate" : true,
 									"bLengthChange" : false,
 									"ordering": false,
-									"bFilter" : false,
+									"bFilter" : true,
 									"bInfo" : false,
 									"bAutoWidth" : true,
 									"select":true,
@@ -215,7 +237,9 @@ function listarTalleres(cambio,dni){
 									
 								}
 								);
-
+						$("#data-table-row-grouping3_filter").after(
+						"<div  id='hugme1' style='overflow-x:auto; clear: both;'></div>");
+						$("#data-table-row-grouping3_filter").hide();	
 					
 
 					});
@@ -237,7 +261,7 @@ function listarTalleres(cambio,dni){
 								crearModal(idd,cambio);
 								var idit = lista[i].idit;
 								var asistencia = lista[i].asistencia;
-								
+//								console.log(asistencia);
 								if(asistencia ==1){
 									clase2="#00c853 green accent-4";
 								}
@@ -290,17 +314,17 @@ function listarTalleres(cambio,dni){
 						$("#table").append(createTable2());
 
 						$("#data1").empty();
-						$("#data1").append(s);
 						
+						$("#data1").append(s);
 
 						$("#data-table-row-grouping2")
-						.dataTable(
+						.hide().dataTable(
 								{
 									"pageLength" : 3,
 									"bPaginate" : true,
 									"bLengthChange" : false,
 									"ordering": false,
-									"bFilter" : false,
+									"bFilter" : true,
 									"bInfo" : false,
 									"bAutoWidth" : true,
 									"select":true,
@@ -318,15 +342,21 @@ function listarTalleres(cambio,dni){
 								
 						
 						);
+						
+						
+						
 
 					$(".buttons-pdf").addClass("btn waves-effect waves-light");
 					$(".buttons-excel").addClass("btn waves-effect waves-light");
 					$("#data-table-row-grouping2_filter").after(
 					"<div  id='hugme1' style='overflow-x:auto; clear: both;'></div>");
+					$("#data-table-row-grouping2_filter").hide();
 					$("#data-table-row-grouping2").appendTo('#hugme1');
 					var table = $('#data-table-row-grouping2').DataTable();
 					table.rows( {selected:true} ).data();
 					});
+					
+			
 		}
 
 	
@@ -422,14 +452,14 @@ function crearModal(idd,cambio) {
 
 	var idit = 0; var tema="";var idd=0;var s ="";
 	var cant =id+countin;
-//	$("#modales").append('<div id="modal'+cant+'" class="modal" >'
-//			 +'<div class="modal-content modal-form">'+
-//			 	'<div class="row">'+
-//			 		'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Control de asistencia</h2>'+
-//			 		'<div id="table-datatables"><div class="container" style="width: 95%"><div class="cant"></div></div></div>'+
-//			 	+'</div>'+
-//			  '</div>'+
-//			 '</div>');
+	$("#modales").append('<div id="modal'+cant+'" class="modal" >'
+			 +'<div class="modal-content modal-form">'+
+			 	'<div class="row">'+
+			 		'<h2 class="center" style="font-family:' +"'"+'Cinzel'+"'"+', serif;">Control de asistencia</h2>'+
+			 		'<div id="table-datatables"><div class="container" style="width: 95%"><div class="cant"></div></div></div>'+
+			 	+'</div>'+
+			  '</div>'+
+			 '</div>');
 //	
 	
 	$('.modal').modal({
@@ -470,7 +500,7 @@ function crearModal(idd,cambio) {
 	});
 }
 function actualizar(idd,cambio,idit){
-//	alert(idd+"/"+cambio+"/"+idit);
+	console.log(idd+"/"+cambio+"/"+idit);
 	if(idit==0){
 		alertify.notify('Esta función no está habilitada por no estar dentro del horario del evento', 'custom', 4, function(){});
 	}else{
@@ -508,7 +538,7 @@ $(".final").click(function(){
 					for (var i = 0; i < lista.length; i++) {
 						var a = parseInt(i) + 1;
 						var idd = lista[i].idd;
-						crearModal(idd,cambio);
+//						crearModal(idd,cambio);
 						var idit = lista[i].idit;
 						var asistencia = lista[i].asistencia;
 						
