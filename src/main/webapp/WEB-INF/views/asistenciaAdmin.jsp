@@ -20,7 +20,7 @@
 	href="<c:url value='https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css'></c:url>"
 	rel="stylesheet" type="text/css" />
 <link
-	href="<c:url value='http://fonts.googleapis.com/icon?family=Material+Icons'></c:url>"
+	href="<c:url value='https://fonts.googleapis.com/icon?family=Material+Icons'></c:url>"
 	rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Lobster+Two"
 	rel="stylesheet">
@@ -192,7 +192,7 @@ label {
 							<a
 								class="btn-floating fa waves-effect waves-light #00c853 green accent-4 tooltipped"
 								href="#" data-position="bottom" data-delay="50"
-								data-tooltip="Entrada y Salida"><i class="material-icons"
+								data-tooltip="Asistió"><i class="material-icons"
 								style="font-size: 20px">done_all</i></a>
 
 						</div>
@@ -235,7 +235,7 @@ label {
 					<div class="row muestra2" style="display: none; margin-top: 1em;">
 						<div class="col l6 s4 " style="margin-left: 1em">
 							<a href="#"
-								class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 final">Reporte
+								class="btn btn-large waves-effect waves-light #263238 blue-grey darken-4 final" style="display:none">Reporte
 								final <i class="material-icons right" style="font-size: 20px">account_balance_wallet</i>
 							</a>
 						</div>

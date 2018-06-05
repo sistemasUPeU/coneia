@@ -132,7 +132,7 @@ function listarTodito(){
 		});	tej++;	var idtipo=2;fecha="2018-06-07";
 		if(ntj==0){vitas(idtipo,fecha)};ntj++;
 	});
-	$.get("customTaller", {op : 5}, function(data) {
+	$.get("customTaller", {op : 35}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasLunes").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
@@ -145,7 +145,7 @@ function listarTodito(){
 			if(lu1==0){modales(tema,ponente,lugar,stock,idtaller,idtipo);}
 		});lu1++;
 	});
-	$.get("customTaller", {op : 6}, function(data) {
+	$.get("customTaller", {op : 36}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasLunes2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
@@ -158,7 +158,7 @@ function listarTodito(){
 			if(lu2==0){modales(tema,ponente,lugar,stock,idtaller,idtipo);}
 		});lu2++;
 	});
-	$.get("customTaller", {op : 7}, function(data) {
+	$.get("customTaller", {op : 37}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasMiercoles1").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
@@ -171,7 +171,7 @@ function listarTodito(){
 			if(mi1==0){modales(tema,ponente,lugar,stock,idtaller,idtipo);}
 		});mi1++;
 	});
-	$.get("customTaller", {op : 8}, function(data) {
+	$.get("customTaller", {op : 38}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasMiercoles2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
@@ -184,7 +184,7 @@ function listarTodito(){
 			if(mi2==0){modales(tema,ponente,lugar,stock,idtaller,idtipo);}
 		});mi2++;
 	});
-	$.get("customTaller", {op : 9}, function(data) {
+	$.get("customTaller", {op : 39}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasMiercoles3").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
@@ -197,7 +197,7 @@ function listarTodito(){
 			if(mi3==0){modales(tema,ponente,lugar,stock,idtaller,idtipo);}
 		});mi3++;
 	});
-	$.get("customTaller", {op : 10}, function(data) {
+	$.get("customTaller", {op : 40}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasMiercoles4").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
@@ -210,7 +210,7 @@ function listarTodito(){
 			if(mi4==0){modales(tema,ponente,lugar,stock,idtaller,idtipo);}
 		});mi4++;
 	});
-	$.get("customTaller", {op : 11}, function(data) {
+	$.get("customTaller", {op : 41}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasViernes1").empty().append('<div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label></div><div class="divider"></div><br>');
@@ -223,7 +223,7 @@ function listarTodito(){
 			if(vi1==0){modales(tema,ponente,lugar,stock,idtaller,idtipo);}
 		});vi1++;
 	});
-	$.get("customTaller", {op : 12}, function(data) {
+	$.get("customTaller", {op : 42}, function(data) {
 		var obj = JSON.parse(data);
 		$(".ponenciasViernes2").empty().append('</br><div class="row center"><i class="material-icons md-18">access_time</i> Horario: <label>'+ obj[0].horaI +' a '+ obj[0].horaF +
 				'</label><div class="divider"></div><br></div>');

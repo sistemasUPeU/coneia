@@ -94,85 +94,207 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 		return x;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Map<String, Object>> showVistaPersonaTaller(String time,String dni){
+	public List<Map<String, Object>> showVistaPersonaTaller(String time){
 		String total="";
-		List<VistaPersonaTaller> lista = new ArrayList<>();
+		List<InscripcionTaller> lista = new ArrayList<>();
 		List<Map<String,Object>> liston =  new ArrayList<>();
+		
+		List<Map<String, Object>> talleres = new ArrayList<>();
+		
 		Map<String,Object> map = null;
 		try {
 			Session s = sessionFactory.getCurrentSession();
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date fechita = formatter.parse(time);
+			
 			DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);			
 			String date = null;
-			Query query = s.createQuery(
-					"from VistaPersonaTaller v where v.fecha='"+time+"' and v.dni like concat('%',:dni,'%')");
-			query.setParameter("dni", dni);
+//			Query query = s.createQuery(
+//					"from VistaPersonaTaller v where v.fecha='"+time+"' and v.dni like concat('%',:dni,'%')");
+//			Query query = s.createQuery(
+//					"from VistaPersonaTaller v where v.fecha='"+time+"'");
+//			Query querynative = s.createNativeQuery("Select * from inscripciontaller it left join taller t on it.idtaller=t.idtaller left join detalleInscripcion di on it.iddetalleinscripcion = di.iddetalleinscripcion left join persona p on di.idpersona = di.idpersona;");
+			Query query = s.createQuery("select distinct i from InscripcionTaller i join fetch i.taller a join fetch i.detalleInscripcion b join fetch b.persona p where a.fecha=:time group by i.detalleInscripcion.iddetalleInscripcion");
+			
+			query.setParameter("time", fechita);
+			
+			
+		
+			
+//					query.setParameter("dni", dni);
 			int idit=0; int asistencia=0;
 						  
 			lista = query.getResultList();
-			for(VistaPersonaTaller v : lista) {
-//				date=dfDateMedium.format(v.getFecha());
-				date = v.getFecha().toString();
-				System.out.println(date);
-				String[] fecha = date.split("-");
-//				String anio = fecha[2];String mes = fecha[1];
-				String dia = fecha[0];
-				String fechon="";
-				switch(dia) {
-				case "04":
-					fechon="lunes";
-				break;
-				case "05":
-					fechon="martes";
-					break;
-				case "06":
-					fechon="miercoles";
-					break;
-				case "07":
-					fechon="jueves";
-					break;
-				case "08":
-					fechon="viernes";
-					break;
-				}
-//				String fechon = anio+"-"+mes+"-"+dia;
+			
+			System.out.println(lista);
+			
+
+			System.out.println("tamaa;ooo> " + lista.size());
+			List<String> ret = new ArrayList<>();
+			Map<String, Object> map1 = null;
+
+
+			
+			for (InscripcionTaller c : lista) {
+				System.out.println("entro a reccorer");
 				
-				long num = cuantos(v.getIdd());
-//				long num2 = cuantos2(v.getIdd());
-				double suma = num;
-				if(suma==0) {
-					total = "0";
-					
-				}else {
-					double sumando = (suma/27)*100;
-					total = df2.format(sumando);
-				}
-				Map<String,Object> mapita = mapon(v.getIdd(),time);
+				
+				
+//			date=dfDateMedium.format(v.getFecha());
+			date = c.getTaller().getFecha().toString();
+			System.out.println(date);
+			String[] fecha = date.split("-");
+//			String anio = fecha[2];String mes = fecha[1];
+			String dia = fecha[0];
+			String fechon="";
+			switch(dia) {
+			case "04":
+				fechon="lunes";
+			break;
+			case "05":
+				fechon="martes";
+				break;
+			case "06":
+				fechon="miercoles";
+				break;
+			case "07":
+				fechon="jueves";
+				break;
+			case "08":
+				fechon="viernes";
+				break;
+			}
+//			String fechon = anio+"-"+mes+"-"+dia;
+			
+			long num = cuantos(c.getDetalleInscripcion().getIddetalleInscripcion());
+//			long num2 = cuantos2(v.getIdd());
+			double suma = num;
+			if(suma==0) {
+				total = "0";
+				
+			}else {
+				double sumando = (suma/27)*100;
+				total = df2.format(sumando);
+			}
+				
+				
+//				Map<String,Object> mapita = mapon(c.getDetalleInscripcion().getIddetalleInscripcion(),time);
+//				asistencia=Integer.parseInt(mapita.get("asistencia").toString());
+//				idit = Integer.parseInt(mapita.get("idit").toString());
+//				String tema = mapita.get("tema").toString();
+				
+				
+				map1 = new HashMap<>();
+
+//				String tema="";
+//				map1.put("idit" , c.getIdinscripcionTaller() );
+				map1.put("idd", c.getDetalleInscripcion().getIddetalleInscripcion());
+//				switch(c.getTaller().getTipo().getIdtipo()) {
+//				case 1:
+//					tema="Ponencias Paralelas";
+//					break;
+//				case 2:
+//					tema="Visitas técnicas";
+//					break;
+//				case 3:
+//					tema="Conferencia Magistral";
+//					break;
+//				case 4:
+//					tema="Talleres especializados";
+//					break;
+//				case 5:
+//					tema = c.getTaller().getNombre();
+//					break;
+//				}
+				
+				Map<String,Object> mapita = mapon(c.getDetalleInscripcion().getIddetalleInscripcion(),time);
 				asistencia=Integer.parseInt(mapita.get("asistencia").toString());
 				idit = Integer.parseInt(mapita.get("idit").toString());
 				String tema = mapita.get("tema").toString();
-				map = new HashMap<>();
-				map.put("idit", idit);
-				map.put("idd", v.getIdd());
-				map.put("tema", tema);
-				map.put("nombre", v.getNombre());
-				map.put("apellidos", v.getApellidos());
-				map.put("dni", v.getDni());
-				map.put("fecha", fechon);
-				map.put("porcentaje", total);
-				map.put("asistencia", asistencia);
-				liston.add(map);
-			}
+				map1.put("idit" , idit);
+				map1.put("tema", tema);
+				map1.put("nombre", c.getDetalleInscripcion().getPersona().getNombre());
+				map1.put("apellidos", c.getDetalleInscripcion().getPersona().getApellidos());
+				map1.put("dni", c.getDetalleInscripcion().getPersona().getDni());
+				map1.put("fecha", fechon);
+				map1.put("porcentaje", total);
+				map1.put("asistencia", asistencia);
+				
+				
+				System.out.println(map1);
+				talleres.add(map1);
 
-			System.out.println("aquí está la vista persona taller tsk " + lista);
+			}
+			System.out.println("administrador controller de los talleres");
+			System.out.println(talleres);
+			System.out.println(gs.toJson(talleres));
+
+		
+		
+//			for(VistaPersonaTaller v : lista) {
+////				date=dfDateMedium.format(v.getFecha());
+//				date = v.getFecha().toString();
+//				System.out.println(date);
+//				String[] fecha = date.split("-");
+////				String anio = fecha[2];String mes = fecha[1];
+//				String dia = fecha[0];
+//				String fechon="";
+//				switch(dia) {
+//				case "04":
+//					fechon="lunes";
+//				break;
+//				case "05":
+//					fechon="martes";
+//					break;
+//				case "06":
+//					fechon="miercoles";
+//					break;
+//				case "07":
+//					fechon="jueves";
+//					break;
+//				case "08":
+//					fechon="viernes";
+//					break;
+//				}
+////				String fechon = anio+"-"+mes+"-"+dia;
+//				
+//				long num = cuantos(v.getIdd());
+////				long num2 = cuantos2(v.getIdd());
+//				double suma = num;
+//				if(suma==0) {
+//					total = "0";
+//					
+//				}else {
+//					double sumando = (suma/27)*100;
+//					total = df2.format(sumando);
+//				}
+//				Map<String,Object> mapita = mapon(v.getIdd(),time);
+//				asistencia=Integer.parseInt(mapita.get("asistencia").toString());
+//				idit = Integer.parseInt(mapita.get("idit").toString());
+//				String tema = mapita.get("tema").toString();
+//				map = new HashMap<>();
+//				map.put("idit", idit);
+//				map.put("idd", v.getIdd());
+//				map.put("tema", tema);
+//				map.put("nombre", v.getNombre());
+//				map.put("apellidos", v.getApellidos());
+//				map.put("dni", v.getDni());
+//				map.put("fecha", fechon);
+//				map.put("porcentaje", total);
+//				map.put("asistencia", asistencia);
+//				liston.add(map);
+//			}
+
+//			System.out.println("aquí está la vista persona taller tsk " + lista);
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Error showVistaPersonaTaller " + e);
 		}
 
-		return liston;
+		return talleres;
 	}
 
 	@Override
@@ -249,10 +371,11 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 	public Map<String, Object> mapon(int idd, String fecha) throws ParseException {
 		
 		
-		List<VistaAsistencia> lista = new ArrayList<>();
+		List<InscripcionTaller> lista = new ArrayList<>();
 		List<Map<String,Object>> liston =  new ArrayList<>();
 		Map<String,Object> map = null;
 		String tema="";
+		int idit =0;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date fechon = formatter.parse(fecha);
 		Calendar cal = Calendar.getInstance();
@@ -264,13 +387,15 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 //		String limite1 = "06:30:00";
 //		String limite2 = "21:30:00";
         Date date = sdf.parse(hora);
+        Date date2 = sdf.parse(hora2);
 //        Date lim1 = sdf.parse(limite1);
 //        Date lim2 = sdf.parse(limite2);
         Time time = new Time(date.getTime());
+        Time time2 = new Time(date2.getTime());
 //        Time l1 = new Time(lim1.getTime());
 //        Time l2 = new Time(lim2.getTime());
         // MIRA AQUI NO FUNCIONA PARA ALLA SÍ chevereeeee jajajaj 
-
+    
         
         
         System.out.println("time:" +hora);
@@ -279,8 +404,14 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 		try {
 			Session s = sessionFactory.getCurrentSession();
 				Query query = s.createQuery(
-
-						"select v from VistaAsistencia v where v.idd=:idd and v.fecha=:fecha and v.hora<='"+hora2+"' and v.fin>='"+hora2+"'");
+						
+						"select distinct i from InscripcionTaller i "
+						+ "join fetch i.taller a "
+						+ "join fetch a.tipo ti "
+						+ "join fetch i.detalleInscripcion b "
+						+ "join fetch b.persona p "
+						+ "where i.detalleInscripcion.iddetalleInscripcion=:idd and a.fecha=:fecha and a.horaInicio<='"+hora+"' and a.horaFin>='"+hora2+"' "
+								+ "group by i.detalleInscripcion.iddetalleInscripcion order by a.horaInicio");
 				query.setParameter("idd",idd);
 //				query.setParameter("fin",time);
 				query.setParameter("fecha", fechon); 
@@ -297,31 +428,31 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 					map.put("asistencia", 0);
 					System.out.println("No se encuentra en horario de evento" + map);
 				}else {
-					for(VistaAsistencia v : lista) {
-						int tipo = v.getIdtipo();
+					for(InscripcionTaller i : lista) {
+						int tipo = i.getTaller().getTipo().getIdtipo();
 						switch(tipo) {
 						case 1:
 							tema="Ponencias Paralelas";
 							break;
 						case 2:
-							tema="Visitas técnicas";
+							tema="Visitas técnicas - Talleres especializados";
 							break;
 						case 3:
 							tema="Conferencia Magistral";
 							break;
 						case 4:
-							tema="Talleres especializados";
+							tema="Talleres especializados - Visitas técnicas";
 							break;
 						case 5:
-							tema = v.getTema();
+							tema = i.getTaller().getNombre();
 							break;
 						}												
 						map = new HashMap<>();
-						map.put("idit", v.getIdit());
-						map.put("idd", v.getIdd());
+						map.put("idit", i.getIdinscripcionTaller());
+						map.put("idd", i.getDetalleInscripcion().getIddetalleInscripcion());
 						map.put("tema", tema);
-						System.out.println("esta es la hora: "+v.getHoraI());
-						map.put("asistencia", v.getAsistencia());
+						System.out.println("esta es la hora: "+i.getTaller().getHoraInicio());
+						map.put("asistencia", i.getAsistencia());
 					}
 
 					System.out.println("aquí está mapon " + map);
@@ -339,16 +470,16 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 	public List<Map<String, Object>> reporteAsistencia() {
 		String total="";
 		List<Map<String,Object>> liston = new ArrayList<>();
-		List<VistaReporteAsistencia> lista = new ArrayList<>();
+		List<InscripcionTaller> lista = new ArrayList<>();
 		Map<String,Object> map = null;
 		try {
 			Session s = sessionFactory.getCurrentSession();
 			Query query = s.createQuery(
-					"from VistaReporteAsistencia");
+					"select distinct i from InscripcionTaller i join fetch i.detalleInscripcion b join fetch b.persona p group by i.detalleInscripcion.iddetalleInscripcion");
 			lista = query.getResultList();
-			for(VistaReporteAsistencia v : lista) {
+			for(InscripcionTaller v : lista) {
 				
-				long num = cuantos(v.getIdd());
+				long num = cuantos(v.getDetalleInscripcion().getIddetalleInscripcion());
 //				long num2 = cuantos2(v.getIdd());
 				double suma = num;
 				if(suma==0) {
@@ -359,12 +490,12 @@ public class InscripcionTallerDAOImpl implements InscripcionTallerDAO {
 					total = df2.format(sumando);
 				}
 				map = new HashMap<>();
-				map.put("idd", v.getIdd());
-				map.put("nombre", v.getNombre());
-				map.put("apellidos", v.getApellidos());
-				map.put("dni", v.getDni());
-				map.put("correo", v.getCorreo());
-				map.put("celular", v.getCelular());
+				map.put("idd", v.getDetalleInscripcion().getIddetalleInscripcion());
+				map.put("nombre", v.getDetalleInscripcion().getPersona().getNombre());
+				map.put("apellidos", v.getDetalleInscripcion().getPersona().getApellidos());
+				map.put("dni", v.getDetalleInscripcion().getPersona().getDni());
+				map.put("correo", v.getDetalleInscripcion().getPersona().getCorreo());
+				map.put("celular", v.getDetalleInscripcion().getPersona().getCelular());
 				map.put("porcentaje", total);
 				liston.add(map);
 			}

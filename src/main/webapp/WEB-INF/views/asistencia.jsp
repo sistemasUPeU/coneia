@@ -696,7 +696,7 @@ html {
 	<div class="page-footer #00c853 green accent-4" style="padding: 0;float:left;width:100%;bottom:0" id="foot1">
 			<div class="footer-copyright">
 				<div class="container" style="color:white">
-					Copyright © 2017 <a class="grey-text text-lighten-4" target="_blank">Alpha
+					Copyright © 2018 <a class="grey-text text-lighten-4" target="_blank">Alpha
 					Team</a> All rights reserved. <span class="right" id="foot2">Developed by <a
 				class="grey-text text-lighten-4">Alpha Team</a></span>
 				</div>
