@@ -21,6 +21,7 @@ import pe.edu.upeu.CONEIA.dao.PersonaDAO;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
 import pe.edu.upeu.CONEIA.entity.DetallePrivilegio;
 import pe.edu.upeu.CONEIA.entity.Inscripcion;
+import pe.edu.upeu.CONEIA.entity.InscripcionTaller;
 import pe.edu.upeu.CONEIA.entity.Persona;
 import pe.edu.upeu.CONEIA.entity.Rol;
 import pe.edu.upeu.CONEIA.entity.Taller;
@@ -315,7 +316,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 		int x=0;
 		try {
 			Session s = sessionFactory.getCurrentSession();
-	    	s.update(p);	
+			s.update(p);	
 	    	x=1;
 		} catch (HibernateException e) {
 			System.out.println("Error al actualizar persona: "+e);

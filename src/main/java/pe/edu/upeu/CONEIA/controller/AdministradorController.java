@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.persistence.ParameterMode;
+import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,6 +36,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import pe.edu.upeu.CONEIA.entity.Configuracion;
 import pe.edu.upeu.CONEIA.entity.DetalleInscripcion;
@@ -100,6 +107,77 @@ public class AdministradorController {
 
 		return "personal";
 	}
+	
+	
+
+	@RequestMapping("/editPersona")
+	public @ResponseBody Integer editpersona(HttpServletRequest request, HttpServletResponse response) {
+	
+		int respuesta = 0;
+		Persona p =  new Persona();
+		String data = request.getParameter("op");
+		System.out.println("controller string" + data);
+		
+		
+		JsonParser parser = new JsonParser();
+
+		// Obtain Array
+		JsonArray gsonArr = parser.parse(data).getAsJsonArray();
+		System.out.println(gsonArr);
+		System.out.println("size " + gsonArr.size());
+		int cont = 0;
+
+		for (JsonElement obje : gsonArr) {
+
+			// Object of array
+			JsonObject gsonObj = obje.getAsJsonObject();
+			System.out.println("gsonObj> " + gsonObj);
+			// Primitives elements of object
+
+			// int dorsal = gsonObj.get("nombre").getAsInt();
+			int idpersona = Integer.parseInt(gsonObj.get("idpersona").getAsString());
+			System.out.println("idpersona " + idpersona);
+			String nombre = gsonObj.get("name").getAsString();
+			System.out.println(nombre);
+			String apellido = gsonObj.get("last_name").getAsString();
+			String carrera = gsonObj.get("carrera").getAsString();
+			String correo = gsonObj.get("email").getAsString();
+			String dni = gsonObj.get("dni").getAsString();
+			String celular = gsonObj.get("phone").getAsString();
+			String universidad = gsonObj.get("entidad").getAsString();
+			Double importe = gsonObj.get("importe").getAsDouble();
+			System.out.println("importe " + importe);
+			// Object Constructor
+
+			Persona persona = new Persona();
+			persona.setIdpersona(idpersona);
+			persona.setNombre(nombre);
+			persona.setApellidos(apellido);
+			persona.setCarrera(carrera);
+			persona.setCorreo(correo);
+			persona.setDni(dni);
+			persona.setCelular(celular);
+			persona.setUniversidad(universidad);
+			Rol r = new Rol();
+			r.setIdrol(7);
+			persona.setRol(r);
+			persona.setImporte(importe);
+			
+
+			System.out.println("clase > " + persona);
+			respuesta = ps.actualizar(persona);
+			
+			//
+		}
+		System.out.println("respuesta del dao implement actualizar persona - controller> " + respuesta);
+		
+		
+		return respuesta;
+		
+	}
+	
+	
+	
 	
 	@RequestMapping("/responsew")
 	public @ResponseBody String responsew(HttpServletRequest request, HttpServletResponse response) {
@@ -416,7 +494,7 @@ System.out.println(res);
 				map.put("carrera", c.getPersona().getCarrera());
 				map.put("tipo", c.getPersona().getTipo());
 				map.put("importe", c.getPersona().getImporte());
-				
+				map.put("idpersona", c.getPersona().getIdpersona());
 
 				map.put("url", c.getInscripcion().getUrlVoucher());
 				map.put("nro", c.getInscripcion().getNroVoucher());
@@ -450,7 +528,7 @@ System.out.println(res);
 				map.put("carrera", c.getPersona().getCarrera());
 				map.put("tipo", c.getPersona().getTipo());
 				map.put("importe", c.getPersona().getImporte());
-
+				map.put("idpersona", c.getPersona().getIdpersona());
 				map.put("url", c.getInscripcion().getUrlVoucher());
 				map.put("nro", c.getInscripcion().getNroVoucher());
 				map.put("fecha", c.getInscripcion().getFecha());

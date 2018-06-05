@@ -96,6 +96,9 @@
 	src="<c:url value='/resources/js/plugins/alertify/alertify.min.js'></c:url>"
 	type="text/javascript"></script>
 
+<script
+	src="<c:url value='/resources/js/plugins/jquery-validation/additional-methods.min.js'></c:url>"
+	type="text/javascript"></script>
 
 
 <script>

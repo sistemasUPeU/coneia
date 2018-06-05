@@ -25,6 +25,26 @@ $('#modal8').modal({
 
 });
 
+
+$('#modal9').modal({
+	dismissible : true, // Modal can be dismissed by clicking outside of the
+	// modal
+	opacity : .5, // Opacity of modal background
+	inDuration : 400, // Transition in duration
+	outDuration : 200, // Transition out duration
+	startingTop : '4%', // Starting top style attribute
+	endingTop : '10%', // Ending top style attribute
+	ready : function(modal, trigger) { // Callback for Modal open. Modal and
+		// trigger parameters available.
+
+		
+
+	},
+	complete : function() {
+
+	} // Callback for Modal close
+
+});
 var arrayProperties = new Array();
 var cambio = 0;
 var lista = 0;
@@ -96,6 +116,7 @@ function construirArray(array) {
 			properties.operacion = array[i].nro;
 			properties.importe = array[i].importe;
 			properties.fechaupdate = array[i].fechaupdate;
+			properties.idpersona = array[i].idpersona;
 			
 			arrayProperties.push(properties);
 
@@ -182,6 +203,11 @@ function showTable() {
 				+ " class='btn-floating waves-effect waves-light btn modal-trigger waves-light orange' id='"
 				+ arrayProperties[i].url
 				+ "'  onclick='verVoucher(this.id)' style='margin-right: 14%;' data-target='modal8'><i class='medium material-icons'>attach_file</i></button>";
+		a += "<button "
+			+ " class='btn-floating waves-effect waves-light btn modal-trigger waves-light blue' id='"
+			+ arrayProperties[i].idpersona
+			+ "'  onclick='editarPersona(this.id)' style='margin-right: 14%;' data-target='modal9'><i class='medium material-icons'>edit</i></button>";
+		
 		a += "</td>";
 
 		a += "</tr>";
@@ -321,3 +347,114 @@ function verVoucher(url) {
 	$("#download").attr("href",ruta_img).attr("download", url);
 
 }
+
+
+
+function editarPersona(value){
+	
+	$("#idpersona").val(value);
+
+	var indices = [];
+	for (i = 0; i < arrayProperties.length; i++) {
+		
+		if(arrayProperties[i]["idpersona"]==value){
+			
+		
+			$("#name").val(arrayProperties[i]["nombre"]);
+			$("#last_name").val(arrayProperties[i]["apellidos"]);
+			$("#email").val(arrayProperties[i]["correo"]);
+			$("#dni").val(arrayProperties[i]["dni"]);
+			$("#phone").val(arrayProperties[i]["celular"]);
+			$("#carrera").val(arrayProperties[i]["carrera"]);
+			$("#universidad").val(arrayProperties[i]["entidad"]);
+			$("#importe").val(arrayProperties[i]["importe"]);
+			Materialize.updateTextFields();
+		}
+		
+		
+		
+//		
+	}
+	
+	
+}
+
+$("#savechanges").click(function(e){
+	
+	e.preventDefault();
+
+	
+	
+	var idper = $("#idpersona").val();
+	
+	var importe = $("#importe").val();
+	
+	var arrayEdited = new Array();
+	var object = new Object();
+	object.idpersona=idper;
+	object.name=$("#name").val();
+	object.last_name=$("#last_name").val();
+	object.email=$("#email").val();
+	object.dni=$("#dni").val();
+	object.phone=$("#phone").val();
+	object.carrera=$("#carrera").val();
+	object.entidad=$("#universidad").val();
+	object.importe=importe;
+	arrayEdited.push(object);
+	
+
+	
+	if(arrayEdited[0]['name']=="" || arrayEdited[0]['last_name']=="" || arrayEdited[0]['email']==""  || arrayEdited[0]['dni']=="" || arrayEdited[0]['phone']=="" || arrayEdited[0]['carrera']=="" || arrayEdited[0]['entidad']=="" ){
+		alertify
+		.alert(
+				'Error',
+				'Existen campos vacíos.',
+				function() {
+					alertify
+							.success('Ok');
+					
+
+				})
+	}else{
+
+		var data = JSON.stringify(arrayEdited);
+		
+		$
+		.post(coneia_context_path + "/admin/editPersona",{op : data},function(response,status) {
+			
+		
+			if (response == 1) {
+				alertify
+						.alert(
+								'Success',
+								'Excelente!. Los datos se han modificado',
+								function() {
+									alertify
+											.success('Ok');
+									$("#modal9").modal("close");
+									consultar(cambio);
+								})
+			} else {
+
+				alertify
+						.alert(
+								'Error',
+								'Algo inesperado ocurrió, por favor, vuelva a intentarlo más tarde.',
+								function() {
+									alertify
+											.success('Ok');
+									
+
+								})
+			}
+		});
+	}
+	
+	
+	
+	
+	
+	
+});
+
+
